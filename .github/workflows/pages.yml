@@ -1,4 +1,5 @@
 # Static HTML Pages deployment
+# Pages can be re-published by the owner after content review.
 name: Deploy NCA Study Hub to GitHub Pages
 
 on:
