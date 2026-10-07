@@ -1,3 +1,4 @@
+# Static HTML Pages deployment
 name: Deploy NCA Study Hub to GitHub Pages
 
 on:
