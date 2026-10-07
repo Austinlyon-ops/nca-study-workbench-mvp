@@ -1,0 +1,1609 @@
+{
+  "fragmentVersion": "0.2.0-batch2-operations",
+  "checked": "2026-09-24",
+  "sources": [
+    {
+      "id": "NOTE07",
+      "name": "社区学习笔记07：数据中心管理与监控",
+      "url": "https://drive.google.com/file/d/1KsminMP_--vyYJrYQRIurt0KEcI_4gES/view",
+      "locator": "9页；全文文本已读",
+      "kind": "third-party",
+      "checked": "2026-09-24",
+      "note": "只采用主题线索；dump/题量预测及绝对化指标结论不采用。"
+    },
+    {
+      "id": "NOTE08",
+      "name": "社区学习笔记08：编排、调度与虚拟化",
+      "url": "https://drive.google.com/file/d/1jDIcg23sQjWXr7fNKxdNx483-FydD-uz/view",
+      "locator": "12页；全文文本已读",
+      "kind": "third-party",
+      "checked": "2026-09-24",
+      "note": "只采用主题线索；原题不直接导入。MIG支持、重置与调度边界另核官方。"
+    },
+    {
+      "id": "SMI",
+      "name": "NVIDIA System Management Interface",
+      "url": "https://docs.nvidia.com/deploy/nvidia-smi/index.html",
+      "locator": "Description / Query / Utilization / Memory / Power / ECC",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "DCGM",
+      "name": "NVIDIA DCGM Feature Overview",
+      "url": "https://docs.nvidia.com/datacenter/dcgm/latest/user-guide/feature-overview.html",
+      "locator": "Health and Diagnostics / Profiling Metrics",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "EXPORTER",
+      "name": "NVIDIA DCGM Exporter",
+      "url": "https://docs.nvidia.com/datacenter/cloud-native/gpu-telemetry/latest/dcgm-exporter.html",
+      "locator": "Introduction / Running / MIG support",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "XID",
+      "name": "NVIDIA Xid Errors",
+      "url": "https://docs.nvidia.com/deploy/xid-errors/introduction.html",
+      "locator": "What is an Xid Message / How to Use",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "BMC",
+      "name": "NVIDIA DGX H100/H200：BMC",
+      "url": "https://docs.nvidia.com/dgx/dgxh100-user-guide/bmc.html",
+      "locator": "硬件管理、远程控制台、传感器和电源",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "BCM",
+      "name": "NVIDIA Base Command Manager",
+      "url": "https://www.nvidia.com/en-us/data-center/base-command-manager/",
+      "locator": "Provision / Monitor / Cluster management",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "SLURM",
+      "name": "SchedMD Slurm Overview",
+      "url": "https://slurm.schedmd.com/overview.html",
+      "locator": "三项职责 / Architecture / User tools",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "SLURM-GPU",
+      "name": "SchedMD Slurm GRES Scheduling",
+      "url": "https://slurm.schedmd.com/gres.html",
+      "locator": "GPU资源请求 / MIG Management",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "K8S",
+      "name": "Kubernetes Overview",
+      "url": "https://kubernetes.io/docs/concepts/overview/",
+      "locator": "编排 / 调度 / 服务 / 批处理",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "K8S-GPU",
+      "name": "Kubernetes Schedule GPUs",
+      "url": "https://kubernetes.io/docs/tasks/manage-gpus/scheduling-gpus/",
+      "locator": "驱动、device plugin及GPU资源请求",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "MIG",
+      "name": "NVIDIA MIG Introduction",
+      "url": "https://docs.nvidia.com/datacenter/tesla/mig-user-guide/introduction.html",
+      "locator": "硬件分区 / 内存路径 / 部署场景",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "MIG-SUPPORT",
+      "name": "NVIDIA MIG Supported GPUs",
+      "url": "https://docs.nvidia.com/datacenter/tesla/mig-user-guide/supported-gpus.html",
+      "locator": "Table 1 支持产品与最大实例数",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "MIG-DEPLOY",
+      "name": "NVIDIA MIG Deployment Considerations",
+      "url": "https://docs.nvidia.com/datacenter/tesla/mig-user-guide/deployment-considerations.html",
+      "locator": "System / Application considerations",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "MIG-START",
+      "name": "NVIDIA Getting Started with MIG",
+      "url": "https://docs.nvidia.com/datacenter/tesla/mig-user-guide/getting-started-with-mig.html",
+      "locator": "MIG mode / GPU reset on Hopper+ / instance management",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "VGPU",
+      "name": "NVIDIA vGPU Introduction",
+      "url": "https://docs.nvidia.com/vgpu/latest/grid-vgpu-user-guide/grid-vgpu-introduction.html",
+      "locator": "GPU Instance Support / 软件与hypervisor支持",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "L40S",
+      "name": "NVIDIA L40S Specifications",
+      "url": "https://www.nvidia.com/en-in/data-center/l40s/",
+      "locator": "MIG support: No；vGPU software support: Yes",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    }
+  ],
+  "cards": [
+    {
+      "id": "card-monitor-tools",
+      "day": 7,
+      "title": "nvidia-smi 与 DCGM：先看状态，再做持续管理",
+      "objectiveIds": [
+        "3.1",
+        "1.1",
+        "1.6"
+      ],
+      "minutes": 4,
+      "objective": "按需要选择快速查询、健康检查与监控集成。",
+      "conclusion": "nvidia-smi适合快速查询；DCGM提供GPU管理、健康检查与指标接口。",
+      "explanation": "把GPU看成一台正在工作的设备：nvidia-smi像就地查看仪表，DCGM像给运维系统提供持续观测和检查的工具箱。nvidia-smi是NVIDIA System Management Interface，可查询GPU、显存、功耗、温度和进程；也有会改变配置的管理命令。DCGM可在单节点运行，并通过Exporter等集成成集群监控。并非“单节点一定不能用DCGM”。",
+      "terms": "nvidia-smi / NVIDIA System Management Interface / NVML / Data Center GPU Manager / dcgmi",
+      "compare": "监控工具不是作业调度器；一次查询不是历史趋势，也不是完整硬件诊断。",
+      "scenario": "示例：管理员先查看一台服务器的GPU状态；团队还需多节点趋势和健康事件时，设计DCGM与监控平台集成。",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE07",
+        "SMI",
+        "DCGM"
+      ],
+      "sourceId": "TRAIN",
+      "textStatus": "对照完成（学习用）",
+      "trainingPages": "129–133、137",
+      "extra": "只辨认读数和工具职责；本课不要求修改功率上限、清错误计数或执行GPU reset。",
+      "checkNotes": "更正讲义“Manual only”：nvidia-smi支持循环查询；其全称不是Single System Management Interface。",
+      "origin": "本轮读取已有培训讲义和社区笔记；关键事实按所列官方资料核验。场景为原创教学示例，非用户现场事实。",
+      "webId": "card-monitor-tools"
+    },
+    {
+      "id": "card-gpu-util-memory",
+      "day": 7,
+      "title": "GPU忙不忙、显存装多少、数据搬多快",
+      "objectiveIds": [
+        "3.3"
+      ],
+      "minutes": 4,
+      "objective": "读懂几个常见指标的不同含义。",
+      "conclusion": "GPU利用率、显存容量占用和显存读写忙碌程度是不同问题。",
+      "explanation": "nvidia-smi的GPU利用率大致表示采样期间有内核执行的时间比例。显存已用量表示占了多少存储空间；utilization.memory描述采样期间显存读写活跃的时间比例。三者不能互换。100% GPU-Util也不能证明所有计算单元达到理论峰值；低利用率可能与任务阶段、CPU供给、存储、网络通信或任务太小有关，需要结合时间线检查。",
+      "terms": "GPU utilization / memory.used / memory utilization / sampling interval / bottleneck",
+      "compare": "显存占用90%不等于GPU算力用到90%；DCGM PROF_SM_ACTIVE是跨SM平均的活动指标，不能直接等同nvidia-smi GPU-Util。",
+      "scenario": "示例：模型先占用20GB显存，然后等待数据文件。此时显存仍高、GPU-Util却低，两项读数可以同时正确。",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE07",
+        "SMI",
+        "DCGM"
+      ],
+      "sourceId": "TRAIN",
+      "textStatus": "对照完成（学习用）",
+      "trainingPages": "131–134",
+      "extra": "N/A表示该字段不可用或不支持，不能当成0或健康。先确认型号、驱动和采样口径，再比较节点。",
+      "checkNotes": "排除社区笔记“90%以上即接近算力饱和”和GPU-Util=SM_ACTIVE的等同写法。",
+      "origin": "本轮读取已有培训讲义和社区笔记；关键事实按所列官方资料核验。场景为原创教学示例，非用户现场事实。",
+      "webId": "card-gpu-util-memory"
+    },
+    {
+      "id": "card-gpu-health",
+      "day": 7,
+      "title": "温度、功耗、频率与错误：组合看证据",
+      "objectiveIds": [
+        "3.3",
+        "3.1"
+      ],
+      "minutes": 4,
+      "objective": "从异常读数提出可验证的检查方向。",
+      "conclusion": "异常指标提示要调查；单个温度或错误码通常不足以判定硬件根因。",
+      "explanation": "功耗用W、温度用℃、频率常用MHz；还要看功率限制、降频原因和任务表现。温度高且降频可能关联散热，但告警阈值应按型号和环境要求设定。ECC记录可纠正或不可纠正的存储错误，Xid是驱动报告的错误线索；Xid可能涉及应用、软件或硬件。保留时间、设备标识和上下文，比把一次读数直接写成“GPU坏了”更有帮助。",
+      "terms": "Power draw / Power limit / Temperature / Clock / Throttling / ECC / Xid",
+      "compare": "功率上限不是实际功耗；出现错误不等于已知根因；DCGM后台健康检查和主动诊断不是同一种操作。",
+      "scenario": "示例：一个任务突然变慢，先比对温度、频率、降频原因和错误时间线；若要跑主动诊断，另行安排适合的维护条件。",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE07",
+        "SMI",
+        "DCGM",
+        "XID"
+      ],
+      "sourceId": "TRAIN",
+      "textStatus": "对照完成（学习用）",
+      "trainingPages": "130–134",
+      "extra": "看增长趋势和错误类型；不把历史累计错误数当成本次新故障，也不从“诊断通过”推出全部硬件永久正常。",
+      "checkNotes": "不采用统一85℃故障线；主动诊断可能占用或干扰GPU，不能冒充无影响监控。",
+      "origin": "本轮读取已有培训讲义和社区笔记；关键事实按所列官方资料核验。场景为原创教学示例，非用户现场事实。",
+      "webId": "card-gpu-health"
+    },
+    {
+      "id": "card-telemetry-pipeline",
+      "day": 7,
+      "title": "从GPU读数到趋势和告警",
+      "objectiveIds": [
+        "3.1",
+        "3.3",
+        "1.7"
+      ],
+      "minutes": 4,
+      "objective": "区分采集、保存、展示与告警。",
+      "conclusion": "Exporter输出指标，监控系统保存与展示；能看到图还要确认采样和设备对应。",
+      "explanation": "DCGM Exporter通过HTTP指标接口向Prometheus等系统提供GPU数据，可作为独立容器或在Kubernetes GPU节点运行。常见链路是GPU/DCGM→Exporter→Prometheus→Grafana。Exporter负责把读数交出来，Prometheus保存时间序列，Grafana帮助看趋势；告警还需要明确规则和通知链路。不同节点、GPU或MIG实例的标签要对应正确。",
+      "terms": "Telemetry / DCGM Exporter / Prometheus / Grafana / time series / label / alert",
+      "compare": "单张截图没有前后趋势；Exporter不是长久存储库；有仪表盘不代表通知和处置已经验证。",
+      "scenario": "示例：训练每天同一时段变慢，用同一任务时间段的GPU与存储/网络趋势寻找相关性，然后再验证原因。",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE07",
+        "EXPORTER"
+      ],
+      "sourceId": "TRAIN",
+      "textStatus": "对照完成（学习用）",
+      "trainingPages": "133–137",
+      "extra": "指标采样缺失、字段不支持、时区错位或设备标签错配，都可能让看似漂亮的图得出错误结论。",
+      "checkNotes": "",
+      "origin": "本轮读取已有培训讲义和社区笔记；关键事实按所列官方资料核验。场景为原创教学示例，非用户现场事实。",
+      "webId": "card-telemetry-pipeline"
+    },
+    {
+      "id": "card-bmc-bcm",
+      "day": 7,
+      "title": "BMC、BCM与GPU工具各管什么",
+      "objectiveIds": [
+        "3.1",
+        "1.6"
+      ],
+      "minutes": 4,
+      "objective": "区分板级管理入口与集群管理软件。",
+      "conclusion": "BMC管服务器硬件入口；BCM管集群部署和运维；名称相像但职责不同。",
+      "explanation": "BMC是Baseboard Management Controller，可提供硬件传感器、远程控制台和电源控制等带外能力。在其管理网络和供电正常时，即使主机操作系统不可用，仍可能通过BMC查看状态。BCM是Base Command Manager，帮助部署、配置和管理集群节点，并集成监控及工作负载管理工具。nvidia-smi/DCGM则重点提供GPU相关观测与管理。",
+      "terms": "Baseboard Management Controller / Out-of-band / Base Command Manager / Provisioning",
+      "compare": "BMC不是BCM；带外管理不等于断电后仍能工作，也不是任何故障都能自动修复。",
+      "scenario": "示例：主机SSH无响应时可检查BMC控制台；批量给新节点准备软件镜像是集群部署问题，可由BCM等平台组织。",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE07",
+        "BMC",
+        "BCM"
+      ],
+      "sourceId": "TRAIN",
+      "textStatus": "对照完成（学习用）",
+      "trainingPages": "134–137",
+      "extra": "学习只识别管理路径，不在生产设备执行开关机、固件更新或重新部署。",
+      "checkNotes": "不采纳“BMC是唯一恢复办法”“BCM必有额外付费”等无条件结论。",
+      "origin": "本轮读取已有培训讲义和社区笔记；关键事实按所列官方资料核验。场景为原创教学示例，非用户现场事实。",
+      "webId": "card-bmc-bcm"
+    },
+    {
+      "id": "card-job-scheduling",
+      "day": 8,
+      "title": "调度：把有限资源分给合适的任务",
+      "objectiveIds": [
+        "3.2",
+        "1.7"
+      ],
+      "minutes": 4,
+      "objective": "把排队和资源分配与监控分开。",
+      "conclusion": "调度决定哪个任务何时在哪些资源上运行；不会凭空增加GPU。",
+      "explanation": "把集群想成共享实验室：任务提出GPU、CPU、内存和时间等需求；调度器结合可用资源、优先级、配额和策略安排运行。有空闲GPU也不保证任意任务立即开始，例如任务需要更多GPU、指定型号或受队列规则约束。观测系统告诉你发生了什么，调度系统负责按规则安排工作。",
+      "terms": "Job scheduler / Resource allocation / Queue / Priority / Quota / Fair-share",
+      "compare": "资源申请不等于实际一直忙碌；队列等待不一定是硬件故障；公平不等于每个时刻平均分。",
+      "scenario": "示例：还有1张空闲GPU，但任务需要同节点4张。任务等待可能合理；要查看完整资源需求和队列原因。",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE08",
+        "SLURM",
+        "SLURM-GPU"
+      ],
+      "sourceId": "TRAIN",
+      "textStatus": "对照完成（学习用）",
+      "trainingPages": "151–153",
+      "extra": "调度器也不能代替模型算法、CUDA运算库或硬件网络。",
+      "checkNotes": "",
+      "origin": "本轮读取已有培训讲义和社区笔记；关键事实按所列官方资料核验。场景为原创教学示例，非用户现场事实。",
+      "webId": "card-job-scheduling"
+    },
+    {
+      "id": "card-slurm-kubernetes",
+      "day": 8,
+      "title": "Slurm与Kubernetes：工作方式有侧重",
+      "objectiveIds": [
+        "3.2"
+      ],
+      "minutes": 4,
+      "objective": "根据批作业和服务管理需求理解两者。",
+      "conclusion": "Slurm侧重集群资源与作业队列；Kubernetes侧重容器化工作负载及生命周期。",
+      "explanation": "Slurm常用于批处理和多节点计算：提交任务、排队、分配资源、启动并跟踪任务。Kubernetes用Pod等对象组织容器化工作负载，支持调度、服务访问、扩缩和故障恢复，也能运行批处理任务。训练/推理是AI工作阶段，不是两套平台的硬性使用边界。实际选型还要看软件生态、运维和工作负载需求。",
+      "terms": "Slurm / sbatch / squeue / Kubernetes / Pod / Deployment / Service / Job",
+      "compare": "不能背“训练只用Slurm，推理只用Kubernetes”。Kubernetes具备调度能力，Slurm也能运行容器化任务。",
+      "scenario": "示例：实验室有许多限时批作业，适合先评估作业队列；持续提供容器化API则重点考虑服务与副本管理。",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE08",
+        "SLURM",
+        "K8S"
+      ],
+      "sourceId": "TRAIN",
+      "textStatus": "对照完成（学习用）",
+      "trainingPages": "151–154",
+      "extra": "sbatch用于提交批作业，squeue查看队列；认识职责即可，本课不要求部署真实集群。",
+      "checkNotes": "将教材和笔记的训练/推理对比视为典型场景，不视为排他规则。",
+      "origin": "本轮读取已有培训讲义和社区笔记；关键事实按所列官方资料核验。场景为原创教学示例，非用户现场事实。",
+      "webId": "card-slurm-kubernetes"
+    },
+    {
+      "id": "card-k8s-gpu-operator",
+      "day": 8,
+      "title": "Kubernetes怎样看见GPU",
+      "objectiveIds": [
+        "3.2",
+        "1.1",
+        "1.6"
+      ],
+      "minutes": 4,
+      "objective": "区分GPU软件准备、资源发布和任务调度。",
+      "conclusion": "节点有GPU硬件，还需要合适的驱动、运行配置与资源发布机制。",
+      "explanation": "以常见Device Plugin方式为例：节点先具备可用驱动和容器GPU运行支持，插件把GPU资源报告给Kubernetes，Pod提出GPU需求后由调度器选择合适节点。NVIDIA GPU Operator自动管理驱动、Container Toolkit、设备插件、标签和DCGM监控等组件，减少手工配置。它不是根据所有应用的实时GPU利用率自动搬任务的通用调度器。",
+      "terms": "Device Plugin / nvidia.com/gpu / GPU Operator / Container Toolkit / kube-scheduler",
+      "compare": "有Docker或有GPU Operator名称都不能证明GPU应用已经可用；Operator管理组件，调度器安排工作负载。",
+      "scenario": "示例：节点有GPU但Pod找不到可用GPU资源，检查驱动、设备插件报告、资源请求和节点约束，比直接判GPU损坏更有依据。",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE08",
+        "K8S-GPU",
+        "OPERATOR"
+      ],
+      "sourceId": "TRAIN",
+      "textStatus": "对照完成（学习用）",
+      "trainingPages": "154",
+      "extra": "当前生态也有其他资源分配机制；本课用官方Device Plugin教程讲基础流程，不宣称这是永久唯一方案。",
+      "checkNotes": "排除讲义“GPU Operator按GPU利用率自动重平衡工作负载”的泛化说法。",
+      "origin": "本轮读取已有培训讲义和社区笔记；关键事实按所列官方资料核验。场景为原创教学示例，非用户现场事实。",
+      "webId": "card-k8s-gpu-operator"
+    },
+    {
+      "id": "card-mig",
+      "day": 8,
+      "title": "MIG：把支持的GPU分成硬件实例",
+      "objectiveIds": [
+        "3.4"
+      ],
+      "minutes": 4,
+      "objective": "理解硬件隔离、容量约束与型号支持。",
+      "conclusion": "MIG在支持的GPU上划分计算和显存等资源；各实例仍受自身容量与支持条件限制。",
+      "explanation": "像把一间大实验室隔成几个有独立设备和储物空间的房间，MIG为多个任务提供各自的计算与内存资源，帮助减少相互干扰。它适合需要隔离、单个任务又用不满整卡的场景。实例数量、大小及组合依型号和profile；A100/H100部分支持型号最大7个，A30最大4个，不能把“7”当全部GPU的固定规则。",
+      "terms": "Multi-Instance GPU / GPU Instance / Compute Instance / MIG profile / Hardware isolation",
+      "compare": "MIG不是复制出多张满性能GPU；分成小实例后，每份可用显存也变小；普通时间切片不等于MIG硬件分区。",
+      "scenario": "示例：多个小模型各自所需显存都能放入对应profile，可考虑MIG；一个模型装不进单个实例，不能靠增加实例数自动解决。",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE08",
+        "MIG",
+        "MIG-SUPPORT",
+        "MIG-DEPLOY",
+        "MIG-START",
+        "L40S"
+      ],
+      "sourceId": "TRAIN",
+      "textStatus": "对照完成（学习用）",
+      "trainingPages": "105、108–116",
+      "extra": "先查GPU支持表、驱动和应用通信要求。MIG可用于裸机、容器或支持的虚拟化配置；是否重置、P2P等限制随架构与版本变化。",
+      "checkNotes": "已核验讲义116页将L40S列入MIG支持为错误；官方L40S规格明确不支持MIG。",
+      "origin": "本轮读取已有培训讲义和社区笔记；关键事实按所列官方资料核验。场景为原创教学示例，非用户现场事实。",
+      "webId": "card-mig"
+    },
+    {
+      "id": "card-vgpu",
+      "day": 8,
+      "title": "vGPU、MIG与虚拟机如何配合",
+      "objectiveIds": [
+        "3.4"
+      ],
+      "minutes": 4,
+      "objective": "按虚拟机需求、隔离和兼容性选择共享方式。",
+      "conclusion": "vGPU向虚拟机提供GPU能力；可有时间切片或MIG支持的配置，并非与MIG互斥。",
+      "explanation": "虚拟机像各自运行操作系统的工作空间。vGPU软件让虚拟机获得GPU资源，需匹配GPU、hypervisor、宿主与来宾驱动、配置及授权。时间切片让多个负载轮流使用资源；MIG先划分硬件资源，也可与支持的vGPU方案配合。虚拟化提高共享灵活性，但不保证每个负载都达到整卡性能或自动满足所有隔离要求。",
+      "terms": "Virtual GPU / Virtual machine / Hypervisor / Guest driver / Time slicing / MIG-backed vGPU / Pass-through",
+      "compare": "整卡直通、时间切片和MIG分区不是同一机制；MIG不是只能用于容器，vGPU也不只用于虚拟桌面。",
+      "scenario": "示例：企业要求在虚拟机内运行AI应用，先核对vGPU和平台支持；若还需要更可预测的计算/显存资源，再评估支持的MIG配置。",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE08",
+        "VGPU",
+        "MIG",
+        "MIG-DEPLOY"
+      ],
+      "sourceId": "TRAIN",
+      "textStatus": "对照完成（学习用）",
+      "trainingPages": "108–116",
+      "extra": "核对显存profile、性能、互联功能、运维及授权；迁移等功能须逐版本验证。此课不规定必须虚拟化，也不承诺无开销。",
+      "checkNotes": "保留硬件分区与软件管理的区别；不沿用“vGPU永远64份/MIG-backed vGPU永远7份”的通用数值。",
+      "origin": "本轮读取已有培训讲义和社区笔记；关键事实按所列官方资料核验。场景为原创教学示例，非用户现场事实。",
+      "webId": "card-vgpu"
+    }
+  ],
+  "questions": [
+    {
+      "id": "Q-D07-001",
+      "day": 7,
+      "type": "single",
+      "domain": "AI 运营",
+      "cardId": "card-monitor-tools",
+      "objectiveIds": [
+        "3.1"
+      ],
+      "stem": "想快速查看一台服务器当前GPU温度、显存占用和进程，哪个工具最直接？",
+      "options": [
+        [
+          "a",
+          "nvidia-smi"
+        ],
+        [
+          "b",
+          "NCCL"
+        ],
+        [
+          "c",
+          "Slurm作业优先级规则"
+        ],
+        [
+          "d",
+          "TensorRT"
+        ]
+      ],
+      "answer": [
+        "a"
+      ],
+      "explanation": "nvidia-smi可在命令行直接查询GPU状态。",
+      "analysis": {
+        "a": "正确，对应当前设备状态查询。",
+        "b": "它是集合通信库，不是这种状态查询入口。",
+        "c": "调度策略安排任务，不直接替代GPU状态查询。",
+        "d": "它优化推理执行，不是通用GPU监控工具。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE07",
+        "SMI",
+        "DCGM"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D07-001"
+    },
+    {
+      "id": "Q-D07-002",
+      "day": 7,
+      "type": "single",
+      "domain": "AI 运营",
+      "cardId": "card-gpu-util-memory",
+      "objectiveIds": [
+        "3.3"
+      ],
+      "stem": "GPU已占用大部分显存，但GPU-Util很低。哪项解释最合理？",
+      "options": [
+        [
+          "a",
+          "两项读数必有一项错误"
+        ],
+        [
+          "b",
+          "显存中可保留模型，任务此刻可能等待数据"
+        ],
+        [
+          "c",
+          "已占显存等于全部计算核心正在工作"
+        ],
+        [
+          "d",
+          "只要再增加显存就能确定消除等待"
+        ]
+      ],
+      "answer": [
+        "b"
+      ],
+      "explanation": "空间占用与采样期间是否计算是不同维度。",
+      "analysis": {
+        "a": "二者衡量不同维度，可以同时正确。",
+        "b": "正确，这是可能场景，还需查任务时间线。",
+        "c": "显存保存数据，不代表计算一直活跃。",
+        "d": "没有确定瓶颈，不能保证增加显存有用。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE07",
+        "SMI",
+        "DCGM"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D07-002"
+    },
+    {
+      "id": "Q-D07-003",
+      "day": 7,
+      "type": "single",
+      "domain": "AI 运营",
+      "cardId": "card-gpu-health",
+      "objectiveIds": [
+        "3.3"
+      ],
+      "stem": "GPU任务变慢且出现一次Xid错误。下一步哪项最有证据基础？",
+      "options": [
+        [
+          "a",
+          "把错误直接归为GPU硬件损坏"
+        ],
+        [
+          "b",
+          "立即清空全部错误计数"
+        ],
+        [
+          "c",
+          "保存时间和设备信息，结合任务与驱动日志调查"
+        ],
+        [
+          "d",
+          "只比较GPU价格"
+        ]
+      ],
+      "answer": [
+        "c"
+      ],
+      "explanation": "Xid是调查起点，可能涉及应用、软件或硬件。",
+      "analysis": {
+        "a": "错误码本身通常不足以判根因。",
+        "b": "会失去线索，也没有先确定适用处置。",
+        "c": "正确，需要上下文和关联证据。",
+        "d": "价格不能解释本次异常。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE07",
+        "SMI",
+        "DCGM",
+        "XID"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D07-003"
+    },
+    {
+      "id": "Q-D07-004",
+      "day": 7,
+      "type": "multiple",
+      "domain": "AI 运营",
+      "cardId": "card-monitor-tools",
+      "objectiveIds": [
+        "3.1"
+      ],
+      "stem": "关于nvidia-smi和DCGM，选出两项正确描述。",
+      "options": [
+        [
+          "a",
+          "DCGM必须超过10台GPU节点才可用"
+        ],
+        [
+          "b",
+          "nvidia-smi支持循环查询GPU状态"
+        ],
+        [
+          "c",
+          "DCGM本身就是替用户训练模型的框架"
+        ],
+        [
+          "d",
+          "DCGM可提供健康检查并集成监控系统"
+        ]
+      ],
+      "answer": [
+        "b",
+        "d"
+      ],
+      "explanation": "两者职责有重叠，但不是按固定节点数强制划分。",
+      "analysis": {
+        "a": "没有这个固定门槛；可在单节点运行。",
+        "b": "正确，可循环查询，不仅是一次手动截图。",
+        "c": "DCGM负责管理和观测，不执行模型训练逻辑。",
+        "d": "正确，是其核心用途之一。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE07",
+        "SMI",
+        "DCGM"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D07-004"
+    },
+    {
+      "id": "Q-D07-005",
+      "day": 7,
+      "type": "single",
+      "domain": "AI 运营",
+      "cardId": "card-gpu-util-memory",
+      "objectiveIds": [
+        "3.3"
+      ],
+      "stem": "nvidia-smi的GPU-Util显示100%，最稳妥结论是？",
+      "options": [
+        [
+          "a",
+          "所有CUDA Core必然达到理论峰值"
+        ],
+        [
+          "b",
+          "采样期间有内核持续执行，仍需其他指标判断效率"
+        ],
+        [
+          "c",
+          "显存容量一定全部占满"
+        ],
+        [
+          "d",
+          "GPU一定没有通信或内存瓶颈"
+        ]
+      ],
+      "answer": [
+        "b"
+      ],
+      "explanation": "忙碌时间不等于全部算力被充分使用。",
+      "analysis": {
+        "a": "该指标不直接测量每个计算单元的峰值利用。",
+        "b": "正确，采样和实际效率必须区分。",
+        "c": "显存容量占用是另一指标。",
+        "d": "忙碌并不能排除其他资源限制。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE07",
+        "SMI",
+        "DCGM"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D07-005"
+    },
+    {
+      "id": "Q-D07-006",
+      "day": 7,
+      "type": "single",
+      "domain": "AI 运营",
+      "cardId": "card-telemetry-pipeline",
+      "objectiveIds": [
+        "3.1"
+      ],
+      "stem": "要回看多节点GPU的历史趋势，下列哪条职责链合理？",
+      "options": [
+        [
+          "a",
+          "Grafana执行GPU内核，nvidia-smi训练模型"
+        ],
+        [
+          "b",
+          "DCGM Exporter输出指标，Prometheus保存时序，Grafana展示"
+        ],
+        [
+          "c",
+          "DCGM Exporter自动决定所有作业排队顺序"
+        ],
+        [
+          "d",
+          "只截一张当前状态图就拥有完整历史"
+        ]
+      ],
+      "answer": [
+        "b"
+      ],
+      "explanation": "采集接口、时序保存和展示是可分开的环节。",
+      "analysis": {
+        "a": "混淆监控工具与计算/训练。",
+        "b": "正确，是常见监控集成方式。",
+        "c": "它提供指标，不是通用作业调度器。",
+        "d": "一张截图不能记录整个时间过程。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE07",
+        "EXPORTER"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D07-006"
+    },
+    {
+      "id": "Q-D07-007",
+      "day": 7,
+      "type": "multiple",
+      "domain": "AI 运营",
+      "cardId": "card-gpu-health",
+      "objectiveIds": [
+        "3.3"
+      ],
+      "stem": "关于温度、功耗和错误，哪些判断合理？（多选）",
+      "options": [
+        [
+          "a",
+          "功率上限就是当前实际功耗"
+        ],
+        [
+          "b",
+          "所有GPU都用统一85℃作为损坏判据"
+        ],
+        [
+          "c",
+          "需结合温度、频率、降频原因和任务表现"
+        ],
+        [
+          "d",
+          "应区分历史累计错误与本时段新增错误"
+        ]
+      ],
+      "answer": [
+        "c",
+        "d"
+      ],
+      "explanation": "要结合型号要求、趋势和上下文，避免单值定因。",
+      "analysis": {
+        "a": "上限是约束，实际功耗可明显更低。",
+        "b": "阈值因产品和条件不同；达到某温度也不是根因结论。",
+        "c": "正确，多项证据能缩小检查方向。",
+        "d": "正确，否则可能误把旧事件归到新任务。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE07",
+        "SMI",
+        "DCGM",
+        "XID"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D07-007"
+    },
+    {
+      "id": "Q-D07-008",
+      "day": 7,
+      "type": "single",
+      "domain": "AI 运营",
+      "cardId": "card-bmc-bcm",
+      "objectiveIds": [
+        "3.1"
+      ],
+      "stem": "主机OS无响应，但BMC供电和管理网络正常。带外管理最可能提供什么帮助？",
+      "options": [
+        [
+          "a",
+          "从远程控制台或传感器查看硬件状态"
+        ],
+        [
+          "b",
+          "自动重训全部模型并提高准确率"
+        ],
+        [
+          "c",
+          "证明主机硬件没有故障"
+        ],
+        [
+          "d",
+          "使断开的所有电源自动恢复"
+        ]
+      ],
+      "answer": [
+        "a"
+      ],
+      "explanation": "BMC提供独立于主机OS的一些硬件管理入口。",
+      "analysis": {
+        "a": "正确，是带外管理的重要用途。",
+        "b": "BMC不负责模型训练。",
+        "c": "能访问BMC不证明其他部件正常。",
+        "d": "管理能力仍依赖供电和连接条件。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE07",
+        "BMC",
+        "BCM"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D07-008"
+    },
+    {
+      "id": "Q-D07-009",
+      "day": 7,
+      "type": "single",
+      "domain": "AI 运营",
+      "cardId": "card-bmc-bcm",
+      "objectiveIds": [
+        "3.1"
+      ],
+      "stem": "为一批新GPU节点组织操作系统镜像部署和集群运维，最直接对应哪个产品职责？",
+      "options": [
+        [
+          "a",
+          "cuDNN提供深度学习算子"
+        ],
+        [
+          "b",
+          "BMC就是集群作业队列"
+        ],
+        [
+          "c",
+          "NVLink存放操作系统镜像"
+        ],
+        [
+          "d",
+          "Base Command Manager进行集群部署与管理"
+        ]
+      ],
+      "answer": [
+        "d"
+      ],
+      "explanation": "BCM与板级BMC不是同一产品。",
+      "analysis": {
+        "a": "算子库不组织集群节点部署。",
+        "b": "BMC是硬件管理控制器。",
+        "c": "NVLink是互联技术，不是镜像管理软件。",
+        "d": "正确，匹配集群部署和日常管理。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE07",
+        "BMC",
+        "BCM"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D07-009"
+    },
+    {
+      "id": "Q-D07-010",
+      "day": 7,
+      "type": "single",
+      "domain": "AI 运营",
+      "cardId": "card-gpu-util-memory",
+      "objectiveIds": [
+        "3.3"
+      ],
+      "stem": "监控面板某指标是N/A，而另一节点显示0。应该怎样处理？",
+      "options": [
+        [
+          "a",
+          "把N/A统一当0，两台都完全正常"
+        ],
+        [
+          "b",
+          "将N/A直接当硬件损坏"
+        ],
+        [
+          "c",
+          "先核查字段支持、采样与设备条件，再比较"
+        ],
+        [
+          "d",
+          "删除这两条记录以免影响平均值"
+        ]
+      ],
+      "answer": [
+        "c"
+      ],
+      "explanation": "缺失或不支持的数据不能冒充测得的零。",
+      "analysis": {
+        "a": "没有测得与测得为零不是一回事。",
+        "b": "字段不可用并不等于硬件坏。",
+        "c": "正确，先确认数据口径和可用性。",
+        "d": "无依据删除会丢失观测边界。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE07",
+        "SMI",
+        "DCGM"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D07-010"
+    },
+    {
+      "id": "Q-D08-001",
+      "day": 8,
+      "type": "single",
+      "domain": "AI 运营",
+      "cardId": "card-job-scheduling",
+      "objectiveIds": [
+        "3.2"
+      ],
+      "stem": "任务申请同一节点4张GPU，目前仅空闲1张。为什么仍可能排队？",
+      "options": [
+        [
+          "a",
+          "调度器应把1张GPU自动变成4张"
+        ],
+        [
+          "b",
+          "可用资源尚不满足该任务完整要求"
+        ],
+        [
+          "c",
+          "只要有1张空闲，就说明调度器故障"
+        ],
+        [
+          "d",
+          "监控仪表盘会自动完成模型训练"
+        ]
+      ],
+      "answer": [
+        "b"
+      ],
+      "explanation": "调度按任务要求和资源约束分配，不能凭空增加硬件。",
+      "analysis": {
+        "a": "资源不能靠调度复制。",
+        "b": "正确，还应结合队列策略查看等待原因。",
+        "c": "空闲资源不足以满足本任务不一定是故障。",
+        "d": "监控负责观察，不替代模型计算。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE08",
+        "SLURM",
+        "SLURM-GPU"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D08-001"
+    },
+    {
+      "id": "Q-D08-002",
+      "day": 8,
+      "type": "single",
+      "domain": "AI 运营",
+      "cardId": "card-slurm-kubernetes",
+      "objectiveIds": [
+        "3.2"
+      ],
+      "stem": "哪项正确描述Slurm和Kubernetes？",
+      "options": [
+        [
+          "a",
+          "Slurm只能训练、Kubernetes只能推理"
+        ],
+        [
+          "b",
+          "Kubernetes没有调度能力"
+        ],
+        [
+          "c",
+          "两者有工作方式侧重，Kubernetes也能运行批作业"
+        ],
+        [
+          "d",
+          "Slurm就是一种GPU互联硬件"
+        ]
+      ],
+      "answer": [
+        "c"
+      ],
+      "explanation": "典型场景不能变成使用的硬性二分。",
+      "analysis": {
+        "a": "把常见用途误当唯一用途。",
+        "b": "Kubernetes具有工作负载调度能力。",
+        "c": "正确，Kubernetes官方还明确支持批处理执行。",
+        "d": "Slurm是软件工作负载管理器。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE08",
+        "SLURM",
+        "K8S"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D08-002"
+    },
+    {
+      "id": "Q-D08-003",
+      "day": 8,
+      "type": "single",
+      "domain": "AI 运营",
+      "cardId": "card-mig",
+      "objectiveIds": [
+        "3.4"
+      ],
+      "stem": "多个小模型需要相对独立的计算和显存资源，GPU型号确认支持MIG且profile容量足够。最直接应评估哪项？",
+      "options": [
+        [
+          "a",
+          "仅换一个监控图表颜色"
+        ],
+        [
+          "b",
+          "把MIG实例当成无限显存"
+        ],
+        [
+          "c",
+          "仅把时间片数改大就获得同等硬件隔离"
+        ],
+        [
+          "d",
+          "采用合适MIG实例配置"
+        ]
+      ],
+      "answer": [
+        "d"
+      ],
+      "explanation": "题干需要的是资源分区与隔离，而不只是轮流使用。",
+      "analysis": {
+        "a": "图表样式不改变资源划分。",
+        "b": "每个实例容量仍有限。",
+        "c": "时间共享不等于MIG的硬件资源分区。",
+        "d": "正确，但仍需验证应用、驱动和配置条件。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE08",
+        "MIG",
+        "MIG-SUPPORT",
+        "MIG-DEPLOY",
+        "MIG-START",
+        "L40S"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D08-003"
+    },
+    {
+      "id": "Q-D08-004",
+      "day": 8,
+      "type": "single",
+      "domain": "AI 运营",
+      "cardId": "card-job-scheduling",
+      "objectiveIds": [
+        "3.2"
+      ],
+      "stem": "作业调度与监控的区别，哪项合理？",
+      "options": [
+        [
+          "a",
+          "调度安排任务使用资源；监控收集运行状态"
+        ],
+        [
+          "b",
+          "调度能自动增加物理GPU数量"
+        ],
+        [
+          "c",
+          "监控只要发现利用率低就必然知道唯一根因"
+        ],
+        [
+          "d",
+          "调度器必须忽略优先级和配额"
+        ]
+      ],
+      "answer": [
+        "a"
+      ],
+      "explanation": "调度做资源安排，观测支持理解状态，两者可以配合。",
+      "analysis": {
+        "a": "正确，职责不同但可集成。",
+        "b": "调度不能创造硬件。",
+        "c": "单指标一般不足以定唯一根因。",
+        "d": "策略可包括优先级和配额。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE08",
+        "SLURM",
+        "SLURM-GPU"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D08-004"
+    },
+    {
+      "id": "Q-D08-005",
+      "day": 8,
+      "type": "multiple",
+      "domain": "AI 运营",
+      "cardId": "card-k8s-gpu-operator",
+      "objectiveIds": [
+        "3.2"
+      ],
+      "stem": "在常见Device Plugin方式下，GPU容器运行和调度需要考虑哪些？（多选）",
+      "options": [
+        [
+          "a",
+          "合适的节点驱动与GPU容器运行支持"
+        ],
+        [
+          "b",
+          "只要Pod名字含GPU就能自动使用"
+        ],
+        [
+          "c",
+          "设备插件报告GPU资源，Pod正确提出需求"
+        ],
+        [
+          "d",
+          "GPU Operator自动证明所有应用已达到性能目标"
+        ]
+      ],
+      "answer": [
+        "a",
+        "c"
+      ],
+      "explanation": "软件准备和资源发布/请求都要正确，部署组件并不是应用验收。",
+      "analysis": {
+        "a": "正确，是设备可用的基础。",
+        "b": "名称不是资源声明或驱动。",
+        "c": "正确，资源必须能被系统识别和申请。",
+        "d": "Operator管理组件，不能替代工作负载效果验证。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE08",
+        "K8S-GPU",
+        "OPERATOR"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D08-005"
+    },
+    {
+      "id": "Q-D08-006",
+      "day": 8,
+      "type": "single",
+      "domain": "AI 运营",
+      "cardId": "card-mig",
+      "objectiveIds": [
+        "3.4"
+      ],
+      "stem": "下列哪项对MIG实例数的理解正确？",
+      "options": [
+        [
+          "a",
+          "所有NVIDIA GPU都能切7份"
+        ],
+        [
+          "b",
+          "型号和profile决定上限，例如A30最大4个实例"
+        ],
+        [
+          "c",
+          "实例越多，每份显存都会自动变大"
+        ],
+        [
+          "d",
+          "不支持MIG的GPU升级一个任意驱动就一定能支持"
+        ]
+      ],
+      "answer": [
+        "b"
+      ],
+      "explanation": "应查支持表和profile，不能把某型号数字泛化。",
+      "analysis": {
+        "a": "不是所有GPU支持MIG，上限也不相同。",
+        "b": "正确，是已核验的型号差异示例。",
+        "c": "分区不会凭空增加总显存。",
+        "d": "硬件支持是必要条件，不能这样保证。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE08",
+        "MIG",
+        "MIG-SUPPORT",
+        "MIG-DEPLOY",
+        "MIG-START",
+        "L40S"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D08-006"
+    },
+    {
+      "id": "Q-D08-007",
+      "day": 8,
+      "type": "multiple",
+      "domain": "AI 运营",
+      "cardId": "card-vgpu",
+      "objectiveIds": [
+        "3.4"
+      ],
+      "stem": "企业需要在虚拟机里共享GPU，关于vGPU与MIG，选出两项正确描述。",
+      "options": [
+        [
+          "a",
+          "用了vGPU就绝不可能使用MIG"
+        ],
+        [
+          "b",
+          "需核查GPU、hypervisor、驱动、profile和授权支持"
+        ],
+        [
+          "c",
+          "所有vGPU配置都有完全相同的隔离和性能"
+        ],
+        [
+          "d",
+          "支持的配置可把MIG实例用于vGPU"
+        ]
+      ],
+      "answer": [
+        "b",
+        "d"
+      ],
+      "explanation": "虚拟化软件管理和硬件分区可以组合，支持条件仍要匹配。",
+      "analysis": {
+        "a": "官方有MIG支持的vGPU配置。",
+        "b": "正确，这是部署前必要的支持关系核对。",
+        "c": "时间切片与硬件分区等机制不同，不能一概而论。",
+        "d": "正确，二者不互斥。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE08",
+        "VGPU",
+        "MIG",
+        "MIG-DEPLOY"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D08-007"
+    },
+    {
+      "id": "Q-D08-008",
+      "day": 8,
+      "type": "single",
+      "domain": "AI 运营",
+      "cardId": "card-k8s-gpu-operator",
+      "objectiveIds": [
+        "3.2"
+      ],
+      "stem": "NVIDIA GPU Operator最直接负责哪项？",
+      "options": [
+        [
+          "a",
+          "根据每个模型准确率自动改写训练数据"
+        ],
+        [
+          "b",
+          "自动把所有低GPU利用率任务迁移到另一台机器"
+        ],
+        [
+          "c",
+          "管理驱动、Toolkit、设备插件和GPU监控等组件"
+        ],
+        [
+          "d",
+          "替代Kubernetes的全部控制平面"
+        ]
+      ],
+      "answer": [
+        "c"
+      ],
+      "explanation": "Operator自动化GPU软件组件管理，不是通用实时利用率调度器。",
+      "analysis": {
+        "a": "不是数据治理或模型训练职责。",
+        "b": "不能从其组件管理职责推出这种通用保证。",
+        "c": "正确，对应官方概述。",
+        "d": "它使用Kubernetes Operator机制，而不是替换整个系统。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE08",
+        "K8S-GPU",
+        "OPERATOR"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D08-008"
+    },
+    {
+      "id": "Q-D08-009",
+      "day": 8,
+      "type": "single",
+      "domain": "AI 运营",
+      "cardId": "card-slurm-kubernetes",
+      "objectiveIds": [
+        "3.2"
+      ],
+      "stem": "管理员想看Slurm中正在排队和运行的任务，最直接的命令是？",
+      "options": [
+        [
+          "a",
+          "squeue"
+        ],
+        [
+          "b",
+          "nvidia-smi --query-gpu"
+        ],
+        [
+          "c",
+          "dcgm-exporter"
+        ],
+        [
+          "d",
+          "sbatch"
+        ]
+      ],
+      "answer": [
+        "a"
+      ],
+      "explanation": "squeue查看作业队列；提交作业与查看队列是不同操作。",
+      "analysis": {
+        "a": "正确，对应队列状态查看。",
+        "b": "可查询GPU，但不直接提供Slurm队列状态。",
+        "c": "输出GPU指标，不是Slurm队列命令。",
+        "d": "sbatch用于提交批作业，不是这里的查看操作。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE08",
+        "SLURM",
+        "K8S"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D08-009"
+    },
+    {
+      "id": "Q-D08-010",
+      "day": 8,
+      "type": "single",
+      "domain": "AI 运营",
+      "cardId": "card-mig",
+      "objectiveIds": [
+        "3.4"
+      ],
+      "stem": "旧讲义把L40S列为MIG支持型号，但当前官方规格明确MIG Support为No。应怎样形成学习结论？",
+      "options": [
+        [
+          "a",
+          "沿用旧讲义，因为文件名包含NVIDIA"
+        ],
+        [
+          "b",
+          "删除原讲义并假装从未有过差异"
+        ],
+        [
+          "c",
+          "把vGPU支持为Yes自动解释为MIG也支持"
+        ],
+        [
+          "d",
+          "保留原来源，并在学习内容中按官方规格纠正"
+        ]
+      ],
+      "answer": [
+        "d"
+      ],
+      "explanation": "MIG与vGPU支持是不同字段；来源冲突应留痕处理。",
+      "analysis": {
+        "a": "文件名和培训品牌不证明每条陈述都正确。",
+        "b": "会丢失来源与纠错依据。",
+        "c": "二者支持条件不同，不能互推。",
+        "d": "正确，既保留原始材料又防止错误进入正式题集。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE08",
+        "MIG",
+        "MIG-SUPPORT",
+        "MIG-DEPLOY",
+        "MIG-START",
+        "L40S"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D08-010"
+    }
+  ],
+  "lessons": [
+    {
+      "day": 7,
+      "title": "GPU监控、健康指标与运维工具",
+      "status": "可学习（第二批内容）",
+      "cardIds": [
+        "card-monitor-tools",
+        "card-gpu-util-memory",
+        "card-gpu-health",
+        "card-telemetry-pipeline",
+        "card-bmc-bcm"
+      ],
+      "questionIds": [
+        "Q-D07-001",
+        "Q-D07-002",
+        "Q-D07-003",
+        "Q-D07-004",
+        "Q-D07-005",
+        "Q-D07-006",
+        "Q-D07-007",
+        "Q-D07-008",
+        "Q-D07-009",
+        "Q-D07-010"
+      ],
+      "selfCheck": "GPU显存占用很高但利用率低，为什么不能直接判定GPU损坏？你还会看哪两类证据？",
+      "selfCheckNote": "口述自检不自动计分；首次、猜对、不确定和重做继续分别保存，不据本课完成推定掌握。"
+    },
+    {
+      "day": 8,
+      "title": "作业调度、容器编排与GPU虚拟化",
+      "status": "可学习（第二批内容）",
+      "cardIds": [
+        "card-job-scheduling",
+        "card-slurm-kubernetes",
+        "card-k8s-gpu-operator",
+        "card-mig",
+        "card-vgpu"
+      ],
+      "questionIds": [
+        "Q-D08-001",
+        "Q-D08-002",
+        "Q-D08-003",
+        "Q-D08-004",
+        "Q-D08-005",
+        "Q-D08-006",
+        "Q-D08-007",
+        "Q-D08-008",
+        "Q-D08-009",
+        "Q-D08-010"
+      ],
+      "selfCheck": "有空闲GPU为什么任务仍会排队？MIG与vGPU为什么可以配合而不是二选一？",
+      "selfCheckNote": "口述自检不自动计分；延迟回忆和陌生场景迁移需要后续真实作答证据。"
+    }
+  ],
+  "coverageUpdates": [
+    {
+      "id": "3.1",
+      "cardIds": [
+        "card-monitor-tools",
+        "card-gpu-health",
+        "card-telemetry-pipeline",
+        "card-bmc-bcm"
+      ],
+      "questionIds": [
+        "Q-D07-001",
+        "Q-D07-004",
+        "Q-D07-006",
+        "Q-D07-008",
+        "Q-D07-009"
+      ],
+      "contentStatus": "已有（基础）",
+      "reviewStatus": "新增基础定义已对照所列官方资料；题目原创；未独立双人审题",
+      "noteReview": "07/08完整文本已读；涉及本课的概念逐项对照官方；未采用dump和考题数量预测",
+      "gap": "已有GPU工具、BMC/BCM和观测链路基础；跨系统故障处置与部署实操未验证。"
+    },
+    {
+      "id": "3.2",
+      "cardIds": [
+        "card-job-scheduling",
+        "card-slurm-kubernetes",
+        "card-k8s-gpu-operator"
+      ],
+      "questionIds": [
+        "Q-D08-001",
+        "Q-D08-002",
+        "Q-D08-004",
+        "Q-D08-005",
+        "Q-D08-008",
+        "Q-D08-009"
+      ],
+      "contentStatus": "已有（基础）",
+      "reviewStatus": "新增基础定义已对照所列官方资料；题目原创；未独立双人审题",
+      "noteReview": "07/08完整文本已读；涉及本课的概念逐项对照官方；未采用dump和考题数量预测",
+      "gap": "已有资源调度、Slurm/Kubernetes与GPU软件准备；高级调度策略和生产配置待后续按需补充。"
+    },
+    {
+      "id": "3.3",
+      "cardIds": [
+        "card-gpu-util-memory",
+        "card-gpu-health",
+        "card-telemetry-pipeline"
+      ],
+      "questionIds": [
+        "Q-D07-002",
+        "Q-D07-003",
+        "Q-D07-005",
+        "Q-D07-007",
+        "Q-D07-010"
+      ],
+      "contentStatus": "已有（基础）",
+      "reviewStatus": "新增基础定义已对照所列官方资料；题目原创；未独立双人审题",
+      "noteReview": "07/08完整文本已读；涉及本课的概念逐项对照官方；未采用dump和考题数量预测",
+      "gap": "已有利用率/显存/温度/功耗/错误与读数边界；实际设备趋势分析未作为学员测量。"
+    },
+    {
+      "id": "3.4",
+      "cardIds": [
+        "card-mig",
+        "card-vgpu"
+      ],
+      "questionIds": [
+        "Q-D08-003",
+        "Q-D08-006",
+        "Q-D08-007",
+        "Q-D08-010"
+      ],
+      "contentStatus": "已有（基础）",
+      "reviewStatus": "新增基础定义已对照所列官方资料；题目原创；未独立双人审题",
+      "noteReview": "07/08完整文本已读；涉及本课的概念逐项对照官方；未采用dump和考题数量预测",
+      "gap": "已有MIG/vGPU与支持条件；复杂互联、迁移、授权部署细节未全覆盖。"
+    },
+    {
+      "id": "1.1",
+      "cardIds": [
+        "card-monitor-tools",
+        "card-k8s-gpu-operator"
+      ],
+      "questionIds": [],
+      "contentStatus": "待补（部分已有）",
+      "reviewStatus": "新增基础定义已对照所列官方资料；题目原创；未独立双人审题",
+      "noteReview": "07/08完整文本已读；涉及本课的概念逐项对照官方；未采用dump和考题数量预测",
+      "gap": "本批补GPU运维与Kubernetes组件；软件栈广度仍不能称完整。"
+    },
+    {
+      "id": "1.6",
+      "cardIds": [
+        "card-monitor-tools",
+        "card-bmc-bcm",
+        "card-k8s-gpu-operator"
+      ],
+      "questionIds": [],
+      "contentStatus": "待补（部分已有）",
+      "reviewStatus": "新增基础定义已对照所列官方资料；题目原创；未独立双人审题",
+      "noteReview": "07/08完整文本已读；涉及本课的概念逐项对照官方；未采用dump和考题数量预测",
+      "gap": "本批补DCGM/BCM/GPU Operator；产品全景和综合选型仍待补。"
+    },
+    {
+      "id": "1.7",
+      "cardIds": [
+        "card-telemetry-pipeline",
+        "card-job-scheduling"
+      ],
+      "questionIds": [],
+      "contentStatus": "待补（部分已有）",
+      "reviewStatus": "新增基础定义已对照所列官方资料；题目原创；未独立双人审题",
+      "noteReview": "07/08完整文本已读；涉及本课的概念逐项对照官方；未采用dump和考题数量预测",
+      "gap": "本批补部署后的监控与调度基础；完整生命周期迁移场景仍待补。"
+    }
+  ]
+}

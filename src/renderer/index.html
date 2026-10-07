@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NCA Study Hub</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand"><img src="../../assets/app-icon.svg" alt="" /><div><strong>NCA Study Hub</strong><small>个人学习辅助 · 内容 v0.2</small></div></div>
+      <nav aria-label="主导航">
+        <button data-nav="home">今日学习</button><button data-nav="learn">知识学习</button><button data-nav="practice">练习与讲题</button><button data-nav="review">错题与复习</button><button data-nav="test">短测</button><button data-nav="progress">进度与准备度</button><button data-nav="sources">资料依据与设置</button>
+      </nav>
+      <p class="sidebar-note">非 NVIDIA 官方产品<br />核心内容可离线使用</p>
+    </aside>
+    <main><div id="notice" role="status" aria-live="polite"></div><div id="app"></div></main>
+  </div>
+  <script src="renderer.js"></script>
+</body>
+</html>

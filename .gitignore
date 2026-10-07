@@ -1,0 +1,30 @@
+.local/
+web/feedback-bridge.local.js
+node_modules/
+
+# Local build/test output and machine-specific artifacts
+output/
+release/
+tmp/
+*.log
+
+# Private learning records and local release backups
+docs/test-notes/
+docs/backup-before-content-v0.2*.zip
+
+# Local ChatGPT/Codex feedback bridge and dispatch helpers
+scripts/feedback-bridge.cjs
+scripts/codex-feedback-dispatch.ps1
+scripts/dispatch-text.ps1
+scripts/select-codex-task-window.ps1
+scripts/start-feedback-bridge.ps1
+scripts/start-study-workbench.ps1
+test/feedback-bridge.test.mjs
+test/dispatch-window.test.mjs
+test/dispatch-window-selection.check.ps1
+test/dispatch-text.check.ps1
+test/courses.test.mjs
+docs/feedback-workflow.md
+启动学习工作台.cmd
+启动学习点评.cmd
+停止学习点评.cmd

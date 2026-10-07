@@ -1,0 +1,405 @@
+{
+  "format": "nca-question-bank-review",
+  "checkedOn": "2026-09-24",
+  "changeType": "SUPPLEMENT",
+  "sourceUrl": "https://drive.google.com/file/d/1y0unu60ko98q62mWxVCFU80ePqrT9PC1/view",
+  "sourceKind": "third-party",
+  "rawSourceUnchanged": true,
+  "method": "静态提取const DATA JSON，不执行原HTML脚本；风险定向抽样，非随机代表样本。",
+  "totalRecords": 380,
+  "sampledRecords": 14,
+  "notSampledRecords": 366,
+  "exactStemDuplicates": {
+    "normalization": "lowercase + collapse whitespace + trim",
+    "groups": 0,
+    "semanticDuplicationAudited": false,
+    "note": "不代表知识点无重复，例如两道cuDNN题及训练内存重复场景。"
+  },
+  "officialAnswerClaimsVerified": false,
+  "samples": [
+    {
+      "sourceBank": "合集-试卷一 Essential AI(20题)",
+      "sourceNumber": 6,
+      "original": {
+        "n": 6,
+        "stem": "Which NVIDIA software component sits directly above CUDA in the AI software stack and provides optimized deep learning primitives (convolutions, RNNs, etc.)?",
+        "options": [
+          "A) TensorRT",
+          "B) cuDNN",
+          "C) NCCL",
+          "D) Triton Inference Server"
+        ],
+        "answer": "B",
+        "exp": "cuDNN (CUDA Deep Neural Network library) provides optimized implementations of convolutions, RNNs, attention mechanisms, and other DL primitives. It sits above CUDA and below frameworks like PyTorch/TensorFlow."
+      },
+      "status": "已核验练习",
+      "verifiedAnswer": "B",
+      "reason": "cuDNN职责及答案相符；原解释的分层比喻不能理解为固定部署顺序。",
+      "sources": [
+        "https://docs.nvidia.com/deeplearning/cudnn/latest/"
+      ],
+      "objectiveIds": [
+        "1.1"
+      ],
+      "replacementQuestionId": "Q-D03-003",
+      "admittedToStudyDesk": false,
+      "reviewType": "AI逐项资料/算术对照；非人工独立二审"
+    },
+    {
+      "sourceBank": "合集-试卷二 AI Infrastructure(20题)",
+      "sourceNumber": 1,
+      "original": {
+        "n": 1,
+        "stem": "A team is planning to fine-tune a 70 billion parameter LLM. Using the rule of thumb that inference requires approximately 2 bytes per parameter (float16), and training requires approximately 14× that, how much GPU memory is needed for training?",
+        "options": [
+          "A) ~70 GB",
+          "B) ~140 GB",
+          "C) ~980 GB",
+          "D) ~1.4 TB"
+        ],
+        "answer": "C",
+        "exp": "Training memory = parameters × 14 bytes: 70B × 14 = 980 GB. H100 = 80 GB each; 980 GB / 80 GB = 12.25 → need 13 GPUs minimum. Answer C (980 GB) is the total requirement."
+      },
+      "status": "明显错误/停用",
+      "verifiedAnswer": null,
+      "reason": "题干为70B×2字节×14=1960GB，解析却按70B×14字节=980GB；没有匹配题干的选项。实际训练内存还受优化器、精度、激活及分片影响。",
+      "sources": [],
+      "objectiveIds": [
+        "2.1"
+      ],
+      "replacementQuestionId": null,
+      "admittedToStudyDesk": false,
+      "reviewType": "AI逐项资料/算术对照；非人工独立二审"
+    },
+    {
+      "sourceBank": "合集-试卷二 AI Infrastructure(20题)",
+      "sourceNumber": 5,
+      "original": {
+        "n": 5,
+        "stem": "What is the TDP (Thermal Design Power) of the NVIDIA H100 SXM GPU?",
+        "options": [
+          "A) 250W",
+          "B) 400W",
+          "C) 700W",
+          "D) 1,000W"
+        ],
+        "answer": "C",
+        "exp": "H100 SXM TDP = 700W. This is significantly higher than the H100 PCIe (350W), reflecting the higher performance of the SXM interconnect. A DGX H100 with 8× H100 SXM draws approximately 6.5–7 kW from the GPUs alone."
+      },
+      "status": "明显错误/停用",
+      "verifiedAnswer": null,
+      "reason": "即便采用原题700W，8×700W=5.6kW，解析称GPU本身6.5–7kW不匹配。限定型号的历史参数须另核；不进入计分。",
+      "sources": [],
+      "objectiveIds": [
+        "2.3"
+      ],
+      "replacementQuestionId": null,
+      "admittedToStudyDesk": false,
+      "reviewType": "AI逐项资料/算术对照；非人工独立二审"
+    },
+    {
+      "sourceBank": "合集-试卷四 Full Mock(50题)",
+      "sourceNumber": 20,
+      "original": {
+        "n": 20,
+        "stem": "A Llama 3.1 70B model needs to be fine-tuned. The model has 70 billion parameters. Assuming FP16 (2 bytes/parameter) for inference and the 14× multiplier for training memory overhead, how many H100 80GB GPUs are needed at minimum?",
+        "options": [
+          "A) 1 GPU (80 GB)",
+          "B) 2 GPUs (160 GB)",
+          "C) 8 GPUs (640 GB)",
+          "D) 16 GPUs (1.28 TB)"
+        ],
+        "answer": "D",
+        "exp": "70B × 14 bytes = 980 GB → 13 GPUs, so 16 GPUs minimum"
+      },
+      "status": "明显错误/停用",
+      "verifiedAnswer": null,
+      "reason": "同样混淆14倍与14字节；若按题干1960GB/80GB需至少25份容量，选项16也不够；不能把容量除法当作可运行GPU数配置。",
+      "sources": [],
+      "objectiveIds": [
+        "2.1"
+      ],
+      "replacementQuestionId": null,
+      "admittedToStudyDesk": false,
+      "reviewType": "AI逐项资料/算术对照；非人工独立二审"
+    },
+    {
+      "sourceBank": "100题-AI基础设施认证模拟(100题)",
+      "sourceNumber": 46,
+      "original": {
+        "n": 46,
+        "stem": "What is cuDNN?",
+        "options": [
+          "A) A library of highly tuned implementations for standard Deep Learning primitives (e.g., convolutions, pooling, normalization) optimized for NVIDIA GPUs.",
+          "B) A user interface for managing data centers.",
+          "C) A driver for standard displays.",
+          "D) A new programming language."
+        ],
+        "answer": "B",
+        "exp": ""
+      },
+      "status": "明显错误/停用",
+      "verifiedAnswer": "A",
+      "reason": "延续旧记录纠错：题干cuDNN，A为深度学习基础运算库，旧答案B为数据中心管理界面；保持原题文件不改。",
+      "sources": [
+        "https://docs.nvidia.com/deeplearning/cudnn/latest/"
+      ],
+      "objectiveIds": [
+        "1.1"
+      ],
+      "replacementQuestionId": "Q-D03-003",
+      "admittedToStudyDesk": false,
+      "reviewType": "AI逐项资料/算术对照；非人工独立二审"
+    },
+    {
+      "sourceBank": "Test3-50题(含1道多选)",
+      "sourceNumber": 14,
+      "original": {
+        "n": 14,
+        "stem": "What does PUE of 1.15 indicate?",
+        "options": [
+          "A) 15% of IT power is wasted on cooling",
+          "B) 15% of total power goes to IT equipment",
+          "C) Total facility power is 15% higher than IT equipment power",
+          "D) The facility is 15% below average efficiency"
+        ],
+        "answer": "C",
+        "exp": ""
+      },
+      "status": "已核验练习",
+      "verifiedAnswer": "C",
+      "reason": "按PUE=总设施能耗/IT能耗，1.15表示总量比IT多15%，不能断言全是冷却能耗。",
+      "sources": ["https://blogs.nvidia.com/blog/datacenter-efficiency-metrics-isc/"],
+      "objectiveIds": [
+        "2.3"
+      ],
+      "replacementQuestionId": null,
+      "admittedToStudyDesk": false,
+      "reviewType": "AI逐项资料/算术对照；非人工独立二审"
+    },
+    {
+      "sourceBank": "Test3-50题(含1道多选)",
+      "sourceNumber": 15,
+      "original": {
+        "n": 15,
+        "stem": "Which cooling method is required for racks exceeding 40–50 kW power density?",
+        "options": [
+          "A) Hot-aisle/cold-aisle containment with CRAC units",
+          "B) Direct Liquid Cooling (DLC)",
+          "C) Rear-door fan walls",
+          "D) Immersion cooling only"
+        ],
+        "answer": "B",
+        "exp": ""
+      },
+      "status": "存在争议",
+      "verifiedAnswer": null,
+      "reason": "未给设施能力、机型与设计条件，不能把40–50kW当作普遍强制冷却路线阈值。",
+      "sources": [
+        "https://docs.nvidia.com/dgx/dgxh100-user-guide/introduction-to-dgxh100.html"
+      ],
+      "objectiveIds": [
+        "2.3",
+        "2.6"
+      ],
+      "replacementQuestionId": null,
+      "admittedToStudyDesk": false,
+      "reviewType": "AI逐项资料/算术对照；非人工独立二审"
+    },
+    {
+      "sourceBank": "Test3-50题(含1道多选)",
+      "sourceNumber": 26,
+      "original": {
+        "n": 26,
+        "stem": "An AI Factory uses NVLink for scale-up and which technology for scale-out across nodes?",
+        "options": [
+          "A) Standard Ethernet",
+          "B) InfiniBand",
+          "C) RoCE",
+          "D) PCIe Gen6"
+        ],
+        "answer": "B",
+        "exp": ""
+      },
+      "status": "存在争议",
+      "verifiedAnswer": null,
+      "reason": "scale-out可选InfiniBand或适当Ethernet/RoCE；题干缺具体架构，不能唯一锁定B。",
+      "sources": [
+        "https://www.nvidia.com/en-us/networking/spectrumx/"
+      ],
+      "objectiveIds": [
+        "2.8",
+        "2.9"
+      ],
+      "replacementQuestionId": null,
+      "admittedToStudyDesk": false,
+      "reviewType": "AI逐项资料/算术对照；非人工独立二审"
+    },
+    {
+      "sourceBank": "Test3-50题(含1道多选)",
+      "sourceNumber": 30,
+      "original": {
+        "n": 30,
+        "stem": "What type of data center management does a BMC provide?",
+        "options": [
+          "A) In-band management via the production network",
+          "B) Out-of-band management independent of server OS state",
+          "C) Application-level monitoring via SNMP",
+          "D) Container orchestration"
+        ],
+        "answer": "B",
+        "exp": ""
+      },
+      "status": "已核验练习",
+      "verifiedAnswer": "B",
+      "reason": "BMC提供带外管理，区别于业务应用、编排和主机OS管理。",
+      "sources": [
+        "https://docs.nvidia.com/dgx/dgxh100-user-guide/bmc.html"
+      ],
+      "objectiveIds": [
+        "3.1"
+      ],
+      "replacementQuestionId": null,
+      "admittedToStudyDesk": false,
+      "reviewType": "AI逐项资料/算术对照；非人工独立二审"
+    },
+    {
+      "sourceBank": "Test3-50题(含1道多选)",
+      "sourceNumber": 31,
+      "original": {
+        "n": 31,
+        "stem": "What does DCGM stand for?",
+        "options": [
+          "A) Data Compute GPU Metrics",
+          "B) Data Center GPU Manager",
+          "C) Distributed CUDA GPU Monitor",
+          "D) Device Configuration and GPU Management"
+        ],
+        "answer": "B",
+        "exp": ""
+      },
+      "status": "已核验练习",
+      "verifiedAnswer": "B",
+      "reason": "DCGM名称为Data Center GPU Manager。",
+      "sources": [
+        "https://docs.nvidia.com/datacenter/dcgm/latest/user-guide/index.html"
+      ],
+      "objectiveIds": [
+        "3.1"
+      ],
+      "replacementQuestionId": null,
+      "admittedToStudyDesk": false,
+      "reviewType": "AI逐项资料/算术对照；非人工独立二审"
+    },
+    {
+      "sourceBank": "Test3-50题(含1道多选)",
+      "sourceNumber": 36,
+      "original": {
+        "n": 36,
+        "stem": "Which virtualization method provides the strongest isolation between GPU tenants?",
+        "options": [
+          "A) GPU passthrough",
+          "B) NVIDIA vGPU",
+          "C) MIG (Multi-Instance GPU)",
+          "D) Docker containers without virtualization"
+        ],
+        "answer": "C",
+        "exp": ""
+      },
+      "status": "存在争议",
+      "verifiedAnswer": null,
+      "reason": "最强隔离缺威胁模型和资源条件，不能在独占直通与MIG之间无条件排序。",
+      "sources": [
+        "https://docs.nvidia.com/datacenter/tesla/mig-user-guide/introduction.html"
+      ],
+      "objectiveIds": [
+        "3.4"
+      ],
+      "replacementQuestionId": null,
+      "admittedToStudyDesk": false,
+      "reviewType": "AI逐项资料/算术对照；非人工独立二审"
+    },
+    {
+      "sourceBank": "Test3-50题(含1道多选)",
+      "sourceNumber": 43,
+      "original": {
+        "n": 43,
+        "stem": "At what GPU temperature does thermal throttling typically begin?",
+        "options": [
+          "A) 60°C",
+          "B) 75°C",
+          "C) 83–87°C",
+          "D) 100°C"
+        ],
+        "answer": "C",
+        "exp": ""
+      },
+      "status": "待核验题",
+      "verifiedAnswer": null,
+      "reason": "缺型号/驱动/温度阈值定义；83–87℃不能推广为所有GPU统一降频标准。",
+      "sources": [
+        "https://docs.nvidia.com/deploy/nvidia-smi/index.html"
+      ],
+      "objectiveIds": [
+        "3.3"
+      ],
+      "replacementQuestionId": null,
+      "admittedToStudyDesk": false,
+      "reviewType": "AI逐项资料/算术对照；非人工独立二审"
+    },
+    {
+      "sourceBank": "Test3-50题(含1道多选)",
+      "sourceNumber": 44,
+      "original": {
+        "n": 44,
+        "stem": "What Slurm flag requests 4 GPUs for a training job?",
+        "options": [
+          "A) --gpus=4",
+          "B) --gres=gpu:4",
+          "C) --resource=gpu:4",
+          "D) --accelerator=4"
+        ],
+        "answer": "B",
+        "exp": ""
+      },
+      "status": "存在争议",
+      "verifiedAnswer": null,
+      "reason": "Slurm同时支持--gpus=4（作业总量，需适当配置）与--gres=gpu:4（每节点资源）；未限定条件时单选B不唯一。",
+      "sources": [
+        "https://slurm.schedmd.com/sbatch.html"
+      ],
+      "objectiveIds": [
+        "3.2"
+      ],
+      "replacementQuestionId": null,
+      "admittedToStudyDesk": false,
+      "reviewType": "AI逐项资料/算术对照；非人工独立二审"
+    },
+    {
+      "sourceBank": "Test3-50题(含1道多选)",
+      "sourceNumber": 49,
+      "original": {
+        "n": 49,
+        "stem": "A company needs to build an AI cluster that processes regulated healthcare data. The team wants maximum GPU performance for LLM training. Which deployment model is most appropriate?",
+        "options": [
+          "A) Public cloud (AWS/Azure/GCP)",
+          "B) On-premises with DGX systems and InfiniBand",
+          "C) Hybrid: training in cloud, data stored on-prem",
+          "D) Edge deployment using Jetson modules"
+        ],
+        "answer": "B",
+        "exp": ""
+      },
+      "status": "存在争议",
+      "verifiedAnswer": null,
+      "reason": "受监管医疗数据与最大性能不足以唯一决定本地DGX+IB；合规、数据位置、访问和成本需具体条件，不把本地部署当合规保证。",
+      "sources": [],
+      "objectiveIds": [
+        "2.4"
+      ],
+      "replacementQuestionId": null,
+      "admittedToStudyDesk": false,
+      "reviewType": "AI逐项资料/算术对照；非人工独立二审"
+    }
+  ]
+}

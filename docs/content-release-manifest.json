@@ -1,0 +1,76 @@
+{
+  "date": "2026-09-24",
+  "timezone": "Asia/Shanghai",
+  "applicationVersion": "0.2.0",
+  "contentVersion": "0.2.0-batch2",
+  "counts": {
+    "lessons": 8,
+    "cards": 40,
+    "questions": 80,
+    "sources": 63,
+    "objectives": 22
+  },
+  "files": {
+    "content/nca-content-v0.2.json": "ee51607b7288254e45f8dd5b949f7765fdfe0789468cb715ff9b3ed74cd35c21",
+    "src/content.cjs": "86d18348783289cb630909f2dbc57ba75f66d89d091052f8e3d3422148f1f7c5",
+    "src/renderer/renderer.js": "2e18cd2831a56b7fe173031aaf1f84ec541d833c0a1b0e304f3dac1fbeaf7d56",
+    "src/state.cjs": "8e15a6ab99468d378362696d6d06ab684eeea9eeb09a495e4f7d99f352bd682d",
+    "src/main.cjs": "2c033b31b06f0c3a4e7973e9d0d3ad424b575c13216c8340c48149e686af6d2a",
+    "web/index.html": "60784182c5331aae95d2127830beae6f46ab0959366201c715aab7b29bfd7bef",
+    "scripts/build-content.cjs": "130d3589e48f2bf54c3bc057cde6ba10d5f30f0a0f28aea925829833650925c0",
+    "scripts/validate-content.cjs": "b559b33546d0e1c03f87bb4b8b439bbe274a97a5aa6d0179d6ae2fd8bdb71f1c",
+    "package.json": "4aa4f758ac69b75afdbf86c9963b9a23011eb8e888edcdbb041705fc3bb10103",
+    "package-lock.json": "e815ddfec1837d52f1fd8c6a1cae25987e28a4c51c7abb6b4484ecb9dcf774cc"
+  },
+  "acceptance": {
+    "source": "output/playwright/windows-final-frozen-2026-09-23T19-07-15-522Z/acceptance.json",
+    "sourcePassed": 88,
+    "packaged": "output/playwright/windows-package-2026-09-23T19-10-58-149Z/acceptance.json",
+    "packagedPassed": 15
+  },
+  "installer": {
+    "path": "C:/Users/asus/Documents/Codex/NCA-Study-Desk-Build-0.2.0/NCA-Study-Desk-Setup-0.2.0-x64.exe",
+    "sha256": "56104FDE7E6693D8D8CC44A8C998EB93CF8CFB173362789E5A00CBE7CBCE6EB1",
+    "authenticode": "NotSigned",
+    "installed": false
+  },
+  "installedVersionUnchanged": "0.1.0",
+  "realLearningStateTouched": false,
+  "protectedFiles": [
+    {
+      "Algorithm": "SHA256",
+      "Hash": "1DA7DFB9B0E7AEBE8DEF6CBA07044DFD8371AC3E157D689667F2AE67451984A9",
+      "Path": "E:\\GDRIVE\\MClaudD\\AI_Codex_Workspace\\CodexProjects\\nca-study-workbench-mvp\\AGENTS.md"
+    },
+    {
+      "Algorithm": "SHA256",
+      "Hash": "8012FB106D04F50611E10E40BAE6D3C418B1E6089A71F8A8A8F42C0231852AEA",
+      "Path": "E:\\GDRIVE\\MClaudD\\AI_Codex_Workspace\\CodexProjects\\nca-study-workbench-mvp\\nca-study-desk\\docs\\test-notes\\study-desk-test-notes-2026-09-22.md"
+    },
+    {
+      "Algorithm": "SHA256",
+      "Hash": "D650E5DCCAD42555343A3063DE3C5AB1C5FC1BDFECDC4005C733D73769AC4441",
+      "Path": "E:\\GDRIVE\\MClaudD\\AI_Codex_Workspace\\CodexProjects\\nca-study-workbench-mvp\\nca-study-desk\\knowledge-base\\index.html"
+    }
+  ],
+  "previousRelease": {
+    "date": "2026-09-24",
+    "contentVersion": "0.2.0-batch1",
+    "originals": {
+      "src/content.cjs": "d2690848fbc4b0aa1c1da379d5a73cb796699fdc5f90dccee7b8b1b21744915f",
+      "src/renderer/renderer.js": "8c4c70c93c970b1bb535739177413b40dffcc8be58bfa8353073c63753631ffe",
+      "web/index.html": "e9d03d899502f9453b4212424745977384f58c8ba829337e5c742dd58cef969a",
+      "src/main.cjs": "968bf5dea6cd2a407c30857f38446f98b523648176cdee27a823c65431b84489",
+      "src/renderer/index.html": "ce28721b149c06af8ece8c4671b3251709e64ea1f72a100e6a588aa6a6eb6534"
+    },
+    "updated": {
+      "src/content.cjs": "4a1f4f15930ff7582b2e58252cfbcdae48e0141195bc4254d83d619353c322b0",
+      "src/renderer/renderer.js": "8d06344dd676427309e5fc0221558c4082e83f985a42c3c53261d05dfbf87b19",
+      "web/index.html": "4b531fa094a689ee3bb25169332e791603181db28409b0c68bbf8a3606f469b0",
+      "src/main.cjs": "2c033b31b06f0c3a4e7973e9d0d3ad424b575c13216c8340c48149e686af6d2a",
+      "src/renderer/index.html": "91598878b2e607e0772dc40f1d9fe178cfb394223f2fe8959b6625cf9f084074"
+    },
+    "unchangedMemoSHA256": "8012fb106d04f50611e10e40bae6d3c418b1e6089a71f8a8a8f42c0231852aea",
+    "installedEXERebuilt": false
+  }
+}

@@ -1,0 +1,9961 @@
+// Generated from content/nca-content-v0.2.json; edit the shared source, then rebuild.
+module.exports = {
+  "format": "nca-study-content",
+  "version": "0.2.0-batch2",
+  "builtOn": "2026-09-24",
+  "teachingRevision": "2026-09-25-trial3",
+  "description": "Day1–8基础学习单元；40卡80道原创练习。22考点均有基础卡题映射，仍非完整教材或正式模拟，不代表个人掌握。",
+  "source": {
+    "id": "SRC-OFFICIAL-20260919",
+    "name": "NVIDIA 中国：NCA-AIIO 认证页",
+    "url": "https://www.nvidia.cn/training/certification/ai-infrastructure-operations-associate/",
+    "retrieved": "2026-09-24",
+    "status": "已核验",
+    "note": "仅核对考试范围与概况；每卡每题另列技术依据。"
+  },
+  "sources": [
+    {
+      "id": "BP",
+      "name": "NVIDIA 中国 NCA-AIIO 当前认证页",
+      "url": "https://www.nvidia.cn/training/certification/ai-infrastructure-operations-associate/",
+      "locator": "考试大纲/考试概况",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "范围基线，不用来证明所有技术结论。"
+    },
+    {
+      "id": "GUIDE",
+      "name": "NVIDIA 官方中文 Study Guide（Feb 2026）",
+      "url": "https://images.nvidia.cn/aem-dam/zh_cn/Solutions/training/certification/nvt-certification-exam-study-guide-aiio-a4-web-zhCN-5103850.pdf",
+      "locator": "物理第4–6页：1.1–3.4",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "22考点编号；课程关联和覆盖程度为本项目判断。"
+    },
+    {
+      "id": "TRAIN",
+      "name": "同事提供：NVIDIA Training NCA - AIIO.pdf",
+      "url": "https://drive.google.com/file/d/1tdZ1BczaM8FsbGnn0KeVlAZ5t_ikvcva/view",
+      "locator": "每卡另附物理页码；本轮原始文件160页",
+      "kind": "third-party",
+      "checked": "2026-09-24",
+      "note": "培训讲义，不标为官方考试教材。版本/口诀需另核。"
+    },
+    {
+      "id": "NOTE02",
+      "name": "同事提供：02-nvidia-software-stack.pdf",
+      "url": "https://drive.google.com/file/d/1ab3ilujbrSpsYd_4M3pNxNaUHz84qpRH/view",
+      "locator": "第3–8页",
+      "kind": "third-party",
+      "checked": "2026-09-24",
+      "note": "只参考组织和概念；dump/必出/题量预测不采纳，定义另核官方。"
+    },
+    {
+      "id": "ML",
+      "name": "NVIDIA Machine Learning",
+      "url": "https://www.nvidia.com/en-us/glossary/machine-learning/",
+      "locator": "定义/工作方式",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "DL",
+      "name": "NVIDIA Deep Learning",
+      "url": "https://www.nvidia.com/en-us/glossary/deep-learning/",
+      "locator": "定义/神经网络",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "GEN",
+      "name": "NVIDIA Generative AI",
+      "url": "https://www.nvidia.com/en-us/glossary/generative-ai/",
+      "locator": "生成能力",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "PERF",
+      "name": "NVIDIA GPU Performance Background",
+      "url": "https://docs.nvidia.com/deeplearning/performance/dl-performance-gpu-background/index.html",
+      "locator": "架构/性能限制",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "BATCH",
+      "name": "TensorRT 性能优化",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/performance/optimization.html",
+      "locator": "Batching/吞吐/延迟",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "CUDA",
+      "name": "CUDA Linux Installation Guide",
+      "url": "https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html",
+      "locator": "Introduction/Toolkit/system requirements",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "COMPAT",
+      "name": "CUDA Compatibility",
+      "url": "https://docs.nvidia.com/deploy/cuda-compatibility/why-cuda-compatibility.html",
+      "locator": "驱动与CUDA软件兼容",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "CUDNN",
+      "name": "NVIDIA cuDNN",
+      "url": "https://docs.nvidia.com/deeplearning/cudnn/latest/",
+      "locator": "深度神经网络基础算子",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "CUBLAS",
+      "name": "NVIDIA cuBLAS",
+      "url": "https://developer.nvidia.com/cublas",
+      "locator": "GPU线性代数库",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "NCCL",
+      "name": "NVIDIA NCCL",
+      "url": "https://developer.nvidia.com/nccl",
+      "locator": "多GPU/多节点通信",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "CONTAINER",
+      "name": "NVIDIA Container Toolkit",
+      "url": "https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/index.html",
+      "locator": "Overview",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "CONTAINER-INSTALL",
+      "name": "GPU容器前置要求",
+      "url": "https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html",
+      "locator": "Prerequisites/Configuration",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "TRT",
+      "name": "NVIDIA TensorRT",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/",
+      "locator": "推理优化和运行",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "TRITON",
+      "name": "Dynamo-Triton（原Triton Inference Server）",
+      "url": "https://developer.nvidia.com/dynamo-triton",
+      "locator": "模型部署与服务",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "NIM",
+      "name": "NVIDIA NIM说明",
+      "url": "https://investor.nvidia.com/news/press-release-details/2024/NVIDIA-Launches-Generative-AI-Microservices-for-Developers-to-Create-and-Deploy-Generative-AI-Copilots-Across-NVIDIA-CUDA-GPU-Installed-Base/default.aspx",
+      "locator": "NIM Inference Microservices",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "NGC",
+      "name": "NVIDIA NGC",
+      "url": "https://www.nvidia.cn/gpu-cloud/",
+      "locator": "容器/模型资源目录",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "AIE",
+      "name": "NVIDIA AI Enterprise",
+      "url": "https://www.nvidia.com/en-us/data-center/products/ai-enterprise/",
+      "locator": "Overview/企业支持/NeMo",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "RAPIDS",
+      "name": "NVIDIA 数据科学文档",
+      "url": "https://docs.nvidia.com/datascience/",
+      "locator": "RAPIDS与数据科学",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "MERLIN",
+      "name": "NVIDIA Merlin",
+      "url": "https://developer.nvidia.com/merlin",
+      "locator": "推荐系统",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "RIVA",
+      "name": "NVIDIA Riva",
+      "url": "https://developer.nvidia.com/topics/ai/generative-ai/riva",
+      "locator": "语音AI",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "OPERATOR",
+      "name": "NVIDIA GPU Operator",
+      "url": "https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/overview.html",
+      "locator": "GPU软件组件管理",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "NOTE04",
+      "name": "同事提供：04-ai-hardware-and-scaling.pdf",
+      "url": "https://drive.google.com/file/d/1nruFbzkvcdguADvzntWdbCHMNhqaWnBK/view",
+      "locator": "物理第2、5–8页；全10页文本已读",
+      "kind": "third-party",
+      "checked": "2026-09-24",
+      "note": "社区笔记；dump、题量预测、无条件硬件数字不采纳。"
+    },
+    {
+      "id": "NOTE05",
+      "name": "同事提供：05-datacenter-power-cooling-facility.pdf",
+      "url": "https://drive.google.com/file/d/1nIpHguc2PoUAQyLSRcw5evK99_ZNgmwq/view",
+      "locator": "物理第1–6页；全8页文本已读",
+      "kind": "third-party",
+      "checked": "2026-09-24",
+      "note": "社区笔记；PUE解释错误、固定散热阈值、自动合规等说法不采纳。"
+    },
+    {
+      "id": "NOTE06",
+      "name": "同事提供：06-networking-for-ai.pdf",
+      "url": "https://drive.google.com/file/d/1JCCAuLW7x_JUVUjmwIfbpsDJJnr_dmT6/view",
+      "locator": "物理第1–9页；全11页文本已读",
+      "kind": "third-party",
+      "checked": "2026-09-24",
+      "note": "社区笔记；不采纳dump题数和无条件速率/延迟/网络数量口诀。"
+    },
+    {
+      "id": "B2-BASEPOD",
+      "name": "NVIDIA DGX BasePOD：核心组件",
+      "url": "https://docs.nvidia.com/dgx-basepod/reference-architecture-infrastructure-foundation-enterprise-ai/latest/core-components.html",
+      "locator": "Compute / Network / Storage / Control Plane",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "具体配置是参考架构示例，不是所有AI集群的固定数量。"
+    },
+    {
+      "id": "B2-NETWORK",
+      "name": "NVIDIA DGX BasePOD：网络部署",
+      "url": "https://docs.nvidia.com/dgx-basepod/deployment-guide-dgx-basepod/latest/network-overview.html",
+      "locator": "Network Overview / oobmanagementnet / computenet",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "本参考架构的逻辑网络划分不等于全行业固定网络数。"
+    },
+    {
+      "id": "B2-FACILITY",
+      "name": "NVIDIA DGX SuperPOD：设施空间",
+      "url": "https://docs.nvidia.com/dgx-superpod/design-guides/dgx-superpod-data-center-design-h100/latest/infrastructure.html",
+      "locator": "Space Planning / Air Flow / Static Weight and Point Load",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "取通用规划原则；尺寸/承重/布线值仍按具体型号和设施条件。"
+    },
+    {
+      "id": "B2-POWER",
+      "name": "NVIDIA DGX SuperPOD：供电规划",
+      "url": "https://docs.nvidia.com/dgx-superpod/design-guides/dgx-superpod-data-center-design-h100/latest/electrical.html",
+      "locator": "Power Redundancy / Power Connections / rPDU / Phase Balancing",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "用于理解容量与冗余；不提供现场电气操作指令。"
+    },
+    {
+      "id": "B2-COOLING",
+      "name": "NVIDIA DGX SuperPOD：散热和气流",
+      "url": "https://docs.nvidia.com/dgx-superpod/design-guides/dgx-superpod-data-center-design-h100/latest/cooling.html",
+      "locator": "Full heat load / Aisle Containment / Cooling Oversubscription",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "不用一个固定kW阈值推定所有机房必须采用同一冷却技术。"
+    },
+    {
+      "id": "B2-PUE",
+      "name": "NVIDIA：数据中心能效指标的边界",
+      "url": "https://blogs.nvidia.com/blog/datacenter-efficiency-metrics-isc/",
+      "locator": "PUE compares total energy to computing infrastructure energy",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "PUE不衡量有用计算产出，不等于GPU利用率、总电费或模型效果。"
+    },
+    {
+      "id": "B2-DEPLOY",
+      "name": "NVIDIA AI Enterprise：部署选择（归档版）",
+      "url": "https://archive.docs.nvidia.com/ai-enterprise/release-4/latest/getting-started/deployment-guide.html",
+      "locator": "Deployment options：Public Cloud / On-Premises Bare Metal",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "归档release-4页仅支持部署方式的概念比较；不作为当前版本安装指南。"
+    },
+    {
+      "id": "B2-CONTROL",
+      "name": "NVIDIA：企业控制环境中的模型部署",
+      "url": "https://docs.nvidia.com/enterprise-reference-architectures/deploying-proprietary-models-confidential-compute-self-hosted-kubernetes/latest/introduction.html",
+      "locator": "Enterprise-controlled environments",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "客户控制的环境可含本地和云账户；所在地本身不是安全/合规保证。"
+    },
+    {
+      "id": "B2-HGX",
+      "name": "NVIDIA HGX Platform",
+      "url": "https://www.nvidia.com/en-us/data-center/hgx/",
+      "locator": "Platform overview / Partner Systems",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "只核对平台及合作伙伴系统关系；不背代际规格。"
+    },
+    {
+      "id": "B2-DGX",
+      "name": "NVIDIA DGX Platform 文档",
+      "url": "https://docs.nvidia.com/dgx/",
+      "locator": "DGX systems / BasePOD / SuperPOD",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "DGX不是单一GPU芯片；型号和参考架构随版本变化。"
+    },
+    {
+      "id": "B2-NVLINK",
+      "name": "NVIDIA NVLink：Scale-Up网络",
+      "url": "https://developer.nvidia.com/blog/nvidia-nvlink-the-scale-up-network-for-ai-factories/",
+      "locator": "正文：scale-up vs scale-out / domain / GPU communication",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "2026-07-20；读取正文，不以页面AI摘要或性能宣传倍数出题。"
+    },
+    {
+      "id": "B2-ROCE",
+      "name": "NVIDIA DOCA：RDMA over Converged Ethernet",
+      "url": "https://docs.nvidia.com/doca/sdk/rdma-over-converged-ethernet.pdf",
+      "locator": "PDF物理第3–4页定义/封装；第8页流控",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "协议定义可用；历史10/40Gb示例不当作当前速率上限。"
+    },
+    {
+      "id": "B2-SM",
+      "name": "NVIDIA：InfiniBand交换机软件管理",
+      "url": "https://docs.nvidia.com/networking/display/QM87XX/software-management.pdf",
+      "locator": "InfiniBand Subnet Manager",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "SM可以运行于交换机或相连主机；OpenSM是实现名称。"
+    },
+    {
+      "id": "B2-DPU",
+      "name": "NVIDIA：What Is a DPU?",
+      "url": "https://blogs.nvidia.com/blog/whats-a-dpu-data-processing-unit/",
+      "locator": "DPU components / infrastructure offload",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "取定义与职责，不将市场宣传视为适用于任意工作负载的性能承诺。"
+    },
+    {
+      "id": "B2-BLUEFIELD",
+      "name": "NVIDIA BlueField Networking Platform",
+      "url": "https://www.nvidia.com/en-us/networking/products/data-processing-unit/",
+      "locator": "Network / Storage / Security services",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "型号参数不进入本批练习；隔离依赖部署、配置和支持能力。"
+    },
+    {
+      "id": "B2-GDR",
+      "name": "NVIDIA GPUDirect RDMA文档",
+      "url": "https://docs.nvidia.com/cuda/gpudirect-rdma/index.html",
+      "locator": "Overview / Synchronization and Memory Ordering",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "优化数据路径并不消除全部CPU控制和同步工作。"
+    },
+    {
+      "id": "B2-GDS",
+      "name": "NVIDIA GPUDirect Storage Overview",
+      "url": "https://docs.nvidia.com/gpudirect-storage/overview-guide/index.html",
+      "locator": "Overview / Direct data path / compatibility",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "直接数据路径依赖受支持硬件、驱动、文件系统和应用；有兼容回退路径。"
+    },
+    {
+      "id": "NOTE07",
+      "name": "社区学习笔记07：数据中心管理与监控",
+      "url": "https://drive.google.com/file/d/1KsminMP_--vyYJrYQRIurt0KEcI_4gES/view",
+      "locator": "9页；全文文本已读",
+      "kind": "third-party",
+      "checked": "2026-09-24",
+      "note": "只采用主题线索；dump/题量预测及绝对化指标结论不采用。"
+    },
+    {
+      "id": "NOTE08",
+      "name": "社区学习笔记08：编排、调度与虚拟化",
+      "url": "https://drive.google.com/file/d/1jDIcg23sQjWXr7fNKxdNx483-FydD-uz/view",
+      "locator": "12页；全文文本已读",
+      "kind": "third-party",
+      "checked": "2026-09-24",
+      "note": "只采用主题线索；原题不直接导入。MIG支持、重置与调度边界另核官方。"
+    },
+    {
+      "id": "SMI",
+      "name": "NVIDIA System Management Interface",
+      "url": "https://docs.nvidia.com/deploy/nvidia-smi/index.html",
+      "locator": "Description / Query / Utilization / Memory / Power / ECC",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "DCGM",
+      "name": "NVIDIA DCGM Feature Overview",
+      "url": "https://docs.nvidia.com/datacenter/dcgm/latest/user-guide/feature-overview.html",
+      "locator": "Health and Diagnostics / Profiling Metrics",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "EXPORTER",
+      "name": "NVIDIA DCGM Exporter",
+      "url": "https://docs.nvidia.com/datacenter/cloud-native/gpu-telemetry/latest/dcgm-exporter.html",
+      "locator": "Introduction / Running / MIG support",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "XID",
+      "name": "NVIDIA Xid Errors",
+      "url": "https://docs.nvidia.com/deploy/xid-errors/introduction.html",
+      "locator": "What is an Xid Message / How to Use",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "BMC",
+      "name": "NVIDIA DGX H100/H200：BMC",
+      "url": "https://docs.nvidia.com/dgx/dgxh100-user-guide/bmc.html",
+      "locator": "硬件管理、远程控制台、传感器和电源",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "BCM",
+      "name": "NVIDIA Base Command Manager",
+      "url": "https://www.nvidia.com/en-us/data-center/base-command-manager/",
+      "locator": "Provision / Monitor / Cluster management",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "SLURM",
+      "name": "SchedMD Slurm Overview",
+      "url": "https://slurm.schedmd.com/overview.html",
+      "locator": "三项职责 / Architecture / User tools",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "SLURM-GPU",
+      "name": "SchedMD Slurm GRES Scheduling",
+      "url": "https://slurm.schedmd.com/gres.html",
+      "locator": "GPU资源请求 / MIG Management",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "K8S",
+      "name": "Kubernetes Overview",
+      "url": "https://kubernetes.io/docs/concepts/overview/",
+      "locator": "编排 / 调度 / 服务 / 批处理",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "K8S-GPU",
+      "name": "Kubernetes Schedule GPUs",
+      "url": "https://kubernetes.io/docs/tasks/manage-gpus/scheduling-gpus/",
+      "locator": "驱动、device plugin及GPU资源请求",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "MIG",
+      "name": "NVIDIA MIG Introduction",
+      "url": "https://docs.nvidia.com/datacenter/tesla/mig-user-guide/introduction.html",
+      "locator": "硬件分区 / 内存路径 / 部署场景",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "MIG-SUPPORT",
+      "name": "NVIDIA MIG Supported GPUs",
+      "url": "https://docs.nvidia.com/datacenter/tesla/mig-user-guide/supported-gpus.html",
+      "locator": "Table 1 支持产品与最大实例数",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "MIG-DEPLOY",
+      "name": "NVIDIA MIG Deployment Considerations",
+      "url": "https://docs.nvidia.com/datacenter/tesla/mig-user-guide/deployment-considerations.html",
+      "locator": "System / Application considerations",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "MIG-START",
+      "name": "NVIDIA Getting Started with MIG",
+      "url": "https://docs.nvidia.com/datacenter/tesla/mig-user-guide/getting-started-with-mig.html",
+      "locator": "MIG mode / GPU reset on Hopper+ / instance management",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "VGPU",
+      "name": "NVIDIA vGPU Introduction",
+      "url": "https://docs.nvidia.com/vgpu/latest/grid-vgpu-user-guide/grid-vgpu-introduction.html",
+      "locator": "GPU Instance Support / 软件与hypervisor支持",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "L40S",
+      "name": "NVIDIA L40S Specifications",
+      "url": "https://www.nvidia.com/en-in/data-center/l40s/",
+      "locator": "MIG support: No；vGPU software support: Yes",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    }
+  ],
+  "cards": [
+    {
+      "id": "card-ai-ml-dl",
+      "day": 1,
+      "title": "AI、机器学习与深度学习",
+      "objectiveIds": [
+        "1.3"
+      ],
+      "minutes": 5,
+      "objective": "区分范围和方法，不凭GPU或数据量猜算法。",
+      "conclusion": "DL属于ML，ML属于AI；从数据学习规律是ML的关键。",
+      "explanation": "AI描述更广的智能任务。ML利用数据学习规律，形成模型，再处理新数据。模型不是一张GPU，也不是原始资料本身，而是用于把输入变成预测或其他输出的计算表示。例如一个风险模型可包含“温度、报错次数各占多大影响”的数值参数；训练从历史记录及维修结果调整它们，新记录输入后再按学到的关系计算风险。不同模型也可能学到树形判断等结构，并非全是一串权重。DL是使用多层神经网络的一类ML方法。规则自动化则可由人事先写好条件：能自动运行，并不等于采用了机器学习。",
+      "terms": "Artificial Intelligence / Machine Learning / Deep Learning",
+      "compare": "使用GPU、数据很多、做预测，都不能单独证明是DL。",
+      "scenario": "示例：温度越线按固定规则提醒不足以认定ML；用历史运行与维修结果训练风险模型可认定ML，但模型结构未知时不能认定DL。",
+      "sourceIds": [
+        "TRAIN",
+        "ML",
+        "DL"
+      ],
+      "sourceId": "TRAIN",
+      "textStatus": "对照完成（学习用）",
+      "trainingPages": "12–13",
+      "extra": "先回答规则从哪里来，再回答模型是什么。",
+      "checkNotes": "讲义把GenAI画在DL内是简化关系；下一卡区分能力与方法。",
+      "origin": "培训讲义组织＋所列官方资料核对；例子为教学示例，非用户现场事实。",
+      "webId": "ai"
+    },
+    {
+      "id": "card-genai-stage",
+      "day": 1,
+      "title": "生成能力与训练／推理阶段",
+      "objectiveIds": [
+        "1.3",
+        "1.2"
+      ],
+      "minutes": 5,
+      "objective": "区分做什么、怎样做和在哪个阶段。",
+      "conclusion": "生成式AI描述能力；训练与推理描述工作阶段。",
+      "explanation": "生成式模型根据输入产生文本、图像等内容，说明的是“输出什么”。训练与推理说明的是“当前做哪一步”。参数可先理解为模型中可调整、会影响输出的数值；训练利用数据和反馈调整它们，本课常规推理则用已训练的参数处理输入。例如先用大量文本训练好模型，再输入一条维修记录，程序用现有参数逐步生成交接说明。换一条记录会换输入和输出，并不自动改写参数。因此生成维修说明既可属于生成式AI，也可发生在推理阶段，两者不是二选一。",
+      "terms": "Generative AI / Training / Inference / Model parameters",
+      "compare": "输出文字不等于正在训练；输入新信息也不自动表示更新参数。分类、预测、生成都可能是推理。",
+      "scenario": "示例：模型不更新参数，根据维修记录生成交接说明，这是生成式AI应用的一次推理。",
+      "sourceIds": [
+        "TRAIN",
+        "GEN"
+      ],
+      "sourceId": "TRAIN",
+      "textStatus": "对照完成（学习用）",
+      "trainingPages": "12–15、150",
+      "extra": "不要背成AI升级为ML、ML升级为DL、GenAI替代一切。",
+      "checkNotes": "",
+      "origin": "培训讲义组织＋所列官方资料核对；例子为教学示例，非用户现场事实。",
+      "webId": "card-genai-stage"
+    },
+    {
+      "id": "card-ai-drivers",
+      "day": 1,
+      "title": "AI发展的三个因素",
+      "objectiveIds": [
+        "1.4"
+      ],
+      "minutes": 5,
+      "objective": "说明数据、算法和计算能力如何配合。",
+      "conclusion": "数据、算法方法、计算能力共同推动发展。",
+      "explanation": "讲义用三个方面解释AI发展：可用数据提供学习材料，算法和模型方法改进提高学习效果，计算能力使更大规模运算可行。只增加GPU不能自动补齐不合适的数据或方法。",
+      "terms": "Data / Algorithms / Compute",
+      "compare": "数据量不等于数据质量，算力不是万能答案。",
+      "scenario": "示例：训练标签混乱时，增加GPU也不能保证模型学到正确规律。",
+      "sourceIds": [
+        "TRAIN",
+        "ML"
+      ],
+      "sourceId": "TRAIN",
+      "textStatus": "对照完成（学习用）",
+      "trainingPages": "9",
+      "extra": "记忆：学什么（数据）→怎样学（方法）→能否算完（计算资源）。",
+      "checkNotes": "",
+      "origin": "培训讲义组织＋所列官方资料核对；例子为教学示例，非用户现场事实。",
+      "webId": "card-ai-drivers"
+    },
+    {
+      "id": "card-ai-use-cases",
+      "day": 1,
+      "title": "把行业需求翻译成AI任务",
+      "objectiveIds": [
+        "1.5"
+      ],
+      "minutes": 5,
+      "objective": "从输入和输出辨认任务。",
+      "conclusion": "先认任务，再考虑模型和硬件。",
+      "explanation": "讲义列举汽车、医疗、零售等用例。图像质检偏识别/分类，设备风险估计偏预测，商品推荐偏个性化排序，交接说明草稿偏文本生成。同一行业可同时有多类任务。",
+      "terms": "Classification / Prediction / Recommendation / Generation",
+      "compare": "不是某行业必用唯一模型；有AI不一定是生成式模型。",
+      "scenario": "示例：零售推荐下一件商品与生成商品文案，服务同一行业，但任务目标和评价方式不同。",
+      "sourceIds": [
+        "TRAIN",
+        "ML",
+        "GEN"
+      ],
+      "sourceId": "TRAIN",
+      "textStatus": "对照完成（学习用）",
+      "trainingPages": "10、140",
+      "extra": "只做用例识别，不提供医疗或金融决策建议。",
+      "checkNotes": "",
+      "origin": "培训讲义组织＋所列官方资料核对；例子为教学示例，非用户现场事实。",
+      "webId": "card-ai-use-cases"
+    },
+    {
+      "id": "card-cpu-gpu",
+      "day": 2,
+      "title": "CPU与GPU：架构决定分工",
+      "objectiveIds": [
+        "1.8"
+      ],
+      "minutes": 5,
+      "objective": "解释并行吞吐和复杂控制。",
+      "conclusion": "GPU擅长大量相似计算，CPU擅长通用控制与复杂逻辑。",
+      "explanation": "CPU通常重视单线程响应、缓存和控制逻辑；GPU组织大量计算线程，提高可并行任务的总体吞吐。线程在这里先理解为程序中正在执行的一路工作。假设对一张图片的每个像素分别做同样的亮度调整，许多像素的结果可独立算出，GPU可把这类计算分给许多执行单元；程序仍需要读取图片、安排工作并显示结果。若下一步必须等上一步结果，多加执行单元不等于这条依赖链消失。CPU也支持并行，GPU也执行顺序指令；区别是设计侧重点，不是两者只能做某一种事。",
+      "terms": "CPU / GPU / Parallelism / Serial dependency",
+      "compare": "串行表示按顺序执行，前后依赖会限制并行；串行/并行与线性/非线性函数不是同一概念。CPU核心与CUDA核心不能逐个直接比较。",
+      "scenario": "示例：审批步骤等待前一步结果，不能仅靠更强GPU获得与矩阵计算相同的加速。",
+      "sourceIds": [
+        "TRAIN",
+        "CUDA",
+        "PERF"
+      ],
+      "sourceId": "TRAIN",
+      "textStatus": "对照完成（学习用）",
+      "trainingPages": "28–30",
+      "extra": "先找能并行的部分，再考虑数据读写、CPU和调度。",
+      "checkNotes": "不背讲义4–16核为CPU上限；补充CPU也能并行的边界。",
+      "origin": "培训讲义组织＋所列官方资料核对；例子为教学示例，非用户现场事实。",
+      "webId": "cpu-gpu"
+    },
+    {
+      "id": "card-gpu-units",
+      "day": 2,
+      "title": "CUDA Core与Tensor Core",
+      "objectiveIds": [
+        "1.8"
+      ],
+      "minutes": 5,
+      "objective": "认清硬件计算单元职责。",
+      "conclusion": "CUDA Core承担通用计算，Tensor Core重点加速矩阵乘加。",
+      "explanation": "CUDA Core与Tensor Core是GPU中的硬件计算单元，不是需要下载的两个应用。神经网络里常要把一组输入数与对应权重相乘后相加，再对很多组数据重复；把数据排成行列就是矩阵，矩阵运算能表达其中许多工作。Tensor Core为受支持的矩阵乘加等特定操作提供硬件加速，CUDA Core执行其他通用算术等指令。不是所有乘法都由Tensor Core完成，也不是有它就能跳过数据读取与准备；具体使用受运算形式、数据类型和软件实现影响。RT Core用于光线追踪，不是所有数据中心GPU都有的部件。",
+      "terms": "CUDA Core / Tensor Core / Matrix multiply-accumulate",
+      "compare": "CUDA Core是硬件，CUDA平台与Toolkit是软件。Tensor Core不负责整个AI程序的所有步骤。",
+      "scenario": "示例：矩阵计算与读取工单文件是不同工作，不能忽略数据准备。",
+      "sourceIds": [
+        "TRAIN",
+        "PERF"
+      ],
+      "sourceId": "TRAIN",
+      "textStatus": "对照完成（学习用）",
+      "trainingPages": "72–75",
+      "extra": "记职责，不背讲义10倍等缺少适用条件的宣传数字。",
+      "checkNotes": "",
+      "origin": "培训讲义组织＋所列官方资料核对；例子为教学示例，非用户现场事实。",
+      "webId": "card-gpu-units"
+    },
+    {
+      "id": "card-memory-compute",
+      "day": 2,
+      "title": "算力、容量、带宽分开判断",
+      "objectiveIds": [
+        "1.2",
+        "1.8",
+        "2.1"
+      ],
+      "minutes": 5,
+      "objective": "分辨算不快、装不下和数据送不及时。",
+      "conclusion": "算力看计算速度，容量看装多少，带宽看每秒读写多少。",
+      "explanation": "显存容量通常用GB；显存带宽用GB/s或TB/s；浮点计算能力可用TFLOPS。模型参数不是唯一占用显存的内容，输入、中间结果和训练记录也可能占用。资料装得下，也不表示计算单元不会等待数据。",
+      "terms": "Compute / Memory capacity / Memory bandwidth / TFLOPS",
+      "compare": "相同32GB容量下只提高算力，不能单独保证装下40GB任务；显存带宽与PCIe或GPU互联带宽不是同一指标。",
+      "scenario": "示例：运行方式不变、需求40GB而可用32GB时，先处理容量不足。",
+      "sourceIds": [
+        "TRAIN",
+        "PERF"
+      ],
+      "sourceId": "TRAIN",
+      "textStatus": "对照完成（学习用）",
+      "trainingPages": "30、150",
+      "extra": "精度、分片或卸载会影响需求，但题目未说明时不能默认存在。",
+      "checkNotes": "",
+      "origin": "培训讲义组织＋所列官方资料核对；例子为教学示例，非用户现场事实。",
+      "webId": "card-memory-compute"
+    },
+    {
+      "id": "card-latency-throughput",
+      "day": 2,
+      "title": "吞吐量、延迟与批次",
+      "objectiveIds": [
+        "1.2"
+      ],
+      "minutes": 5,
+      "objective": "把中文理解对应英文词，再判断场景。",
+      "conclusion": "Throughput是一段时间做多少，Latency是一件事等多久。",
+      "explanation": "Latency（延迟）看一条请求从提交到得到结果等了多久；Throughput（吞吐）看一段时间共完成多少条。Batch把多个输入组成一批交给模型处理，让一些准备与计算开销分摊到更多输入。例子：图片甲先到达，但服务等待其他图片凑批，再一起计算；这一批合计完成得更有效率，甲却增加了凑批等待。是否值得取决于实际任务，不是批次越大必然越好。不能从每秒处理20个直接推出每个请求只等0.05秒：多请求可能并发或排队，统计总体完成量没有告诉你每个请求何时开始等待。",
+      "terms": "Throughput（吞吐量）/ Latency（延迟）/ Batch（批次）",
+      "compare": "吞吐提高不保证延迟降低；批次大也不保证所有场景更快。",
+      "scenario": "示例：每秒处理更多请求，同时有些人等更久，两者并不矛盾。",
+      "sourceIds": [
+        "TRAIN",
+        "BATCH"
+      ],
+      "sourceId": "TRAIN",
+      "textStatus": "对照完成（学习用）",
+      "trainingPages": "29、150",
+      "extra": "术语巩固与情境判断分开练；不把术语不熟自动等同概念错误。",
+      "checkNotes": "",
+      "origin": "培训讲义组织＋所列官方资料核对；例子为教学示例，非用户现场事实。",
+      "webId": "card-latency-throughput"
+    },
+    {
+      "id": "card-training-inference",
+      "day": 2,
+      "title": "训练与推理的资源需求",
+      "objectiveIds": [
+        "1.2",
+        "2.1"
+      ],
+      "minutes": 5,
+      "objective": "理解训练的额外工作和不同推理目标。",
+      "conclusion": "典型训练含前向、反向和参数更新；常规推理使用已有参数。",
+      "explanation": "以带标签的神经网络训练为例：输入图片→算出预测→与已知类别比较→计算参数该怎样调整→更新参数。前向计算产生的中间结果常称激活；梯度用于描述参数调整对误差的影响；优化器按更新规则使用这些信息，可能另存历史状态。本课只需理解“为了改参数，还要保存和使用额外信息”，不要求会推公式。推理通常使用现有参数完成输入到输出，不做这轮参数更新，但仍需存放参数、输入与中间结果。相近模型与条件下，训练通常更重；推理更关注响应、吞吐和服务成本。模型大小、请求量不同，不能只按训练/推理标签比较总成本。",
+      "terms": "Forward pass / Backward pass / Gradients / Optimizer state",
+      "compare": "不能把任何训练都说成大于任何推理；训练也不必把全部历史数据同时放进显存。",
+      "scenario": "示例：实时告警分类关心响应，夜间批量分类历史日志关心按时完成总量，二者都是推理。",
+      "sourceIds": [
+        "TRAIN",
+        "BATCH"
+      ],
+      "sourceId": "TRAIN",
+      "textStatus": "对照完成（学习用）",
+      "trainingPages": "150",
+      "extra": "多GPU可服务容量、加速或并发目标；网络与扩展完整讨论留到后续。",
+      "checkNotes": "",
+      "origin": "培训讲义组织＋所列官方资料核对；例子为教学示例，非用户现场事实。",
+      "webId": "train-infer"
+    },
+    {
+      "id": "card-stack-driver",
+      "day": 3,
+      "title": "从应用到GPU的软件分层",
+      "objectiveIds": [
+        "1.1",
+        "1.7"
+      ],
+      "minutes": 5,
+      "objective": "把应用、框架、库、驱动与硬件串起来。",
+      "conclusion": "驱动连接GPU与系统，上层框架和库共同组织计算。",
+      "explanation": "讲义从应用、框架/库、CUDA、驱动向下连接硬件。操作系统管理系统资源，驱动提供与设备交互的能力，框架组织模型和训练过程。层次用于理解职责，不表示所有程序都经过完全相同的调用链。",
+      "terms": "Application / Framework / Library / GPU Driver / Operating System",
+      "compare": "驱动不是模型或cuDNN；DGX OS也不是所有GPU服务器唯一可用的操作系统。",
+      "scenario": "示例：主机看到GPU而应用不能用，仍需核对依赖与兼容，不能只凭此判断硬件坏。",
+      "sourceIds": [
+        "TRAIN",
+        "CUDA",
+        "CONTAINER-INSTALL"
+      ],
+      "sourceId": "TRAIN",
+      "textStatus": "对照完成（学习用）",
+      "trainingPages": "104–106、122",
+      "extra": "只认职责，不做生产安装或重启。",
+      "checkNotes": "讲义“最新2025”版本不作为当前考试固定要求。",
+      "origin": "培训讲义组织＋所列官方资料核对；例子为教学示例，非用户现场事实。",
+      "webId": "card-stack-driver"
+    },
+    {
+      "id": "card-cuda-toolkit",
+      "day": 3,
+      "title": "CUDA、Toolkit与运行时",
+      "objectiveIds": [
+        "1.1"
+      ],
+      "minutes": 5,
+      "objective": "区分平台、开发工具与运行依赖。",
+      "conclusion": "CUDA是并行计算平台/编程模型；Toolkit是开发工具与库集合。",
+      "explanation": "CUDA让程序表达GPU并行任务。Toolkit提供编译、调试、分析工具及相关库。运行时支持应用调用GPU能力。编译新程序与运行已构建应用所需的依赖并不完全相同。",
+      "terms": "CUDA / CUDA Toolkit / Runtime / Compiler / nvcc",
+      "compare": "安装驱动不等于装齐开发工具；没有编译器也不自动证明不能运行预构建应用。",
+      "scenario": "示例：编译CUDA程序需要核对工具链；运行现成GPU容器需核对主机驱动与运行依赖。",
+      "sourceIds": [
+        "TRAIN",
+        "CUDA",
+        "COMPAT"
+      ],
+      "sourceId": "TRAIN",
+      "textStatus": "对照完成（学习用）",
+      "trainingPages": "122–124",
+      "extra": "本轮不背命令；先知道每种工具在解决哪一层问题。",
+      "checkNotes": "",
+      "origin": "培训讲义组织＋所列官方资料核对；例子为教学示例，非用户现场事实。",
+      "webId": "card-cuda-toolkit"
+    },
+    {
+      "id": "card-cuda-libraries",
+      "day": 3,
+      "title": "cuDNN、cuBLAS、NCCL各做什么",
+      "objectiveIds": [
+        "1.1"
+      ],
+      "minutes": 5,
+      "objective": "由任务辨别对应库。",
+      "conclusion": "cuDNN偏深度学习算子，cuBLAS偏线性代数，NCCL偏GPU通信。",
+      "explanation": "cuDNN提供深度神经网络相关高性能基础运算；cuBLAS提供GPU线性代数；NCCL提供多GPU和多节点的集合通信。这些库可被框架调用，不是互相替代的整套应用。",
+      "terms": "cuDNN / cuBLAS / NCCL / All-reduce",
+      "compare": "NCCL是软件通信库，NVLink是互联技术；cuDNN不是数据中心管理界面。",
+      "scenario": "示例：协同训练汇总GPU计算结果会涉及NCCL；矩阵运算可涉及cuBLAS，而不是让DCGM取代计算库。",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE02",
+        "CUDNN",
+        "CUBLAS",
+        "NCCL"
+      ],
+      "sourceId": "TRAIN",
+      "textStatus": "对照完成（学习用）",
+      "trainingPages": "122、125–127、149",
+      "extra": "社区题库的cuDNN答案错配单独留证，不将错答案导入本课程。",
+      "checkNotes": "",
+      "origin": "培训讲义组织＋所列官方资料核对；例子为教学示例，非用户现场事实。",
+      "webId": "card-cuda-libraries"
+    },
+    {
+      "id": "card-gpu-containers",
+      "day": 3,
+      "title": "容器怎样使用GPU",
+      "objectiveIds": [
+        "1.1",
+        "1.7"
+      ],
+      "minutes": 5,
+      "objective": "区分打包依赖与访问设备。",
+      "conclusion": "容器组织应用依赖，GPU访问仍需要兼容主机驱动和运行配置。",
+      "explanation": "NVIDIA Container Toolkit提供构建和运行GPU加速容器的工具。镜像可携带框架和用户态依赖，但真实GPU不在镜像里面。官方前置要求包括主机驱动、支持的容器引擎以及相应配置。",
+      "terms": "Container / Image / Host / NVIDIA Container Toolkit",
+      "compare": "有Docker不等于任何容器自动看到GPU；有镜像不等于可以忽略主机兼容性。",
+      "scenario": "示例：主机工具能看GPU而容器看不到，应考虑设备暴露、运行时和版本配置，尚不能唯一定位故障。",
+      "sourceIds": [
+        "NOTE02",
+        "CONTAINER",
+        "CONTAINER-INSTALL"
+      ],
+      "sourceId": "NOTE02",
+      "textStatus": "对照完成（学习用）",
+      "trainingPages": "141（集成示意）",
+      "extra": "只做分层判断，不在生产设备执行配置。",
+      "checkNotes": "",
+      "origin": "培训讲义组织＋所列官方资料核对；例子为教学示例，非用户现场事实。",
+      "webId": "card-gpu-containers"
+    },
+    {
+      "id": "card-compatibility",
+      "day": 3,
+      "title": "兼容性不是全部装最新",
+      "objectiveIds": [
+        "1.1",
+        "1.7"
+      ],
+      "minutes": 5,
+      "objective": "知道该核对哪些条件。",
+      "conclusion": "GPU、系统、驱动、CUDA和上层库需要匹配支持关系。",
+      "explanation": "官方安装与兼容文档列出GPU、OS、编译环境和驱动等条件。不同组件不必版本数字一致，也不能任意搭配。应按实际应用的要求核对，而不是只用最新或相同数字作判断。",
+      "terms": "Compatibility / Driver / Toolkit / Framework / Support matrix",
+      "compare": "能看到GPU不证明全部应用依赖正确；版本不同也不必然不兼容。",
+      "scenario": "示例：新镜像启动失败，先核对镜像、GPU和驱动条件，而不是直接升级客户生产驱动。",
+      "sourceIds": [
+        "CUDA",
+        "COMPAT",
+        "CONTAINER-INSTALL"
+      ],
+      "sourceId": "CUDA",
+      "textStatus": "对照完成（学习用）",
+      "trainingPages": "106、122–124",
+      "extra": "仅解释原则，不提供具体升级版本推荐。",
+      "checkNotes": "",
+      "origin": "培训讲义组织＋所列官方资料核对；例子为教学示例，非用户现场事实。",
+      "webId": "card-compatibility"
+    },
+    {
+      "id": "card-ai-lifecycle",
+      "day": 4,
+      "title": "开发到上线的四步",
+      "objectiveIds": [
+        "1.7"
+      ],
+      "minutes": 5,
+      "objective": "把工具放回数据、训练、优化和部署的位置。",
+      "conclusion": "数据准备→训练→优化→部署，是讲义的入门主线。",
+      "explanation": "讲义将RAPIDS对应数据处理，PyTorch/TensorFlow对应训练，TensorRT对应优化，Triton对应推理部署。这是典型组合，不代表必须用齐。上线后仍需要跟踪版本、效果和运行状态，MLOps组织这些持续工作。",
+      "terms": "Data preparation / Training / Optimization / Deployment / MLOps",
+      "compare": "训练成功不等于服务可用；部署不能自动修好数据质量问题。",
+      "scenario": "示例：告警分类先整理数据并训练评估，再优化部署，后续运行反馈再进入改进。",
+      "sourceIds": [
+        "TRAIN",
+        "RAPIDS",
+        "TRT",
+        "TRITON"
+      ],
+      "sourceId": "TRAIN",
+      "textStatus": "对照完成（学习用）",
+      "trainingPages": "146–149、157–160",
+      "extra": "只是参考工作流，不改动既定14日学习计划。",
+      "checkNotes": "",
+      "origin": "培训讲义组织＋所列官方资料核对；例子为教学示例，非用户现场事实。",
+      "webId": "card-ai-lifecycle"
+    },
+    {
+      "id": "card-inference-tools",
+      "day": 4,
+      "title": "TensorRT与Triton不是一回事",
+      "objectiveIds": [
+        "1.1",
+        "1.6",
+        "1.7"
+      ],
+      "minutes": 5,
+      "objective": "区分执行优化与模型服务。",
+      "conclusion": "TensorRT偏推理优化/运行；Triton偏部署和服务模型。",
+      "explanation": "TensorRT为推理优化和运行提供能力。Triton服务多个框架的模型，支持批处理和并发，可使用TensorRT后端。两者可以配合，不是一个训练、另一个推理的互斥关系。",
+      "terms": "TensorRT / Triton Inference Server / Backend / Dynamic batching",
+      "compare": "优化一个模型不等于已经实现接口、模型管理等全部服务功能。",
+      "scenario": "示例：优化模型执行考虑TensorRT；统一对外提供多个模型的推理接口可考虑Triton。",
+      "sourceIds": [
+        "TRAIN",
+        "TRT",
+        "TRITON"
+      ],
+      "sourceId": "TRAIN",
+      "textStatus": "对照完成（学习用）",
+      "trainingPages": "146",
+      "extra": "当前官方入口也称Dynamo-Triton；保留教材名称并注明别名，不推断考试更名。",
+      "checkNotes": "",
+      "origin": "培训讲义组织＋所列官方资料核对；例子为教学示例，非用户现场事实。",
+      "webId": "card-inference-tools"
+    },
+    {
+      "id": "card-nim-ngc-enterprise",
+      "day": 4,
+      "title": "NIM、NGC与AI Enterprise",
+      "objectiveIds": [
+        "1.1",
+        "1.6",
+        "1.7"
+      ],
+      "minutes": 5,
+      "objective": "从部署、获取资源与企业支持分清产品。",
+      "conclusion": "NIM是微服务，NGC是目录入口，AI Enterprise是企业软件套件。",
+      "explanation": "NIM将优化推理能力包装为容器和接口。NGC帮助发现与取得优化容器、模型等资源。AI Enterprise整合软件、企业支持、安全与生命周期等生产要求。这三者可以一起使用。",
+      "terms": "NIM / NGC Catalog / NVIDIA AI Enterprise",
+      "compare": "NGC不是GPU或单一引擎；AI Enterprise不是替代Linux的操作系统；NIM不是训练一切模型的平台。",
+      "scenario": "示例：从目录取得资源，选择推理微服务，再评估生产支持需求；下载容器不等于已获得所有企业权益。",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE02",
+        "NIM",
+        "NGC",
+        "AIE"
+      ],
+      "sourceId": "TRAIN",
+      "textStatus": "对照完成（学习用）",
+      "trainingPages": "140、143",
+      "extra": "讲义“operating system”只作生态类比，不能当OS定义；不背未验证速度倍数。",
+      "checkNotes": "",
+      "origin": "培训讲义组织＋所列官方资料核对；例子为教学示例，非用户现场事实。",
+      "webId": "card-nim-ngc-enterprise"
+    },
+    {
+      "id": "card-solutions",
+      "day": 4,
+      "title": "按用途辨认NVIDIA方案",
+      "objectiveIds": [
+        "1.5",
+        "1.6"
+      ],
+      "minutes": 5,
+      "objective": "按任务辨产品，不背无限品牌表。",
+      "conclusion": "数据科学、语音、推荐、模型定制与医疗属于不同用例。",
+      "explanation": "本轮代表性对应：RAPIDS用于GPU数据科学；Riva用于语音AI；Merlin用于推荐；NeMo涵盖模型训练、定制、评估等生成式AI开发；讲义以Clara说明医疗与生命科学方案。",
+      "terms": "RAPIDS / Riva / Merlin / NeMo / Clara",
+      "compare": "行业标签不是排他关系；医疗也可使用通用模型和基础计算库。",
+      "scenario": "示例：语音转写与商品推荐选择不同方向工具，但可共享部分底层GPU计算能力。",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE02",
+        "RAPIDS",
+        "RIVA",
+        "MERLIN",
+        "AIE"
+      ],
+      "sourceId": "TRAIN",
+      "textStatus": "对照完成（学习用）",
+      "trainingPages": "140、146",
+      "extra": "1.6仍需后续DGX/HGX、网络/DPU等硬件方案补充，不称穷尽覆盖。",
+      "checkNotes": "",
+      "origin": "培训讲义组织＋所列官方资料核对；例子为教学示例，非用户现场事实。",
+      "webId": "card-solutions"
+    },
+    {
+      "id": "card-cluster-components",
+      "day": 5,
+      "title": "AI集群：GPU之外还需要什么",
+      "objectiveIds": [
+        "2.1",
+        "2.5",
+        "1.6"
+      ],
+      "minutes": 5,
+      "objective": "说清计算、存储、网络和管理怎样共同完成任务。",
+      "conclusion": "AI集群是一组计算节点与网络、存储、管理软件共同工作的系统。",
+      "explanation": "把集群看成多间协作厨房：GPU计算节点负责做菜，存储提供食材和保存成果，网络负责运输，管理节点与调度软件负责安排任务。CPU仍承担数据处理和控制；显存装模型和中间数据，系统内存、存储也不能忽略。训练数据读得太慢时，即使GPU算力很强，也会等待。DGX是NVIDIA的整套AI系统/平台家族；HGX是供合作伙伴集成系统的加速计算平台；BasePOD、SuperPOD则给出集群级组件组合。",
+      "terms": "Compute node（计算节点）/ Storage（存储）/ Fabric（互联网络）/ Control plane（控制平面）/ DGX / HGX",
+      "compare": "GPU是组件，服务器是节点，集群由多个节点及配套系统组成；DGX、HGX、SuperPOD不是三个GPU型号。",
+      "scenario": "示例：训练不断停下来等图片，先看数据读取、预处理与存储网络；不能仅凭GPU不忙就追加GPU。",
+      "trainingPages": "17、38、53、64–65、79",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE04",
+        "B2-BASEPOD",
+        "B2-HGX",
+        "B2-DGX"
+      ],
+      "sourceId": "TRAIN",
+      "extra": "选配置先列模型与中间数据所需显存、数据供给速度、节点通信及服务目标，再核对运行软件支持。",
+      "checkNotes": "保留职责关系；不采用笔记对DGX/HGX固定GPU/NIC数量或所有任务必选某型号的绝对表述。",
+      "textStatus": "资料对照完成；独立AI交叉复核（基础学习内容）",
+      "origin": "既有培训讲义与社区笔记组织，所列NVIDIA官方资料核对；例子和练习为原创，非用户现场事实。",
+      "webId": "cluster-components"
+    },
+    {
+      "id": "card-scale-up-out",
+      "day": 5,
+      "title": "扩展GPU：Scale Up与Scale Out",
+      "objectiveIds": [
+        "2.1",
+        "2.2",
+        "1.2"
+      ],
+      "minutes": 5,
+      "objective": "区分扩大紧密互联计算域和连接更多计算节点。",
+      "conclusion": "增加GPU必须连同通信、数据供给和程序并行方式一起考虑。",
+      "explanation": "Scale up常见于增强一个系统，或扩大紧密互联的GPU计算域；Scale out把多个系统用网络连成更大集群。今天的scale-up域也可能跨到机架规模，不能死记为单台机箱。数据并行通常让多个GPU处理不同数据并交流更新；模型并行把模型计算或参数分到多个GPU。加GPU能增加资源，但通信、串行部分和存储等待都可能吃掉收益。",
+      "terms": "Scale up / Scale out / Data parallelism（数据并行）/ Model parallelism（模型并行）/ Scaling efficiency（扩展效率）",
+      "compare": "扩容数量不等于等比例提速；多张卡的显存也不会让所有单GPU程序自动看到一块连续大显存。",
+      "scenario": "示例：模型在一张卡放不下，先核对可用并行策略、每卡显存和互联；若跨节点，再验证网络带宽/延迟及框架支持。",
+      "trainingPages": "64–65、79–82、90–99",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE04",
+        "B2-NVLINK",
+        "NCCL",
+        "B2-BASEPOD"
+      ],
+      "sourceId": "TRAIN",
+      "extra": "通过代表性任务比较运行时间、通信等待和资源利用率；先辨认瓶颈再决定扩容。",
+      "checkNotes": "用官方scale-up domain概念补充“scale up永远等于机内”；不许诺线性扩展。",
+      "textStatus": "资料对照完成；独立AI交叉复核（基础学习内容）",
+      "origin": "既有培训讲义与社区笔记组织，所列NVIDIA官方资料核对；例子和练习为原创，非用户现场事实。",
+      "webId": "scale-up-out"
+    },
+    {
+      "id": "card-power-cooling",
+      "day": 5,
+      "title": "供电与散热：能开机还不够",
+      "objectiveIds": [
+        "2.3",
+        "2.6"
+      ],
+      "minutes": 5,
+      "objective": "解释机架用电、热负载与冗余的关系。",
+      "conclusion": "电要送得进来，热要带得出去，还要按设计应对故障。",
+      "explanation": "kW是某时刻用电功率，kWh是持续一段时间累计的能量。规划不能只加GPU标称功耗，还要算CPU、内存、网卡、存储、交换机等，并按设备和设施要求留出运行/冗余能力。PDU给机架分配电力；UPS在供电异常时提供短时保障。冷却系统要匹配设备热负载；冷热通道分离是为了减少热风回到服务器进风口。",
+      "terms": "Power（功率，kW）/ Energy（能量，kWh）/ PDU / UPS / Heat load（热负载）/ Redundancy（冗余）",
+      "compare": "UPS不是制冷设备；冷却容量和电路容量需要分别核验。双电源也不自动代表上游两路供电真正独立。",
+      "scenario": "示例：机架还有空U位，但新增GPU服务器会超过已有供电或冷却能力，此时不能只因“放得下”就部署。",
+      "trainingPages": "18–21",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE05",
+        "B2-POWER",
+        "B2-COOLING"
+      ],
+      "sourceId": "TRAIN",
+      "extra": "风冷通过气流带走热量；液冷可通过冷板和冷却液回路带走部分热量。方法取决于系统设计和场地，不能用一个通用kW阈值替代设计核验。",
+      "checkNotes": "排除笔记“超过30kW必选某冷却方式”等固定口诀；本课是概念练习，不要求改电气或GPU功率设置。",
+      "textStatus": "资料对照完成；独立AI交叉复核（基础学习内容）",
+      "origin": "既有培训讲义与社区笔记组织，所列NVIDIA官方资料核对；例子和练习为原创，非用户现场事实。",
+      "webId": "power-cooling"
+    },
+    {
+      "id": "card-pue",
+      "day": 5,
+      "title": "PUE：设施能效不等于GPU效率",
+      "objectiveIds": [
+        "2.3"
+      ],
+      "minutes": 5,
+      "objective": "算出PUE并解释它没有告诉我们的事。",
+      "conclusion": "PUE＝同一统计范围和时段的设施总能耗÷IT设备能耗。",
+      "explanation": "总能耗包含IT设备以及制冷、配电损耗、照明等配套能耗。假设同一时段总用电120kWh、IT用电100kWh，PUE就是1.2，配套部分为20kWh。相同边界下，PUE越接近1，非IT开销相对越小。PUE为2.0表示总能耗是IT的两倍，非IT部分与IT相等。它不能说明模型质量、GPU忙不忙或每个任务用了多少电。",
+      "terms": "PUE（Power Usage Effectiveness）/ Total facility energy / IT equipment energy",
+      "compare": "PUE的分母是IT设备能耗，不是全部能耗；PUE不是百分比，也不是“GPU利用率”。",
+      "scenario": "示例：甲机房PUE低，乙机房任务少、总能耗也少；只看PUE不能断定甲的总电费更低。",
+      "trainingPages": "21",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE05",
+        "B2-PUE"
+      ],
+      "sourceId": "TRAIN",
+      "extra": "比较时先对齐统计时段、设备边界和负载条件。理想下界为1；实际还需关心有用计算产出和总能耗。",
+      "checkNotes": "纠正笔记PUE≥2时“非IT耗能是IT两倍”的错误；不采纳PUE>3就是造假的无依据判断。",
+      "textStatus": "资料对照完成；独立AI交叉复核（基础学习内容）",
+      "origin": "既有培训讲义与社区笔记组织，所列NVIDIA官方资料核对；例子和练习为原创，非用户现场事实。",
+      "webId": "pue"
+    },
+    {
+      "id": "card-facility",
+      "day": 5,
+      "title": "数据中心设施：空间、承重与布线",
+      "objectiveIds": [
+        "2.6",
+        "2.3",
+        "2.2"
+      ],
+      "minutes": 5,
+      "objective": "识别装得下之外的部署条件。",
+      "conclusion": "设施要同时容纳设备重量、供电、散热、布线和维修通道。",
+      "explanation": "U位只是机架高度单位；设备还受深度、导轨、重量和进出风方向限制。地板及搬运路线要承受设备、机柜和运输工具的总重量；电缆需要合适走线和长度，不能挡住通风或维修。未来扩展还要预留空间、配电与冷却能力。物理访问控制等设施要求也应与实际部署一起考虑。",
+      "terms": "Rack（机架）/ Rack unit（U）/ Floor loading（地板承重）/ Cable routing（走线）/ Clearance（维护净空）",
+      "compare": "空U位不等于可用部署容量；CPU/GPU的算力规格不能代替设施承载条件。",
+      "scenario": "示例：把机架拉远可以缓解局部散热压力，但会增加走线长度；应同时检查光模块/线缆的支持距离和布局。",
+      "trainingPages": "18–21",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE05",
+        "B2-FACILITY",
+        "B2-COOLING"
+      ],
+      "sourceId": "TRAIN",
+      "extra": "学习时只需要会列出核验维度；不背某一参考架构的承重、环境温湿度或消防参数作为普遍标准。",
+      "checkNotes": "官方设施文档为具体H100部署，提取原则并保留版本条件；不继承第三方无来源的消防/承重数值。",
+      "textStatus": "资料对照完成；独立AI交叉复核（基础学习内容）",
+      "origin": "既有培训讲义与社区笔记组织，所列NVIDIA官方资料核对；例子和练习为原创，非用户现场事实。",
+      "webId": "facility"
+    },
+    {
+      "id": "card-onprem-cloud",
+      "day": 5,
+      "title": "本地、云与混合：按约束选择",
+      "objectiveIds": [
+        "2.4",
+        "2.1"
+      ],
+      "minutes": 5,
+      "objective": "用利用率、数据控制和运维能力解释部署选择。",
+      "conclusion": "本地偏自主控制，云偏按需取得资源；没有永远更便宜的一方。",
+      "explanation": "On-premises是自建或自己负责的本地基础设施，需要承担采购、机房和运维。Cloud按服务使用GPU资源，通常降低一次性购置门槛，并提供扩缩能力，但可用容量、计费、数据传输和管理责任都要核对。Hybrid混合两者。数据在哪里、谁能访问、如何备份/加密是具体设计问题；选择本地不会自动安全合规，选择云也不等于放弃数据控制。",
+      "terms": "On-premises / Cloud / Hybrid / CapEx（资本支出）/ OpEx（运营支出）/ Data residency（数据驻留）",
+      "compare": "低入门成本不等于长期总成本最低；云的弹性也不等于任何时刻都有无限GPU。",
+      "scenario": "示例：两周试验且没有机房可先评估云；长时间稳定高利用率且有运维团队，可比较本地的完整成本。两者都要先核对数据要求。",
+      "trainingPages": "55–56、79",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE05",
+        "B2-DEPLOY",
+        "B2-CONTROL"
+      ],
+      "sourceId": "TRAIN",
+      "extra": "成本比较至少含设备/租用、供电散热、人员、闲置率和数据移动；这是判断框架，不提供采购报价或合规结论。",
+      "checkNotes": "已渲染讲义56页确认Cloud/On-Prem图文关系，避免PDF文本提取次序造成标签互换；归档官方部署页仅用于概念。",
+      "textStatus": "资料对照完成；独立AI交叉复核（基础学习内容）",
+      "origin": "既有培训讲义与社区笔记组织，所列NVIDIA官方资料核对；例子和练习为原创，非用户现场事实。",
+      "webId": "onprem-cloud"
+    },
+    {
+      "id": "card-network-traffic",
+      "day": 6,
+      "title": "AI网络先看流量：计算、存储、管理",
+      "objectiveIds": [
+        "2.7",
+        "2.5",
+        "1.2"
+      ],
+      "minutes": 5,
+      "objective": "判断一条流量在做什么，再判断性能和隔离需求。",
+      "conclusion": "GPU通信、数据读取、日常管理和带外恢复有不同目标。",
+      "explanation": "计算流量包含训练时的GPU协作与同步；存储流量读数据集、写检查点；带内管理通过运行中的系统路径提供登录、调度等服务。带外管理（OOB）经独立管理控制器和通路，在生产路径或主机系统异常时仍可能可达。大数据搬运看带宽，频繁同步看延迟，也需考虑拥塞、可靠性与隔离。",
+      "terms": "Compute fabric / Storage fabric / In-band management / Out-of-band（OOB）/ BMC / Checkpoint",
+      "compare": "这些是职责分类，不是每个集群必须有固定三张或四张物理网络；逻辑/物理划分取决于具体架构。",
+      "scenario": "示例：服务器OS登录失败但BMC和管理网络仍有电、可达，可通过OOB查看状态；整机失电或管理通路也坏时，OOB不保证可用。",
+      "trainingPages": "40–43",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE06",
+        "B2-NETWORK",
+        "B2-BASEPOD"
+      ],
+      "sourceId": "TRAIN",
+      "extra": "带外通路同样需要访问控制；它能帮助恢复，不会自动修好计算网络。",
+      "checkNotes": "不采用固定网络数dump口诀；本课不要求对真实设备执行重启或远程电源控制。",
+      "textStatus": "资料对照完成；独立AI交叉复核（基础学习内容）",
+      "origin": "既有培训讲义与社区笔记组织，所列NVIDIA官方资料核对；例子和练习为原创，非用户现场事实。",
+      "webId": "network-traffic"
+    },
+    {
+      "id": "card-ethernet-infiniband",
+      "day": 6,
+      "title": "Ethernet与InfiniBand：网络类型与管理",
+      "objectiveIds": [
+        "2.8",
+        "2.9",
+        "2.7"
+      ],
+      "minutes": 5,
+      "objective": "说明两类网络都能服务AI，以及IB为什么需要SM。",
+      "conclusion": "Ethernet和InfiniBand都是互联选择，场景和完整设计比单个速率数字重要。",
+      "explanation": "Ethernet以太网生态广，既用于企业网络，也能承载AI集群。InfiniBand面向高性能互联，提供RDMA等能力，重视低延迟和高带宽。Ethernet可通过RoCE使用RDMA，所以“以太网不支持RDMA”是错的。InfiniBand子网需要Subnet Manager（SM）发现和配置网络；OpenSM是一种实现，SM可以运行在合适主机或受支持交换机上。",
+      "terms": "Ethernet / InfiniBand（IB）/ HCA（Host Channel Adapter）/ NIC / Subnet Manager（SM）/ OpenSM",
+      "compare": "Ethernet不是TCP/IP的同义词；OpenSM不是训练框架，也不是所有以太网必须安装的组件。",
+      "scenario": "示例：组织已有成熟以太网运维，可评估RoCE方案；通信密集任务也可评估IB。应比较实际端到端表现、软件支持和运维，而不是只比较名义速率。",
+      "trainingPages": "47–50、93–94",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE06",
+        "B2-NETWORK",
+        "B2-ROCE",
+        "B2-SM"
+      ],
+      "sourceId": "TRAIN",
+      "extra": "网络吞吐可能受拥塞和拓扑限制；规格上的Gb/s不保证应用实际同等吞吐。",
+      "checkNotes": "补充SM职责与实现区别；不背讲义中旧速率上限或固定微秒延迟作为普遍事实。",
+      "textStatus": "资料对照完成；独立AI交叉复核（基础学习内容）",
+      "origin": "既有培训讲义与社区笔记组织，所列NVIDIA官方资料核对；例子和练习为原创，非用户现场事实。",
+      "webId": "ethernet-infiniband"
+    },
+    {
+      "id": "card-rdma-roce",
+      "day": 6,
+      "title": "RDMA与RoCE：少让CPU搬数据",
+      "objectiveIds": [
+        "2.8",
+        "2.9"
+      ],
+      "minutes": 5,
+      "objective": "区分数据传输能力和承载它的网络。",
+      "conclusion": "RDMA是远程内存访问能力；RoCE是在Ethernet上实现RDMA的一类协议。",
+      "explanation": "RDMA是一种由支持它的网络适配器执行的远程内存访问能力。例如应用先准备并授权一块可访问内存，再提交传输请求；适配器把数据经网络写入另一台机器已准备的目标内存，减少CPU逐段复制和部分协议处理。CPU仍参与准备、控制和应用其他工作。InfiniBand原生支持RDMA；RoCE把这类能力带到Ethernet，RoCEv2用UDP/IP封装，可跨IP子网路由。网卡、驱动、应用与网络仍须配合。",
+      "terms": "RDMA（Remote Direct Memory Access）/ RoCE（RDMA over Converged Ethernet）/ RoCEv2 / Hardware offload",
+      "compare": "CPU少搬数据不等于整个应用不用CPU；RoCE使用UDP封装也不意味着随便丢包都没有代价。",
+      "scenario": "示例：通信开销占用大量CPU且限制数据供给时，团队可评估RDMA；如果真正瓶颈是GPU计算，换协议未必有明显收益。",
+      "trainingPages": "49–50、97–99",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE06",
+        "B2-ROCE",
+        "B2-GDR"
+      ],
+      "sourceId": "TRAIN",
+      "extra": "RoCE部署需要按方案处理拥塞/流控和丢包影响，常见设计涉及PFC/ECN；本课不将某种设置写成跨所有产品版本的唯一规则。",
+      "checkNotes": "排除DMA固定CPU百分比和10–100倍加速；区分传输数据路径卸载与初始化/控制工作。",
+      "textStatus": "资料对照完成；独立AI交叉复核（基础学习内容）",
+      "origin": "既有培训讲义与社区笔记组织，所列NVIDIA官方资料核对；例子和练习为原创，非用户现场事实。",
+      "webId": "rdma-roce"
+    },
+    {
+      "id": "card-nvlink-nvswitch",
+      "day": 6,
+      "title": "NVLink与NVSwitch：GPU紧密协作",
+      "objectiveIds": [
+        "2.2",
+        "2.9"
+      ],
+      "minutes": 5,
+      "objective": "辨认GPU计算域互联与跨系统网络的关系。",
+      "conclusion": "NVLink提供GPU等处理器间高速互联，NVSwitch把多条NVLink组成交换网络。",
+      "explanation": "NVLink是支持的GPU等处理器之间的高速互联技术；NVSwitch是交换芯片，在相关平台中把多个NVLink端点连成交换网络。例如GPU A把计算结果送出，经NVSwitch转发给GPU B，供下一步计算使用。常见多GPU服务器在机内使用这类互联，也有机架级NVLink域；跨域扩展通常还需InfiniBand或Ethernet。范围要看具体拓扑，软件也须安排多GPU通信。",
+      "terms": "NVLink / NVSwitch / NVLink domain / Scale-up fabric / Scale-out fabric / PCIe",
+      "compare": "NVLink不是网卡型号；NVSwitch不是通用Ethernet交换机；NVLink也不是仅能连接两张GPU的桥。",
+      "scenario": "示例：一个大模型分布在紧密协作的GPU上，域内通信可利用NVLink/NVSwitch；再扩大到更多系统时，需要同时规划域间网络。",
+      "trainingPages": "90–95",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE06",
+        "B2-NVLINK",
+        "B2-HGX"
+      ],
+      "sourceId": "TRAIN",
+      "extra": "连接方式和支持范围按具体平台；不会因为互联更快就让任意应用自动把显存完全合并。",
+      "checkNotes": "不把“只能机内”当定义；不要求背每代NVLink/NVSwitch数量或宣传加速倍数。",
+      "textStatus": "资料对照完成；独立AI交叉复核（基础学习内容）",
+      "origin": "既有培训讲义与社区笔记组织，所列NVIDIA官方资料核对；例子和练习为原创，非用户现场事实。",
+      "webId": "nvlink-nvswitch"
+    },
+    {
+      "id": "card-bluefield-dpu",
+      "day": 6,
+      "title": "BlueField / DPU：基础设施服务卸载",
+      "objectiveIds": [
+        "2.10",
+        "1.6"
+      ],
+      "minutes": 5,
+      "objective": "说明DPU卸载什么，以及与GPU/BMC的区别。",
+      "conclusion": "DPU主要卸载、加速和隔离网络、存储、安全等基础设施工作。",
+      "explanation": "DPU（数据处理单元）是一类芯片，集成可编程处理器核心、网络接口和加速引擎，常用于带有处理能力的网卡。BlueField是NVIDIA的相关产品系列。在支持的软件与配置下，原由主机CPU处理的部分网络包解析、转发或加解密可交给DPU，主机CPU因而有机会腾出资源给应用。基础设施服务也可与租户工作负载分离，效果依具体部署而定。DOCA提供开发这些服务的软件能力。",
+      "terms": "DPU（Data Processing Unit）/ BlueField / Offload / Accelerate / Isolate / DOCA",
+      "compare": "GPU擅长并行计算；DPU偏基础设施数据处理；BMC偏设备管理。DPU不是通用备份系统，也不是空调控制器。",
+      "scenario": "示例：多租户服务器希望隔离并加速网络/安全服务，可评估DPU；不能仅因安装卡片就宣称已解决全部安全问题。",
+      "trainingPages": "34–35、67",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE06",
+        "B2-DPU",
+        "B2-BLUEFIELD"
+      ],
+      "sourceId": "TRAIN",
+      "extra": "普通NIC与DPU都涉及网络，但DPU强调可编程基础设施服务；BlueField不同模式/产品不能无条件等同。",
+      "checkNotes": "不将DOCA叫操作系统，不把隔离说成任何情况下主机绝不可能影响DPU，不许诺CPU开销完全消失。",
+      "textStatus": "资料对照完成；独立AI交叉复核（基础学习内容）",
+      "origin": "既有培训讲义与社区笔记组织，所列NVIDIA官方资料核对；例子和练习为原创，非用户现场事实。",
+      "webId": "bluefield-dpu"
+    },
+    {
+      "id": "card-gpudirect-paths",
+      "day": 6,
+      "title": "GPUDirect RDMA与Storage：看数据从哪里来",
+      "objectiveIds": [
+        "2.7",
+        "2.9",
+        "2.1"
+      ],
+      "minutes": 5,
+      "objective": "根据端点区分网络直达GPU和存储直达GPU的数据路径。",
+      "conclusion": "GPUDirect优化数据路径；RDMA关注网络设备与GPU，Storage关注存储与GPU。",
+      "explanation": "GPUDirect RDMA让支持的网卡等设备直接读写GPU内存，例如把“网卡→主机内存→GPU内存”的接收路径改为“网卡→GPU内存”。GPUDirect Storage（GDS）处理存储与GPU内存之间的读写：应用通过相应软件接口读取文件，支持的存储设备或网卡可把数据送到GPU内存，省去主机内存中转。GDS可涉及本地或远程存储，远程路径也可能使用RDMA；二者不是互斥的网络类型，CPU仍可承担控制工作。",
+      "terms": "GPUDirect RDMA / GPUDirect Storage（GDS）/ GPU memory / Bounce buffer（中转缓冲）/ NVMe",
+      "compare": "直达数据路径不等于整个系统不用CPU；GPU、设备拓扑、驱动、存储和应用仍需满足支持条件。",
+      "scenario": "示例：节点间网络交换训练数据，关注GPUDirect RDMA；数据集从兼容存储读入GPU，关注GDS，先确认实际路径是否启用。",
+      "trainingPages": "98–100",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE06",
+        "B2-GDR",
+        "B2-GDS"
+      ],
+      "sourceId": "TRAIN",
+      "extra": "GDS既可能涉及本地存储，也可能涉及远程存储；不能把讲义中远程RDMA示意图看成所有GDS的唯一结构。",
+      "checkNotes": "讲义100页远程网络图只作示意；不继承“任何存储都自动直达GPU”的泛化。",
+      "textStatus": "资料对照完成；独立AI交叉复核（基础学习内容）",
+      "origin": "既有培训讲义与社区笔记组织，所列NVIDIA官方资料核对；例子和练习为原创，非用户现场事实。",
+      "webId": "gpudirect-paths"
+    },
+    {
+      "id": "card-monitor-tools",
+      "day": 7,
+      "title": "nvidia-smi 与 DCGM：先看状态，再做持续管理",
+      "objectiveIds": [
+        "3.1",
+        "1.1",
+        "1.6"
+      ],
+      "minutes": 4,
+      "objective": "按需要选择快速查询、健康检查与监控集成。",
+      "conclusion": "nvidia-smi适合快速查询；DCGM提供GPU管理、健康检查与指标接口。",
+      "explanation": "nvidia-smi是NVIDIA System Management Interface命令行程序：提出查询后，通过管理接口取得GPU、显存、功耗、温度和进程等信息；它也有会改变配置的管理命令。DCGM是一组GPU管理软件与接口，可采集指标、检查健康和执行诊断；可在单节点运行，也可通过Exporter等集成成集群监控。两者有能力重叠，不是必须先运行nvidia-smi再运行DCGM。",
+      "terms": "nvidia-smi / NVIDIA System Management Interface / NVML / Data Center GPU Manager / dcgmi",
+      "compare": "监控工具不是作业调度器；一次查询不是历史趋势，也不是完整硬件诊断。",
+      "scenario": "示例：管理员先查看一台服务器的GPU状态；团队还需多节点趋势和健康事件时，设计DCGM与监控平台集成。",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE07",
+        "SMI",
+        "DCGM"
+      ],
+      "sourceId": "TRAIN",
+      "textStatus": "资料对照完成；独立AI交叉复核（基础学习内容）",
+      "trainingPages": "129–133、137",
+      "extra": "只辨认读数和工具职责；本课不要求修改功率上限、清错误计数或执行GPU reset。",
+      "checkNotes": "更正讲义“Manual only”：nvidia-smi支持循环查询；其全称不是Single System Management Interface。",
+      "origin": "本轮读取已有培训讲义和社区笔记；关键事实按所列官方资料核验。场景为原创教学示例，非用户现场事实。",
+      "webId": "card-monitor-tools"
+    },
+    {
+      "id": "card-gpu-util-memory",
+      "day": 7,
+      "title": "GPU有多忙、显存占多少、显存读写有多活跃",
+      "objectiveIds": [
+        "3.3"
+      ],
+      "minutes": 4,
+      "objective": "读懂几个常见指标的不同含义。",
+      "conclusion": "GPU利用率、显存容量占用和显存读写忙碌程度是不同问题。",
+      "explanation": "nvidia-smi的GPU利用率大致表示采样期间有内核执行的时间比例。显存已用量表示占了多少存储空间；utilization.memory描述采样期间显存读写活跃的时间比例。三者不能互换。100% GPU-Util也不能证明所有计算单元达到理论峰值；低利用率可能与任务阶段、CPU供给、存储、网络通信或任务太小有关，需要结合时间线检查。 特别区分：nvidia-smi的Memory利用率表示采样期内显存读写活动的时间比例，不是GB/s带宽读数，也不是容量占用百分比。",
+      "terms": "GPU utilization / memory.used / memory utilization / sampling interval / bottleneck",
+      "compare": "显存占用90%不等于GPU算力用到90%；DCGM PROF_SM_ACTIVE是跨SM平均的活动指标，不能直接等同nvidia-smi GPU-Util。",
+      "scenario": "示例：模型先占用20GB显存，然后等待数据文件。此时显存仍高、GPU-Util却低，两项读数可以同时正确。",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE07",
+        "SMI",
+        "DCGM"
+      ],
+      "sourceId": "TRAIN",
+      "textStatus": "资料对照完成；独立AI交叉复核（基础学习内容）",
+      "trainingPages": "131–134",
+      "extra": "N/A表示该字段不可用或不支持，不能当成0或健康。先确认型号、驱动和采样口径，再比较节点。",
+      "checkNotes": "排除社区笔记“90%以上即接近算力饱和”和GPU-Util=SM_ACTIVE的等同写法。 2026-09-25教学审核补充区分utilization.memory与带宽、容量；按官方Utilization定义核对。",
+      "origin": "本轮读取已有培训讲义和社区笔记；关键事实按所列官方资料核验。场景为原创教学示例，非用户现场事实。",
+      "webId": "card-gpu-util-memory"
+    },
+    {
+      "id": "card-gpu-health",
+      "day": 7,
+      "title": "温度、功耗、频率与错误：组合看证据",
+      "objectiveIds": [
+        "3.3",
+        "3.1"
+      ],
+      "minutes": 4,
+      "objective": "从异常读数提出可验证的检查方向。",
+      "conclusion": "异常指标提示要调查；单个温度或错误码通常不足以判定硬件根因。",
+      "explanation": "功耗用W、温度用℃、频率常用MHz；还要看功率限制、降频原因和任务表现。温度高且降频可能关联散热，但告警阈值应按型号和环境要求设定。ECC记录可纠正或不可纠正的存储错误，Xid是驱动报告的错误线索；Xid可能涉及应用、软件或硬件。保留时间、设备标识和上下文，比把一次读数直接写成“GPU坏了”更有帮助。",
+      "terms": "Power draw / Power limit / Temperature / Clock / Throttling / ECC / Xid",
+      "compare": "功率上限不是实际功耗；出现错误不等于已知根因；DCGM后台健康检查和主动诊断不是同一种操作。",
+      "scenario": "示例：一个任务突然变慢，先比对温度、频率、降频原因和错误时间线；若要跑主动诊断，另行安排适合的维护条件。",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE07",
+        "SMI",
+        "DCGM",
+        "XID"
+      ],
+      "sourceId": "TRAIN",
+      "textStatus": "资料对照完成；独立AI交叉复核（基础学习内容）",
+      "trainingPages": "130–134",
+      "extra": "看增长趋势和错误类型；不把历史累计错误数当成本次新故障，也不从“诊断通过”推出全部硬件永久正常。",
+      "checkNotes": "不采用统一85℃故障线；主动诊断可能占用或干扰GPU，不能冒充无影响监控。",
+      "origin": "本轮读取已有培训讲义和社区笔记；关键事实按所列官方资料核验。场景为原创教学示例，非用户现场事实。",
+      "webId": "card-gpu-health"
+    },
+    {
+      "id": "card-telemetry-pipeline",
+      "day": 7,
+      "title": "从GPU读数到趋势和告警",
+      "objectiveIds": [
+        "3.1",
+        "3.3",
+        "1.7"
+      ],
+      "minutes": 4,
+      "objective": "区分采集、保存、展示与告警。",
+      "conclusion": "Exporter输出指标，监控系统保存与展示；能看到图还要确认采样和设备对应。",
+      "explanation": "DCGM Exporter是把GPU指标提供给其他系统的软件程序，可作为独立容器或在Kubernetes GPU节点运行。在一种常见组合中，它通过DCGM取数并提供HTTP指标接口；Prometheus定期读取，将数值、时间和设备标签存成时间序列；Grafana查询这些记录来画趋势图。这个信息流不代表Exporter把所有历史主动推送给每个组件。告警还需要明确规则和通知链路，不同节点、GPU或MIG实例的标签要对应正确。",
+      "terms": "Telemetry / DCGM Exporter / Prometheus / Grafana / time series / label / alert",
+      "compare": "单张截图没有前后趋势；Exporter不是长久存储库；有仪表盘不代表通知和处置已经验证。",
+      "scenario": "示例：训练每天同一时段变慢，用同一任务时间段的GPU与存储/网络趋势寻找相关性，然后再验证原因。",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE07",
+        "EXPORTER"
+      ],
+      "sourceId": "TRAIN",
+      "textStatus": "资料对照完成；独立AI交叉复核（基础学习内容）",
+      "trainingPages": "133–137",
+      "extra": "指标采样缺失、字段不支持、时区错位或设备标签错配，都可能让看似漂亮的图得出错误结论。",
+      "checkNotes": "",
+      "origin": "本轮读取已有培训讲义和社区笔记；关键事实按所列官方资料核验。场景为原创教学示例，非用户现场事实。",
+      "webId": "card-telemetry-pipeline"
+    },
+    {
+      "id": "card-bmc-bcm",
+      "day": 7,
+      "title": "BMC、BCM与GPU工具各管什么",
+      "objectiveIds": [
+        "3.1",
+        "1.6"
+      ],
+      "minutes": 4,
+      "objective": "区分板级管理入口与集群管理软件。",
+      "conclusion": "BMC管服务器硬件入口；BCM管集群部署和运维；名称相像但职责不同。",
+      "explanation": "BMC是Baseboard Management Controller，可提供硬件传感器、远程控制台和电源控制等带外能力。在其管理网络和供电正常时，即使主机操作系统不可用，仍可能通过BMC查看状态。BCM是Base Command Manager，帮助部署、配置和管理集群节点，并集成监控及工作负载管理工具。nvidia-smi/DCGM则重点提供GPU相关观测与管理。",
+      "terms": "Baseboard Management Controller / Out-of-band / Base Command Manager / Provisioning",
+      "compare": "BMC不是BCM；带外管理不等于断电后仍能工作，也不是任何故障都能自动修复。",
+      "scenario": "示例：主机SSH无响应时可检查BMC控制台；批量给新节点准备软件镜像是集群部署问题，可由BCM等平台组织。",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE07",
+        "BMC",
+        "BCM"
+      ],
+      "sourceId": "TRAIN",
+      "textStatus": "资料对照完成；独立AI交叉复核（基础学习内容）",
+      "trainingPages": "134–137",
+      "extra": "学习只识别管理路径，不在生产设备执行开关机、固件更新或重新部署。",
+      "checkNotes": "不采纳“BMC是唯一恢复办法”“BCM必有额外付费”等无条件结论。",
+      "origin": "本轮读取已有培训讲义和社区笔记；关键事实按所列官方资料核验。场景为原创教学示例，非用户现场事实。",
+      "webId": "card-bmc-bcm"
+    },
+    {
+      "id": "card-job-scheduling",
+      "day": 8,
+      "title": "调度：把有限资源分给合适的任务",
+      "objectiveIds": [
+        "3.2",
+        "1.7"
+      ],
+      "minutes": 4,
+      "objective": "把排队和资源分配与监控分开。",
+      "conclusion": "调度决定哪个任务何时在哪些资源上运行；不会凭空增加GPU。",
+      "explanation": "把集群想成共享实验室：任务提出GPU、CPU、内存和时间等需求；调度器结合可用资源、优先级、配额和策略安排运行。有空闲GPU也不保证任意任务立即开始，例如任务需要更多GPU、指定型号或受队列规则约束。观测系统告诉你发生了什么，调度系统负责按规则安排工作。",
+      "terms": "Job scheduler / Resource allocation / Queue / Priority / Quota / Fair-share",
+      "compare": "资源申请不等于实际一直忙碌；队列等待不一定是硬件故障；公平不等于每个时刻平均分。",
+      "scenario": "示例：还有1张空闲GPU，但任务需要同节点4张。任务等待可能合理；要查看完整资源需求和队列原因。",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE08",
+        "SLURM",
+        "SLURM-GPU"
+      ],
+      "sourceId": "TRAIN",
+      "textStatus": "资料对照完成；独立AI交叉复核（基础学习内容）",
+      "trainingPages": "151–153",
+      "extra": "调度器也不能代替模型算法、CUDA运算库或硬件网络。",
+      "checkNotes": "",
+      "origin": "本轮读取已有培训讲义和社区笔记；关键事实按所列官方资料核验。场景为原创教学示例，非用户现场事实。",
+      "webId": "card-job-scheduling"
+    },
+    {
+      "id": "card-slurm-kubernetes",
+      "day": 8,
+      "title": "Slurm与Kubernetes：工作方式有侧重",
+      "objectiveIds": [
+        "3.2"
+      ],
+      "minutes": 4,
+      "objective": "根据批作业和服务管理需求理解两者。",
+      "conclusion": "Slurm侧重集群资源与作业队列；Kubernetes侧重容器化工作负载及生命周期。",
+      "explanation": "Slurm常用于批处理和多节点计算：提交任务、排队、分配资源、启动并跟踪任务。Kubernetes用Pod等对象组织容器化工作负载，支持调度、服务访问、扩缩和故障恢复，也能运行批处理任务。训练/推理是AI工作阶段，不是两套平台的硬性使用边界。实际选型还要看软件生态、运维和工作负载需求。",
+      "terms": "Slurm / sbatch / squeue / Kubernetes / Pod / Deployment / Service / Job",
+      "compare": "不能背“训练只用Slurm，推理只用Kubernetes”。Kubernetes具备调度能力，Slurm也能运行容器化任务。",
+      "scenario": "示例：实验室有许多限时批作业，适合先评估作业队列；持续提供容器化API则重点考虑服务与副本管理。",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE08",
+        "SLURM",
+        "K8S"
+      ],
+      "sourceId": "TRAIN",
+      "textStatus": "资料对照完成；独立AI交叉复核（基础学习内容）",
+      "trainingPages": "151–154",
+      "extra": "sbatch用于提交批作业，squeue查看队列；认识职责即可，本课不要求部署真实集群。",
+      "checkNotes": "将教材和笔记的训练/推理对比视为典型场景，不视为排他规则。",
+      "origin": "本轮读取已有培训讲义和社区笔记；关键事实按所列官方资料核验。场景为原创教学示例，非用户现场事实。",
+      "webId": "card-slurm-kubernetes"
+    },
+    {
+      "id": "card-k8s-gpu-operator",
+      "day": 8,
+      "title": "Kubernetes怎样看见GPU",
+      "objectiveIds": [
+        "3.2",
+        "1.1",
+        "1.6"
+      ],
+      "minutes": 4,
+      "objective": "区分GPU软件准备、资源发布和任务调度。",
+      "conclusion": "节点有GPU硬件，还需要合适的驱动、运行配置与资源发布机制。",
+      "explanation": "以常见Device Plugin方式为例：节点先具备可用驱动和容器GPU运行支持；设备插件是节点上的软件，向Kubernetes报告GPU资源；容器在Pod中声明GPU需求，再由调度器选择合适节点。NVIDIA GPU Operator是管理配套软件的控制器，按配置部署和维护驱动、Container Toolkit、设备插件、标签和DCGM监控等组件。设备插件是它可管理的组件之一；Operator本身不是根据所有应用的实时GPU利用率自动搬任务的通用调度器。",
+      "terms": "Device Plugin / nvidia.com/gpu / GPU Operator / Container Toolkit / kube-scheduler",
+      "compare": "有Docker或有GPU Operator名称都不能证明GPU应用已经可用；Operator管理组件，调度器安排工作负载。",
+      "scenario": "示例：节点有GPU但Pod找不到可用GPU资源，检查驱动、设备插件报告、资源请求和节点约束，比直接判GPU损坏更有依据。",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE08",
+        "K8S-GPU",
+        "OPERATOR"
+      ],
+      "sourceId": "TRAIN",
+      "textStatus": "资料对照完成；独立AI交叉复核（基础学习内容）",
+      "trainingPages": "154",
+      "extra": "当前生态也有其他资源分配机制；本课用官方Device Plugin教程讲基础流程，不宣称这是永久唯一方案。",
+      "checkNotes": "排除讲义“GPU Operator按GPU利用率自动重平衡工作负载”的泛化说法。",
+      "origin": "本轮读取已有培训讲义和社区笔记；关键事实按所列官方资料核验。场景为原创教学示例，非用户现场事实。",
+      "webId": "card-k8s-gpu-operator"
+    },
+    {
+      "id": "card-mig",
+      "day": 8,
+      "title": "MIG：把支持的GPU分成硬件实例",
+      "objectiveIds": [
+        "3.4"
+      ],
+      "minutes": 4,
+      "objective": "理解硬件隔离、容量约束与型号支持。",
+      "conclusion": "MIG在支持的GPU上划分计算和显存等资源；各实例仍受自身容量与支持条件限制。",
+      "explanation": "MIG是支持的GPU上的硬件资源划分能力：按资源规格（profile）创建实例，为实例分配一定的计算、显存及相关内存通路，再供工作负载使用。像把大房间隔成有各自资源的小房间，类比的是资源边界；实例没有因此变成带独立操作系统的虚拟机。它适合需要隔离、单个任务又用不满整卡的场景。实例数量、大小及组合依型号和profile；A100/H100部分支持型号最大7个，A30最大4个，不能把“7”当全部GPU的固定规则。",
+      "terms": "Multi-Instance GPU / GPU Instance / Compute Instance / MIG profile / Hardware isolation",
+      "compare": "MIG不是复制出多张满性能GPU；分成小实例后，每份可用显存也变小；普通时间切片不等于MIG硬件分区。",
+      "scenario": "示例：多个小模型各自所需显存都能放入对应profile，可考虑MIG；一个模型装不进单个实例，不能靠增加实例数自动解决。",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE08",
+        "MIG",
+        "MIG-SUPPORT",
+        "MIG-DEPLOY",
+        "MIG-START",
+        "L40S"
+      ],
+      "sourceId": "TRAIN",
+      "textStatus": "资料对照完成；独立AI交叉复核（基础学习内容）",
+      "trainingPages": "105、108–116",
+      "extra": "先查GPU支持表、驱动和应用通信要求。MIG可用于裸机、容器或支持的虚拟化配置；是否重置、P2P等限制随架构与版本变化。",
+      "checkNotes": "已核验讲义116页将L40S列入MIG支持为错误；官方L40S规格明确不支持MIG。",
+      "origin": "本轮读取已有培训讲义和社区笔记；关键事实按所列官方资料核验。场景为原创教学示例，非用户现场事实。",
+      "webId": "card-mig"
+    },
+    {
+      "id": "card-vgpu",
+      "day": 8,
+      "title": "vGPU、MIG与虚拟机如何配合",
+      "objectiveIds": [
+        "3.4"
+      ],
+      "minutes": 4,
+      "objective": "按虚拟机需求、隔离和兼容性选择共享方式。",
+      "conclusion": "vGPU向虚拟机提供GPU能力；可有时间切片或MIG支持的配置，并非与MIG互斥。",
+      "explanation": "虚拟机有各自的操作系统环境；vGPU是提供给虚拟机使用的虚拟GPU设备，背后由物理GPU和配套软件提供能力。宿主侧管理组件与虚拟机内来宾驱动需要配合，GPU、hypervisor、配置及授权也须匹配。时间切片让多个负载轮流使用GPU执行资源；支持的MIG配合vGPU方案则可先划分硬件实例，再把相应资源提供给虚拟机。虚拟化提高共享灵活性，但不保证每个负载都达到整卡性能或自动满足所有隔离要求。",
+      "terms": "Virtual GPU / Virtual machine / Hypervisor / Guest driver / Time slicing / MIG-backed vGPU / Pass-through",
+      "compare": "整卡直通、时间切片和MIG分区不是同一机制；MIG不是只能用于容器，vGPU也不只用于虚拟桌面。",
+      "scenario": "示例：企业要求在虚拟机内运行AI应用，先核对vGPU和平台支持；若还需要更可预测的计算/显存资源，再评估支持的MIG配置。",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE08",
+        "VGPU",
+        "MIG",
+        "MIG-DEPLOY"
+      ],
+      "sourceId": "TRAIN",
+      "textStatus": "资料对照完成；独立AI交叉复核（基础学习内容）",
+      "trainingPages": "108–116",
+      "extra": "核对显存profile、性能、互联功能、运维及授权；迁移等功能须逐版本验证。此课不规定必须虚拟化，也不承诺无开销。",
+      "checkNotes": "保留硬件分区与软件管理的区别；不沿用“vGPU永远64份/MIG-backed vGPU永远7份”的通用数值。",
+      "origin": "本轮读取已有培训讲义和社区笔记；关键事实按所列官方资料核验。场景为原创教学示例，非用户现场事实。",
+      "webId": "card-vgpu"
+    }
+  ],
+  "questions": [
+    {
+      "id": "Q-ORIGINAL-001",
+      "type": "single",
+      "domain": "AI 基础知识",
+      "cardId": "card-ai-ml-dl",
+      "stem": "下列哪项最准确地描述 AI、机器学习与深度学习的关系？",
+      "options": [
+        [
+          "a",
+          "AI 只等于深度学习，机器学习是无关领域。"
+        ],
+        [
+          "b",
+          "深度学习是机器学习的一类方法，机器学习用于实现部分 AI 能力。"
+        ],
+        [
+          "c",
+          "机器学习只在没有数据时使用。"
+        ],
+        [
+          "d",
+          "三者是同义词。"
+        ]
+      ],
+      "answer": [
+        "b"
+      ],
+      "explanation": "AI 是更广义的目标和应用范围。ML 从数据中学习；DL 是使用多层神经网络的 ML 方法。",
+      "analysis": {
+        "a": "把概念混为一谈。",
+        "b": "正确：范围由广到窄。",
+        "c": "相反，ML 的核心是从数据学习。",
+        "d": "三者有包含关系，并非同义词。"
+      },
+      "day": 1,
+      "objectiveIds": [
+        "1.3"
+      ],
+      "origin": "原项目已有原创题；非官方真题",
+      "reviewStatus": "本轮答案复核；旧ID/选项/答案不变",
+      "sourceIds": [
+        "TRAIN",
+        "ML",
+        "DL"
+      ],
+      "webId": "q1"
+    },
+    {
+      "id": "Q-ORIGINAL-002",
+      "type": "single",
+      "domain": "AI 基础知识",
+      "cardId": "card-training-inference",
+      "stem": "下列哪项最能区分训练与推理？",
+      "options": [
+        [
+          "a",
+          "训练会使用数据和反馈更新模型参数；推理用固定参数处理新输入。"
+        ],
+        [
+          "b",
+          "推理一定不使用 GPU。"
+        ],
+        [
+          "c",
+          "训练只做一次计算，不需要迭代。"
+        ],
+        [
+          "d",
+          "二者没有资源规划差异。"
+        ]
+      ],
+      "answer": [
+        "a"
+      ],
+      "explanation": "训练的目标是优化参数；推理用训练后的参数产出结果。二者都可能使用 GPU，但关注的性能指标不同。",
+      "analysis": {
+        "a": "正确：是否更新参数是核心区别。",
+        "b": "推理也常使用 GPU。",
+        "c": "训练通常需要多轮迭代。",
+        "d": "训练与推理关注点不同。"
+      },
+      "day": 2,
+      "objectiveIds": [
+        "1.2"
+      ],
+      "origin": "原项目已有原创题；非官方真题",
+      "reviewStatus": "本轮答案复核；旧ID/选项/答案不变",
+      "sourceIds": [
+        "TRAIN",
+        "BATCH"
+      ],
+      "webId": "q2"
+    },
+    {
+      "id": "Q-ORIGINAL-003",
+      "type": "multiple",
+      "domain": "AI 基础知识",
+      "cardId": "card-cpu-gpu",
+      "stem": "关于 CPU 和 GPU 的分工，哪些说法合理？（多选）",
+      "options": [
+        [
+          "a",
+          "GPU 的并行结构通常适合大量相似数值计算。"
+        ],
+        [
+          "b",
+          "CPU 可承担通用控制、协调和复杂逻辑。"
+        ],
+        [
+          "c",
+          "有 GPU 后，系统完全不需要 CPU。"
+        ],
+        [
+          "d",
+          "GPU 只能用于训练，绝不能用于推理。"
+        ]
+      ],
+      "answer": [
+        "a",
+        "b"
+      ],
+      "explanation": "CPU 和 GPU 通常协同工作。GPU 常用于并行计算，CPU 负责许多通用控制与系统任务；推理同样可使用 GPU。",
+      "analysis": {
+        "a": "正确：这是 GPU 的典型优势。",
+        "b": "正确：CPU 并未被替代。",
+        "c": "错误：完整系统仍需要 CPU 等组件。",
+        "d": "错误：GPU 也可加速推理。"
+      },
+      "day": 2,
+      "objectiveIds": [
+        "1.8"
+      ],
+      "origin": "原项目已有原创题；非官方真题",
+      "reviewStatus": "本轮答案复核；旧ID/选项/答案不变",
+      "sourceIds": [
+        "TRAIN",
+        "CUDA",
+        "PERF"
+      ],
+      "webId": "q3"
+    },
+    {
+      "id": "Q-ORIGINAL-004",
+      "type": "multiple",
+      "domain": "AI 基础知识",
+      "cardId": "card-training-inference",
+      "stem": "为在线推理服务规划资源时，哪些指标通常值得重点关注？（多选）",
+      "options": [
+        [
+          "a",
+          "响应延迟。"
+        ],
+        [
+          "b",
+          "可承载的并发或吞吐。"
+        ],
+        [
+          "c",
+          "模型服务的稳定性。"
+        ],
+        [
+          "d",
+          "训练时每一步的反向传播次数。"
+        ]
+      ],
+      "answer": [
+        "a",
+        "b",
+        "c"
+      ],
+      "explanation": "推理服务常关注响应时间、并发/吞吐、可用性与成本。反向传播是训练阶段用于更新参数的过程。",
+      "analysis": {
+        "a": "正确：用户和上游系统会感知延迟。",
+        "b": "正确：服务需要处理请求规模。",
+        "c": "正确：线上服务需要稳定。",
+        "d": "错误：这属于训练过程。"
+      },
+      "day": 2,
+      "objectiveIds": [
+        "1.2"
+      ],
+      "origin": "原项目已有原创题；非官方真题",
+      "reviewStatus": "本轮答案复核；旧ID/选项/答案不变",
+      "sourceIds": [
+        "TRAIN",
+        "BATCH"
+      ],
+      "webId": "q4"
+    },
+    {
+      "id": "Q-ORIGINAL-005",
+      "type": "single",
+      "domain": "AI 基础知识",
+      "cardId": "card-cpu-gpu",
+      "stem": "某团队需要让模型训练更快。以下哪种判断最稳妥？",
+      "options": [
+        [
+          "a",
+          "只要增加 GPU，任何工作负载都会按相同比例加速。"
+        ],
+        [
+          "b",
+          "应同时检查可并行的计算、数据供给、CPU 协调和目标吞吐。"
+        ],
+        [
+          "c",
+          "训练性能与数据读取无关。"
+        ],
+        [
+          "d",
+          "训练和推理的资源关注点完全相同。"
+        ]
+      ],
+      "answer": [
+        "b"
+      ],
+      "explanation": "GPU 是关键组件之一，但整体性能还受并行度、数据管线、CPU、存储与网络等影响。",
+      "analysis": {
+        "a": "错误：扩展效果取决于整体瓶颈。",
+        "b": "正确：以系统视角判断更可靠。",
+        "c": "错误：数据供给可能成为瓶颈。",
+        "d": "错误：两类工作负载的重点不同。"
+      },
+      "day": 2,
+      "objectiveIds": [
+        "1.8",
+        "2.1"
+      ],
+      "origin": "原项目已有原创题；非官方真题",
+      "reviewStatus": "本轮答案复核；旧ID/选项/答案不变",
+      "sourceIds": [
+        "TRAIN",
+        "CUDA",
+        "PERF"
+      ],
+      "webId": "q5"
+    },
+    {
+      "id": "Q-D01-001",
+      "day": 1,
+      "type": "single",
+      "domain": "AI 基础知识",
+      "cardId": "card-ai-ml-dl",
+      "objectiveIds": [
+        "1.3"
+      ],
+      "stem": "模型从历史运行与维修数据训练得到风险预测能力，但模型结构未知。最稳妥判断是？",
+      "options": [
+        [
+          "a",
+          "可认定ML，不能据此认定DL"
+        ],
+        [
+          "b",
+          "一定是DL"
+        ],
+        [
+          "c",
+          "一定是生成式AI"
+        ],
+        [
+          "d",
+          "只能是规则自动化"
+        ]
+      ],
+      "answer": [
+        "a"
+      ],
+      "explanation": "从数据学习符合ML；是否DL需要结构证据。",
+      "analysis": {
+        "a": "正确，边界到此为止。",
+        "b": "没有神经网络结构证据。",
+        "c": "风险预测不等同生成内容。",
+        "d": "题干明确由数据训练。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "ML",
+        "DL"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D01-001"
+    },
+    {
+      "id": "Q-D01-002",
+      "day": 1,
+      "type": "single",
+      "domain": "AI 基础知识",
+      "cardId": "card-ai-ml-dl",
+      "objectiveIds": [
+        "1.3"
+      ],
+      "stem": "哪项最直接支持采用深度学习？",
+      "options": [
+        [
+          "a",
+          "使用GPU"
+        ],
+        [
+          "b",
+          "有百万条数据"
+        ],
+        [
+          "c",
+          "采用多层神经网络"
+        ],
+        [
+          "d",
+          "输出风险分数"
+        ]
+      ],
+      "answer": [
+        "c"
+      ],
+      "explanation": "DL的定义由方法决定。",
+      "analysis": {
+        "a": "硬件不足以判断。",
+        "b": "数量不是定义。",
+        "c": "正确。",
+        "d": "其他ML方法也可以预测。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "ML",
+        "DL"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D01-002"
+    },
+    {
+      "id": "Q-D01-003",
+      "day": 1,
+      "type": "single",
+      "domain": "AI 基础知识",
+      "cardId": "card-genai-stage",
+      "objectiveIds": [
+        "1.3",
+        "1.2"
+      ],
+      "stem": "模型不更新参数，根据维修记录生成说明，应如何描述？",
+      "options": [
+        [
+          "a",
+          "只有训练"
+        ],
+        [
+          "b",
+          "生成式应用的一次推理"
+        ],
+        [
+          "c",
+          "生成就不是推理"
+        ],
+        [
+          "d",
+          "只有分类才是推理"
+        ]
+      ],
+      "answer": [
+        "b"
+      ],
+      "explanation": "能力与阶段是不同维度。",
+      "analysis": {
+        "a": "未进行参数学习。",
+        "b": "正确。",
+        "c": "两者不互斥。",
+        "d": "生成也可以是推理。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "GEN"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D01-003"
+    },
+    {
+      "id": "Q-D01-004",
+      "day": 1,
+      "type": "multiple",
+      "domain": "AI 基础知识",
+      "cardId": "card-genai-stage",
+      "objectiveIds": [
+        "1.3",
+        "1.2"
+      ],
+      "stem": "关于训练和推理，选择两项。",
+      "options": [
+        [
+          "a",
+          "训练通常学习或更新参数"
+        ],
+        [
+          "b",
+          "每次新输入都必然训练"
+        ],
+        [
+          "c",
+          "不更新参数用现有模型处理输入可以是推理"
+        ],
+        [
+          "d",
+          "推理只能生成文字"
+        ]
+      ],
+      "answer": [
+        "a",
+        "c"
+      ],
+      "explanation": "本课以参数学习与使用区分两者。",
+      "analysis": {
+        "a": "正确。",
+        "b": "新输入也可以只用于推理。",
+        "c": "正确。",
+        "d": "分类识别也可以推理。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "GEN"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D01-004"
+    },
+    {
+      "id": "Q-D01-005",
+      "day": 1,
+      "type": "single",
+      "domain": "AI 基础知识",
+      "cardId": "card-ai-drivers",
+      "objectiveIds": [
+        "1.4"
+      ],
+      "stem": "哪组因素对应本课AI发展的解释？",
+      "options": [
+        [
+          "a",
+          "只有芯片数量"
+        ],
+        [
+          "b",
+          "只有社交热度"
+        ],
+        [
+          "c",
+          "只要数据多"
+        ],
+        [
+          "d",
+          "数据、算法方法与计算能力"
+        ]
+      ],
+      "answer": [
+        "d"
+      ],
+      "explanation": "三方面相互配合。",
+      "analysis": {
+        "a": "缺少数据和方法。",
+        "b": "不对应本课因素。",
+        "c": "忽略质量和资源。",
+        "d": "正确。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "ML"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D01-005"
+    },
+    {
+      "id": "Q-D01-006",
+      "day": 1,
+      "type": "single",
+      "domain": "AI 基础知识",
+      "cardId": "card-ai-drivers",
+      "objectiveIds": [
+        "1.4"
+      ],
+      "stem": "标签混乱的训练资料换上更快GPU，合理判断是？",
+      "options": [
+        [
+          "a",
+          "必然更准确"
+        ],
+        [
+          "b",
+          "计算自动修复全部标签"
+        ],
+        [
+          "c",
+          "仍需处理质量并验证结果"
+        ],
+        [
+          "d",
+          "不用检查资料"
+        ]
+      ],
+      "answer": [
+        "c"
+      ],
+      "explanation": "计算速度不能自动纠正输入标签。",
+      "analysis": {
+        "a": "速度不保证准确。",
+        "b": "硬件不等于质量审核。",
+        "c": "正确。",
+        "d": "数据会影响模型。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "ML"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D01-006"
+    },
+    {
+      "id": "Q-D01-007",
+      "day": 1,
+      "type": "single",
+      "domain": "AI 基础知识",
+      "cardId": "card-ai-use-cases",
+      "objectiveIds": [
+        "1.5"
+      ],
+      "stem": "哪项最符合生成式AI？",
+      "options": [
+        [
+          "a",
+          "统计工单数"
+        ],
+        [
+          "b",
+          "按编号查原文"
+        ],
+        [
+          "c",
+          "按截止日期提醒"
+        ],
+        [
+          "d",
+          "由模型生成新的交接草稿"
+        ]
+      ],
+      "answer": [
+        "d"
+      ],
+      "explanation": "根据输入生成内容是这里的关键。",
+      "analysis": {
+        "a": "统计不一定生成式。",
+        "b": "检索不等同生成。",
+        "c": "规则提醒不一定用AI。",
+        "d": "正确。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "ML",
+        "GEN"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D01-007"
+    },
+    {
+      "id": "Q-D01-008",
+      "day": 1,
+      "type": "single",
+      "domain": "AI 基础知识",
+      "cardId": "card-ai-use-cases",
+      "objectiveIds": [
+        "1.5"
+      ],
+      "stem": "同一零售平台做推荐和生成文案，应如何理解？",
+      "options": [
+        [
+          "a",
+          "同一行业任务完全相同"
+        ],
+        [
+          "b",
+          "分别看输入输出和目标"
+        ],
+        [
+          "c",
+          "必须同一个模型"
+        ],
+        [
+          "d",
+          "只有文案才是AI"
+        ]
+      ],
+      "answer": [
+        "b"
+      ],
+      "explanation": "行业可以包含不同任务。",
+      "analysis": {
+        "a": "目标不同。",
+        "b": "正确。",
+        "c": "没有这种必然。",
+        "d": "推荐也可能属于AI。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "ML",
+        "GEN"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D01-008"
+    },
+    {
+      "id": "Q-D01-009",
+      "day": 1,
+      "type": "single",
+      "domain": "AI 基础知识",
+      "cardId": "card-ai-ml-dl",
+      "objectiveIds": [
+        "1.3"
+      ],
+      "stem": "单看“超时两天就提醒”，能确认什么？",
+      "options": [
+        [
+          "a",
+          "用了深度学习"
+        ],
+        [
+          "b",
+          "已进行训练"
+        ],
+        [
+          "c",
+          "至少有规则自动化，不能单凭此认定ML"
+        ],
+        [
+          "d",
+          "必须用GPU"
+        ]
+      ],
+      "answer": [
+        "c"
+      ],
+      "explanation": "自动运行不等于从数据学习。",
+      "analysis": {
+        "a": "没有模型证据。",
+        "b": "不是训练证据。",
+        "c": "正确。",
+        "d": "没有硬件必然。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "ML",
+        "DL"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D01-009"
+    },
+    {
+      "id": "Q-D02-001",
+      "day": 2,
+      "type": "single",
+      "domain": "AI 基础知识",
+      "cardId": "card-memory-compute",
+      "objectiveIds": [
+        "1.2",
+        "1.8",
+        "2.1"
+      ],
+      "stem": "当前方式需40GB显存、可用32GB。哪项不能单独保证装得下？",
+      "options": [
+        [
+          "a",
+          "降低实际占用"
+        ],
+        [
+          "b",
+          "只提高算力但仍32GB"
+        ],
+        [
+          "c",
+          "增加足够可用显存"
+        ],
+        [
+          "d",
+          "已验证有效的节省显存方案"
+        ]
+      ],
+      "answer": [
+        "b"
+      ],
+      "explanation": "算力与容量是两种指标。",
+      "analysis": {
+        "a": "针对需求处理。",
+        "b": "正确，容量没变。",
+        "c": "针对容量。",
+        "d": "题干已限定有效。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "PERF"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D02-001"
+    },
+    {
+      "id": "Q-D02-002",
+      "day": 2,
+      "type": "single",
+      "domain": "AI 基础知识",
+      "cardId": "card-latency-throughput",
+      "objectiveIds": [
+        "1.2"
+      ],
+      "stem": "一条告警提交后等很久才收到结果，直接描述的是？",
+      "options": [
+        [
+          "a",
+          "显存容量"
+        ],
+        [
+          "b",
+          "参数数目"
+        ],
+        [
+          "c",
+          "响应延迟"
+        ],
+        [
+          "d",
+          "每小时总产量"
+        ]
+      ],
+      "answer": [
+        "c"
+      ],
+      "explanation": "关心单个请求等待。",
+      "analysis": {
+        "a": "非容量描述。",
+        "b": "无该信息。",
+        "c": "正确。",
+        "d": "后者偏吞吐。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "BATCH"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D02-002"
+    },
+    {
+      "id": "Q-D02-003",
+      "day": 2,
+      "type": "single",
+      "domain": "AI 基础知识",
+      "cardId": "card-training-inference",
+      "objectiveIds": [
+        "1.2",
+        "2.1"
+      ],
+      "stem": "同模型相近条件下，典型训练更占显存的原因是？",
+      "options": [
+        [
+          "a",
+          "全部数据必须一次装入"
+        ],
+        [
+          "b",
+          "推理不用显存"
+        ],
+        [
+          "c",
+          "训练不用GPU"
+        ],
+        [
+          "d",
+          "梯度、优化器状态等额外记录"
+        ]
+      ],
+      "answer": [
+        "d"
+      ],
+      "explanation": "训练涉及参数更新记录。",
+      "analysis": {
+        "a": "不必全数据同时入显存。",
+        "b": "推理也需内存。",
+        "c": "训练可以用GPU。",
+        "d": "正确。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "BATCH"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D02-003"
+    },
+    {
+      "id": "Q-D02-004",
+      "day": 2,
+      "type": "single",
+      "domain": "AI 基础知识",
+      "cardId": "card-gpu-units",
+      "objectiveIds": [
+        "1.8"
+      ],
+      "stem": "Tensor Core特别擅长什么？",
+      "options": [
+        [
+          "a",
+          "矩阵乘加"
+        ],
+        [
+          "b",
+          "权限审批"
+        ],
+        [
+          "c",
+          "长期存储原文"
+        ],
+        [
+          "d",
+          "替代所有OS任务"
+        ]
+      ],
+      "answer": [
+        "a"
+      ],
+      "explanation": "它加速特定矩阵类操作。",
+      "analysis": {
+        "a": "正确。",
+        "b": "不属其职责。",
+        "c": "非存储介质。",
+        "d": "不替代CPU和OS。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "PERF"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D02-004"
+    },
+    {
+      "id": "Q-D02-005",
+      "day": 2,
+      "type": "single",
+      "domain": "AI 基础知识",
+      "cardId": "card-memory-compute",
+      "objectiveIds": [
+        "1.2",
+        "1.8",
+        "2.1"
+      ],
+      "stem": "数据放得下，主要等显存数据读写。最应考虑什么？",
+      "options": [
+        [
+          "a",
+          "容量不足"
+        ],
+        [
+          "b",
+          "账号不足"
+        ],
+        [
+          "c",
+          "显存带宽限制"
+        ],
+        [
+          "d",
+          "推理不能用GPU"
+        ]
+      ],
+      "answer": [
+        "c"
+      ],
+      "explanation": "题干给定容量够而读写供给慢。",
+      "analysis": {
+        "a": "与前提不符。",
+        "b": "无关。",
+        "c": "正确。",
+        "d": "推理可以用GPU。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "PERF"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D02-005"
+    },
+    {
+      "id": "Q-D02-006",
+      "day": 2,
+      "type": "single",
+      "domain": "AI 基础知识",
+      "cardId": "card-latency-throughput",
+      "objectiveIds": [
+        "1.2"
+      ],
+      "stem": "批处理后每秒总量提高，部分请求等更久。合理解释是？",
+      "options": [
+        [
+          "a",
+          "不可能同时发生"
+        ],
+        [
+          "b",
+          "吞吐提高但凑批/排队可能增大延迟"
+        ],
+        [
+          "c",
+          "吞吐与延迟是同一数"
+        ],
+        [
+          "d",
+          "说明正在训练"
+        ]
+      ],
+      "answer": [
+        "b"
+      ],
+      "explanation": "总体产量和单条等待分别衡量。",
+      "analysis": {
+        "a": "两种指标可以出现此变化。",
+        "b": "正确。",
+        "c": "维度不同。",
+        "d": "不能由此判断训练。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "BATCH"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D02-006"
+    },
+    {
+      "id": "Q-D03-001",
+      "day": 3,
+      "type": "single",
+      "domain": "AI 基础知识",
+      "cardId": "card-stack-driver",
+      "objectiveIds": [
+        "1.1",
+        "1.7"
+      ],
+      "stem": "软件栈中，哪个组件直接支持操作系统与GPU设备交互？",
+      "options": [
+        [
+          "a",
+          "NGC资源目录"
+        ],
+        [
+          "b",
+          "GPU驱动"
+        ],
+        [
+          "c",
+          "模型训练框架"
+        ],
+        [
+          "d",
+          "模型权重"
+        ]
+      ],
+      "answer": [
+        "b"
+      ],
+      "explanation": "驱动是系统与设备交互的基础组件。",
+      "analysis": {
+        "a": "NGC提供资源目录。",
+        "b": "正确：驱动连接操作系统与硬件。",
+        "c": "框架通过下层组件组织计算。",
+        "d": "权重是模型参数。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "CUDA",
+        "CONTAINER-INSTALL"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D03-001"
+    },
+    {
+      "id": "Q-D03-002",
+      "day": 3,
+      "type": "single",
+      "domain": "AI 基础知识",
+      "cardId": "card-cuda-toolkit",
+      "objectiveIds": [
+        "1.1"
+      ],
+      "stem": "CUDA最准确属于哪类？",
+      "options": [
+        [
+          "a",
+          "GPU集群监控平台"
+        ],
+        [
+          "b",
+          "模型服务调度器"
+        ],
+        [
+          "c",
+          "并行计算平台与编程模型"
+        ],
+        [
+          "d",
+          "多GPU集合通信库"
+        ]
+      ],
+      "answer": [
+        "c"
+      ],
+      "explanation": "CUDA服务于表达和执行并行计算。",
+      "analysis": {
+        "a": "监控不是CUDA的主要定义。",
+        "b": "不能把CUDA等同服务调度。",
+        "c": "正确。",
+        "d": "这一职责更直接对应NCCL。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "CUDA",
+        "COMPAT"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D03-002"
+    },
+    {
+      "id": "Q-D03-003",
+      "day": 3,
+      "type": "single",
+      "domain": "AI 基础知识",
+      "cardId": "card-cuda-libraries",
+      "objectiveIds": [
+        "1.1"
+      ],
+      "stem": "cuDNN是什么？",
+      "options": [
+        [
+          "a",
+          "GPU加速的深度神经网络基础运算库"
+        ],
+        [
+          "b",
+          "数据中心管理用户界面"
+        ],
+        [
+          "c",
+          "容器编排集群"
+        ],
+        [
+          "d",
+          "多GPU集合通信库"
+        ]
+      ],
+      "answer": [
+        "a"
+      ],
+      "explanation": "cuDNN不是管理界面，不能沿用第三方错配答案。",
+      "analysis": {
+        "a": "正确：不是管理界面。",
+        "b": "这是原题库中需要纠正的错配选项。",
+        "c": "不是容器编排器。",
+        "d": "NCCL主要处理集合通信。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE02",
+        "CUDNN",
+        "CUBLAS",
+        "NCCL"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D03-003"
+    },
+    {
+      "id": "Q-D03-004",
+      "day": 3,
+      "type": "single",
+      "domain": "AI 基础知识",
+      "cardId": "card-cuda-libraries",
+      "objectiveIds": [
+        "1.1"
+      ],
+      "stem": "GPU基础线性代数运算最直接关联哪个？",
+      "options": [
+        [
+          "a",
+          "NGC"
+        ],
+        [
+          "b",
+          "DCGM"
+        ],
+        [
+          "c",
+          "cuBLAS"
+        ],
+        [
+          "d",
+          "BMC"
+        ]
+      ],
+      "answer": [
+        "c"
+      ],
+      "explanation": "cuBLAS提供线性代数能力。",
+      "analysis": {
+        "a": "资源目录。",
+        "b": "GPU管理。",
+        "c": "正确。",
+        "d": "带外管理组件。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE02",
+        "CUDNN",
+        "CUBLAS",
+        "NCCL"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D03-004"
+    },
+    {
+      "id": "Q-D03-005",
+      "day": 3,
+      "type": "single",
+      "domain": "AI 基础知识",
+      "cardId": "card-cuda-libraries",
+      "objectiveIds": [
+        "1.1"
+      ],
+      "stem": "训练任务需要在多个GPU之间执行All-reduce等集合通信，最直接用到哪个？",
+      "options": [
+        [
+          "a",
+          "cuBLAS"
+        ],
+        [
+          "b",
+          "NCCL"
+        ],
+        [
+          "c",
+          "cuDNN"
+        ],
+        [
+          "d",
+          "TensorRT"
+        ]
+      ],
+      "answer": [
+        "b"
+      ],
+      "explanation": "NCCL提供GPU间通信操作。",
+      "analysis": {
+        "a": "线性代数运算库。",
+        "b": "正确：集合通信软件库。",
+        "c": "神经网络基础运算库。",
+        "d": "推理优化与运行。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE02",
+        "CUDNN",
+        "CUBLAS",
+        "NCCL"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D03-005"
+    },
+    {
+      "id": "Q-D03-006",
+      "day": 3,
+      "type": "multiple",
+      "domain": "AI 基础知识",
+      "cardId": "card-cuda-libraries",
+      "objectiveIds": [
+        "1.1"
+      ],
+      "stem": "哪两组对应正确？",
+      "options": [
+        [
+          "a",
+          "NCCL—通信软件库"
+        ],
+        [
+          "b",
+          "cuDNN—管理界面"
+        ],
+        [
+          "c",
+          "NVLink—互联技术"
+        ],
+        [
+          "d",
+          "CUDA Toolkit—GPU芯片"
+        ]
+      ],
+      "answer": [
+        "a",
+        "c"
+      ],
+      "explanation": "区分软件库、互联与开发工具。",
+      "analysis": {
+        "a": "正确。",
+        "b": "cuDNN是计算库。",
+        "c": "正确。",
+        "d": "Toolkit是软件。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE02",
+        "CUDNN",
+        "CUBLAS",
+        "NCCL"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D03-006"
+    },
+    {
+      "id": "Q-D03-007",
+      "day": 3,
+      "type": "single",
+      "domain": "AI 基础知识",
+      "cardId": "card-gpu-containers",
+      "objectiveIds": [
+        "1.1",
+        "1.7"
+      ],
+      "stem": "GPU容器的正确理解是？",
+      "options": [
+        [
+          "a",
+          "镜像内有真实GPU"
+        ],
+        [
+          "b",
+          "容器消除兼容问题"
+        ],
+        [
+          "c",
+          "装Docker就保证任意容器看到GPU"
+        ],
+        [
+          "d",
+          "仍需兼容主机驱动及运行配置"
+        ]
+      ],
+      "answer": [
+        "d"
+      ],
+      "explanation": "打包依赖不能替代硬件与驱动。",
+      "analysis": {
+        "a": "硬件不在镜像内。",
+        "b": "兼容仍重要。",
+        "c": "设备暴露需配置。",
+        "d": "正确。"
+      },
+      "sourceIds": [
+        "NOTE02",
+        "CONTAINER",
+        "CONTAINER-INSTALL"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D03-007"
+    },
+    {
+      "id": "Q-D03-008",
+      "day": 3,
+      "type": "single",
+      "domain": "AI 基础知识",
+      "cardId": "card-gpu-containers",
+      "objectiveIds": [
+        "1.1",
+        "1.7"
+      ],
+      "stem": "同一主机在主机端能使用GPU，但某个容器不能。优先核查哪项最有依据？",
+      "options": [
+        [
+          "a",
+          "直接判定GPU硬件损坏"
+        ],
+        [
+          "b",
+          "容器GPU访问配置、镜像依赖与驱动兼容性"
+        ],
+        [
+          "c",
+          "直接增加模型训练轮次"
+        ],
+        [
+          "d",
+          "把所有容器统一改成更大批次"
+        ]
+      ],
+      "answer": [
+        "b"
+      ],
+      "explanation": "这是分层线索，不直接决定唯一原因。",
+      "analysis": {
+        "a": "现有信息不足以判定硬件损坏。",
+        "b": "正确：先检查容器与主机之间的访问/兼容条件。",
+        "c": "训练轮次不能解决设备可见性。",
+        "d": "批次不解决容器设备访问。"
+      },
+      "sourceIds": [
+        "NOTE02",
+        "CONTAINER",
+        "CONTAINER-INSTALL"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D03-008"
+    },
+    {
+      "id": "Q-D03-009",
+      "day": 3,
+      "type": "single",
+      "domain": "AI 基础知识",
+      "cardId": "card-compatibility",
+      "objectiveIds": [
+        "1.1",
+        "1.7"
+      ],
+      "stem": "上线前选择驱动、CUDA软件和应用组合，最合理的原则是？",
+      "options": [
+        [
+          "a",
+          "所有组件都升到最新即视为兼容"
+        ],
+        [
+          "b",
+          "所有组件版本数字相同即视为兼容"
+        ],
+        [
+          "c",
+          "按支持矩阵核对GPU、OS、驱动与应用要求"
+        ],
+        [
+          "d",
+          "镜像已经打包便无需核查主机"
+        ]
+      ],
+      "answer": [
+        "c"
+      ],
+      "explanation": "兼容性由支持条件决定。",
+      "analysis": {
+        "a": "最新不保证相互支持。",
+        "b": "不同组件版本号不必一致。",
+        "c": "正确。",
+        "d": "镜像不消除主机依赖。"
+      },
+      "sourceIds": [
+        "CUDA",
+        "COMPAT",
+        "CONTAINER-INSTALL"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D03-009"
+    },
+    {
+      "id": "Q-D03-010",
+      "day": 3,
+      "type": "single",
+      "domain": "AI 基础知识",
+      "cardId": "card-cuda-toolkit",
+      "objectiveIds": [
+        "1.1"
+      ],
+      "stem": "编译CUDA程序与运行预构建应用有什么区别？",
+      "options": [
+        [
+          "a",
+          "工具依赖一定完全相同"
+        ],
+        [
+          "b",
+          "运行必需源代码"
+        ],
+        [
+          "c",
+          "装驱动就是装齐开发工具"
+        ],
+        [
+          "d",
+          "应分别核对编译工具与运行依赖"
+        ]
+      ],
+      "answer": [
+        "d"
+      ],
+      "explanation": "开发和运行依赖不同。",
+      "analysis": {
+        "a": "未必。",
+        "b": "许多产物已构建。",
+        "c": "驱动职责不同。",
+        "d": "正确。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "CUDA",
+        "COMPAT"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D03-010"
+    },
+    {
+      "id": "Q-D04-001",
+      "day": 4,
+      "type": "single",
+      "domain": "AI 基础知识",
+      "cardId": "card-ai-lifecycle",
+      "objectiveIds": [
+        "1.7"
+      ],
+      "stem": "按讲义的入门AI工作流，下列典型顺序最合理的是？",
+      "options": [
+        [
+          "a",
+          "数据准备→模型训练→推理优化→部署服务"
+        ],
+        [
+          "b",
+          "模型训练→数据准备→部署服务→推理优化"
+        ],
+        [
+          "c",
+          "数据准备→部署服务→模型训练→推理优化"
+        ],
+        [
+          "d",
+          "推理优化→数据准备→部署服务→模型训练"
+        ]
+      ],
+      "answer": [
+        "a"
+      ],
+      "explanation": "四步按任务目标组织，实际项目可以迭代。",
+      "analysis": {
+        "a": "正确：实际流程可迭代，但这是本课顺序。",
+        "b": "训练依赖准备好的数据。",
+        "c": "服务上线不应替代训练与验证。",
+        "d": "优化通常针对已有模型。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "RAPIDS",
+        "TRT",
+        "TRITON"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D04-001"
+    },
+    {
+      "id": "Q-D04-002",
+      "day": 4,
+      "type": "single",
+      "domain": "AI 基础知识",
+      "cardId": "card-inference-tools",
+      "objectiveIds": [
+        "1.1",
+        "1.6",
+        "1.7"
+      ],
+      "stem": "已有一个训练好的模型，目标是优化其推理执行，首先关注哪个组件？",
+      "options": [
+        [
+          "a",
+          "NGC"
+        ],
+        [
+          "b",
+          "TensorRT"
+        ],
+        [
+          "c",
+          "NCCL"
+        ],
+        [
+          "d",
+          "DCGM"
+        ]
+      ],
+      "answer": [
+        "b"
+      ],
+      "explanation": "TensorRT面向推理优化与运行。",
+      "analysis": {
+        "a": "资源目录不直接等于推理优化器。",
+        "b": "正确。",
+        "c": "集合通信库。",
+        "d": "GPU监控/管理。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "TRT",
+        "TRITON"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D04-002"
+    },
+    {
+      "id": "Q-D04-003",
+      "day": 4,
+      "type": "single",
+      "domain": "AI 基础知识",
+      "cardId": "card-inference-tools",
+      "objectiveIds": [
+        "1.1",
+        "1.6",
+        "1.7"
+      ],
+      "stem": "已有多种框架导出的模型，想统一接收推理请求、组织批处理和并发执行，更直接对应哪个？",
+      "options": [
+        [
+          "a",
+          "cuBLAS"
+        ],
+        [
+          "b",
+          "CUDA Toolkit"
+        ],
+        [
+          "c",
+          "Triton Inference Server"
+        ],
+        [
+          "d",
+          "NCCL"
+        ]
+      ],
+      "answer": [
+        "c"
+      ],
+      "explanation": "Triton可组织模型服务并使用不同后端。",
+      "analysis": {
+        "a": "基础计算库不包办模型服务。",
+        "b": "开发工具集合不等于模型服务器。",
+        "c": "正确。",
+        "d": "负责集合通信。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "TRT",
+        "TRITON"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D04-003"
+    },
+    {
+      "id": "Q-D04-004",
+      "day": 4,
+      "type": "single",
+      "domain": "AI 基础知识",
+      "cardId": "card-inference-tools",
+      "objectiveIds": [
+        "1.1",
+        "1.6",
+        "1.7"
+      ],
+      "stem": "团队既要优化模型执行，又要对外提供推理接口。TensorRT和Triton的关系应怎样理解？",
+      "options": [
+        [
+          "a",
+          "TensorRT训练模型，Triton只存模型文件"
+        ],
+        [
+          "b",
+          "选Triton就必须排除TensorRT后端"
+        ],
+        [
+          "c",
+          "二者都是相同用途的资源下载目录"
+        ],
+        [
+          "d",
+          "TensorRT负责优化运行，Triton可在服务侧配合使用"
+        ]
+      ],
+      "answer": [
+        "d"
+      ],
+      "explanation": "不同职责可以在推理流程中组合。",
+      "analysis": {
+        "a": "TensorRT面向推理；Triton不是单纯文件库。",
+        "b": "Triton可配合TensorRT。",
+        "c": "NGC才是本课资源目录入口。",
+        "d": "正确。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "TRT",
+        "TRITON"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D04-004"
+    },
+    {
+      "id": "Q-D04-005",
+      "day": 4,
+      "type": "single",
+      "domain": "AI 基础知识",
+      "cardId": "card-nim-ngc-enterprise",
+      "objectiveIds": [
+        "1.1",
+        "1.6",
+        "1.7"
+      ],
+      "stem": "希望以预构建、GPU优化的推理微服务减少部署工作，更直接对应NVIDIA哪类能力？",
+      "options": [
+        [
+          "a",
+          "NIM"
+        ],
+        [
+          "b",
+          "NCCL"
+        ],
+        [
+          "c",
+          "cuBLAS"
+        ],
+        [
+          "d",
+          "GPU驱动"
+        ]
+      ],
+      "answer": [
+        "a"
+      ],
+      "explanation": "包装推理服务不取消环境与效果验证。",
+      "analysis": {
+        "a": "正确。",
+        "b": "通信库不等同推理微服务。",
+        "c": "线性代数库不等同部署封装。",
+        "d": "驱动支持硬件访问，职责不同。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE02",
+        "NIM",
+        "NGC",
+        "AIE"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D04-005"
+    },
+    {
+      "id": "Q-D04-006",
+      "day": 4,
+      "type": "single",
+      "domain": "AI 基础知识",
+      "cardId": "card-nim-ngc-enterprise",
+      "objectiveIds": [
+        "1.1",
+        "1.6",
+        "1.7"
+      ],
+      "stem": "团队要取得GPU优化容器和模型资源，先访问哪个目录型入口？",
+      "options": [
+        [
+          "a",
+          "NIM运行实例"
+        ],
+        [
+          "b",
+          "NGC"
+        ],
+        [
+          "c",
+          "TensorRT引擎文件"
+        ],
+        [
+          "d",
+          "本机DCGM指标"
+        ]
+      ],
+      "answer": [
+        "b"
+      ],
+      "explanation": "NGC提供资源发现与取得入口。",
+      "analysis": {
+        "a": "运行实例提供服务，不等同资源目录。",
+        "b": "正确。",
+        "c": "引擎文件是运行产物，不是资源目录。",
+        "d": "指标不是模型下载入口。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE02",
+        "NIM",
+        "NGC",
+        "AIE"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D04-006"
+    },
+    {
+      "id": "Q-D04-007",
+      "day": 4,
+      "type": "single",
+      "domain": "AI 基础知识",
+      "cardId": "card-nim-ngc-enterprise",
+      "objectiveIds": [
+        "1.1",
+        "1.6",
+        "1.7"
+      ],
+      "stem": "对NVIDIA AI Enterprise的理解，哪项最合适？",
+      "options": [
+        [
+          "a",
+          "专门替代Linux内核的操作系统"
+        ],
+        [
+          "b",
+          "只提供容器下载、不涉及生产支持的目录"
+        ],
+        [
+          "c",
+          "面向企业生产的AI软件套件及支持"
+        ],
+        [
+          "d",
+          "只负责矩阵乘法的基础计算库"
+        ]
+      ],
+      "answer": [
+        "c"
+      ],
+      "explanation": "它组织企业AI软件与生产支持。",
+      "analysis": {
+        "a": "讲义OS说法是类比。",
+        "b": "不能把它等同NGC目录。",
+        "c": "正确。",
+        "d": "不是cuBLAS一类的底层算子库。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE02",
+        "NIM",
+        "NGC",
+        "AIE"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D04-007"
+    },
+    {
+      "id": "Q-D04-008",
+      "day": 4,
+      "type": "multiple",
+      "domain": "AI 基础知识",
+      "cardId": "card-solutions",
+      "objectiveIds": [
+        "1.5",
+        "1.6"
+      ],
+      "stem": "哪两组方案与典型用途对应正确？",
+      "options": [
+        [
+          "a",
+          "Merlin—推荐系统"
+        ],
+        [
+          "b",
+          "Riva—GPU集群监控"
+        ],
+        [
+          "c",
+          "RAPIDS—GPU数据科学"
+        ],
+        [
+          "d",
+          "cuBLAS—语音微服务平台"
+        ]
+      ],
+      "answer": [
+        "a",
+        "c"
+      ],
+      "explanation": "按工具用途选择。",
+      "analysis": {
+        "a": "正确。",
+        "b": "Riva主要面向语音AI。",
+        "c": "正确。",
+        "d": "cuBLAS主要面向线性代数。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE02",
+        "RAPIDS",
+        "RIVA",
+        "MERLIN",
+        "AIE"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D04-008"
+    },
+    {
+      "id": "Q-D04-009",
+      "day": 4,
+      "type": "single",
+      "domain": "AI 基础知识",
+      "cardId": "card-solutions",
+      "objectiveIds": [
+        "1.5",
+        "1.6"
+      ],
+      "stem": "需要语音识别与语音合成，哪个方案最直接匹配？",
+      "options": [
+        [
+          "a",
+          "Merlin"
+        ],
+        [
+          "b",
+          "Riva"
+        ],
+        [
+          "c",
+          "RAPIDS"
+        ],
+        [
+          "d",
+          "NCCL"
+        ]
+      ],
+      "answer": [
+        "b"
+      ],
+      "explanation": "Riva对应语音AI。",
+      "analysis": {
+        "a": "面向推荐系统。",
+        "b": "正确。",
+        "c": "面向数据科学。",
+        "d": "面向集合通信。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE02",
+        "RAPIDS",
+        "RIVA",
+        "MERLIN",
+        "AIE"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D04-009"
+    },
+    {
+      "id": "Q-D04-010",
+      "day": 4,
+      "type": "single",
+      "domain": "AI 基础知识",
+      "cardId": "card-ai-lifecycle",
+      "objectiveIds": [
+        "1.7"
+      ],
+      "stem": "模型训练达到预定指标，距离可持续运行的生产服务还需要考虑什么？",
+      "options": [
+        [
+          "a",
+          "只需把训练正确率直接作为上线后的全部监控指标"
+        ],
+        [
+          "b",
+          "只要导出模型文件就完成后续生命周期"
+        ],
+        [
+          "c",
+          "优化工具能自动代替所有部署和运行验证"
+        ],
+        [
+          "d",
+          "部署验证、运行监控与版本/效果管理"
+        ]
+      ],
+      "answer": [
+        "d"
+      ],
+      "explanation": "训练是生命周期一部分。",
+      "analysis": {
+        "a": "训练指标不能替代全部运行指标。",
+        "b": "导出不是完整服务。",
+        "c": "优化工具不包办所有运维。",
+        "d": "正确。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "RAPIDS",
+        "TRT",
+        "TRITON"
+      ],
+      "reviewStatus": "资料对照完成；未独立双人审题",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D04-010"
+    },
+    {
+      "id": "Q-D05-001",
+      "day": 5,
+      "type": "single",
+      "domain": "AI 基础架构",
+      "cardId": "card-cluster-components",
+      "objectiveIds": [
+        "2.1",
+        "2.5"
+      ],
+      "stem": "一组训练GPU经常等待读取图片，计算时却足够快。优先检查哪一组环节最有针对性？",
+      "options": [
+        [
+          "a",
+          "显示器分辨率与桌面主题"
+        ],
+        [
+          "b",
+          "数据预处理、存储及数据传输路径"
+        ],
+        [
+          "c",
+          "把所有训练任务改称推理"
+        ],
+        [
+          "d",
+          "只比较GPU总数量"
+        ]
+      ],
+      "answer": [
+        "b"
+      ],
+      "explanation": "题干给出的线索是数据供给等待，应检查产生等待的链路，再决定是否扩容。",
+      "analysis": {
+        "a": "与数据供给瓶颈无直接关系。",
+        "b": "正确：数据准备、读取和传输都可能让GPU等输入。",
+        "c": "改名字不会改变工作负载或瓶颈。",
+        "d": "数量不能说明供给速度；继续加GPU可能仍在等待。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE04",
+        "B2-BASEPOD",
+        "B2-HGX",
+        "B2-DGX"
+      ],
+      "reviewStatus": "资料对照完成；独立AI交叉复核（非人工审题）",
+      "origin": "本轮原创练习；非官方真题，不复制社区dump题干",
+      "webId": "Q-D05-001"
+    },
+    {
+      "id": "Q-D05-002",
+      "day": 5,
+      "type": "multiple",
+      "domain": "AI 基础架构",
+      "cardId": "card-scale-up-out",
+      "objectiveIds": [
+        "2.2"
+      ],
+      "stem": "哪两项属于合理的GPU扩展判断？（选两项）",
+      "options": [
+        [
+          "a",
+          "GPU数量加倍就保证训练时间减半"
+        ],
+        [
+          "b",
+          "所有单GPU应用会自动使用多卡总显存"
+        ],
+        [
+          "c",
+          "扩大紧密互联计算域时仍要检查程序并行支持"
+        ],
+        [
+          "d",
+          "连接更多节点时需要评估通信与存储供给"
+        ]
+      ],
+      "answer": [
+        "c",
+        "d"
+      ],
+      "explanation": "扩展效果依赖程序能否并行及计算之外的供给和通信。",
+      "analysis": {
+        "a": "通信、串行步骤和等待会限制收益。",
+        "b": "多卡内存利用取决于软件分片/并行设计，并非自动合并。",
+        "c": "正确：互联硬件不能代替程序支持。",
+        "d": "正确：跨节点同步和数据供给可能成为瓶颈。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE04",
+        "B2-NVLINK",
+        "NCCL",
+        "B2-BASEPOD"
+      ],
+      "reviewStatus": "资料对照完成；独立AI交叉复核（非人工审题）",
+      "origin": "本轮原创练习；非官方真题，不复制社区dump题干",
+      "webId": "Q-D05-002"
+    },
+    {
+      "id": "Q-D05-003",
+      "day": 5,
+      "type": "single",
+      "domain": "AI 基础架构",
+      "cardId": "card-scale-up-out",
+      "objectiveIds": [
+        "2.1",
+        "2.2",
+        "1.2"
+      ],
+      "stem": "模型在单卡显存中放不下，团队拟用多GPU分担模型。最完整的下一步是？",
+      "options": [
+        [
+          "a",
+          "只求多张卡显存相加够大，程序无需改动"
+        ],
+        [
+          "b",
+          "换成云部署就不需要检查每卡显存"
+        ],
+        [
+          "c",
+          "检查模型划分策略、每卡内存需求和GPU互联"
+        ],
+        [
+          "d",
+          "只增加共享磁盘容量即可保证解决"
+        ]
+      ],
+      "answer": [
+        "c"
+      ],
+      "explanation": "模型并行需要软件真正把计算和数据分布出去，通信及每卡资源也要匹配。",
+      "analysis": {
+        "a": "总和够大是候选条件，不能保证程序能有效使用。",
+        "b": "云仍有具体硬件和程序约束。",
+        "c": "正确：同时考虑容量、并行实现和通信。",
+        "d": "磁盘容量与GPU工作显存是不同资源。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE04",
+        "B2-NVLINK",
+        "NCCL",
+        "B2-BASEPOD"
+      ],
+      "reviewStatus": "资料对照完成；独立AI交叉复核（非人工审题）",
+      "origin": "本轮原创练习；非官方真题，不复制社区dump题干",
+      "webId": "Q-D05-003"
+    },
+    {
+      "id": "Q-D05-004",
+      "day": 5,
+      "type": "single",
+      "domain": "AI 基础架构",
+      "cardId": "card-power-cooling",
+      "objectiveIds": [
+        "2.3",
+        "2.6"
+      ],
+      "stem": "机架还有空位，但现有散热能力接近上限。应怎样判断是否加服务器？",
+      "options": [
+        [
+          "a",
+          "核对新增总热负载和供电，再评估散热/布局改造"
+        ],
+        [
+          "b",
+          "只要能插上电源就可以长期满负载"
+        ],
+        [
+          "c",
+          "有UPS便不需要增加冷却能力"
+        ],
+        [
+          "d",
+          "把空U位当作完整可用容量"
+        ]
+      ],
+      "answer": [
+        "a"
+      ],
+      "explanation": "空间、电力和散热是同时存在的限制，不能互相替代。",
+      "analysis": {
+        "a": "正确：需要按整机/机架负载和设施能力核验。",
+        "b": "短时能通电不证明长期负载条件满足。",
+        "c": "UPS服务供电保障，不负责带走热量。",
+        "d": "U位只表达高度空间，不包括电热约束。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE05",
+        "B2-POWER",
+        "B2-COOLING"
+      ],
+      "reviewStatus": "资料对照完成；独立AI交叉复核（非人工审题）",
+      "origin": "本轮原创练习；非官方真题，不复制社区dump题干",
+      "webId": "Q-D05-004"
+    },
+    {
+      "id": "Q-D05-005",
+      "day": 5,
+      "type": "single",
+      "domain": "AI 基础架构",
+      "cardId": "card-pue",
+      "objectiveIds": [
+        "2.3"
+      ],
+      "stem": "同一统计时段，机房总用电150kWh，IT设备用电100kWh。PUE及非IT用电分别是多少？",
+      "options": [
+        [
+          "a",
+          "0.67和50kWh"
+        ],
+        [
+          "b",
+          "1.5和150kWh"
+        ],
+        [
+          "c",
+          "1.5和50kWh"
+        ],
+        [
+          "d",
+          "50%和100kWh"
+        ]
+      ],
+      "answer": [
+        "c"
+      ],
+      "explanation": "150÷100＝1.5；非IT部分＝150－100＝50kWh。",
+      "analysis": {
+        "a": "把PUE分子分母倒置了。",
+        "b": "PUE对，但非IT不是总能耗。",
+        "c": "正确：比例和差额都来自相同统计边界。",
+        "d": "PUE是比值，不按此处百分比定义。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE05",
+        "B2-PUE"
+      ],
+      "reviewStatus": "资料对照完成；独立AI交叉复核（非人工审题）",
+      "origin": "本轮原创练习；非官方真题，不复制社区dump题干",
+      "webId": "Q-D05-005"
+    },
+    {
+      "id": "Q-D05-006",
+      "day": 5,
+      "type": "single",
+      "domain": "AI 基础架构",
+      "cardId": "card-pue",
+      "objectiveIds": [
+        "2.3"
+      ],
+      "stem": "两个机房PUE分别为1.2和1.6。仅凭这两个数字，最可靠的结论是？",
+      "options": [
+        [
+          "a",
+          "1.2机房的GPU利用率一定更高"
+        ],
+        [
+          "b",
+          "1.2机房的年度总电费一定更低"
+        ],
+        [
+          "c",
+          "1.2机房训练出的模型一定更准"
+        ],
+        [
+          "d",
+          "在可比统计条件下，1.2的非IT开销相对IT更小"
+        ]
+      ],
+      "answer": [
+        "d"
+      ],
+      "explanation": "PUE说明设施能耗比例，不直接测量计算产出、总电量或模型效果。",
+      "analysis": {
+        "a": "GPU利用率不是PUE的定义。",
+        "b": "还缺总用电和电价等信息。",
+        "c": "能耗比例不能推定模型准确率。",
+        "d": "正确：这是PUE能支持的有限结论。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE05",
+        "B2-PUE"
+      ],
+      "reviewStatus": "资料对照完成；独立AI交叉复核（非人工审题）",
+      "origin": "本轮原创练习；非官方真题，不复制社区dump题干",
+      "webId": "Q-D05-006"
+    },
+    {
+      "id": "Q-D05-007",
+      "day": 5,
+      "type": "multiple",
+      "domain": "AI 基础架构",
+      "cardId": "card-facility",
+      "objectiveIds": [
+        "2.6"
+      ],
+      "stem": "规划高密度GPU机架时，哪两项确实属于设施核验？（选两项）",
+      "options": [
+        [
+          "a",
+          "承重、搬运路径及维修净空"
+        ],
+        [
+          "b",
+          "只确认训练框架名称"
+        ],
+        [
+          "c",
+          "仅统计模型分类标签数量"
+        ],
+        [
+          "d",
+          "配电、冷却、走线与进出风方向"
+        ]
+      ],
+      "answer": [
+        "a",
+        "d"
+      ],
+      "explanation": "设备可安全部署和持续运行需要物理设施条件配合。",
+      "analysis": {
+        "a": "正确：重量和搬运/维护路径影响能否安装与维护。",
+        "b": "框架是软件要求，不能代替设施核验。",
+        "c": "模型类别不是机房承载条件。",
+        "d": "正确：这些共同决定机架能否稳定运行。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE05",
+        "B2-FACILITY",
+        "B2-COOLING"
+      ],
+      "reviewStatus": "资料对照完成；独立AI交叉复核（非人工审题）",
+      "origin": "本轮原创练习；非官方真题，不复制社区dump题干",
+      "webId": "Q-D05-007"
+    },
+    {
+      "id": "Q-D05-008",
+      "day": 5,
+      "type": "single",
+      "domain": "AI 基础架构",
+      "cardId": "card-onprem-cloud",
+      "objectiveIds": [
+        "2.4"
+      ],
+      "stem": "团队只需进行两周GPU实验，没有现成机房，希望减少最初一次性设备采购。哪种判断最合理？",
+      "options": [
+        [
+          "a",
+          "先评估按需云GPU，并核对容量、数据要求和完整费用"
+        ],
+        [
+          "b",
+          "云GPU对任何期限都保证总成本最低"
+        ],
+        [
+          "c",
+          "本地部署不需要运维人员"
+        ],
+        [
+          "d",
+          "混合部署可以忽略数据传输"
+        ]
+      ],
+      "answer": [
+        "a"
+      ],
+      "explanation": "按需云资源可降低初始采购门槛；题干不足以证明长期总成本或数据适配。",
+      "analysis": {
+        "a": "正确：建议由明确约束驱动并保留条件。",
+        "b": "长期成本受利用率、价格和传输等因素影响。",
+        "c": "本地仍要承担硬件与软件运维。",
+        "d": "混合架构仍需规划数据流和费用。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE05",
+        "B2-DEPLOY",
+        "B2-CONTROL"
+      ],
+      "reviewStatus": "资料对照完成；独立AI交叉复核（非人工审题）",
+      "origin": "本轮原创练习；非官方真题，不复制社区dump题干",
+      "webId": "Q-D05-008"
+    },
+    {
+      "id": "Q-D05-009",
+      "day": 5,
+      "type": "multiple",
+      "domain": "AI 基础架构",
+      "cardId": "card-onprem-cloud",
+      "objectiveIds": [
+        "2.4"
+      ],
+      "stem": "哪两项对本地与云部署的比较成立？（选两项）",
+      "options": [
+        [
+          "a",
+          "只要本地部署就自动满足所有安全要求"
+        ],
+        [
+          "b",
+          "本地可增加控制，同时承担采购及运维责任"
+        ],
+        [
+          "c",
+          "云的弹性仍受可用资源和服务条款约束"
+        ],
+        [
+          "d",
+          "租用云GPU后应用与数据治理不再需要负责"
+        ]
+      ],
+      "answer": [
+        "b",
+        "c"
+      ],
+      "explanation": "部署位置影响责任和控制方式，但不免除实际设计与运行责任。",
+      "analysis": {
+        "a": "安全取决于具体设计、访问和治理。",
+        "b": "正确：自主控制伴随设施和运维责任。",
+        "c": "正确：弹性不是无限、无条件的资源保证。",
+        "d": "应用、数据和权限等责任仍需按服务边界落实。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE05",
+        "B2-DEPLOY",
+        "B2-CONTROL"
+      ],
+      "reviewStatus": "资料对照完成；独立AI交叉复核（非人工审题）",
+      "origin": "本轮原创练习；非官方真题，不复制社区dump题干",
+      "webId": "Q-D05-009"
+    },
+    {
+      "id": "Q-D05-010",
+      "day": 5,
+      "type": "single",
+      "domain": "AI 基础架构",
+      "cardId": "card-cluster-components",
+      "objectiveIds": [
+        "1.6",
+        "2.5"
+      ],
+      "stem": "采购讨论中把GPU、HGX、DGX和SuperPOD都叫成“GPU型号”。哪项纠正更准确？",
+      "options": [
+        [
+          "a",
+          "它们只是同一芯片的不同营销名称"
+        ],
+        [
+          "b",
+          "SuperPOD只是单张GPU上的计算核心"
+        ],
+        [
+          "c",
+          "HGX与DGX都只提供文件存储"
+        ],
+        [
+          "d",
+          "GPU是组件；HGX/DGX涉及系统平台，SuperPOD涉及集群级基础设施"
+        ]
+      ],
+      "answer": [
+        "d"
+      ],
+      "explanation": "辨认组件、系统与集群层次，才不会把品牌名当作同一类硬件来比较。",
+      "analysis": {
+        "a": "产品层次和用途不同。",
+        "b": "SuperPOD不是芯片内计算单元。",
+        "c": "平台涉及GPU计算及配套系统。",
+        "d": "正确：抓住层次，不强记单一代际数量。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE04",
+        "B2-BASEPOD",
+        "B2-HGX",
+        "B2-DGX"
+      ],
+      "reviewStatus": "资料对照完成；独立AI交叉复核（非人工审题）",
+      "origin": "本轮原创练习；非官方真题，不复制社区dump题干",
+      "webId": "Q-D05-010"
+    },
+    {
+      "id": "Q-D06-001",
+      "day": 6,
+      "type": "multiple",
+      "domain": "AI 基础架构",
+      "cardId": "card-network-traffic",
+      "objectiveIds": [
+        "2.7"
+      ],
+      "stem": "哪两组流量与用途的对应正确？（选两项）",
+      "options": [
+        [
+          "a",
+          "带外管理流量—每一步训练的梯度计算本身"
+        ],
+        [
+          "b",
+          "计算流量—GPU之间交换训练更新"
+        ],
+        [
+          "c",
+          "存储流量—把机房供电变成直流"
+        ],
+        [
+          "d",
+          "存储流量—读取数据集和保存检查点"
+        ]
+      ],
+      "answer": [
+        "b",
+        "d"
+      ],
+      "explanation": "按数据在做什么分类，有助于定位拥塞和选择网络需求。",
+      "analysis": {
+        "a": "带外偏设备状态和恢复管理，并非模型数学计算。",
+        "b": "正确：多GPU训练的协作数据属于计算通信。",
+        "c": "供电变换不是存储网络职责。",
+        "d": "正确：数据集与检查点都是存储访问。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE06",
+        "B2-NETWORK",
+        "B2-BASEPOD"
+      ],
+      "reviewStatus": "资料对照完成；独立AI交叉复核（非人工审题）",
+      "origin": "本轮原创练习；非官方真题，不复制社区dump题干",
+      "webId": "Q-D06-001"
+    },
+    {
+      "id": "Q-D06-002",
+      "day": 6,
+      "type": "single",
+      "domain": "AI 基础架构",
+      "cardId": "card-network-traffic",
+      "objectiveIds": [
+        "2.7"
+      ],
+      "stem": "集中写检查点时，多节点训练变慢；已观察到存储和计算流量争用同一链路。更合理的评估方向是？",
+      "options": [
+        [
+          "a",
+          "按流量目标评估带宽、拥塞及逻辑或物理隔离"
+        ],
+        [
+          "b",
+          "只把网络命名为计算网络便能避免争用"
+        ],
+        [
+          "c",
+          "直接认定所有AI集群必须有四张物理网络"
+        ],
+        [
+          "d",
+          "仅看端口峰值速率，不再检查任务实际吞吐"
+        ]
+      ],
+      "answer": [
+        "a"
+      ],
+      "explanation": "计算同步与存储写入可能互相干扰，应依据实际负载和拓扑评估容量与隔离方式。",
+      "analysis": {
+        "a": "正确：针对已观察到的争用，检查流量需求与实际网络设计。",
+        "b": "名字不会改变带宽、拥塞或隔离配置。",
+        "c": "物理和逻辑网络划分依具体架构，不能由固定数量代替设计。",
+        "d": "名义速率不能反映拥塞下的端到端应用表现。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE06",
+        "B2-NETWORK",
+        "B2-BASEPOD"
+      ],
+      "reviewStatus": "资料对照完成；独立AI交叉复核（非人工审题）",
+      "origin": "本轮原创练习；非官方真题，不复制社区dump题干",
+      "webId": "Q-D06-002"
+    },
+    {
+      "id": "Q-D06-003",
+      "day": 6,
+      "type": "single",
+      "domain": "AI 基础架构",
+      "cardId": "card-ethernet-infiniband",
+      "objectiveIds": [
+        "2.8",
+        "2.9"
+      ],
+      "stem": "关于Ethernet与InfiniBand，哪项最准确？",
+      "options": [
+        [
+          "a",
+          "Ethernet无法承载任何RDMA流量"
+        ],
+        [
+          "b",
+          "IB在任意产品组合下都必然拥有更高名义带宽"
+        ],
+        [
+          "c",
+          "两者都可用于AI；Ethernet可通过RoCE承载RDMA"
+        ],
+        [
+          "d",
+          "二者区别仅在网线颜色"
+        ]
+      ],
+      "answer": [
+        "c"
+      ],
+      "explanation": "选择需要考虑完整软硬件和应用表现，不能靠绝对化口诀。",
+      "analysis": {
+        "a": "RoCE就是Ethernet上的RDMA方案。",
+        "b": "代际和配置不同，不能作无条件比较。",
+        "c": "正确：这是技术关系及使用场景的合理表述。",
+        "d": "协议、适配器、交换与管理方式都有实质区别。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE06",
+        "B2-NETWORK",
+        "B2-ROCE",
+        "B2-SM"
+      ],
+      "reviewStatus": "资料对照完成；独立AI交叉复核（非人工审题）",
+      "origin": "本轮原创练习；非官方真题，不复制社区dump题干",
+      "webId": "Q-D06-003"
+    },
+    {
+      "id": "Q-D06-004",
+      "day": 6,
+      "type": "single",
+      "domain": "AI 基础架构",
+      "cardId": "card-ethernet-infiniband",
+      "objectiveIds": [
+        "2.8"
+      ],
+      "stem": "InfiniBand子网中的Subnet Manager（SM）主要负责什么？",
+      "options": [
+        [
+          "a",
+          "替代深度学习框架自动训练模型"
+        ],
+        [
+          "b",
+          "发现和配置子网；OpenSM是一种实现"
+        ],
+        [
+          "c",
+          "保证所有Ethernet网络无需交换机"
+        ],
+        [
+          "d",
+          "给GPU风扇直接供电"
+        ]
+      ],
+      "answer": [
+        "b"
+      ],
+      "explanation": "SM负责InfiniBand子网管理，可运行在受支持交换机或相连主机。",
+      "analysis": {
+        "a": "训练由框架及计算资源完成。",
+        "b": "正确：区分管理职责和实现名称。",
+        "c": "SM不替代以太网交换网络。",
+        "d": "风扇供电不是子网管理职责。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE06",
+        "B2-NETWORK",
+        "B2-ROCE",
+        "B2-SM"
+      ],
+      "reviewStatus": "资料对照完成；独立AI交叉复核（非人工审题）",
+      "origin": "本轮原创练习；非官方真题，不复制社区dump题干",
+      "webId": "Q-D06-004"
+    },
+    {
+      "id": "Q-D06-005",
+      "day": 6,
+      "type": "multiple",
+      "domain": "AI 基础架构",
+      "cardId": "card-rdma-roce",
+      "objectiveIds": [
+        "2.8",
+        "2.9"
+      ],
+      "stem": "关于RDMA/RoCE，哪两项正确？（选两项）",
+      "options": [
+        [
+          "a",
+          "RDMA网卡可减少CPU在数据搬运路径上的开销"
+        ],
+        [
+          "b",
+          "RoCEv2运行后整个应用不再需要CPU"
+        ],
+        [
+          "c",
+          "任意普通网卡都自动支持RDMA"
+        ],
+        [
+          "d",
+          "RoCE把RDMA能力带到Ethernet，仍需端到端支持"
+        ]
+      ],
+      "answer": [
+        "a",
+        "d"
+      ],
+      "explanation": "RDMA优化数据路径，能力必须由硬件、驱动、软件和网络设计配合。",
+      "analysis": {
+        "a": "正确：硬件承担数据搬运是主要收益之一。",
+        "b": "应用控制、初始化和同步等仍可能使用CPU。",
+        "c": "普通以太网能力不等于RDMA支持。",
+        "d": "正确：协议名不是免配置或免兼容的承诺。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE06",
+        "B2-ROCE",
+        "B2-GDR"
+      ],
+      "reviewStatus": "资料对照完成；独立AI交叉复核（非人工审题）",
+      "origin": "本轮原创练习；非官方真题，不复制社区dump题干",
+      "webId": "Q-D06-005"
+    },
+    {
+      "id": "Q-D06-006",
+      "day": 6,
+      "type": "single",
+      "domain": "AI 基础架构",
+      "cardId": "card-rdma-roce",
+      "objectiveIds": [
+        "2.8"
+      ],
+      "stem": "团队要让RoCE流量跨IP子网，下面哪项描述有助于判断方案？",
+      "options": [
+        [
+          "a",
+          "RoCEv2只能在同一根物理线缆上工作"
+        ],
+        [
+          "b",
+          "RoCE就是NVSwitch的别名"
+        ],
+        [
+          "c",
+          "RoCEv2使用UDP/IP封装，但仍需规划路由和拥塞控制"
+        ],
+        [
+          "d",
+          "使用UDP封装后丢包就不会影响传输性能"
+        ]
+      ],
+      "answer": [
+        "c"
+      ],
+      "explanation": "RoCEv2支持IP层路由；能路由不意味着所有网络条件自动合格。",
+      "analysis": {
+        "a": "IP层能力允许适当配置下跨子网。",
+        "b": "NVSwitch是NVLink交换组件，概念不同。",
+        "c": "正确：封装能力与实际网络设计需要一起考虑。",
+        "d": "丢包仍可能带来重传与性能影响。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE06",
+        "B2-ROCE",
+        "B2-GDR"
+      ],
+      "reviewStatus": "资料对照完成；独立AI交叉复核（非人工审题）",
+      "origin": "本轮原创练习；非官方真题，不复制社区dump题干",
+      "webId": "Q-D06-006"
+    },
+    {
+      "id": "Q-D06-007",
+      "day": 6,
+      "type": "single",
+      "domain": "AI 基础架构",
+      "cardId": "card-nvlink-nvswitch",
+      "objectiveIds": [
+        "2.2",
+        "2.9"
+      ],
+      "stem": "哪项最能说明NVLink、NVSwitch与IB/Ethernet的关系？",
+      "options": [
+        [
+          "a",
+          "NVSwitch是任意Ethernet网卡的新名称"
+        ],
+        [
+          "b",
+          "NVLink保证任意软件自动把所有显存合成一块"
+        ],
+        [
+          "c",
+          "有NVLink就完全不需要集群网络"
+        ],
+        [
+          "d",
+          "NVLink/NVSwitch组织紧密GPU计算域，IB/Ethernet可继续连接更多系统"
+        ]
+      ],
+      "answer": [
+        "d"
+      ],
+      "explanation": "域内紧密协作和系统间扩展是相互配合的层次；现代NVLink域也可能达到机架规模。",
+      "analysis": {
+        "a": "NVSwitch服务NVLink交换，不是通用网卡。",
+        "b": "内存使用仍需软件支持。",
+        "c": "外部节点、存储和管理等仍有互联需要。",
+        "d": "正确：抓住互补层次，而不是绝对机内/机外口诀。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE06",
+        "B2-NVLINK",
+        "B2-HGX"
+      ],
+      "reviewStatus": "资料对照完成；独立AI交叉复核（非人工审题）",
+      "origin": "本轮原创练习；非官方真题，不复制社区dump题干",
+      "webId": "Q-D06-007"
+    },
+    {
+      "id": "Q-D06-008",
+      "day": 6,
+      "type": "single",
+      "domain": "AI 基础架构",
+      "cardId": "card-bluefield-dpu",
+      "objectiveIds": [
+        "2.10"
+      ],
+      "stem": "团队希望把部分网络、安全和存储服务从主机CPU卸载，并与租户应用隔离，更直接评估哪类组件？",
+      "options": [
+        [
+          "a",
+          "PUE比值"
+        ],
+        [
+          "b",
+          "UPS电池"
+        ],
+        [
+          "c",
+          "BlueField DPU及其软件服务"
+        ],
+        [
+          "d",
+          "只包含模型权重的文件"
+        ]
+      ],
+      "answer": [
+        "c"
+      ],
+      "explanation": "DPU针对基础设施服务的数据处理与隔离；部署效果仍需验证。",
+      "analysis": {
+        "a": "PUE是设施能效指标，不是处理器。",
+        "b": "UPS负责供电保障，不执行这些基础设施服务。",
+        "c": "正确：这与DPU的职责匹配。",
+        "d": "权重文件不提供基础设施卸载能力。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE06",
+        "B2-DPU",
+        "B2-BLUEFIELD"
+      ],
+      "reviewStatus": "资料对照完成；独立AI交叉复核（非人工审题）",
+      "origin": "本轮原创练习；非官方真题，不复制社区dump题干",
+      "webId": "Q-D06-008"
+    },
+    {
+      "id": "Q-D06-009",
+      "day": 6,
+      "type": "multiple",
+      "domain": "AI 基础架构",
+      "cardId": "card-bluefield-dpu",
+      "objectiveIds": [
+        "2.10"
+      ],
+      "stem": "哪两项关于DPU的边界说明正确？（选两项）",
+      "options": [
+        [
+          "a",
+          "装上DPU即可保证任何配置都完全安全"
+        ],
+        [
+          "b",
+          "它可以帮助卸载基础设施服务，但不是通用GPU替代品"
+        ],
+        [
+          "c",
+          "DOCA就是冷却液分配设备"
+        ],
+        [
+          "d",
+          "隔离与加速效果需要核对具体硬件模式、软件和配置"
+        ]
+      ],
+      "answer": [
+        "b",
+        "d"
+      ],
+      "explanation": "产品职责与条件要同时理解，不能把部署组件当作自动完成所有目标。",
+      "analysis": {
+        "a": "安全不是只由一张卡决定。",
+        "b": "正确：GPU和DPU侧重不同工作。",
+        "c": "DOCA提供软件开发能力；CDU才与冷却液分配相关。",
+        "d": "正确：启用方式和支持能力影响实际结果。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE06",
+        "B2-DPU",
+        "B2-BLUEFIELD"
+      ],
+      "reviewStatus": "资料对照完成；独立AI交叉复核（非人工审题）",
+      "origin": "本轮原创练习；非官方真题，不复制社区dump题干",
+      "webId": "Q-D06-009"
+    },
+    {
+      "id": "Q-D06-010",
+      "day": 6,
+      "type": "single",
+      "domain": "AI 基础架构",
+      "cardId": "card-gpudirect-paths",
+      "objectiveIds": [
+        "2.7",
+        "2.9"
+      ],
+      "stem": "哪项对应最合理？",
+      "options": [
+        [
+          "a",
+          "GPUDirect RDMA关注网络设备访问GPU内存；GDS关注存储与GPU的数据路径"
+        ],
+        [
+          "b",
+          "GDS只负责风扇转速，RDMA只负责模型准确率"
+        ],
+        [
+          "c",
+          "GPUDirect等于把CPU从服务器中物理拆掉"
+        ],
+        [
+          "d",
+          "所有NVMe和GPU组合都会自动启用GDS直接路径"
+        ]
+      ],
+      "answer": [
+        "a"
+      ],
+      "explanation": "看数据路径的端点，能分清两类能力；两者均有软硬件支持条件。",
+      "analysis": {
+        "a": "正确：区分网络设备与存储两个主要入口。",
+        "b": "二者都不是这些职责。",
+        "c": "CPU仍有控制、调度和应用等工作。",
+        "d": "必须核对兼容、驱动、文件系统和实际路径。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE06",
+        "B2-GDR",
+        "B2-GDS"
+      ],
+      "reviewStatus": "资料对照完成；独立AI交叉复核（非人工审题）",
+      "origin": "本轮原创练习；非官方真题，不复制社区dump题干",
+      "webId": "Q-D06-010"
+    },
+    {
+      "id": "Q-D07-001",
+      "day": 7,
+      "type": "single",
+      "domain": "AI 运营",
+      "cardId": "card-monitor-tools",
+      "objectiveIds": [
+        "3.1"
+      ],
+      "stem": "想快速查看一台服务器当前GPU温度、显存占用和进程，哪个工具最直接？",
+      "options": [
+        [
+          "a",
+          "nvidia-smi"
+        ],
+        [
+          "b",
+          "NCCL"
+        ],
+        [
+          "c",
+          "Slurm作业优先级规则"
+        ],
+        [
+          "d",
+          "TensorRT"
+        ]
+      ],
+      "answer": [
+        "a"
+      ],
+      "explanation": "nvidia-smi可在命令行直接查询GPU状态。",
+      "analysis": {
+        "a": "正确，对应当前设备状态查询。",
+        "b": "它是集合通信库，不是这种状态查询入口。",
+        "c": "调度策略安排任务，不直接替代GPU状态查询。",
+        "d": "它优化推理执行，不是通用GPU监控工具。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE07",
+        "SMI",
+        "DCGM"
+      ],
+      "reviewStatus": "资料对照完成；独立AI交叉复核（非人工审题）",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D07-001"
+    },
+    {
+      "id": "Q-D07-002",
+      "day": 7,
+      "type": "single",
+      "domain": "AI 运营",
+      "cardId": "card-gpu-util-memory",
+      "objectiveIds": [
+        "3.3"
+      ],
+      "stem": "GPU已占用大部分显存，但GPU-Util很低。哪项解释最合理？",
+      "options": [
+        [
+          "a",
+          "两项读数必有一项错误"
+        ],
+        [
+          "b",
+          "显存中可保留模型，任务此刻可能等待数据"
+        ],
+        [
+          "c",
+          "已占显存等于全部计算核心正在工作"
+        ],
+        [
+          "d",
+          "只要再增加显存就能确定消除等待"
+        ]
+      ],
+      "answer": [
+        "b"
+      ],
+      "explanation": "空间占用与采样期间是否计算是不同维度。",
+      "analysis": {
+        "a": "二者衡量不同维度，可以同时正确。",
+        "b": "正确，这是可能场景，还需查任务时间线。",
+        "c": "显存保存数据，不代表计算一直活跃。",
+        "d": "没有确定瓶颈，不能保证增加显存有用。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE07",
+        "SMI",
+        "DCGM"
+      ],
+      "reviewStatus": "资料对照完成；独立AI交叉复核（非人工审题）",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D07-002"
+    },
+    {
+      "id": "Q-D07-003",
+      "day": 7,
+      "type": "single",
+      "domain": "AI 运营",
+      "cardId": "card-gpu-health",
+      "objectiveIds": [
+        "3.3"
+      ],
+      "stem": "GPU任务变慢且出现一次Xid错误。下一步哪项最有证据基础？",
+      "options": [
+        [
+          "a",
+          "把错误直接归为GPU硬件损坏"
+        ],
+        [
+          "b",
+          "立即清空全部错误计数"
+        ],
+        [
+          "c",
+          "保存时间和设备信息，结合任务与驱动日志调查"
+        ],
+        [
+          "d",
+          "只比较GPU价格"
+        ]
+      ],
+      "answer": [
+        "c"
+      ],
+      "explanation": "Xid是调查起点，可能涉及应用、软件或硬件。",
+      "analysis": {
+        "a": "错误码本身通常不足以判根因。",
+        "b": "会失去线索，也没有先确定适用处置。",
+        "c": "正确，需要上下文和关联证据。",
+        "d": "价格不能解释本次异常。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE07",
+        "SMI",
+        "DCGM",
+        "XID"
+      ],
+      "reviewStatus": "资料对照完成；独立AI交叉复核（非人工审题）",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D07-003"
+    },
+    {
+      "id": "Q-D07-004",
+      "day": 7,
+      "type": "multiple",
+      "domain": "AI 运营",
+      "cardId": "card-monitor-tools",
+      "objectiveIds": [
+        "3.1"
+      ],
+      "stem": "关于nvidia-smi和DCGM，选出两项正确描述。",
+      "options": [
+        [
+          "a",
+          "DCGM必须超过10台GPU节点才可用"
+        ],
+        [
+          "b",
+          "nvidia-smi支持循环查询GPU状态"
+        ],
+        [
+          "c",
+          "DCGM本身就是替用户训练模型的框架"
+        ],
+        [
+          "d",
+          "DCGM可提供健康检查并集成监控系统"
+        ]
+      ],
+      "answer": [
+        "b",
+        "d"
+      ],
+      "explanation": "两者职责有重叠，但不是按固定节点数强制划分。",
+      "analysis": {
+        "a": "没有这个固定门槛；可在单节点运行。",
+        "b": "正确，可循环查询，不仅是一次手动截图。",
+        "c": "DCGM负责管理和观测，不执行模型训练逻辑。",
+        "d": "正确，是其核心用途之一。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE07",
+        "SMI",
+        "DCGM"
+      ],
+      "reviewStatus": "资料对照完成；独立AI交叉复核（非人工审题）",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D07-004"
+    },
+    {
+      "id": "Q-D07-005",
+      "day": 7,
+      "type": "single",
+      "domain": "AI 运营",
+      "cardId": "card-gpu-util-memory",
+      "objectiveIds": [
+        "3.3"
+      ],
+      "stem": "nvidia-smi的GPU-Util显示100%，最稳妥结论是？",
+      "options": [
+        [
+          "a",
+          "所有CUDA Core必然达到理论峰值"
+        ],
+        [
+          "b",
+          "采样时段中有至少一个内核运行的时间比例接近100%，仍需其他指标判断效率"
+        ],
+        [
+          "c",
+          "显存容量一定全部占满"
+        ],
+        [
+          "d",
+          "GPU一定没有通信或内存瓶颈"
+        ]
+      ],
+      "answer": [
+        "b"
+      ],
+      "explanation": "忙碌时间不等于全部算力被充分使用。",
+      "analysis": {
+        "a": "该指标不直接测量每个计算单元的峰值利用。",
+        "b": "正确，采样和实际效率必须区分。",
+        "c": "显存容量占用是另一指标。",
+        "d": "忙碌并不能排除其他资源限制。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE07",
+        "SMI",
+        "DCGM"
+      ],
+      "reviewStatus": "资料对照完成；独立AI交叉复核（非人工审题）",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D07-005"
+    },
+    {
+      "id": "Q-D07-006",
+      "day": 7,
+      "type": "single",
+      "domain": "AI 运营",
+      "cardId": "card-telemetry-pipeline",
+      "objectiveIds": [
+        "3.1"
+      ],
+      "stem": "要回看多节点GPU的历史趋势，下列哪条职责链合理？",
+      "options": [
+        [
+          "a",
+          "Grafana执行GPU内核，nvidia-smi训练模型"
+        ],
+        [
+          "b",
+          "DCGM Exporter输出指标，Prometheus保存时序，Grafana展示"
+        ],
+        [
+          "c",
+          "DCGM Exporter自动决定所有作业排队顺序"
+        ],
+        [
+          "d",
+          "只截一张当前状态图就拥有完整历史"
+        ]
+      ],
+      "answer": [
+        "b"
+      ],
+      "explanation": "采集接口、时序保存和展示是可分开的环节。",
+      "analysis": {
+        "a": "混淆监控工具与计算/训练。",
+        "b": "正确，是常见监控集成方式。",
+        "c": "它提供指标，不是通用作业调度器。",
+        "d": "一张截图不能记录整个时间过程。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE07",
+        "EXPORTER"
+      ],
+      "reviewStatus": "资料对照完成；独立AI交叉复核（非人工审题）",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D07-006"
+    },
+    {
+      "id": "Q-D07-007",
+      "day": 7,
+      "type": "multiple",
+      "domain": "AI 运营",
+      "cardId": "card-gpu-health",
+      "objectiveIds": [
+        "3.3"
+      ],
+      "stem": "关于温度、功耗和错误，哪些判断合理？（多选）",
+      "options": [
+        [
+          "a",
+          "功率上限就是当前实际功耗"
+        ],
+        [
+          "b",
+          "所有GPU都用统一85℃作为损坏判据"
+        ],
+        [
+          "c",
+          "需结合温度、频率、降频原因和任务表现"
+        ],
+        [
+          "d",
+          "应区分历史累计错误与本时段新增错误"
+        ]
+      ],
+      "answer": [
+        "c",
+        "d"
+      ],
+      "explanation": "要结合型号要求、趋势和上下文，避免单值定因。",
+      "analysis": {
+        "a": "上限是约束，实际功耗可明显更低。",
+        "b": "阈值因产品和条件不同；达到某温度也不是根因结论。",
+        "c": "正确，多项证据能缩小检查方向。",
+        "d": "正确，否则可能误把旧事件归到新任务。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE07",
+        "SMI",
+        "DCGM",
+        "XID"
+      ],
+      "reviewStatus": "资料对照完成；独立AI交叉复核（非人工审题）",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D07-007"
+    },
+    {
+      "id": "Q-D07-008",
+      "day": 7,
+      "type": "single",
+      "domain": "AI 运营",
+      "cardId": "card-bmc-bcm",
+      "objectiveIds": [
+        "3.1"
+      ],
+      "stem": "主机OS无响应，但BMC供电和管理网络正常。带外管理最可能提供什么帮助？",
+      "options": [
+        [
+          "a",
+          "从远程控制台或传感器查看硬件状态"
+        ],
+        [
+          "b",
+          "自动重训全部模型并提高准确率"
+        ],
+        [
+          "c",
+          "证明主机硬件没有故障"
+        ],
+        [
+          "d",
+          "使断开的所有电源自动恢复"
+        ]
+      ],
+      "answer": [
+        "a"
+      ],
+      "explanation": "BMC提供独立于主机OS的一些硬件管理入口。",
+      "analysis": {
+        "a": "正确，是带外管理的重要用途。",
+        "b": "BMC不负责模型训练。",
+        "c": "能访问BMC不证明其他部件正常。",
+        "d": "管理能力仍依赖供电和连接条件。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE07",
+        "BMC",
+        "BCM"
+      ],
+      "reviewStatus": "资料对照完成；独立AI交叉复核（非人工审题）",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D07-008"
+    },
+    {
+      "id": "Q-D07-009",
+      "day": 7,
+      "type": "single",
+      "domain": "AI 运营",
+      "cardId": "card-bmc-bcm",
+      "objectiveIds": [
+        "3.1"
+      ],
+      "stem": "为一批新GPU节点组织操作系统镜像部署和集群运维，最直接对应哪个产品职责？",
+      "options": [
+        [
+          "a",
+          "cuDNN提供深度学习算子"
+        ],
+        [
+          "b",
+          "BMC就是集群作业队列"
+        ],
+        [
+          "c",
+          "NVLink存放操作系统镜像"
+        ],
+        [
+          "d",
+          "Base Command Manager进行集群部署与管理"
+        ]
+      ],
+      "answer": [
+        "d"
+      ],
+      "explanation": "BCM与板级BMC不是同一产品。",
+      "analysis": {
+        "a": "算子库不组织集群节点部署。",
+        "b": "BMC是硬件管理控制器。",
+        "c": "NVLink是互联技术，不是镜像管理软件。",
+        "d": "正确，匹配集群部署和日常管理。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE07",
+        "BMC",
+        "BCM"
+      ],
+      "reviewStatus": "资料对照完成；独立AI交叉复核（非人工审题）",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D07-009"
+    },
+    {
+      "id": "Q-D07-010",
+      "day": 7,
+      "type": "single",
+      "domain": "AI 运营",
+      "cardId": "card-gpu-util-memory",
+      "objectiveIds": [
+        "3.3"
+      ],
+      "stem": "监控面板某指标是N/A，而另一节点显示0。应该怎样处理？",
+      "options": [
+        [
+          "a",
+          "把N/A统一当0，两台都完全正常"
+        ],
+        [
+          "b",
+          "将N/A直接当硬件损坏"
+        ],
+        [
+          "c",
+          "先核查字段支持、采样与设备条件，再比较"
+        ],
+        [
+          "d",
+          "删除这两条记录以免影响平均值"
+        ]
+      ],
+      "answer": [
+        "c"
+      ],
+      "explanation": "缺失或不支持的数据不能冒充测得的零。",
+      "analysis": {
+        "a": "没有测得与测得为零不是一回事。",
+        "b": "字段不可用并不等于硬件坏。",
+        "c": "正确，先确认数据口径和可用性。",
+        "d": "无依据删除会丢失观测边界。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE07",
+        "SMI",
+        "DCGM"
+      ],
+      "reviewStatus": "资料对照完成；独立AI交叉复核（非人工审题）",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D07-010"
+    },
+    {
+      "id": "Q-D08-001",
+      "day": 8,
+      "type": "single",
+      "domain": "AI 运营",
+      "cardId": "card-job-scheduling",
+      "objectiveIds": [
+        "3.2"
+      ],
+      "stem": "任务申请同一节点4张GPU，目前仅空闲1张。为什么仍可能排队？",
+      "options": [
+        [
+          "a",
+          "调度器应把1张GPU自动变成4张"
+        ],
+        [
+          "b",
+          "可用资源尚不满足该任务完整要求"
+        ],
+        [
+          "c",
+          "只要有1张空闲，就说明调度器故障"
+        ],
+        [
+          "d",
+          "监控仪表盘会自动完成模型训练"
+        ]
+      ],
+      "answer": [
+        "b"
+      ],
+      "explanation": "调度按任务要求和资源约束分配，不能凭空增加硬件。",
+      "analysis": {
+        "a": "资源不能靠调度复制。",
+        "b": "正确，还应结合队列策略查看等待原因。",
+        "c": "空闲资源不足以满足本任务不一定是故障。",
+        "d": "监控负责观察，不替代模型计算。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE08",
+        "SLURM",
+        "SLURM-GPU"
+      ],
+      "reviewStatus": "资料对照完成；独立AI交叉复核（非人工审题）",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D08-001"
+    },
+    {
+      "id": "Q-D08-002",
+      "day": 8,
+      "type": "single",
+      "domain": "AI 运营",
+      "cardId": "card-slurm-kubernetes",
+      "objectiveIds": [
+        "3.2"
+      ],
+      "stem": "哪项正确描述Slurm和Kubernetes？",
+      "options": [
+        [
+          "a",
+          "Slurm只能训练、Kubernetes只能推理"
+        ],
+        [
+          "b",
+          "Kubernetes没有调度能力"
+        ],
+        [
+          "c",
+          "两者有工作方式侧重，Kubernetes也能运行批作业"
+        ],
+        [
+          "d",
+          "Slurm就是一种GPU互联硬件"
+        ]
+      ],
+      "answer": [
+        "c"
+      ],
+      "explanation": "典型场景不能变成使用的硬性二分。",
+      "analysis": {
+        "a": "把常见用途误当唯一用途。",
+        "b": "Kubernetes具有工作负载调度能力。",
+        "c": "正确，Kubernetes官方还明确支持批处理执行。",
+        "d": "Slurm是软件工作负载管理器。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE08",
+        "SLURM",
+        "K8S"
+      ],
+      "reviewStatus": "资料对照完成；独立AI交叉复核（非人工审题）",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D08-002"
+    },
+    {
+      "id": "Q-D08-003",
+      "day": 8,
+      "type": "single",
+      "domain": "AI 运营",
+      "cardId": "card-mig",
+      "objectiveIds": [
+        "3.4"
+      ],
+      "stem": "多个小模型需要相对独立的计算和显存资源，GPU型号确认支持MIG且profile容量足够。最直接应评估哪项？",
+      "options": [
+        [
+          "a",
+          "仅换一个监控图表颜色"
+        ],
+        [
+          "b",
+          "把MIG实例当成无限显存"
+        ],
+        [
+          "c",
+          "仅把时间片数改大就获得同等硬件隔离"
+        ],
+        [
+          "d",
+          "采用合适MIG实例配置"
+        ]
+      ],
+      "answer": [
+        "d"
+      ],
+      "explanation": "题干需要的是资源分区与隔离，而不只是轮流使用。",
+      "analysis": {
+        "a": "图表样式不改变资源划分。",
+        "b": "每个实例容量仍有限。",
+        "c": "时间共享不等于MIG的硬件资源分区。",
+        "d": "正确，但仍需验证应用、驱动和配置条件。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE08",
+        "MIG",
+        "MIG-SUPPORT",
+        "MIG-DEPLOY",
+        "MIG-START",
+        "L40S"
+      ],
+      "reviewStatus": "资料对照完成；独立AI交叉复核（非人工审题）",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D08-003"
+    },
+    {
+      "id": "Q-D08-004",
+      "day": 8,
+      "type": "single",
+      "domain": "AI 运营",
+      "cardId": "card-job-scheduling",
+      "objectiveIds": [
+        "3.2"
+      ],
+      "stem": "作业调度与监控的区别，哪项合理？",
+      "options": [
+        [
+          "a",
+          "调度安排任务使用资源；监控收集运行状态"
+        ],
+        [
+          "b",
+          "调度能自动增加物理GPU数量"
+        ],
+        [
+          "c",
+          "监控只要发现利用率低就必然知道唯一根因"
+        ],
+        [
+          "d",
+          "调度器必须忽略优先级和配额"
+        ]
+      ],
+      "answer": [
+        "a"
+      ],
+      "explanation": "调度做资源安排，观测支持理解状态，两者可以配合。",
+      "analysis": {
+        "a": "正确，职责不同但可集成。",
+        "b": "调度不能创造硬件。",
+        "c": "单指标一般不足以定唯一根因。",
+        "d": "策略可包括优先级和配额。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE08",
+        "SLURM",
+        "SLURM-GPU"
+      ],
+      "reviewStatus": "资料对照完成；独立AI交叉复核（非人工审题）",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D08-004"
+    },
+    {
+      "id": "Q-D08-005",
+      "day": 8,
+      "type": "multiple",
+      "domain": "AI 运营",
+      "cardId": "card-k8s-gpu-operator",
+      "objectiveIds": [
+        "3.2"
+      ],
+      "stem": "在常见Device Plugin方式下，GPU容器运行和调度需要考虑哪些？（多选）",
+      "options": [
+        [
+          "a",
+          "合适的节点驱动与GPU容器运行支持"
+        ],
+        [
+          "b",
+          "只要Pod名字含GPU就能自动使用"
+        ],
+        [
+          "c",
+          "设备插件报告GPU资源，Pod正确提出需求"
+        ],
+        [
+          "d",
+          "GPU Operator自动证明所有应用已达到性能目标"
+        ]
+      ],
+      "answer": [
+        "a",
+        "c"
+      ],
+      "explanation": "软件准备和资源发布/请求都要正确，部署组件并不是应用验收。",
+      "analysis": {
+        "a": "正确，是设备可用的基础。",
+        "b": "名称不是资源声明或驱动。",
+        "c": "正确，资源必须能被系统识别和申请。",
+        "d": "Operator管理组件，不能替代工作负载效果验证。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE08",
+        "K8S-GPU",
+        "OPERATOR"
+      ],
+      "reviewStatus": "资料对照完成；独立AI交叉复核（非人工审题）",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D08-005"
+    },
+    {
+      "id": "Q-D08-006",
+      "day": 8,
+      "type": "single",
+      "domain": "AI 运营",
+      "cardId": "card-mig",
+      "objectiveIds": [
+        "3.4"
+      ],
+      "stem": "下列哪项对MIG实例数的理解正确？",
+      "options": [
+        [
+          "a",
+          "所有NVIDIA GPU都能切7份"
+        ],
+        [
+          "b",
+          "型号和profile决定上限，例如A30最大4个实例"
+        ],
+        [
+          "c",
+          "实例越多，每份显存都会自动变大"
+        ],
+        [
+          "d",
+          "不支持MIG的GPU升级一个任意驱动就一定能支持"
+        ]
+      ],
+      "answer": [
+        "b"
+      ],
+      "explanation": "应查支持表和profile，不能把某型号数字泛化。",
+      "analysis": {
+        "a": "不是所有GPU支持MIG，上限也不相同。",
+        "b": "正确，是已核验的型号差异示例。",
+        "c": "分区不会凭空增加总显存。",
+        "d": "硬件支持是必要条件，不能这样保证。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE08",
+        "MIG",
+        "MIG-SUPPORT",
+        "MIG-DEPLOY",
+        "MIG-START",
+        "L40S"
+      ],
+      "reviewStatus": "资料对照完成；独立AI交叉复核（非人工审题）",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D08-006"
+    },
+    {
+      "id": "Q-D08-007",
+      "day": 8,
+      "type": "multiple",
+      "domain": "AI 运营",
+      "cardId": "card-vgpu",
+      "objectiveIds": [
+        "3.4"
+      ],
+      "stem": "企业需要在虚拟机里共享GPU，关于vGPU与MIG，选出两项正确描述。",
+      "options": [
+        [
+          "a",
+          "用了vGPU就绝不可能使用MIG"
+        ],
+        [
+          "b",
+          "需核查GPU、hypervisor、驱动、profile和授权支持"
+        ],
+        [
+          "c",
+          "所有vGPU配置都有完全相同的隔离和性能"
+        ],
+        [
+          "d",
+          "支持的配置可把MIG实例用于vGPU"
+        ]
+      ],
+      "answer": [
+        "b",
+        "d"
+      ],
+      "explanation": "虚拟化软件管理和硬件分区可以组合，支持条件仍要匹配。",
+      "analysis": {
+        "a": "官方有MIG支持的vGPU配置。",
+        "b": "正确，这是部署前必要的支持关系核对。",
+        "c": "时间切片与硬件分区等机制不同，不能一概而论。",
+        "d": "正确，二者不互斥。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE08",
+        "VGPU",
+        "MIG",
+        "MIG-DEPLOY"
+      ],
+      "reviewStatus": "资料对照完成；独立AI交叉复核（非人工审题）",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D08-007"
+    },
+    {
+      "id": "Q-D08-008",
+      "day": 8,
+      "type": "single",
+      "domain": "AI 运营",
+      "cardId": "card-k8s-gpu-operator",
+      "objectiveIds": [
+        "3.2"
+      ],
+      "stem": "NVIDIA GPU Operator最直接负责哪项？",
+      "options": [
+        [
+          "a",
+          "根据每个模型准确率自动改写训练数据"
+        ],
+        [
+          "b",
+          "自动把所有低GPU利用率任务迁移到另一台机器"
+        ],
+        [
+          "c",
+          "管理驱动、Toolkit、设备插件和GPU监控等组件"
+        ],
+        [
+          "d",
+          "替代Kubernetes的全部控制平面"
+        ]
+      ],
+      "answer": [
+        "c"
+      ],
+      "explanation": "Operator自动化GPU软件组件管理，不是通用实时利用率调度器。",
+      "analysis": {
+        "a": "不是数据治理或模型训练职责。",
+        "b": "不能从其组件管理职责推出这种通用保证。",
+        "c": "正确，对应官方概述。",
+        "d": "它使用Kubernetes Operator机制，而不是替换整个系统。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE08",
+        "K8S-GPU",
+        "OPERATOR"
+      ],
+      "reviewStatus": "资料对照完成；独立AI交叉复核（非人工审题）",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D08-008"
+    },
+    {
+      "id": "Q-D08-009",
+      "day": 8,
+      "type": "single",
+      "domain": "AI 运营",
+      "cardId": "card-slurm-kubernetes",
+      "objectiveIds": [
+        "3.2"
+      ],
+      "stem": "管理员想看Slurm中正在排队和运行的任务，最直接的命令是？",
+      "options": [
+        [
+          "a",
+          "squeue"
+        ],
+        [
+          "b",
+          "nvidia-smi --query-gpu"
+        ],
+        [
+          "c",
+          "dcgm-exporter"
+        ],
+        [
+          "d",
+          "sbatch"
+        ]
+      ],
+      "answer": [
+        "a"
+      ],
+      "explanation": "squeue查看作业队列；提交作业与查看队列是不同操作。",
+      "analysis": {
+        "a": "正确，对应队列状态查看。",
+        "b": "可查询GPU，但不直接提供Slurm队列状态。",
+        "c": "输出GPU指标，不是Slurm队列命令。",
+        "d": "sbatch用于提交批作业，不是这里的查看操作。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE08",
+        "SLURM",
+        "K8S"
+      ],
+      "reviewStatus": "资料对照完成；独立AI交叉复核（非人工审题）",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D08-009"
+    },
+    {
+      "id": "Q-D08-010",
+      "day": 8,
+      "type": "single",
+      "domain": "AI 运营",
+      "cardId": "card-mig",
+      "objectiveIds": [
+        "3.4"
+      ],
+      "stem": "旧讲义把L40S列为MIG支持型号，但当前官方规格明确MIG Support为No。应怎样形成学习结论？",
+      "options": [
+        [
+          "a",
+          "沿用旧讲义，因为文件名包含NVIDIA"
+        ],
+        [
+          "b",
+          "删除原讲义并假装从未有过差异"
+        ],
+        [
+          "c",
+          "把vGPU支持为Yes自动解释为MIG也支持"
+        ],
+        [
+          "d",
+          "保留原来源，并在学习内容中按官方规格纠正"
+        ]
+      ],
+      "answer": [
+        "d"
+      ],
+      "explanation": "MIG与vGPU支持是不同字段；来源冲突应留痕处理。",
+      "analysis": {
+        "a": "文件名和培训品牌不证明每条陈述都正确。",
+        "b": "会丢失来源与纠错依据。",
+        "c": "二者支持条件不同，不能互推。",
+        "d": "正确，既保留原始材料又防止错误进入正式题集。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE08",
+        "MIG",
+        "MIG-SUPPORT",
+        "MIG-DEPLOY",
+        "MIG-START",
+        "L40S"
+      ],
+      "reviewStatus": "资料对照完成；独立AI交叉复核（非人工审题）",
+      "origin": "本轮原创练习；非官方真题",
+      "webId": "Q-D08-010"
+    }
+  ],
+  "lessons": [
+    {
+      "day": 1,
+      "title": "AI概念、生成能力与用例",
+      "teachingRevision": "2026-10-02-day01-batch1",
+      "status": "可学习（首批内容）",
+      "cardIds": [
+        "card-ai-ml-dl",
+        "card-genai-stage",
+        "card-ai-drivers",
+        "card-ai-use-cases"
+      ],
+      "questionIds": [
+        "Q-ORIGINAL-001",
+        "Q-D01-001",
+        "Q-D01-002",
+        "Q-D01-003",
+        "Q-D01-004",
+        "Q-D01-005",
+        "Q-D01-006",
+        "Q-D01-007",
+        "Q-D01-008",
+        "Q-D01-009"
+      ],
+      "selfCheck": "模型不更新参数却生成说明，为什么既是生成式AI也是推理？",
+      "selfCheckNote": "口述自检不自动计分；答后讲解不能冒充独立首次作答。",
+      "materialGuide": {
+        "title": "本课与原教材：怎样搭配着学",
+        "currentUse": "先读本课四张知识卡的讲解与情境，沿输入、模型、输出解释AI、ML、DL及生成能力，再做口述自检和原选择题；外部教材不是读懂基础内容的前提。此前聊天学习来源仍单独保留，不当作应用成绩。",
+        "originalValue": "原讲义物理9–15页把发展因素、行业与概念放在一起，适合补整体图景。",
+        "whenToRead": "能解释从数据学习与规则处理的区别、方法与生成能力的不同角度时，可先继续下一课；术语模糊先回看对应中文讲解。",
+        "difference": "原讲义概念示意较概括；这里增加了任务/方法/硬件的区别与反例。",
+        "scope": "完成这里的基础目标，只说明可以继续本课学习；不代表考试范围已完整覆盖、已掌握或能直接进行生产操作。",
+        "readings": [
+          {
+            "sourceId": "TRAIN",
+            "locator": "160页培训讲义，物理页12–13；AI/ML/DL关系",
+            "task": "只看概念关系图，再回第一卡判断规则是人写还是从数据学来。",
+            "stop": "能给出一个ML但未必DL的理由即可返回。",
+            "warning": "同事提供的培训讲义，不等于已认证的官方考试教材。产品条件与版本以当前官方说明为准。"
+          },
+          {
+            "sourceId": "TRAIN",
+            "locator": "160页培训讲义，物理页150；训练/推理",
+            "task": "仅在混淆“输出什么”和“是否更新参数”时看阶段对照。",
+            "stop": "能解释生成内容为何也可属于推理即可停止。",
+            "warning": "同事提供的培训讲义，不等于已认证的官方考试教材。产品条件与版本以当前官方说明为准。"
+          },
+          {
+            "sourceId": "TRAIN",
+            "locator": "160页培训讲义，物理页9或10；按疑问二选一",
+            "task": "发展因素看9页，用例看10页，对应第三或第四卡。",
+            "stop": "解释一个因素或一个输入/输出即可停止，不要求两主题都翻完。",
+            "warning": "同事提供的培训讲义，不等于已认证的官方考试教材。产品条件与版本以当前官方说明为准。"
+          }
+        ],
+        "officialUse": "遇到具体型号、版本、指标字段或真实操作时，打开对应知识卡中的官方依据，只查与问题有关的定义/支持条件；不把官方网站全站作为当天作业。",
+        "mediaStatus": "原目录的视频与字幕可作为补讲候选，但当前只完成目录级清点，未逐段核对；本课不指定未经核验的时间码或宣称看完某段即可覆盖考点。"
+      }
+    },
+    {
+      "day": 2,
+      "title": "CPU/GPU、性能指标与训练推理",
+      "teachingRevision": "2026-10-02-day02-batch1",
+      "status": "可学习（首批内容）",
+      "cardIds": [
+        "card-cpu-gpu",
+        "card-gpu-units",
+        "card-memory-compute",
+        "card-latency-throughput",
+        "card-training-inference"
+      ],
+      "questionIds": [
+        "Q-ORIGINAL-002",
+        "Q-ORIGINAL-003",
+        "Q-ORIGINAL-004",
+        "Q-ORIGINAL-005",
+        "Q-D02-001",
+        "Q-D02-002",
+        "Q-D02-003",
+        "Q-D02-004",
+        "Q-D02-005",
+        "Q-D02-006"
+      ],
+      "selfCheck": "吞吐提高但有些人等待更久，为什么不矛盾？",
+      "selfCheckNote": "口述自检不自动计分；答后讲解不能冒充独立首次作答。",
+      "materialGuide": {
+        "title": "本课与原教材：怎样搭配着学",
+        "currentUse": "用容量、带宽、计算能力以及吞吐/延迟分别判断问题，避免把“更快GPU”当通用结论。",
+        "originalValue": "原讲义物理28–30、72–75、150页提供CPU/GPU、计算单元与训练推理的对照。",
+        "whenToRead": "能解释为何总吞吐增加不保证每条请求等待更短、数据搬运与计算不同，可先以当前内容练习；需要看硬件结构再回原图。",
+        "difference": "原资料更偏结构/产品图；当前课程补充性能判断的条件和反例。",
+        "scope": "完成这里的基础目标，只说明可以继续本课学习；不代表考试范围已完整覆盖、已掌握或能直接进行生产操作。",
+        "readings": [
+          {
+            "sourceId": "TRAIN",
+            "locator": "160页培训讲义，物理页28–30；CPU/GPU",
+            "task": "需要结构图时，只看CPU/GPU设计侧重，再回第一卡解释独立像素与前后依赖。",
+            "stop": "能说明为何任务并行程度影响收益后停止。",
+            "warning": "同事提供的培训讲义，不等于已认证的官方考试教材。产品条件与版本以当前官方说明为准。"
+          },
+          {
+            "sourceId": "TRAIN",
+            "locator": "160页培训讲义，物理页72–75；计算单元",
+            "task": "只找CUDA Core与Tensor Core的角色，不抄代际参数或宣传倍数。",
+            "stop": "能说出硬件单元与软件程序的区别，并指出Tensor Core不加速所有工作即可返回。",
+            "warning": "同事提供的培训讲义，不等于已认证的官方考试教材。产品条件与版本以当前官方说明为准。"
+          },
+          {
+            "sourceId": "TRAIN",
+            "locator": "160页培训讲义，物理页150；训练/推理",
+            "task": "只看过程区别，结合第五卡理解训练为什么保存额外信息。",
+            "stop": "能解释参数更新与额外记录的关系即可停止，不推导公式。",
+            "warning": "同事提供的培训讲义，不等于已认证的官方考试教材。产品条件与版本以当前官方说明为准。"
+          },
+          {
+            "sourceId": "BATCH",
+            "locator": "Optimizing TensorRT Performance → Batching",
+            "task": "仅在凑批仍难理解时看等待时间与批处理说明，再回第四卡区分单条等待与总产量。",
+            "stop": "解释为何可能提高吞吐却增加等待后停止，不读后续优化。",
+            "warning": "官方文档用于核对本问题；不用阅读整份指南或执行其中命令。"
+          }
+        ],
+        "officialUse": "遇到具体型号、版本、指标字段或真实操作时，打开对应知识卡中的官方依据，只查与问题有关的定义/支持条件；不把官方网站全站作为当天作业。",
+        "mediaStatus": "原目录的视频与字幕可作为补讲候选，但当前只完成目录级清点，未逐段核对；本课不指定未经核验的时间码或宣称看完某段即可覆盖考点。"
+      }
+    },
+    {
+      "day": 3,
+      "title": "驱动、CUDA、计算库与容器",
+      "status": "可学习（首批内容）",
+      "cardIds": [
+        "card-stack-driver",
+        "card-cuda-toolkit",
+        "card-cuda-libraries",
+        "card-gpu-containers",
+        "card-compatibility"
+      ],
+      "questionIds": [
+        "Q-D03-001",
+        "Q-D03-002",
+        "Q-D03-003",
+        "Q-D03-004",
+        "Q-D03-005",
+        "Q-D03-006",
+        "Q-D03-007",
+        "Q-D03-008",
+        "Q-D03-009",
+        "Q-D03-010"
+      ],
+      "selfCheck": "框架、计算库、CUDA、驱动和容器各在解决哪一层问题？",
+      "selfCheckNote": "口述自检不自动计分；答后讲解不能冒充独立首次作答。",
+      "teachingTrial": {
+        "id": "day3-understanding-2026-09-25",
+        "teachingRevision": "2026-10-02-day03-batch1",
+        "title": "Day 3 主课与理解练习：把软件职责讲清楚",
+        "status": "已批准试用；学习效果待验证",
+        "approvedOn": "2026-09-25",
+        "note": "先读完整主课，再精选少量理解练习输入自己的回答；原知识卡用于复习速查，官方链接用于依据追溯和选读。短诊断可选，不作为开始学习的门槛；参考要点支持回答后的对照，不能替代针对实际回答的反馈。",
+        "fullLesson": {
+          "title": "Day 3 主课｜一个 GPU 应用为什么需要这么多软件",
+          "intro": "今天沿着一个维修工单分类应用，把软件栈中的角色讲清楚。你不需要先读完官方文档，也不需要会写 CUDA 程序；先用下面五节正文建立关系，再输入少量自己的解释。原知识卡用于学后速查，来源链接用于查证和选读。本课的设备与故障情境都是教学假设。",
+          "orientation": [
+            "先回接 Day 2：模型已经训练完成，用它给新工单分类属于推理。本课研究这次计算怎样在 GPU 上运行；模型是否准确、服务是否够快，是另一些需要验证的问题。",
+            "先分清对象：模型包含处理输入的结构与学到的参数；应用组织接收工单、准备输入、调用模型与显示类别；运行环境是应用执行所需的软件和硬件条件。有模型文件、有可用应用、有合适环境，是三件事。",
+            "概念地图分三层：任务过程是“接收→整理→计算→返回”；软件分工说明谁承担什么；交付条件说明是否需要构建、是否用镜像及主机需提供什么。过程图不是所有软件必须经过的固定调用链。",
+            "今天抓住五个问题：谁组织应用？程序如何从源码变成可运行的东西？库解决哪类计算？容器打包了什么？不同组件怎样才算兼容？",
+            "先学中文含义，再对应英文名称。遇到术语时先问它负责什么，不要求一遍记住所有缩写。",
+            "可直接开始主课。短诊断只在你想检查旧印象时选做；不会答不影响继续学习，也不把做完诊断当成入课条件。"
+          ],
+          "sections": [
+            {
+              "id": "L-D03-01",
+              "title": "一、先认识软件栈：同一个任务，为什么需要不同角色",
+              "cardIds": [
+                "card-stack-driver"
+              ],
+              "paragraphs": [
+                "假设同事提交一条“服务器间歇性断网”的工单，应用返回一个待人工核对的类别。我们关心的是：这段文字怎样变成计算，再怎样得到结果。GPU 提供计算能力，但它并不知道工单业务规则；模型权重保存学到的参数，也不会自己接收工单、准备输入并展示答案。",
+                "应用（Application）围绕用户目标组织工作，例如接收文字、检查格式、调用模型并显示类别。框架（Framework）提供组织模型与计算的通用能力，开发者不用从零实现每个环节。框架可支持训练，也可支持推理；不能因为叫“训练框架”，就以为它不能运行已有模型。",
+                "库（Library）是一组可以由其他软件调用的现成能力。假设许多程序都要做矩阵计算，让每个团队各写一套既费力又容易出错；把经过优化的实现放进库，应用或框架就可以复用。框架与库的分工可先理解为“组织模型怎样算”和“提供某些具体运算”，但实际产品能力可能交叉，不能按名称强行划出绝对边界。",
+                "操作系统管理程序与资源。程序使用GPU时，需要使用设备内存、安排数据、发起计算并取得结果，由运行时、驱动、操作系统与硬件配合。GPU驱动提供系统使用设备的基础支持；框架组织模型计算，库提供相关运算实现。先区分“模型怎样算”和“系统怎样使用设备”，不要求追踪底层调用，也不把所有动作归给驱动。",
+                "这些角色合在一起，被称为软件栈（Software stack）。画层次图是为了看清职责和依赖，不是宣称每个应用都必须按“框架→某一个库→某一个运行时”的同一条路线执行。有的程序经框架调用库，有的直接使用 CUDA 能力；本课先理解关系，不追踪真实程序的每一次函数调用。"
+              ],
+              "example": {
+                "title": "沿着工单走一遍",
+                "paragraphs": [
+                  "第一步，应用接收工单并把它整理成模型能处理的输入；这是业务流程与输入处理。第二步，已有模型进行计算，框架和相关库可以帮助组织与执行这些运算；这是模型计算。",
+                  "第三步，程序通过所需的软件支持使用 GPU，主机的驱动与硬件参与完成设备侧工作。第四步，应用把计算结果整理成人能看懂的类别。CPU 仍可参与输入处理、控制和结果整理，不会因为使用 GPU 就消失。",
+                  "如果应用根本没有读到工单文件，检查模型计算库通常不是第一步；如果环境不满足 GPU 使用条件，仅换一份模型权重也不能保证解决。先说清失败发生在哪类工作，才能选对核查方向。"
+                ]
+              },
+              "contrast": [
+                "“装了驱动”与“训练好了模型”解决不同问题；前者不证明后者已经发生。",
+                "“框架可调用库”不等于“每个模型都一定调用同一个库”；具体实现需要具体证据。",
+                "一个阶段成功，只证明该次路径的一部分条件成立，不证明应用全流程或全部硬件永远正常。"
+              ],
+              "takeaway": "先用动词认角色：应用组织业务，框架组织模型计算，库提供可复用能力，驱动支持系统使用设备。能说明各自为何存在，比背一串名称更重要。",
+              "sourceIds": [
+                "TRAIN",
+                "CUDA",
+                "COMPAT"
+              ],
+              "readingGuide": [
+                "CUDA Installation Guide for Linux → “1. Overview”：只看 CUDA 平台与 Toolkit 的总览，回答“平台与具体工具是什么关系”；不用进入安装命令。",
+                "CUDA Compatibility → “Why CUDA Compatibility”：看开头关于 Toolkit、应用与驱动的说明，回答“构建程序和运行程序分别依赖什么”。",
+                "培训讲义（TRAIN）保留为主题组织来源，本节不布置额外原文阅读；当前技术条件用上述官方资料查证。"
+              ],
+              "priority": "core",
+              "exerciseIds": [
+                "P-D03-01"
+              ]
+            },
+            {
+              "id": "L-D03-02",
+              "title": "二、源码、编译与运行：拿到的东西不同，所需工具也不同",
+              "cardIds": [
+                "card-cuda-toolkit",
+                "card-stack-driver"
+              ],
+              "paragraphs": [
+                "先看你拿到什么。甲拿到的是一个 GPU 照片处理程序的源码，还需要把它做成可用的程序；乙拿到的是别人已经构建好的照片处理应用，只想打开一张照片并加上模糊效果。两人都可能使用 GPU，但眼前要完成的工作不同，所以不能只问一句“装了 CUDA 没有”。",
+                "甲的过程是“源码 → 构建工具处理 → 可交付的程序产物”。编译是构建中的一种转换：编译工具读取源码，把它转换为后续可执行或继续构建的形式。对 CUDA 源码，甲要检查相应的编译工具和开发依赖；CUDA Toolkit 通常提供这类工具、相关库以及调试分析工具。这里先认清工具负责哪一步，不要求写代码或背命令。",
+                "乙的过程是“已构建应用 + 它所需的运行条件 → 启动 → 处理照片”。预构建（prebuilt）只表示交付前已做过构建工作，不表示乙的电脑什么软件都不用准备。应用仍可能需要某些库、可配合的驱动和 GPU；缺了它实际要用的一项，照样可能启动或计算失败。",
+                "CUDA Runtime 是供程序调用的一组现成 CUDA 功能，由 cudart 软件库实现，并随 CUDA Toolkit 提供。它不是一块硬件，也不是泛指“运行需要的一切”。看一个具体动作：本例照片应用准备把照片交给 GPU 处理时，可以调用 Runtime 提供的 cudaMalloc 函数，请求“在 GPU 显存里留出这么大一块空间”；Runtime 库通过底层驱动支持完成这项设备内存分配。程序还可调用相应的 Runtime 函数搬运数据、发起 GPU 计算。不必背函数名，先理解它是程序实际会调用的软件组件。",
+                "把三个常被混在一起的动作放回过程：编译处理程序源码；训练用数据调整模型参数；推理用已有模型处理新输入。一个已经构建好的应用可以执行训练，也可以执行推理；“程序已经构建”不等于“模型已经训练好”。是否在做训练或推理，要看应用实际怎样使用模型，不能仅凭有没有编译器判断。",
+                "再看名字相近的东西。CUDA 是让开发者表达和组织 NVIDIA GPU 并行计算的平台与编程模型；CUDA Toolkit 是能取得编译工具、库等具体软件的工具集合；CUDA Core 是 GPU 内部的硬件计算单元。说“用 CUDA”可能在说编程方式，问“有没有编译工具”则要核查实际工具，两者不是同一件东西。",
+                "编译工具与 CUDA Runtime 职责不同，却并不互斥：Toolkit 既提供把源码转换成程序产物的编译工具，也提供程序运行时会调用的 Runtime 库。甲在同一台电脑上开发并试运行照片程序，就可能同时需要两者。交付给乙时，Runtime 库可以被合入程序，也可以作为单独的库文件随应用提供；因此乙没有安装整套 Toolkit 或编译器，不等于应用没有 Runtime。运行 CUDA 功能仍需要兼容驱动，Runtime 不能替代驱动，驱动也不能自动补齐应用缺少的库。",
+                "用两张清单判断更稳妥：要从源码制作，检查编译工具与开发依赖；要运行已有应用，检查它实际要求的库、驱动和硬件。两张清单可以重叠，但不能相互代替。本课先解释职责，具体版本和安装方式再按应用要求与官方支持说明核查。"
+              ],
+              "example": {
+                "title": "同一个照片程序：开发者改程序，使用者换照片",
+                "paragraphs": [
+                  "先看典型过程。甲写好“给照片加模糊效果”的 CUDA 源码，用编译工具配合开发依赖构建应用，再试运行。若甲修改了处理像素的程序逻辑，就需要重新构建相应程序产物；缺少编译工具时，可能卡在这一步。",
+                  "乙安装甲交付的应用，打开一张照片，点击“模糊”。应用按已有程序逻辑申请 GPU 显存、准备图像数据并发起计算，驱动与 GPU 参与完成设备侧工作，最后显示处理后的照片。乙换另一张照片只是换了输入，通常不需要亲自重新编译整个程序。这说明为什么同一开发机可能既有编译器又有 Runtime，而使用者可以只具备该应用实际需要的运行组件。",
+                  "只改变一个条件：假设这份应用依赖单独提供的 Runtime 库文件，但安装时漏了这个文件。即使乙的驱动仍兼容，应用也可能启动失败。此时应核查缺失的库，不能只凭“装了驱动”认定软件齐全，也不能把编译器当成这个库的替代品。",
+                  "理解典型过程后，再看例外：某些应用会在运行中编译一部分 GPU 代码或扩展，驱动也可能按实际硬件进一步编译所交付的中间代码。因此“预构建”不保证运行中完全没有编译；具体需要哪些编译组件，要看应用要求。这样的编译工作，与 CUDA Runtime 提供内存申请等调用的职责不同。"
+                ]
+              },
+              "contrast": [
+                "没有编译器，不足以证明预构建应用不能运行；有编译器，也不足以证明所有运行依赖已经满足。",
+                "源码编译、模型训练是不同过程：前者处理程序表达，后者通过数据学习模型参数。",
+                "CUDA Core 是硬件；CUDA 是平台/编程模型；Toolkit 是工具与库集合。读到 CUDA 一词时要结合上下文。"
+              ],
+              "takeaway": "先问“这次要构建程序，还是使用已有程序”，再分别列开发条件与运行条件。不要用一张安装清单回答所有问题。",
+              "sourceIds": [
+                "CUDA",
+                "COMPAT",
+                "TRAIN"
+              ],
+              "readingGuide": [
+                "CUDA Installation Guide for Linux → “3.3. Verify the System Has gcc Installed”与“3.5. Download the NVIDIA CUDA Toolkit”：分别看开发/运行的区别和 Toolkit 包含什么；只读说明，不执行命令。",
+                "CUDA Compatibility → “Why CUDA Compatibility”：看前两段，回答“运行预构建应用为什么仍可能需要兼容驱动与适当的库”。",
+                "培训讲义（TRAIN）仅作本课主题线索；本节的编译与运行区别已在正文展开，不要求另读整份讲义。"
+              ],
+              "priority": "core",
+              "exerciseIds": [
+                "P-D03-02",
+                "P-D03-04"
+              ]
+            },
+            {
+              "id": "L-D03-03",
+              "title": "三、计算库与通信库：把名称对应到真实工作",
+              "cardIds": [
+                "card-cuda-libraries"
+              ],
+              "paragraphs": [
+                "模型处理工单时，文字需要先表示成数值，后续包含很多数值运算。你现在不用学矩阵公式；先把矩阵理解为按行列组织的一组数，矩阵运算则按规定组合这些数。GPU 可以加速其中适合并行的工作，软件库负责提供可调用的运算实现。",
+                "cuBLAS 提供 GPU 加速的基础线性代数能力，例如向量和矩阵运算。cuDNN 面向深度神经网络中的基础运算，例如卷积、归一化等。“算子”可以先理解为模型计算中的一种基本操作；本课不要求展开这些操作的数学定义。认清它们都是计算能力，就不会把 cuDNN 误认成数据中心管理界面。",
+                "cuBLAS 与 cuDNN 的功能范围并非毫无交集：神经网络中也大量使用矩阵运算，cuDNN 本身也支持相关运算。学习“偏线性代数”和“偏神经网络基础运算”是帮助识别典型职责，不是规定每一次矩阵计算只能由一个固定库完成。",
+                "如果任务使用多个 GPU，仅让各自算得快还不够；某些阶段需要交换或合并各自结果。NCCL 是提供多 GPU、多节点通信操作的软件库。集合通信表示一组参与者共同完成一次数据交换或归并，而不是某一张卡独自算完所有事情。",
+                "用最简单的数字理解 All-reduce：假设两张 GPU 分别有一个数 2 和 3，本次约定做求和；完成后，两边都得到 5。这只是说明“合并结果并让参与者获得结果”的教学例子，不是在教授真实训练的全部算法。计算本地结果和组织跨 GPU 合作，因此是可区分的工作。",
+                "上例包含两项工作：将2和3合成5，以及让双方都得到5。本地计算并不会自动让各参与者知道合并结果。多GPU任务因此既需要运算，也可能需要通信；先理解为何需要交换，再把NCCL对应到这一类能力。",
+                "通信软件还要利用真实互联传送数据。NCCL 是软件能力，NVLink 等是互联技术；好比有运输通道还需要安排怎么交接数据。这个类比不表示 NCCL 只支持 NVLink，也不表示多 GPU 任务必定选用某个唯一通信库。"
+              ],
+              "example": {
+                "title": "先单卡分类，再理解多卡协作",
+                "paragraphs": [
+                  "在原来的单 GPU 工单分类案例中，框架可以使用相关运算实现完成模型计算。仅从“采用 GPU”这件事，不能推出应用必定用了 cuDNN、cuBLAS 和 NCCL 的全部能力。",
+                  "为了学习协作，再增加一个独立的教学分支：团队训练同类模型，让两张 GPU 各处理不同数据，随后合并需要共享的更新。各卡先完成本地计算，之后进行通信与合并；后一个阶段可能使用 NCCL 的集合通信能力。",
+                  "如果本地计算已经完成而程序在等待交换结果，只把“矩阵运算库”换个名称，并没有解释通信为何等待。我们先区分工作类别；具体性能原因仍需任务与运行证据。"
+                ]
+              },
+              "contrast": [
+                "cuDNN 是计算库，不是完整训练框架或运维管理界面；框架可能调用它，但两者不是同一角色。",
+                "NCCL 提供通信操作，不等于网络线缆或互联硬件；它也不替代本地全部数值计算。",
+                "识别典型职责不等于写死内部实现；不要从产品名称直接推断一段程序实际调用了什么。"
+              ],
+              "takeaway": "先说工作：本地做数值运算，还是让多卡交换、合并结果；再把 cuBLAS、cuDNN、NCCL 放回相应职责。",
+              "sourceIds": [
+                "CUBLAS",
+                "CUDNN",
+                "NCCL"
+              ],
+              "readingGuide": [
+                "cuBLAS → “Basic Linear Algebra on NVIDIA GPUs”：看开头与“cuBLAS Host API”，确认向量/矩阵运算属于哪类能力，不必阅读后续 API 变体。",
+                "NVIDIA cuDNN 首页 → “NVIDIA cuDNN”：看定义及其后的运算示例，确认它是神经网络基础运算库，并留意列表也包含矩阵乘法。",
+                "NCCL → “How NCCL Works”：看集合通信操作及可使用的互联，回答“合并各卡结果与单卡做矩阵计算有什么不同”。"
+              ],
+              "priority": "core",
+              "exerciseIds": [
+                "P-D03-03"
+              ]
+            },
+            {
+              "id": "L-D03-04",
+              "title": "四、容器打包了软件，为什么还要看主机",
+              "cardIds": [
+                "card-gpu-containers",
+                "card-stack-driver"
+              ],
+              "paragraphs": [
+                "团队在开发机上把分类应用跑通后，想交给另一位同事使用。困难在于：对方机器上的框架、库和配置可能不同。容器帮助把应用及其一组软件依赖组织起来，减少“每个人手工准备一遍环境”的差异，但它没有把使用条件全部消除。",
+                "镜像（Image）可以理解为用于创建容器的软件打包模板，包含文件、依赖及启动所需的信息；容器（Container）是由镜像创建并运行的实例。主机（Host）是承载这个容器环境的机器。本课讨论常见 GPU 容器的职责，不把容器当成镜像里复制出的一台真实 GPU 服务器。",
+                "镜像可携带应用、框架和用户态库。“用户态”在这里先理解为应用进程所使用的软件部分，与主机内核及驱动所承担的底层工作区分。真实 GPU、设备访问以及主机侧驱动条件仍需环境提供；软件包不能代替这块硬件。",
+                "NVIDIA Container Toolkit 提供让容器使用 NVIDIA GPU 的相关工具与支持。官方配置流程需要合适的主机 GPU 驱动、受支持的容器引擎和相应配置。因此“安装了 Docker”只说明有一种容器工具，不能单独推出某个 GPU 应用已获得设备并具备兼容依赖。",
+                "两个Toolkit负责不同问题：CUDA Toolkit主要提供CUDA开发工具和相关库；NVIDIA Container Toolkit帮助容器环境使用NVIDIA GPU。名称相似，不意味着能相互替代。",
+                "“预构建”和“镜像”也不是互斥分类：镜像可以包含已构建应用，也可以包含开发工具。是否需要构建源码是一条维度，是否采用容器封装是另一条维度。拿到镜像仍要看装了什么、启动时做什么、主机需提供什么。",
+                "这里要分开两个问题：第一，容器有没有正确取得所需 GPU 访问能力；第二，它携带的软件与主机条件是否匹配。第一项满足后，第二项仍可能有问题。把二者都叫成“容器没装好”，会让下一步核查失去方向。"
+              ],
+              "example": {
+                "title": "把同一镜像交给另一台机器",
+                "paragraphs": [
+                  "开发机上应用成功运行。接收方拿到相同镜像，这保留了一部分软件条件；但接收方的 GPU、驱动和容器运行配置不一定与开发机相同。",
+                  "若容器没获得所需设备访问，镜像里即使有框架，也不能凭空使用主机 GPU。若设备访问已经满足，但应用所需软件与驱动支持条件不匹配，仍可能无法完成计算。",
+                  "所以容器的价值是更方便地组织、交付和复用环境，不是保证任意主机零检查运行。要检查的是镜像内的软件要求与镜像外的运行条件之间能否配合。"
+                ]
+              },
+              "contrast": [
+                "镜像是软件打包模板，运行中的容器是实例；二者都不是新造出的物理 GPU。",
+                "“容器看见设备”与“目标模型完整运行成功”是不同层次的证据。",
+                "容器能减少环境差异，不会取消驱动、设备访问和应用兼容条件。"
+              ],
+              "takeaway": "用“镜像里带了什么，主机还要提供什么”来解释 GPU 容器。遇到失败时，再区分访问条件和软件支持条件。",
+              "sourceIds": [
+                "CONTAINER",
+                "CONTAINER-INSTALL",
+                "COMPAT"
+              ],
+              "readingGuide": [
+                "NVIDIA Container Toolkit → “Overview”：只看工具集的用途，回答“它帮助容器获得哪类能力”，不必背组件列表。",
+                "“Installing the NVIDIA Container Toolkit”→“Installation / Prerequisites”及“Configuration / Prerequisites”：分别确认主机驱动、容器引擎与 Toolkit 的条件；只读条件，不执行安装或重启命令。",
+                "CUDA Compatibility → “Why CUDA Compatibility”：看运行应用的条件，思考“镜像带上软件后，为什么主机侧条件仍不能省略”。"
+              ],
+              "priority": "core",
+              "exerciseIds": []
+            },
+            {
+              "id": "L-D03-05",
+              "title": "五、兼容性：按支持条件判断，而不是凭最新或同号猜测",
+              "cardIds": [
+                "card-compatibility",
+                "card-gpu-containers"
+              ],
+              "paragraphs": [
+                "兼容（Compatibility）表示特定组件在规定条件下能够配合工作。它是一种关系，不能只看某个组件自己是不是“最新”。应用可能对 GPU 能力、操作系统、驱动以及所需库提出要求；读支持说明就是把这些条件与实际环境逐项对应。",
+                "支持矩阵（Support matrix）把被支持的组件组合列成表。不同组件的版本号有各自的含义，相同数字不是通用兼容证明；数字不同也不一定冲突。例如 CUDA 与驱动存在有条件的兼容机制，本课只理解为什么需要核对，不背真实版本表。",
+                "实际核查时先确定交付物：这次是否需要从源码构建、是否以容器方式交付？再列出这份交付物要求的条件和主机已知条件，寻找不一致或尚未确认的项。应用错误信息与运行日志可帮助判断它实际停在哪一步；不能用“应该差不多”代替证据。",
+                "一个组合不在支持范围内，是需要进一步核查的重要线索，但不自动证明它是所有现象的唯一原因。反过来，列在支持范围内也不等于应用输入、配置或资源都已经正确。兼容核查回答的是部分条件是否满足，完整验收还需要实际任务的结果。"
+              ],
+              "example": {
+                "title": "先跟着分析一个例子，再做自己的练习",
+                "paragraphs": [
+                  "教学假设：软件包甲支持驱动系列 R1 和 R2，软件包乙只支持 R2；当前主机使用 R1。这里的名称和系列完全虚构，不对应任何真实安装版本。即使甲在主机上成功运行，也不能由此推出乙必定能运行。",
+                  "按已知条件，乙与当前 R1 不在给定支持组合中，应优先核对乙的要求及具体失败信息。现在还不能说 GPU 硬件损坏，也不能保证把某个组件更换后所有问题都会消失；那需要进一步证据。",
+                  "再改变一个条件：如果乙的全部已核实条件都匹配，仍出现错误，就继续看错误信息、应用输入与资源等线索。不要为了坚持原来的猜测，忽略新的证据。",
+                  "轮到你时，先完成下方新情境题，再写一段自己的职责解释；可以回到对应小节补学。若看过例子后再答，属于有讲解后的练习，本课不会把它包装成从未见过题型的独立测试。",
+                  "改变一个关键条件：教学应用支持R2/R3，当前主机是R2，但启动信息提示缺少配置文件。给定的版本条件已经符合，下一步应核对配置文件及路径；不能只因GPU应用失败就继续认定驱动不匹配。这里R2/R3仍为虚构标签，不是真实版本推荐。"
+                ]
+              },
+              "contrast": [
+                "“所有组件升到最新”没有逐项回答应用需要什么，不能作为兼容检查的替代品。",
+                "“版本数字一样”不是兼容规则；“数字不一样”也不是故障结论。",
+                "成功运行一个任务、发现一项不支持条件，都应限定在已有证据范围内，不扩写成唯一根因或完全掌握。"
+              ],
+              "takeaway": "先列事实与要求，再对照支持条件；把“有线索”和“已经证明原因”分开。知道该看什么，比背一个随版本变化的数字组合更有用。",
+              "sourceIds": [
+                "CUDA",
+                "COMPAT",
+                "CONTAINER-INSTALL"
+              ],
+              "readingGuide": [
+                "CUDA Compatibility → “Why CUDA Compatibility”：看应用、驱动和库的关系及兼容类别说明，回答“为什么版本数字不必全相同”；本课不要求记真实版本组合。",
+                "CUDA Installation Guide for Linux → “3. Pre-installation Actions”：看 GPU、系统与工具条件清单，练习把“一个最新版本”改写为“多项分别核对的条件”。",
+                "“Installing the NVIDIA Container Toolkit”→“Installation / Prerequisites”及“Configuration / Prerequisites”：核对容器案例还涉及哪些主机与运行环境条件，不把支持组合当成唯一故障原因。"
+              ],
+              "priority": "core",
+              "exerciseIds": [
+                "P-D03-05",
+                "P-D03-06"
+              ]
+            }
+          ],
+          "summary": [
+            "应用、框架、库与驱动承担不同职责。用自己的话解释它们如何帮助完成工单分类，不必背一条唯一调用链。",
+            "编译源码和运行预构建应用需要的条件不同。Toolkit、运行依赖和驱动不是同义词；按具体应用核对。",
+            "把计算与协作分开：cuBLAS/cuDNN 提供典型计算能力，NCCL 提供通信能力；具体程序不一定用齐它们。",
+            "镜像可打包依赖，GPU 与主机运行条件仍要核查；设备访问成立不等于全部应用兼容性都成立。",
+            "主课后先输入少量真实回答，再对照要点说明还不清楚的地方。选择题全对、看懂解释和能独立解释，是不同的学习证据。"
+          ],
+          "timeGuide": [
+            "前半段：软件角色、构建与运行、计算与通信。每节复述一两句，可只选一项短答。",
+            "后半段：容器、兼容性与综合解释。可在另一次学习继续，保留已经写下的疑问。",
+            "45–60分钟是安排参考，不是已验证的个人完成时长。到自然停止点保存回答；不需要同时重做全部旧选择题。",
+            "第一次中文解释，随后英文两题选一题、可中文回答。看过译文后是语言练习，不冒充独立未见题。"
+          ]
+        },
+        "goals": [
+          "沿着工单分类案例理解软件栈的前置词义，用自己的话说明应用、框架、库、运行依赖、驱动与硬件如何分工。",
+          "通过构建和运行两种交付情境，解释源码、编译器与预构建应用的区别，再区分 CUDA、Toolkit 和驱动。",
+          "先看实际工作，再辨认计算库与通信库的典型用途；不只把产品名配对。",
+          "说清镜像内的软件与主机提供的条件，理解 GPU 容器能解决什么、还不能保证什么。",
+          "读懂简化支持条件后写出自己的判断和理由，并通过反馈明确尚未理解之处，不以题目全对替代解释。"
+        ],
+        "diagnostic": {
+          "minutes": "5–8",
+          "promptIds": [
+            "P-D03-06",
+            "P-D03-05",
+            "P-D03-02"
+          ],
+          "alternativeEnglishId": "P-D03-04",
+          "instructions": [
+            "这是可选的旧知识检查，可以直接跳过并先学主课。若选择诊断，尝试口述、新情境和一道英文短题即可，不必一次做完六项。",
+            "若想检查独立回忆，先收起讲解、译文和参考要点；若已经阅读主课，就按有讲解后的练习理解本次表现。英文题可以用中文回答。",
+            "用自己的话说出理由；不知道时说明卡在哪里，不用猜成完整答案。",
+            "如果已经看过某题题干、译文或要点，说明看过哪些内容；这次表现按复习或辅助作答理解，不当成全新独立测量。"
+          ]
+        },
+        "caseStudy": {
+          "title": "一个维修工单分类模型怎样用上 GPU",
+          "setup": "教学案例：团队已有训练好的工单分类模型。应用读取一条工单并返回类别，开发机上已能运行；现在希望把应用放进容器，并在另一台 GPU 主机上运行。这里讨论职责和证据，不执行安装或环境改动。",
+          "steps": [
+            {
+              "title": "应用要完成什么工作",
+              "text": "应用负责接收工单、整理输入并返回类别；框架帮助组织模型计算。模型权重是已经学到的参数，不是让操作系统与 GPU 交互的驱动。使用 GPU 计算仍需要对应的软件与硬件支持。"
+            },
+            {
+              "title": "计算与通信解决不同问题",
+              "text": "模型计算可能需要矩阵运算或神经网络基础运算，相关库可提供这些能力，例如 cuBLAS 与 cuDNN。若任务扩展到多个 GPU 并需要合并各自结果，还可能需要 NCCL 一类集合通信能力。单 GPU 分类并不因此必须用齐这些库；由应用、框架和实现决定具体组合。"
+            },
+            {
+              "title": "开发工具与运行依赖分开看",
+              "text": "如果团队要从源码编译 CUDA 程序，需要核对编译工具等开发依赖，CUDA Toolkit 提供相关工具与库。运行已经构建好的应用则要满足它的运行依赖。装有驱动不等于装齐开发工具；没有编译器也不自动说明现成应用不能运行。"
+            },
+            {
+              "title": "把应用放进镜像以后",
+              "text": "容器镜像可携带应用、框架和用户态依赖，让软件环境更便于打包；真实 GPU 仍在主机上。主机驱动、容器 GPU 访问支持及运行配置仍要匹配。镜像中的模型能在开发机运行，不足以保证另一台主机已经具备相同条件。"
+            },
+            {
+              "title": "用证据缩小问题范围",
+              "text": "若主机和容器 A 能完成计算，容器 B 却失败，先记录哪些条件相同、哪些不同，再核对 B 的设备访问、镜像依赖与支持条件。已有成功运行是有用线索，但不能直接证明所有硬件永久正常，也不能只凭失败就认定 GPU 损坏。兼容表用于核对支持组合，不是唯一根因的自动判定器。"
+            }
+          ],
+          "boundary": "这是教学简化案例，不是用户真实故障记录。框架、库、CUDA 和运行时可以有不同组合，不画成每个应用必经的唯一链路；不要求在生产环境安装、升级或重启。"
+        },
+        "exercises": [
+          {
+            "id": "P-D03-01",
+            "title": "基础识别：系统如何与设备交互",
+            "language": "zh",
+            "stem": "操作系统需要与 GPU 设备交互，主要由哪一层组件提供支持？再用一句话说明：它与训练框架的职责有什么区别？",
+            "cardIds": [
+              "card-stack-driver"
+            ],
+            "objectiveIds": [
+              "1.1",
+              "1.7"
+            ],
+            "sourceIds": [
+              "CUDA",
+              "CONTAINER-INSTALL"
+            ],
+            "relatedQuestionIds": [
+              "Q-D03-001"
+            ],
+            "referenceExplanation": [
+              "驱动是支持系统使用GPU设备的软件。框架则帮助组织模型与计算：比如规定各层怎样组合、怎样使用输入得到预测。知道模型怎样算，并不等于已经具备让目标机器使用GPU的设备支持，这就是两种职责需要区分的原因。",
+              "可以用“框架组织计算，驱动支持使用设备”说明核心关系；不必背一条固定调用链。真实程序还会涉及运行时、库与硬件协作，这些补充帮助理解，不是原题新增的必答名称。"
+            ],
+            "rubric": [
+              "能识别 GPU 驱动提供系统与设备交互能力。",
+              "能把框架组织模型或训练过程的职责与驱动区分；不要求背一条固定调用顺序。"
+            ]
+          },
+          {
+            "id": "P-D03-02",
+            "title": "基础识别：编译需要什么（英文，可中文答）",
+            "language": "en",
+            "stem": "A team needs to compile a CUDA program from source. What kind of tool should it check for, and which software package normally provides it? You may answer in Chinese.",
+            "cardIds": [
+              "card-cuda-toolkit"
+            ],
+            "objectiveIds": [
+              "1.1"
+            ],
+            "sourceIds": [
+              "CUDA",
+              "COMPAT"
+            ],
+            "relatedQuestionIds": [
+              "Q-D03-002",
+              "Q-D03-010"
+            ],
+            "rubric": [
+              "能说出需要核对编译工具等开发依赖，CUDA Toolkit 提供相关开发工具与库。",
+              "不把模型权重、GPU 硬件或单独安装驱动当成完整开发工具链；不要求命令或真实版本号。",
+              "将 compile、from source 等阅读困难与技术概念理解分开反馈。"
+            ],
+            "referenceExplanation": [
+              "题目里的 from source 表示团队拿到的是程序源码，还没有完成这次构建；compile 问的是把源码转换为后续可用程序产物所需的工具。先找编译工具和相应开发依赖，通常在 CUDA Toolkit 提供的开发工具中核查。",
+              "驱动负责让系统与 GPU 设备配合，GPU 是硬件，模型权重是训练得到的数据；它们各有用途，却不能替代把 CUDA 源码编译成程序产物所需的工具。回答时说清“正在制作程序，所以查编译工具与 Toolkit”即可，不要求背命令或版本号。"
+            ],
+            "translation": "团队需要从源码编译一个 CUDA 程序。应核查哪一类工具，通常由哪个软件包提供？可以用中文回答。"
+          },
+          {
+            "id": "P-D03-03",
+            "title": "相近概念辨析：计算与结果合并",
+            "language": "zh",
+            "stem": "一个训练任务有两项工作：① 在 GPU 上完成矩阵计算；② 把多个 GPU 各自算出的结果合并。请分别说明这两项工作需要什么能力，可各举一个支持这项工作的软件库，并说明它们的作用。",
+            "cardIds": [
+              "card-cuda-libraries"
+            ],
+            "objectiveIds": [
+              "1.1"
+            ],
+            "sourceIds": [
+              "CUBLAS",
+              "NCCL",
+              "CUDNN"
+            ],
+            "relatedQuestionIds": [
+              "Q-D03-003",
+              "Q-D03-004",
+              "Q-D03-005",
+              "Q-D03-006"
+            ],
+            "referenceExplanation": [
+              "矩阵计算需要数值运算能力，cuBLAS是可调用的线性代数软件库。多卡各自计算后，结果仍分散在各自位置；把它们合并并让参与者获得结果，需要通信与归约能力，可对应NCCL。例如各卡有2和3，按求和合并后都拿到5，既发生了运算，也发生了数据交换。",
+              "cuDNN提供神经网络基础运算，不能因为名字含神经网络就认为它负责所有跨卡通信。这里用典型职责帮助选对能力，实际框架可能调用不同实现，不要求每项任务用齐这些库或由人手动调用。"
+            ],
+            "rubric": [
+              "能区分进行数值计算与在多个 GPU 间通信、归约或合并结果。",
+              "可用 cuBLAS 对应线性代数能力、NCCL 对应集合通信能力；若提到 cuDNN，需说明它偏神经网络基础运算，不能据此替代通信职责。",
+              "这些是可由框架使用的不同软件能力，不是每个任务必须手工调用或必须用齐的固定清单。"
+            ]
+          },
+          {
+            "id": "P-D03-04",
+            "title": "相近概念辨析：运行与编译（英文，可中文答）",
+            "language": "en",
+            "stem": "A host has a compatible GPU driver. A prebuilt GPU application runs successfully, but a CUDA compiler is not installed. Is this contradictory? Explain why or why not. You may answer in Chinese.",
+            "cardIds": [
+              "card-cuda-toolkit",
+              "card-stack-driver"
+            ],
+            "objectiveIds": [
+              "1.1"
+            ],
+            "sourceIds": [
+              "CUDA",
+              "COMPAT"
+            ],
+            "relatedQuestionIds": [
+              "Q-D03-001",
+              "Q-D03-010"
+            ],
+            "rubric": [
+              "能解释这并不矛盾：运行预构建应用与从源码编译程序所需的依赖并不完全相同。",
+              "缺少编译器不能单独证明已有应用不能运行；兼容驱动也不等于提供全部应用依赖。",
+              "若不理解 prebuilt 或 compiler，先标记语言困难；查看译文后的回答属于辅助作答。"
+            ],
+            "referenceExplanation": [
+              "不矛盾。prebuilt 表示应用在交付前已经完成了构建；本题观察到它运行成功，说明这次运行所需条件已满足。编译器处理源码，既然这次只运行已经构建好的应用，就不能从“没有编译器”推断运行必定失败。",
+              "结论只针对题目给出的这次成功运行。别反过来推断驱动可以替代全部库，也别推广成任何预构建应用都永远不用编译工具：有的应用运行时仍会编译扩展。关键是先分清“现在要构建”还是“现在要运行”，再看该应用具体要求。"
+            ],
+            "translation": "主机装有兼容的 GPU 驱动，一个预构建 GPU 应用能成功运行，但没有安装 CUDA 编译器。这矛盾吗？解释原因。可以用中文回答。"
+          },
+          {
+            "id": "P-D03-05",
+            "title": "讲后近似练习：容器支持条件",
+            "language": "zh",
+            "stem": "使用下方教学假设表：同一主机、同一GPU，容器A能完成计算，B启动失败；当前驱动为D1，且A/B均已正确获得GPU访问。指出B的哪项已知条件不满足，并解释为什么A成功不足以证明B可用。",
+            "cardIds": [
+              "card-gpu-containers",
+              "card-compatibility",
+              "card-stack-driver"
+            ],
+            "objectiveIds": [
+              "1.1",
+              "1.7"
+            ],
+            "sourceIds": [
+              "CONTAINER",
+              "CONTAINER-INSTALL",
+              "COMPAT"
+            ],
+            "relatedQuestionIds": [
+              "Q-D03-007",
+              "Q-D03-008",
+              "Q-D03-009"
+            ],
+            "referenceExplanation": [
+              "按题内假设表，B只支持D2，当前D1不满足这项条件；A支持D1、D2，所以A在D1成功并不能替B证明兼容。就像同一主机上的两个程序可以有不同依赖，镜像名称不同，要求也可能不同。",
+              "题目已说明A/B都获得GPU访问，因此先比较给定的驱动支持条件即可。找出这一处不匹配，不等于证明全部故障只有一个原因；实际处理还应结合错误信息。本段是进一步解释，不因原答未主动展开全部边界而增加扣分要求。"
+            ],
+            "rubric": [
+              "从表中指出B支持D2、当前D1不满足该项支持条件。",
+              "A与B的软件要求不同，A成功只证明A本次路径可用；不要求固定列两项未知。",
+              "若原答把这项不满足直接说成唯一根因或主张立即升级，再追问错误信息与完整依赖；不把未主动展开边界判作错误。"
+            ],
+            "supportTable": {
+              "caption": "教学假设：镜像与驱动支持关系",
+              "columns": [
+                "镜像",
+                "本题假设支持的驱动系列"
+              ],
+              "rows": [
+                [
+                  "A",
+                  "D1、D2"
+                ],
+                [
+                  "B",
+                  "D2"
+                ]
+              ],
+              "note": "A/B、D1/D2 均为虚构教学标签，不对应真实产品版本；不得据此安装或升级。"
+            }
+          },
+          {
+            "id": "P-D03-06",
+            "title": "口述解释：把职责串起来",
+            "language": "zh",
+            "stem": "团队拿到一个使用已有模型的 GPU 工单分类应用及其容器镜像。为什么不能保证它在任意 GPU 主机上都能运行？用自己的话从应用到硬件串起各层职责，并说出还要确认的条件。可以画图，可用几句话或分段解释，不照读卡片。",
+            "cardIds": [
+              "card-stack-driver",
+              "card-cuda-toolkit",
+              "card-cuda-libraries",
+              "card-gpu-containers",
+              "card-compatibility"
+            ],
+            "objectiveIds": [
+              "1.1",
+              "1.7"
+            ],
+            "sourceIds": [
+              "CUDA",
+              "CUDNN",
+              "CUBLAS",
+              "NCCL",
+              "CONTAINER",
+              "CONTAINER-INSTALL",
+              "COMPAT"
+            ],
+            "relatedQuestionIds": [
+              "Q-D03-001",
+              "Q-D03-002",
+              "Q-D03-003",
+              "Q-D03-007",
+              "Q-D03-009",
+              "Q-D03-010"
+            ],
+            "referenceExplanation": [
+              "可以跟着一次工单处理走：应用收取并整理文字，已有模型在框架及相关计算库帮助下产生类别，运行依赖、驱动和硬件共同支持GPU计算，应用再显示结果。镜像可以带上应用及一些依赖，却不能带来另一台主机的真实GPU，也不能取消设备访问与驱动支持要求。",
+              "所以需要将镜像里软件的要求，与目标主机可提供的GPU、设备访问、驱动等条件相对照。题面没有要求从源码构建，不必硬加编译步骤；用自己的话解释职责和容器内外关系即可，不要求全部术语出现，更不把这段参考文字作为新的评分清单。"
+            ],
+            "rubric": [
+              "能说明应用或框架组织模型计算，相关库提供计算或通信能力，运行依赖与驱动支持程序使用 GPU 硬件。",
+              "能解释容器打包应用依赖，但设备访问、主机驱动与软件支持条件仍要匹配。",
+              "题面没有要求从源码构建，不因未提编译工具就认定解释缺失；关注应用职责、容器内外及运行条件。不要求所有名称都出现或成为固定调用链。",
+              "若只能列名称却说不清职责与关系，反馈为关系仍需巩固；术语表达不熟与概念错误分开说明。"
+            ]
+          }
+        ],
+        "feedback": {
+          "dimensions": [
+            "结论是否符合题目证据",
+            "能否独立说明理由和职责关系",
+            "是否保留未知与适用条件",
+            "英文阅读与技术理解分别反馈"
+          ],
+          "instructions": [
+            "先保留学习者实际回答，再对照参考要点；只评价本次表现，不把参考答案写成学习记录。",
+            "区分独立回答、看译文后回答、提示后修正和照着讲解复述。",
+            "理由不完整时只补最关键的一处，再换一个小情境检查；不通过一次修正宣布已掌握。",
+            "先输入实际回答，再按要点自查；自查不是自动判分，也不等于已获得逐句教学评阅。需要进一步反馈时，连同是否看过提示一起交给教学对话；延迟回忆与陌生场景迁移仍需后续真实作答证据。"
+          ],
+          "exposureNote": "这些题干与设计曾在讨论中展示；是否看过参考要点也应按实际说明。同题再次作答可用于复习，不能冒充未见题的独立测量。"
+        },
+        "bridge": {
+          "title": "接到 Day 4：能运行以后，还差什么",
+          "text": "同一个工单分类模型，即使在目标主机上能返回结果，也还没有证明它能成为持续可用的服务。Day 4 沿这个案例区分数据、训练、可选优化、部署与运行反馈。",
+          "steps": [
+            "说清 Day 3 已检查的是软件与硬件运行条件，不是模型效果或服务容量。",
+            "进入 Day 4 后区分模型执行优化与对外接收请求的服务职责。",
+            "用准确性、响应、吞吐和运行反馈提出下一步验证问题，不把返回一次正确结果当成上线完成。"
+          ],
+          "nextDay": 4
+        }
+      },
+      "materialGuide": {
+        "title": "本课与原教材：怎样搭配着学",
+        "currentUse": "先学驱动、框架、工具、运行依赖、库与容器的职责，再用短答验证；外链不是学懂本课的前提。",
+        "originalValue": "原讲义物理104–106、122–127、141、149页帮助看到软件分层与集成图；主课把图中箭头展开成因果解释。",
+        "whenToRead": "如果能说明构建与运行的条件不同、容器为何仍需主机支持、计算与通信为何不同，本轮可先完成主课练习。仍说不清关系时，先请求补讲再选一张原图。",
+        "difference": "当前课程补了源码/编译/运行时的先备解释和兼容反例；原讲义不是完整兼容支持矩阵。",
+        "scope": "完成这里的基础目标，只说明可以继续本课学习；不代表考试范围已完整覆盖、已掌握或能直接进行生产操作。",
+        "readings": [
+          {
+            "sourceId": "COMPAT",
+            "locator": "CUDA Compatibility → Why CUDA Compatibility，开头应用、Toolkit与驱动关系",
+            "task": "仍分不清构建与运行条件时对照第二节；先看主课照片程序例子。",
+            "stop": "能说明当前是构建源码还是运行已有应用即可返回，不进入真实版本安装。",
+            "warning": "官方文档用于核对本问题；不用阅读整份指南或执行其中命令。"
+          },
+          {
+            "sourceId": "NCCL",
+            "locator": "NCCL产品页 → 集合通信（collective communication）介绍",
+            "task": "只核对交换/合并结果与本地计算的区别，回第三节的2与3求和例子。",
+            "stop": "能说明为何各卡算完还需要通信即可返回，不读编程接口。",
+            "warning": "官方文档用于核对本问题；不用阅读整份指南或执行其中命令。"
+          },
+          {
+            "sourceId": "CONTAINER",
+            "locator": "NVIDIA Container Toolkit → Overview；需要时看安装页Prerequisites",
+            "task": "只核对容器工具的用途和主机还需提供什么，对应第四、五节。",
+            "stop": "列清镜像内软件与主机条件即可返回，不执行安装命令。",
+            "warning": "官方文档用于核对本问题；不用阅读整份指南或执行其中命令。"
+          }
+        ],
+        "officialUse": "遇到具体型号、版本、指标字段或真实操作时，打开对应知识卡中的官方依据，只查与问题有关的定义/支持条件；不把官方网站全站作为当天作业。",
+        "mediaStatus": "原目录的视频与字幕可作为补讲候选，但当前只完成目录级清点，未逐段核对；本课不指定未经核验的时间码或宣称看完某段即可覆盖考点。"
+      }
+    },
+    {
+      "day": 4,
+      "title": "软件用途与AI开发部署生命周期",
+      "status": "可学习（首批内容）",
+      "cardIds": [
+        "card-ai-lifecycle",
+        "card-inference-tools",
+        "card-nim-ngc-enterprise",
+        "card-solutions"
+      ],
+      "questionIds": [
+        "Q-D04-001",
+        "Q-D04-002",
+        "Q-D04-003",
+        "Q-D04-004",
+        "Q-D04-005",
+        "Q-D04-006",
+        "Q-D04-007",
+        "Q-D04-008",
+        "Q-D04-009",
+        "Q-D04-010"
+      ],
+      "selfCheck": "数据、训练、优化、部署怎样串起来？NGC、NIM和AI Enterprise各在哪里？",
+      "selfCheckNote": "口述自检不自动计分；答后讲解不能冒充独立首次作答。",
+      "previousTeachingBridge": {
+        "fromDay": 3,
+        "title": "从能运行的模型到可用的工单分类服务",
+        "setup": "延续 Day 3 的教学案例：已有模型已在目标 GPU 环境完成一次分类，团队想让同事持续提交工单并获得类别。一次运行只说明部分运行条件成立，接下来要把任务放回完整生命周期。",
+        "steps": [
+          {
+            "title": "数据：输入和评价依据是否可靠",
+            "text": "先确认工单格式、类别定义和标注质量，并准备能反映实际任务的评价资料。若新工单与原训练资料差异很大，应评估效果；不能用更多 GPU 自动补救混乱标签。已有模型不代表本轮一定要重新训练。"
+          },
+          {
+            "title": "训练：需要学习或更新参数时再安排",
+            "text": "若现有模型效果不满足任务目标，再考虑训练或定制并验证结果。训练框架组织参数学习；推理是用已有参数处理工单。训练指标达标仍不能替代部署环境和服务表现的验证。"
+          },
+          {
+            "title": "可选优化：让模型执行满足目标",
+            "text": "需要改善推理执行时可评估 TensorRT 等能力，比较优化前后的效果、响应和吞吐。优化不是每个项目必经的独立工具步骤，也不保证任何模型都得到相同收益。它不能代替请求接口与全部服务管理。"
+          },
+          {
+            "title": "服务：让用户能够持续提出请求",
+            "text": "对外提供推理接口时，需要组织请求、模型和执行资源；Triton 可服务不同后端的模型，也可与 TensorRT 配合。NIM 是另一类预构建推理微服务能力；NGC 是取得资源的目录入口，AI Enterprise 涉及企业软件与支持。它们不是必须全部串联的唯一部署路线。"
+          },
+          {
+            "title": "运行反馈：可用一次不等于持续可用",
+            "text": "对照预先约定的目标观察响应、吞吐、失败和模型效果，并记录模型与环境版本。异常可能来自输入变化、服务资源或软件环境，应结合证据调查。运行反馈可以促使数据、训练、优化或部署环节再次调整，生命周期不是只能走一次的直线。"
+          }
+        ],
+        "selfCheck": "模型能在 GPU 上成功分类一条工单，为什么还不能说服务已经完成？请分别举出一个模型执行层问题和一个服务层问题，说明 TensorRT 与 Triton 各能帮助处理哪类职责，以及上线后还要验证什么。",
+        "rubric": [
+          "能区分模型执行与请求服务，解释 TensorRT 和 Triton 可以配合但职责不同。",
+          "能提出模型效果、响应、吞吐或运行稳定性等具体验证目标，而不是只背工具名称。",
+          "能说明数据、训练、可选优化、部署和运行反馈可以迭代；不声称所有工具都必用。",
+          "这是口述自检，未记录真实回答前不形成学习成绩或掌握结论。"
+        ],
+        "sourceIds": [
+          "TRAIN",
+          "TRT",
+          "TRITON",
+          "NIM",
+          "NGC",
+          "AIE",
+          "EXPORTER"
+        ],
+        "objectiveIds": [
+          "1.1",
+          "1.6",
+          "1.7"
+        ]
+      },
+      "teachingTrial": {
+        "id": "day4-understanding-2026-09-25",
+        "teachingRevision": "2026-10-02-day04-batch1",
+        "title": "Day 4 主课与理解练习",
+        "status": "已批准试用；教学效果待真实使用验证",
+        "approvedOn": "2026-09-25",
+        "note": "主课先说明原因，再用情境检查。先完成核心节，选读节留到有需要时；不要求一次做完六项短答。英文两项任选一项，可用中文回答。旧知识卡用于速查，原计分练习保持独立。",
+        "goals": [
+          "先区分模型计算、服务交付和业务使用，产品名称随后再记。",
+          "先说目标和证据，再判断需要优化执行还是组织服务。",
+          "把一次交付变成可追溯的持续运行。"
+        ],
+        "fullLesson": {
+          "title": "Day 4 主课｜从一个能算的模型，到同事真正能用的服务",
+          "intro": "Day 3 解决了软件怎样配合 GPU。今天继续处理工单分类：模型能在开发机上给出结果之后，为什么还不能宣布上线完成？先走通数据、评估、服务和运行反馈，再把产品名称放到对应位置。",
+          "orientation": [
+            "先用中文解释关系，再把英文术语对应上；术语表达不熟与概念错误分别反馈。",
+            "20分钟可只完成一个核心节及一项短答；45–60分钟以核心关系和两三项回答为目标，卡住时停下补讲，可分多次完成。",
+            "选读节和原教材用于特定疑问的补充，不是做题前的额外通读作业。"
+          ],
+          "sections": [
+            {
+              "id": "L-D04-01",
+              "title": "先看交付物：模型文件不是完整业务服务",
+              "priority": "core",
+              "cardIds": [
+                "card-ai-lifecycle"
+              ],
+              "paragraphs": [
+                "请求是使用者提交给系统的一次输入；接口规定怎样提交与取得结果；部署是把程序及所需条件准备到运行环境。模型服务围绕请求组织计算与返回，让使用者能调用模型。先理解这些动作，再认识后端、微服务和产品名。",
+                "设想你把训练完成的模型文件交给同事。模型参数保存了学到的规律，但同事还需要知道：输入格式是什么、从哪里提交、多久能拿到结果、失败时怎样处理。把模型放进实际业务流程，才谈得上部署与服务。",
+                "数据准备、训练、评估、部署有不同的输出。数据准备产出可用的数据；训练形成模型参数；评估检查它在合适的检验数据上表现怎样；部署准备让使用者调用的运行环境和接口。推理则是模型针对一次新输入进行计算，是服务过程中的一环。",
+                "如果直接采用已有模型，可以不在本项目重新训练，但仍要验证它是否适合当前工单、输入是否正确和服务是否可用。这条路径解释了为什么“没自己训练”也可以部署 AI 应用。"
+              ],
+              "example": {
+                "title": "工单分类的交接",
+                "paragraphs": [
+                  "开发者给了一份模型和一段演示程序。演示能处理一条工单，只证明这次输入走通了；还没有证明多人访问、异常输入和持续运行都已处理。",
+                  "上线目标先写成可检查的行为：同事能提交约定格式、获得可解释的类别；不确定结果能交给人工。随后分别验证模型表现与服务条件。"
+                ]
+              },
+              "contrast": [
+                "模型预测正确与接口能被访问是两个检查；不能用其中一项替代另一项。"
+              ],
+              "takeaway": "先区分模型计算、服务交付和业务使用，产品名称随后再记。",
+              "sourceIds": [
+                "TRAIN",
+                "RAPIDS",
+                "TRT",
+                "TRITON"
+              ],
+              "readingGuide": [
+                "需要流程图时，只看培训讲义 TRAIN 物理页 146；MLOps 留到第五节再读。",
+                "阅读任务：指出训练产出的模型怎样进入推理部署，并说出服务还需检查的一项条件；能说明即可返回。练习 01 检查服务条件，练习 04 检查采用已有模型时是否必须重训。",
+                "涉及型号、版本或真实部署时再查本节官方来源的支持条件；本课概念练习不要求执行安装命令。"
+              ],
+              "exerciseIds": [
+                "P-D04-01"
+              ]
+            },
+            {
+              "id": "L-D04-02",
+              "title": "质量与速度分开验证：优化会改变什么",
+              "priority": "core",
+              "cardIds": [
+                "card-ai-lifecycle",
+                "card-inference-tools"
+              ],
+              "paragraphs": [
+                "评估不能只看模型在训练资料上的表现，因为它可能记住旧例子却不善于处理新工单。需要用适当的独立检验数据，明确你关心的是哪些类别、哪些错误最重要。这里先理解检验目的，不展开统计方法。",
+                "推理优化关注模型如何执行，可能改变表示方式或执行策略，以改善时延、吞吐或资源占用。TensorRT 是一套用于推理优化和运行的软件开发工具与库：开发者把受支持的已训练模型交给它，构建适合 GPU 执行的推理引擎，再由运行库使用该引擎计算结果。引擎在这里是软件执行产物，不是另一块硬件。优化后仍要验证任务质量和实际性能。",
+                "Triton Inference Server 是运行在服务器上的模型服务软件；后端是它调用的模型执行组件。例如应用提交整理好的工单输入 → Triton 接收并安排请求 → TensorRT 后端执行模型 → Triton 返回结果。Triton 也可使用其他后端，这只是可选组合。两者分别承担执行与服务职责，优化模型不会自动完成接口访问、异常处理等全部上线条件。"
+              ],
+              "example": {
+                "title": "快了，但是否更好",
+                "paragraphs": [
+                  "假设优化后同样一批工单处理更快，但某类关键故障的分类变差。不能只报告速度提升；应一起比较质量、等待时间和资源条件。",
+                  "另一种情况是模型本身很快，但请求在队列里等待很久。应查看服务负载与排队，而不是直接推断模型计算太慢。",
+                  "教学数字：一次请求总耗时100毫秒，其中模型计算20、其他步骤80。把计算降到10，其他条件不变，总耗时是90，不会自动减半。优化某段与改善端到端响应要分开验证。"
+                ]
+              },
+              "contrast": [
+                "训练、推理优化、服务部署不是必须分别对应三个互斥产品。"
+              ],
+              "takeaway": "先说目标和证据，再判断需要优化执行还是组织服务。",
+              "sourceIds": [
+                "TRAIN",
+                "RAPIDS",
+                "TRT",
+                "TRITON"
+              ],
+              "readingGuide": [
+                "仍分不清执行与服务时，看培训讲义 TRAIN 物理页 146 的 TensorRT 与 Triton 对应位置。",
+                "阅读任务：用一条请求说明谁执行模型、谁组织服务；能说明即可返回练习 02，不必连读生命周期和 MLOps 页。",
+                "涉及型号、版本或真实部署时再查本节官方来源的支持条件；本课概念练习不要求执行安装命令。"
+              ],
+              "exerciseIds": [
+                "P-D04-02",
+                "P-D04-04"
+              ]
+            },
+            {
+              "id": "L-D04-03",
+              "title": "把入口、交付形式和企业支持分开",
+              "priority": "core",
+              "cardIds": [
+                "card-nim-ngc-enterprise"
+              ],
+              "paragraphs": [
+                "本节说的 NGC 主要指 NGC Catalog：一个可浏览和获取模型、容器等资源的在线目录。找到并下载资源，解决的是“拿到什么”；能否在你的环境运行，还取决于模型、硬件、驱动及许可等具体条件。",
+                "NIM 是一组以容器形式交付的推理微服务。容器里封装了服务接口、推理引擎和相关软件；在受支持的环境启动后，应用可通过接口发送输入、取得模型输出。这里的微服务是一项承担明确功能的服务，例如提供某个模型的推理；它并不包办整个工单网页，也不是训练所有模型的框架。",
+                "AI Enterprise 是包含 NIM 等 AI 软件组件及企业支持的商业软件套件，关注受支持的软件组合、更新维护和生命周期。一个项目可以从 NGC 取得资源、运行 NIM 服务，再按所用组件核对 AI Enterprise 的支持范围。教材称其为企业 AI 的“操作系统”是比喻，不是替代主机 Linux 内核。"
+              ],
+              "example": {
+                "title": "一张采购清单为什么不能代替上线检查",
+                "paragraphs": [
+                  "团队从 NGC 找到资源、采用一个 NIM 交付模型推理，再根据需要核对企业支持范围。每一步都应问：获得了什么能力，还缺哪些运行或使用条件？",
+                  "“下载成功”不等于“服务已可用”，也不自动证明获得了所有支持权益。"
+                ]
+              },
+              "contrast": [
+                "资源目录不是计算硬件，企业套件不是主机内核，推理微服务不是训练所有模型的框架。"
+              ],
+              "takeaway": "用获取、交付、支持三个问题辨认职责。",
+              "sourceIds": [
+                "TRAIN",
+                "NOTE02",
+                "NIM",
+                "NGC",
+                "AIE"
+              ],
+              "readingGuide": [
+                "培训讲义 TRAIN 物理页 140、143：对照本节主题的原表格/示意，不必连读整份PDF。",
+                "阅读任务：把图中的名称分别放回取得资源、运行服务、获得企业支持三个问题；能解释它们为何可共用即可返回练习 03。",
+                "涉及型号、版本或真实部署时再查本节官方来源的支持条件；本课概念练习不要求执行安装命令。"
+              ],
+              "exerciseIds": [
+                "P-D04-03"
+              ]
+            },
+            {
+              "id": "L-D04-04",
+              "title": "按任务认识生态，不把品牌表当主线",
+              "priority": "optional",
+              "cardIds": [
+                "card-solutions"
+              ],
+              "paragraphs": [
+                "看到一串产品名时，先把真实需求翻译成动作：整理表格数据、识别语音、生成推荐、定制模型，还是处理医疗影像。你只有先说清动作，才知道应该比较哪类能力。",
+                "教材以 RAPIDS 对应 GPU 数据科学，以 Riva 对应语音能力，以 Merlin 对应推荐系统，以 NeMo 对应模型开发和定制，以 Clara 介绍医疗生命科学方向。这里用它们认识任务类别；具体产品范围和支持状态应以当前官方文档为准。",
+                "这些名称之间可能有依赖或能力重叠。一个语音应用也要处理数据、运行模型并部署服务；不能因为用了一个语音产品，就推断不再需要软件栈、数据质量和服务管理。第一遍能把需求放回正确阶段即可。"
+              ],
+              "example": {
+                "title": "工单系统增加语音输入",
+                "paragraphs": [
+                  "如果同事希望口述工单，新增的是语音输入相关能力，不是简单把分类模型换成更强 GPU。先确认语音怎样变成可处理输入，再检查分类与服务链路。",
+                  "只需要分类文本时，不必为了“学全生态”同时研究所有语音、医疗和推荐工具。"
+                ]
+              },
+              "contrast": [
+                "第一遍不背产品全家桶、许可和性能倍数；遇到对应需求再选读。"
+              ],
+              "takeaway": "按业务动作找能力，再查具体产品。",
+              "sourceIds": [
+                "TRAIN",
+                "NOTE02",
+                "RAPIDS",
+                "RIVA",
+                "MERLIN",
+                "AIE"
+              ],
+              "readingGuide": [
+                "培训讲义 TRAIN 物理页 140、146：对照本节主题的原表格/示意，不必连读整份PDF。",
+                "阅读任务：只找与当前疑问相关的一类用途，例如语音输入对应什么能力；能说明即可返回选做练习 05，不需逐个背品牌。",
+                "涉及型号、版本或真实部署时再查本节官方来源的支持条件；本课概念练习不要求执行安装命令。"
+              ],
+              "exerciseIds": [
+                "P-D04-05"
+              ]
+            },
+            {
+              "id": "L-D04-05",
+              "title": "上线后还会变化：为什么需要持续管理",
+              "priority": "core",
+              "cardIds": [
+                "card-ai-lifecycle"
+              ],
+              "paragraphs": [
+                "上线后的输入可能与开发时不同：工单出现新术语、新设备或不同书写习惯。服务仍然有响应，不代表分类质量没有变化；因此需要同时观察运行状态和业务效果。",
+                "MLOps 是管理机器学习开发与运行的一组工程实践，可由不同软件工具支持。例如每次上线记录模型版本、使用的数据、检验结果和部署时间；出现问题时，团队才能找回对应版本比较。它组织评估、部署与更新过程，自动化可以减少重复操作，但不会自动保证准确或安全。",
+                "发现问题后先保留证据，再判断原因。如果输入字段变化，应先核对接口与预处理；如果某类工单长期判断错误，要核对任务与模型评估；如果高峰排队，检查负载与服务资源。新数据出现也不等于必须立即自动训练并上线。"
+              ],
+              "example": {
+                "title": "同事说“新版更差了”",
+                "paragraphs": [
+                  "先确认上线版本、对照样本和时间范围，再区分质量下降、接口故障或速度变化。没有这些证据，反复换模型或重装驱动可能不能解释问题。",
+                  "能追溯旧版本并比较表现，才有依据决定回退、补数据或调整服务。"
+                ]
+              },
+              "contrast": [
+                "持续监控提供发现问题的机会，不是永不出错的保证。"
+              ],
+              "takeaway": "把一次交付变成可追溯的持续运行。",
+              "sourceIds": [
+                "TRAIN",
+                "RAPIDS",
+                "TRT",
+                "TRITON"
+              ],
+              "readingGuide": [
+                "想看持续管理的全貌时，选读培训讲义 TRAIN 物理页 157–160 的 MLOps 内容。",
+                "阅读任务：找出一项上线后仍要持续做的工作，并说明要留下什么记录；能说明即可返回练习 06，不必回读产品生态页。",
+                "涉及型号、版本或真实部署时再查本节官方来源的支持条件；本课概念练习不要求执行安装命令。"
+              ],
+              "exerciseIds": [
+                "P-D04-06"
+              ]
+            }
+          ],
+          "summary": [
+            "先区分模型计算、服务交付和业务使用，产品名称随后再记。",
+            "先说目标和证据，再判断需要优化执行还是组织服务。",
+            "把一次交付变成可追溯的持续运行。"
+          ],
+          "timeGuide": [
+            "核心关系：先看交付物：模型文件不是完整业务服务；质量与速度分开验证：优化会改变什么；把入口、交付形式和企业支持分开；上线后还会变化：为什么需要持续管理",
+            "第一遍认识职责与原因；产品全表、命令、支持矩阵和具体参数按需要选读，不把选读当永远跳过基础目标。",
+            "20分钟可完成一个核心节与一项原答；45–60分钟按实际进度选两三项回答。内容较多可分段完成，未学内容保持待学。"
+          ]
+        },
+        "exercises": [
+          {
+            "id": "P-D04-01",
+            "title": "解释缺少的环节",
+            "stem": "已有一个能在开发机正确分类工单的模型，为什么还不能说同事已经能通过网页稳定使用？请说明两个需要另查的条件。",
+            "language": "zh",
+            "cardIds": [
+              "card-ai-lifecycle"
+            ],
+            "objectiveIds": [
+              "1.7"
+            ],
+            "sourceIds": [
+              "TRAIN",
+              "RAPIDS",
+              "TRT",
+              "TRITON"
+            ],
+            "relatedQuestionIds": [
+              "Q-D04-001",
+              "Q-D04-010"
+            ],
+            "rubric": [
+              "分开模型计算正确、访问接口及持续运行条件。",
+              "举出输入处理、异常处理、并发或服务环境中至少两类合理条件。"
+            ],
+            "referenceExplanation": [
+              "模型在开发机分对工单，只验证了那次模型计算；网页能持续使用，还需要请求进得来、结果回得去，并能应对实际使用条件。",
+              "例如先查网页提交的字段能否被服务正确读取，再查多人同时提交时服务是否仍能正常响应。输入处理与并发是两类条件；异常处理或服务运行环境也是合理核查方向。"
+            ]
+          },
+          {
+            "id": "P-D04-02",
+            "title": "英文题意：优化与服务",
+            "stem": "A model runs faster after optimization, but users still cannot access it through an API. Which service or access conditions should the team check? You may answer in Chinese.",
+            "language": "en",
+            "translation": "模型优化后运行更快，但用户仍无法通过API访问。团队应核查哪些服务或访问条件？可用中文回答。",
+            "cardIds": [
+              "card-ai-lifecycle",
+              "card-inference-tools"
+            ],
+            "objectiveIds": [
+              "1.7",
+              "1.1",
+              "1.6"
+            ],
+            "sourceIds": [
+              "TRAIN",
+              "RAPIDS",
+              "TRT",
+              "TRITON"
+            ],
+            "relatedQuestionIds": [
+              "Q-D04-001",
+              "Q-D04-002",
+              "Q-D04-003",
+              "Q-D04-004",
+              "Q-D04-010"
+            ],
+            "rubric": [
+              "速度优化不能证明服务或访问条件已满足。",
+              "接受接口、部署、运行环境或访问条件的合理核查；访问失败不证明接口尚未开发，不预设唯一原因。"
+            ],
+            "referenceExplanation": [
+              "优化让模型计算更快，但请求必须先到达服务，模型结果才能交给用户。可以核对服务是否启动、接口地址和请求格式是否正确、运行环境或访问条件是否满足。",
+              "题目只给出访问失败，尚不能判断究竟缺少接口、服务未运行，还是访问受阻；先核查这些条件，再按证据定位。"
+            ]
+          },
+          {
+            "id": "P-D04-03",
+            "title": "区分不同层面",
+            "stem": "同一个方案里同时出现 NGC、NIM 和 AI Enterprise 是否矛盾？用“取得资源、交付服务、企业支持”说明你的理解。",
+            "language": "zh",
+            "cardIds": [
+              "card-nim-ngc-enterprise"
+            ],
+            "objectiveIds": [
+              "1.1",
+              "1.6",
+              "1.7"
+            ],
+            "sourceIds": [
+              "TRAIN",
+              "NOTE02",
+              "NIM",
+              "NGC",
+              "AIE"
+            ],
+            "relatedQuestionIds": [
+              "Q-D04-005",
+              "Q-D04-006",
+              "Q-D04-007"
+            ],
+            "rubric": [
+              "三者职责层面不同，可共同出现。",
+              "若原答混淆取得资源、部署可用与支持权益，可补讲边界；题面未要求权益，不因没提而判缺失。"
+            ],
+            "referenceExplanation": [
+              "不矛盾。NGC Catalog 提供取得模型和容器的入口，NIM 把模型推理以可调用的服务形式交给应用，AI Enterprise 提供软件套件和企业支持。",
+              "例如团队从目录取得一个 NIM 容器，在合适环境启动推理服务，同时使用适用的企业支持。三者回答的是不同问题，所以可以出现在同一个方案中。"
+            ]
+          },
+          {
+            "id": "P-D04-04",
+            "title": "英文题意：已有模型",
+            "stem": "A team uses a pretrained model for a new ticket-classification service. Must it train a new model before deployment? State one check it still needs.",
+            "language": "en",
+            "translation": "团队用预训练模型建立新工单分类服务。部署前一定要训练新模型吗？说出仍需进行的一项检查。",
+            "cardIds": [
+              "card-ai-lifecycle",
+              "card-inference-tools"
+            ],
+            "objectiveIds": [
+              "1.7",
+              "1.1",
+              "1.6"
+            ],
+            "sourceIds": [
+              "TRAIN",
+              "RAPIDS",
+              "TRT",
+              "TRITON"
+            ],
+            "relatedQuestionIds": [
+              "Q-D04-001",
+              "Q-D04-002",
+              "Q-D04-003",
+              "Q-D04-004",
+              "Q-D04-010"
+            ],
+            "rubric": [
+              "不必无条件重新训练。",
+              "仍需检验任务适配、质量或部署条件。"
+            ],
+            "referenceExplanation": [
+              "不一定。预训练模型已经有学到的参数，如果它适合当前任务，就可以评估后用于推理，不必为了“建立新服务”一律重新训练。",
+              "仍可检查它对本项目工单的分类质量：已有能力是否适合新任务，需要当前数据验证。检查输入格式或部署环境是否受支持也属于合理的一项检查。"
+            ]
+          },
+          {
+            "id": "P-D04-05",
+            "title": "新增需求先问什么",
+            "stem": "工单系统要增加口述输入。请先说明新增的任务，再说为什么不能只把 GPU 换快一点。",
+            "language": "zh",
+            "cardIds": [
+              "card-solutions"
+            ],
+            "objectiveIds": [
+              "1.5",
+              "1.6"
+            ],
+            "sourceIds": [
+              "TRAIN",
+              "NOTE02",
+              "RAPIDS",
+              "RIVA",
+              "MERLIN",
+              "AIE"
+            ],
+            "relatedQuestionIds": [
+              "Q-D04-008",
+              "Q-D04-009"
+            ],
+            "rubric": [
+              "新增语音输入/识别等能力需要合适软件与流程。",
+              "更快硬件不自动增加应用所缺能力。"
+            ],
+            "referenceExplanation": [
+              "在已有文本分类流程中，口述输入需要先处理声音，例如把语音识别成文本，再交给分类模型和服务。",
+              "更快 GPU 可能加快已有软件的计算，但不会自行添加语音识别程序或把音频接入原来的文本接口，因此先确认缺少哪一步能力。"
+            ],
+            "optional": true
+          },
+          {
+            "id": "P-D04-06",
+            "title": "换情境：上线后的证据",
+            "stem": "服务一直在线，但用户说新设备相关工单常被分错。你先核对什么？为什么不能仅凭在线状态证明模型有效？",
+            "language": "zh",
+            "cardIds": [
+              "card-ai-lifecycle"
+            ],
+            "objectiveIds": [
+              "1.7"
+            ],
+            "sourceIds": [
+              "TRAIN",
+              "RAPIDS",
+              "TRT",
+              "TRITON"
+            ],
+            "relatedQuestionIds": [
+              "Q-D04-001",
+              "Q-D04-010"
+            ],
+            "rubric": [
+              "对照实际输入、类别表现、模型/数据版本。",
+              "运行可用性与任务质量不同；依据证据选择更新，不自动归因硬件。"
+            ],
+            "referenceExplanation": [
+              "先保留新设备工单的输入和分类结果，对照应有类别、当前模型及相关数据版本，确认错误集中在哪里、何时出现。",
+              "在线说明服务还能够响应；即使每次都及时返回错误类别，它也可能一直在线。是否需要补数据、调整输入处理或更新模型，要由这些质量证据决定。"
+            ]
+          }
+        ],
+        "diagnostic": {
+          "minutes": "约5–8",
+          "promptIds": [
+            "P-D04-01",
+            "P-D04-02",
+            "P-D04-06"
+          ],
+          "alternativeEnglishId": "P-D04-04",
+          "instructions": [
+            "短诊断可选，仅在学过后回顾使用；综合解释较慢可另分一次。",
+            "原答先保存，再看统一参考；不清楚可直接说明。"
+          ]
+        },
+        "caseStudy": {
+          "title": "从一个能算的模型，到同事真正能用的服务",
+          "setup": "Day 3 解决了软件怎样配合 GPU。今天继续处理工单分类：模型能在开发机上给出结果之后，为什么还不能宣布上线完成？先走通数据、评估、服务和运行反馈，再把产品名称放到对应位置。",
+          "boundary": "情境和数字为教学假设，非用户现场事实。",
+          "steps": [
+            {
+              "title": "工单分类的交接",
+              "text": "开发者给了一份模型和一段演示程序。演示能处理一条工单，只证明这次输入走通了；还没有证明多人访问、异常输入和持续运行都已处理。 上线目标先写成可检查的行为：同事能提交约定格式、获得可解释的类别；不确定结果能交给人工。随后分别验证模型表现与服务条件。"
+            },
+            {
+              "title": "快了，但是否更好",
+              "text": "假设优化后同样一批工单处理更快，但某类关键故障的分类变差。不能只报告速度提升；应一起比较质量、等待时间和资源条件。 另一种情况是模型本身很快，但请求在队列里等待很久。应查看服务负载与排队，而不是直接推断模型计算太慢。"
+            },
+            {
+              "title": "一张采购清单为什么不能代替上线检查",
+              "text": "团队从 NGC 找到资源、采用一个 NIM 交付模型推理，再根据需要核对企业支持范围。每一步都应问：获得了什么能力，还缺哪些运行或使用条件？ “下载成功”不等于“服务已可用”，也不自动证明获得了所有支持权益。"
+            },
+            {
+              "title": "工单系统增加语音输入",
+              "text": "如果同事希望口述工单，新增的是语音输入相关能力，不是简单把分类模型换成更强 GPU。先确认语音怎样变成可处理输入，再检查分类与服务链路。 只需要分类文本时，不必为了“学全生态”同时研究所有语音、医疗和推荐工具。"
+            },
+            {
+              "title": "同事说“新版更差了”",
+              "text": "先确认上线版本、对照样本和时间范围，再区分质量下降、接口故障或速度变化。没有这些证据，反复换模型或重装驱动可能不能解释问题。 能追溯旧版本并比较表现，才有依据决定回退、补数据或调整服务。"
+            }
+          ]
+        },
+        "feedback": {
+          "dimensions": [
+            "结论是否符合题目证据",
+            "能否独立说明理由和职责关系",
+            "是否保留未知与适用条件",
+            "英文阅读与技术理解分别反馈"
+          ],
+          "instructions": [
+            "先保留学习者实际回答，再对照参考要点；只评价本次表现，不把参考答案写成学习记录。",
+            "区分独立回答、看译文后回答、提示后修正和照着讲解复述。",
+            "理由不完整时只补最关键的一处，再换一个小情境检查；不通过一次修正宣布已掌握。",
+            "先输入实际回答，再按要点自查；自查不是自动判分，也不等于已获得逐句教学评阅。需要进一步反馈时，连同是否看过提示一起交给教学对话；延迟回忆与陌生场景迁移仍需后续真实作答证据。"
+          ],
+          "exposureNote": "这些题干与设计曾在讨论中展示；是否看过参考要点也应按实际说明。同题再次作答可用于复习，不能冒充未见题的独立测量。"
+        },
+        "bridge": {
+          "nextDay": 5,
+          "title": "下一课怎样接上",
+          "text": "保留本次说不清的关系，下一课需要时再回看。",
+          "steps": [
+            "保存原答和疑问。",
+            "根据实际点评决定补哪一节，而不是把所有链接再读一遍。"
+          ]
+        }
+      },
+      "materialGuide": {
+        "title": "本课与原教材：怎样搭配着学",
+        "currentUse": "按数据、模型质量、执行、服务与持续运行组织因果；品牌放到对应任务，而不要求先背产品表。",
+        "originalValue": "原讲义146页是流程图，140/143页是生态用途，157–160页介绍MLOps。适合在理解后补图景。",
+        "whenToRead": "能区分模型计算正确、服务可访问与上线后质量，且能解释优化/服务职责，本课基础练习先用主课即可。产品关系仍混淆时再读对应两三页。",
+        "difference": "原图的典型产品对应不等于每个项目必须全部采用；“操作系统”比喻与自动保证可信结果的表述不能照字面理解。",
+        "scope": "完成这里的基础目标，只说明可以继续本课学习；不代表考试范围已完整覆盖、已掌握或能直接进行生产操作。",
+        "readings": [
+          {
+            "sourceId": "TRAIN",
+            "locator": "160页培训讲义，物理页 146（第一、二节按需补图）",
+            "task": "在流程图指出模型从训练产物到推理服务的去向，并区分 TensorRT 执行与 Triton 服务职责。",
+            "stop": "能说明交付物和服务条件即可；已有模型是否重训对应练习 04，服务访问对应练习 01、02。",
+            "warning": "同事提供的培训讲义，不等于已认证的官方考试教材。产品条件与版本以当前官方说明为准。"
+          },
+          {
+            "sourceId": "TRAIN",
+            "locator": "物理页 140、143（第三节资源与企业软件选读）；140、146（第四节用途选读）",
+            "task": "只在资源入口、推理微服务、企业支持或某一业务用途仍混淆时找对应名称。",
+            "stop": "能用当前需求解释一组职责关系即可，不背整张产品表。",
+            "warning": "产品图是用途概括；不能据此推定所有项目都必须用齐。"
+          },
+          {
+            "sourceId": "TRAIN",
+            "locator": "物理页 157–160（第五节 MLOps 选读）",
+            "task": "找出一项上线后持续工作，并说明为什么需要模型、数据或评估记录。",
+            "stop": "能解释在线状态为何不能代替质量证据即可返回练习 06，不要求一次读完所有选读入口。",
+            "warning": "同事提供的培训讲义，不等于已认证的官方考试教材。产品条件与版本以当前官方说明为准。"
+          }
+        ],
+        "officialUse": "遇到具体型号、版本、指标字段或真实操作时，打开对应知识卡中的官方依据，只查与问题有关的定义/支持条件；不把官方网站全站作为当天作业。",
+        "mediaStatus": "原目录的视频与字幕可作为补讲候选，但当前只完成目录级清点，未逐段核对；本课不指定未经核验的时间码或宣称看完某段即可覆盖考点。"
+      }
+    },
+    {
+      "day": 5,
+      "title": "AI集群扩展、设施与部署选择",
+      "status": "可学习（第二批内容）",
+      "cardIds": [
+        "card-cluster-components",
+        "card-scale-up-out",
+        "card-power-cooling",
+        "card-pue",
+        "card-facility",
+        "card-onprem-cloud"
+      ],
+      "questionIds": [
+        "Q-D05-001",
+        "Q-D05-002",
+        "Q-D05-003",
+        "Q-D05-004",
+        "Q-D05-005",
+        "Q-D05-006",
+        "Q-D05-007",
+        "Q-D05-008",
+        "Q-D05-009",
+        "Q-D05-010"
+      ],
+      "selfCheck": "GPU增加后训练没更快，怎样依次检查数据供给、通信和设施约束？PUE低能证明什么、不能证明什么？",
+      "selfCheckNote": "口述自检不自动计分；一次答对不是已掌握。20/45/60分钟可分次完成本课。",
+      "teachingTrial": {
+        "id": "day5-understanding-2026-09-25",
+        "teachingRevision": "2026-10-02-day05-batch1",
+        "title": "Day 5 主课与理解练习",
+        "status": "已批准试用；教学效果待真实使用验证",
+        "approvedOn": "2026-09-25",
+        "note": "主课先说明原因，再用情境检查。先完成核心节，选读节留到有需要时；不要求一次做完六项短答。英文两项任选一项，可用中文回答。旧知识卡用于速查，原计分练习保持独立。",
+        "goals": [
+          "围绕工作流找等待点，不从最贵部件推断瓶颈。",
+          "扩展收益取决于可并行工作和新增协作开销。",
+          "上架前核对承载条件，运行后还需观测实际表现。",
+          "PUE用于看设施能耗关系，不能替代任务能效。"
+        ],
+        "fullLesson": {
+          "title": "Day 5 主课｜增加 GPU 之前，先看整个系统能否跟上",
+          "intro": "从一台服务器到一组机器，需要把计算、数据供给和设施放在一起看。今天不设计真实机房，只练习解释：为什么算力增加了，工作却不一定同样加快？",
+          "orientation": [
+            "先用中文解释关系，再把英文术语对应上；术语表达不熟与概念错误分别反馈。",
+            "20分钟可只完成一个核心节及一项短答；45–60分钟以核心关系和两三项回答为目标，卡住时停下补讲，可分多次完成。",
+            "选读节和原教材用于特定疑问的补充，不是做题前的额外通读作业。",
+            "前半段学组成与扩展，后半段学设施、PUE和部署选择；产品代际规格留作速查。"
+          ],
+          "sections": [
+            {
+              "id": "L-D05-01",
+              "title": "集群是合作系统，不是 GPU 数量表",
+              "priority": "core",
+              "cardIds": [
+                "card-cluster-components"
+              ],
+              "paragraphs": [
+                "先看实际组成：GPU 是服务器里的计算部件；一台配有 CPU、内存和 GPU 的计算服务器可作为一个节点；多个节点通过网络连接，并配合存储和管理软件协作，形成集群。节点的具体形态会随平台变化。",
+                "例如一次工单训练：从存储读取数据，CPU 参与准备输入，GPU 执行计算；任务分到多个节点时，还可能经网络交换结果，最后保存模型。管理与调度软件安排任务使用哪些资源，供电与散热支持设备持续运行。这是简化过程，实际步骤可重叠执行。",
+                "沿这个过程区分三种“不够用”：工作数据装不进显存，是容量问题；数据准备好了仍算得慢，是计算与实现问题；GPU 等下一批输入，是供给问题。某个部件等待另一个部件时，增加等待方的数量未必解决瓶颈。",
+                "DGX 提供 NVIDIA 的整套 AI 系统，HGX 是供系统厂商集成的加速计算平台；BasePOD 等参考架构则说明怎样组合计算、网络、存储和管理。第一遍先分清“系统里有什么”与“多个系统怎样配合”，不背某代型号固定的 GPU 数量。"
+              ],
+              "example": {
+                "title": "数据来不及供给",
+                "paragraphs": [
+                  "假设 GPU 经常等待读取工单训练数据。增加 GPU 后，存储供给没有变，每张卡分到的数据可能更少。应先对齐任务阶段、数据读入与计算时间，再决定哪里要改。",
+                  "相反，如果数据及时送达而计算长期成为主要耗时，增加合适计算资源才可能有帮助；仍需软件能利用。"
+                ]
+              },
+              "contrast": [
+                "空闲计算资源可能是在等待，不必然是硬件损坏。"
+              ],
+              "takeaway": "围绕工作流找等待点，不从最贵部件推断瓶颈。",
+              "sourceIds": [
+                "TRAIN",
+                "NOTE04",
+                "B2-BASEPOD",
+                "B2-HGX",
+                "B2-DGX"
+              ],
+              "readingGuide": [
+                "需要平台图时，先从培训讲义 TRAIN 物理页 64–65 或 79 选一张；这些是已有卡片定位中的平台图入口。",
+                "阅读任务：在图上指出计算、存储、互联和管理各负责什么，沿数据到计算的路径找一种可能等待；能说明即可返回练习 01，不必连读全部型号页。",
+                "涉及型号、版本或真实部署时再查本节官方来源的支持条件；本课概念练习不要求执行安装命令。"
+              ],
+              "exerciseIds": [
+                "P-D05-01"
+              ]
+            },
+            {
+              "id": "L-D05-02",
+              "title": "Scale Up 与 Scale Out：扩展也会增加协作成本",
+              "priority": "core",
+              "cardIds": [
+                "card-scale-up-out"
+              ],
+              "paragraphs": [
+                "先用常见场景区分：选择一个有更多紧密互联 GPU 的系统来增加计算资源，是 Scale Up 的典型思路；再增加一台服务器，让任务跨节点通过网络协作，是 Scale Out 的典型思路。前者扩大紧密互联的计算域，后者把更多系统连起来。实际 Scale Up 域也可能跨到机架规模，因此不能只按是否在同一机箱内判断。",
+                "以数据并行为例，两张 GPU 分别处理一部分训练数据，再交流更新所需的结果；算自己的部分可以同时进行，等待彼此结果却会增加协作时间。假设原来计算需10个时间单位，拆成两份后各需5个，再同步2个，总耗时为7。这些教学数字假设两份计算同时完成、同步与计算不重叠，其他开销暂不计；真实任务要按实际执行过程测量。",
+                "多卡显存也不等于任何程序都能当作一块大显存。软件必须采用合适的分布方式，互联和内存访问条件也要满足。先问任务是否可拆、结果怎样交换，再讨论扩展。"
+              ],
+              "example": {
+                "title": "多加一台之后反而不划算",
+                "paragraphs": [
+                  "两台节点承担部分计算，但每一步都要传较多结果。若等待通信占比变大，增加节点可能只带来小幅收益。",
+                  "可以对比同任务的计算与通信耗时；没有这些数据，不能只按 GPU 总数计算预计加速倍数。"
+                ]
+              },
+              "contrast": [
+                "Scale Up/Out是理解扩展关系的入口，实际拓扑需看所选平台。"
+              ],
+              "takeaway": "扩展收益取决于可并行工作和新增协作开销。",
+              "sourceIds": [
+                "TRAIN",
+                "NOTE04",
+                "B2-NVLINK",
+                "NCCL",
+                "B2-BASEPOD"
+              ],
+              "readingGuide": [
+                "需要扩展图景时，选读培训讲义 TRAIN 物理页 79–82；90–99 的网络细节留到 Day 6 有相应疑问时。",
+                "阅读任务：沿平台图说明增加资源后哪些工作可分担、哪些结果还需交换；能解释计算收益与协作开销即可返回练习 02。",
+                "涉及型号、版本或真实部署时再查本节官方来源的支持条件；本课概念练习不要求执行安装命令。"
+              ],
+              "exerciseIds": [
+                "P-D05-02"
+              ]
+            },
+            {
+              "id": "L-D05-03",
+              "title": "供电、散热与空间是部署条件",
+              "priority": "core",
+              "cardIds": [
+                "card-power-cooling",
+                "card-facility"
+              ],
+              "paragraphs": [
+                "功率是某一时刻用能的速率，能量是一定时间累计使用的量。理解机柜供电能力与周期能耗时，先分清这两个量；不能只用瞬时功率判断完成任务的总能耗。",
+                "设备有位置放，不等于该位置能承载它运行。机柜、地板承重、可用电力、供电冗余、散热能力和布线维护空间都要核查。它们限制的是可部署与可持续运行的能力。",
+                "电力进入系统后大量转化为热。高密度设备把更多热集中在较小空间，如果热不能有效排出，设备可能受温度限制而降低性能，或触发保护。散热方案需匹配设备规格、环境与设施，不是简单“风扇越多越好”。",
+                "冗余用于降低部分故障导致服务中断的风险，但仍需按方案验证实际路径与容量。能开机的一次短测，不能证明高负载、某一路供电故障或维护期间都能持续运行。"
+              ],
+              "example": {
+                "title": "空机柜并不代表可以立即上架",
+                "paragraphs": [
+                  "新机柜有足够空位，但电力容量与冷却条件未核实。合理结论是部署条件尚不完整，而不是设备一定能用或一定不能用。",
+                  "课堂只识别需要哪些资料，不以示例数字代替真实电气、承重或散热设计。"
+                ]
+              },
+              "contrast": [
+                "本课不提供现场电气施工、承重或生产设备变更指令。"
+              ],
+              "takeaway": "上架前核对承载条件，运行后还需观测实际表现。",
+              "sourceIds": [
+                "TRAIN",
+                "NOTE05",
+                "B2-POWER",
+                "B2-COOLING",
+                "B2-FACILITY"
+              ],
+              "readingGuide": [
+                "培训讲义 TRAIN 物理页 18–21：对照本节主题的原表格/示意，不必连读整份PDF。",
+                "阅读任务：找出供电、散热和空间承重各一项约束；能解释空位为何不足以决定部署即可返回练习 03。练习 06 综合第一至三节，分开检查性能收益与设施条件。",
+                "涉及型号、版本或真实部署时再查本节官方来源的支持条件；本课概念练习不要求执行安装命令。"
+              ],
+              "exerciseIds": [
+                "P-D05-03"
+              ]
+            },
+            {
+              "id": "L-D05-04",
+              "title": "PUE 的分子分母各说明什么",
+              "priority": "core",
+              "cardIds": [
+                "card-pue"
+              ],
+              "paragraphs": [
+                "PUE 等于设施总能耗除以 IT 设备能耗。分子包含 IT 设备及冷却、供配电等设施开销；分母是 IT 设备能耗。比较时需要统一时间范围与计量边界。",
+                "假设同一周期 IT 设备耗能100，设施总耗能150，PUE为1.5。这说明总能耗是 IT 能耗的1.5倍，并不说明 GPU 有50%的计算效率，也不说明完成了多少有效工作。",
+                "再看两个教学案例：A的IT能耗100、总能耗120，PUE1.2；B的IT能耗50、总能耗70，PUE1.4。A的比值更低，但总能耗更高。要比较同一种任务的能效，还需看完成的工作和条件；比较电费还需价格等信息。"
+              ],
+              "example": {
+                "title": "“PUE更低，所以一定更省钱”缺了什么",
+                "paragraphs": [
+                  "这句话把设施开销比例、总用能和费用混在了一起。先确认想比较哪个量，再找相应证据。",
+                  "读懂分母之后，就知道不能把PUE当作GPU利用率或任务完成效率。"
+                ]
+              },
+              "contrast": [
+                "比值改善不保证总量下降；总量下降也不直接证明同等工作更高效。"
+              ],
+              "takeaway": "PUE用于看设施能耗关系，不能替代任务能效。",
+              "sourceIds": [
+                "TRAIN",
+                "NOTE05",
+                "B2-PUE"
+              ],
+              "readingGuide": [
+                "培训讲义 TRAIN 物理页 21：对照本节主题的原表格/示意，不必连读整份PDF。",
+                "阅读任务：指出分子包含什么、分母是什么，再用本课 A/B 数字解释比值与总量的差别；能说明即可返回练习 04。",
+                "涉及型号、版本或真实部署时再查本节官方来源的支持条件；本课概念练习不要求执行安装命令。"
+              ],
+              "exerciseIds": [
+                "P-D05-04"
+              ]
+            },
+            {
+              "id": "L-D05-05",
+              "title": "本地与云：把约束写出来再选",
+              "priority": "core",
+              "cardIds": [
+                "card-onprem-cloud"
+              ],
+              "paragraphs": [
+                "本地部署通常需要自己或合作方准备设备与设施，能对环境进行更多直接控制；云提供可租用的计算资源，便于按服务条件获取和调整资源，但仍有容量、数据传输、权限与费用等约束。",
+                "比较时先明确数据能放在哪里、负载是长期稳定还是短期波动、资源是否可获得、谁负责运维以及总体成本。按量计费不等于任何项目都更便宜，本地部署也不自动等于安全或合规。",
+                "混合方式可以让不同任务位于不同环境，但增加了数据同步、身份和运维协作问题。今天只会解释取舍，不为真实采购给出固定答案。"
+              ],
+              "example": {
+                "title": "一个长期任务和一个短期试验",
+                "paragraphs": [
+                  "长期稳定任务可比较设备投入与持续运维，短期试验可关注获取资源的速度和试验结束后能否释放。",
+                  "若资料不允许离开指定环境，先确认这一约束；不能只按每小时价格选择。"
+                ]
+              },
+              "contrast": [
+                "控制权、责任、资源弹性和成本要一起看。"
+              ],
+              "takeaway": "部署选择是约束问题，不是“云必胜”或“本地必胜”。",
+              "sourceIds": [
+                "TRAIN",
+                "NOTE05",
+                "B2-DEPLOY",
+                "B2-CONTROL"
+              ],
+              "readingGuide": [
+                "需要云与本地对照时，只看培训讲义 TRAIN 物理页 55–56；本节不要求回读平台规格页。",
+                "阅读任务：给临时试验与全年服务各找一项会改变选择的约束，并解释原因；能说明即可返回练习 05。",
+                "涉及型号、版本或真实部署时再查本节官方来源的支持条件；本课概念练习不要求执行安装命令。"
+              ],
+              "exerciseIds": [
+                "P-D05-05",
+                "P-D05-06"
+              ]
+            }
+          ],
+          "summary": [
+            "围绕工作流找等待点，不从最贵部件推断瓶颈。",
+            "扩展收益取决于可并行工作和新增协作开销。",
+            "上架前核对承载条件，运行后还需观测实际表现。",
+            "PUE用于看设施能耗关系，不能替代任务能效。"
+          ],
+          "timeGuide": [
+            "核心关系：集群是合作系统，不是 GPU 数量表；Scale Up 与 Scale Out：扩展也会增加协作成本；供电、散热与空间是部署条件；PUE 的分子分母各说明什么；本地与云：把约束写出来再选",
+            "第一遍认识职责与原因；产品全表、命令、支持矩阵和具体参数按需要选读，不把选读当永远跳过基础目标。",
+            "20分钟可完成一个核心节与一项原答；45–60分钟按实际进度选两三项回答。内容较多可分段完成，未学内容保持待学。"
+          ]
+        },
+        "exercises": [
+          {
+            "id": "P-D05-01",
+            "title": "找等待点",
+            "stem": "增加 GPU 后训练几乎没加快，同时读数据等待较长。你会先核对哪类证据？为什么 GPU 数量本身不能证明加速？",
+            "language": "zh",
+            "cardIds": [
+              "card-cluster-components"
+            ],
+            "objectiveIds": [
+              "2.1",
+              "2.5",
+              "1.6"
+            ],
+            "sourceIds": [
+              "TRAIN",
+              "NOTE04",
+              "B2-BASEPOD",
+              "B2-HGX",
+              "B2-DGX"
+            ],
+            "relatedQuestionIds": [
+              "Q-D05-001",
+              "Q-D05-010"
+            ],
+            "rubric": [
+              "查看同任务的数据读取与计算阶段耗时。",
+              "资源需协作，数据供给可能限制计算，但仅凭描述不直接确诊。"
+            ],
+            "referenceExplanation": [
+              "先对照同一任务的数据读取、准备和 GPU 计算耗时，确认 GPU 是否主要在等下一批输入。如果输入送不来，多出的 GPU 也只能一起等待。",
+              "因此卡数只说明增加了计算资源，不能说明整个任务更快。题目提示供给可能是限制，但还需阶段耗时来核对，不能仅凭等待现象断定是哪一个部件故障。"
+            ]
+          },
+          {
+            "id": "P-D05-02",
+            "title": "英文：扩展成本",
+            "stem": "Adding more nodes reduces computation time but increases synchronization time. Why may total training time improve only slightly?",
+            "language": "en",
+            "translation": "更多节点减少计算时间但增加同步时间。为什么总训练时间可能只小幅改善？",
+            "cardIds": [
+              "card-scale-up-out"
+            ],
+            "objectiveIds": [
+              "2.1",
+              "2.2",
+              "1.2"
+            ],
+            "sourceIds": [
+              "TRAIN",
+              "NOTE04",
+              "B2-NVLINK",
+              "NCCL",
+              "B2-BASEPOD"
+            ],
+            "relatedQuestionIds": [
+              "Q-D05-002",
+              "Q-D05-003"
+            ],
+            "rubric": [
+              "总耗时包括计算与协作等待。",
+              "新增同步成本可能抵消部分计算收益。"
+            ],
+            "referenceExplanation": [
+              "节点各自算得更快，只减少了计算这一段；如果下一步必须等节点交换或合并结果，新增同步等待也会延长任务。",
+              "例如在计算与同步不重叠的教学条件下，计算从10降到6个时间单位，同步却从1增到4，总耗时只从11降到10。收益要看整个过程。"
+            ]
+          },
+          {
+            "id": "P-D05-03",
+            "title": "列部署条件",
+            "stem": "机柜还有空位，是否足以决定再部署两台高密度 GPU 服务器？说明至少三类需核对的条件。",
+            "language": "zh",
+            "cardIds": [
+              "card-power-cooling",
+              "card-facility"
+            ],
+            "objectiveIds": [
+              "2.3",
+              "2.6",
+              "2.2"
+            ],
+            "sourceIds": [
+              "TRAIN",
+              "NOTE05",
+              "B2-POWER",
+              "B2-COOLING",
+              "B2-FACILITY"
+            ],
+            "relatedQuestionIds": [
+              "Q-D05-004",
+              "Q-D05-007"
+            ],
+            "rubric": [
+              "核对电力、散热、承重、空间布线等。",
+              "空位不能证明高负载条件与冗余已满足。"
+            ],
+            "referenceExplanation": [
+              "空位只说明有一部分空间。还需核对至少三类运行条件：电力能否供给新增负载、冷却能否带走热量、机柜与地板能否承重；设备深度、布线和维护空间也是合理条件。",
+              "这些条件分别约束设备能否放稳、供得上电和持续排热；高负载或某一路供电异常时的承载能力，也不能由一次开机证明。"
+            ]
+          },
+          {
+            "id": "P-D05-04",
+            "title": "英文：读懂能耗指标",
+            "stem": "Facility A has a lower PUE than B. Does this alone prove A uses less total energy? Explain.",
+            "language": "en",
+            "translation": "设施A的PUE低于B。仅凭这一点能证明A总能耗更少吗？",
+            "cardIds": [
+              "card-pue"
+            ],
+            "objectiveIds": [
+              "2.3"
+            ],
+            "sourceIds": [
+              "TRAIN",
+              "NOTE05",
+              "B2-PUE"
+            ],
+            "relatedQuestionIds": [
+              "Q-D05-005",
+              "Q-D05-006"
+            ],
+            "rubric": [
+              "不证明；PUE是比值。",
+              "还要看IT能耗、总量和计量范围。"
+            ],
+            "referenceExplanation": [
+              "不能证明。PUE＝设施总能耗÷IT设备能耗，比值较小并未告诉我们 IT 用能的绝对大小。",
+              "在计量边界和时段一致的教学例子中，A 总能耗120、IT能耗100，PUE为1.2；B总能耗70、IT能耗50，PUE为1.4。A 的 PUE 较低，但总能耗仍更高。"
+            ]
+          },
+          {
+            "id": "P-D05-05",
+            "title": "先比较约束",
+            "stem": "一个月的临时试验和全年运行的服务，为什么不能只按同一张 GPU 小时价表选择云或本地？",
+            "language": "zh",
+            "cardIds": [
+              "card-onprem-cloud"
+            ],
+            "objectiveIds": [
+              "2.4",
+              "2.1"
+            ],
+            "sourceIds": [
+              "TRAIN",
+              "NOTE05",
+              "B2-DEPLOY",
+              "B2-CONTROL"
+            ],
+            "relatedQuestionIds": [
+              "Q-D05-008",
+              "Q-D05-009"
+            ],
+            "rubric": [
+              "持续时间、数据、运维、可得性及总成本不同。",
+              "不能从单价直接推出整体最优。"
+            ],
+            "referenceExplanation": [
+              "小时价只覆盖部分费用。一个月试验还要考虑能否及时取得资源、结束后能否释放；全年服务则要把长期利用率、设备或租用投入、供电散热和人员运维一起计算。",
+              "两种任务的数据位置与访问要求也可能不同。运行时间、责任和约束改变了完整成本及可行性，因此同一张单价表不足以决定云或本地。"
+            ]
+          },
+          {
+            "id": "P-D05-06",
+            "title": "换情境：系统性解释",
+            "stem": "假设多卡任务等待通信，同时拟放入新机柜。请分开说明性能收益与设施可部署性需要哪些不同证据。",
+            "language": "zh",
+            "cardIds": [
+              "card-cluster-components",
+              "card-scale-up-out",
+              "card-power-cooling",
+              "card-facility",
+              "card-pue",
+              "card-onprem-cloud"
+            ],
+            "objectiveIds": [
+              "2.1",
+              "2.5",
+              "1.6",
+              "2.2",
+              "1.2",
+              "2.3",
+              "2.6",
+              "2.4"
+            ],
+            "sourceIds": [
+              "TRAIN",
+              "NOTE04",
+              "B2-BASEPOD",
+              "B2-HGX",
+              "B2-DGX",
+              "B2-NVLINK",
+              "NCCL",
+              "NOTE05",
+              "B2-POWER",
+              "B2-COOLING",
+              "B2-FACILITY",
+              "B2-PUE",
+              "B2-DEPLOY",
+              "B2-CONTROL"
+            ],
+            "relatedQuestionIds": [
+              "Q-D05-001",
+              "Q-D05-002",
+              "Q-D05-003",
+              "Q-D05-004",
+              "Q-D05-005",
+              "Q-D05-006",
+              "Q-D05-007",
+              "Q-D05-008",
+              "Q-D05-009",
+              "Q-D05-010"
+            ],
+            "rubric": [
+              "性能看计算/数据/通信及软件条件。",
+              "设施看电力、散热、空间承重。PUE或部署方式只在回答混淆时补讲，不是题目要求的必答项。"
+            ],
+            "referenceExplanation": [
+              "性能问题先对照同任务的计算、数据供给和通信等待，核对软件如何分配任务、互联是否满足需要；增加资源是否值得，要看总耗时能否改善。",
+              "新机柜能否部署则需要供电、散热、承重和空间资料。前一组证据回答任务能否更快，后一组回答设备能否在该位置持续运行；即使通信改善，也不能据此认定机柜条件已满足。"
+            ]
+          }
+        ],
+        "diagnostic": {
+          "minutes": "约5–8",
+          "promptIds": [
+            "P-D05-01",
+            "P-D05-02",
+            "P-D05-06"
+          ],
+          "alternativeEnglishId": "P-D05-04",
+          "instructions": [
+            "短诊断可选，仅在学过后回顾使用；综合解释较慢可另分一次。",
+            "原答先保存，再看统一参考；不清楚可直接说明。"
+          ]
+        },
+        "caseStudy": {
+          "title": "增加 GPU 之前，先看整个系统能否跟上",
+          "setup": "从一台服务器到一组机器，需要把计算、数据供给和设施放在一起看。今天不设计真实机房，只练习解释：为什么算力增加了，工作却不一定同样加快？",
+          "boundary": "情境和数字为教学假设，非用户现场事实。",
+          "steps": [
+            {
+              "title": "数据来不及供给",
+              "text": "假设 GPU 经常等待读取工单训练数据。增加 GPU 后，存储供给没有变，每张卡分到的数据可能更少。应先对齐任务阶段、数据读入与计算时间，再决定哪里要改。 相反，如果数据及时送达而计算长期成为主要耗时，增加合适计算资源才可能有帮助；仍需软件能利用。"
+            },
+            {
+              "title": "多加一台之后反而不划算",
+              "text": "两台节点承担部分计算，但每一步都要传较多结果。若等待通信占比变大，增加节点可能只带来小幅收益。 可以对比同任务的计算与通信耗时；没有这些数据，不能只按 GPU 总数计算预计加速倍数。"
+            },
+            {
+              "title": "空机柜并不代表可以立即上架",
+              "text": "新机柜有足够空位，但电力容量与冷却条件未核实。合理结论是部署条件尚不完整，而不是设备一定能用或一定不能用。 课堂只识别需要哪些资料，不以示例数字代替真实电气、承重或散热设计。"
+            },
+            {
+              "title": "“PUE更低，所以一定更省钱”缺了什么",
+              "text": "这句话把设施开销比例、总用能和费用混在了一起。先确认想比较哪个量，再找相应证据。 读懂分母之后，就知道不能把PUE当作GPU利用率或任务完成效率。"
+            },
+            {
+              "title": "一个长期任务和一个短期试验",
+              "text": "长期稳定任务可比较设备投入与持续运维，短期试验可关注获取资源的速度和试验结束后能否释放。 若资料不允许离开指定环境，先确认这一约束；不能只按每小时价格选择。"
+            }
+          ]
+        },
+        "feedback": {
+          "dimensions": [
+            "结论是否符合题目证据",
+            "能否独立说明理由和职责关系",
+            "是否保留未知与适用条件",
+            "英文阅读与技术理解分别反馈"
+          ],
+          "instructions": [
+            "先保留学习者实际回答，再对照参考要点；只评价本次表现，不把参考答案写成学习记录。",
+            "区分独立回答、看译文后回答、提示后修正和照着讲解复述。",
+            "理由不完整时只补最关键的一处，再换一个小情境检查；不通过一次修正宣布已掌握。",
+            "先输入实际回答，再按要点自查；自查不是自动判分，也不等于已获得逐句教学评阅。需要进一步反馈时，连同是否看过提示一起交给教学对话；延迟回忆与陌生场景迁移仍需后续真实作答证据。"
+          ],
+          "exposureNote": "这些题干与设计曾在讨论中展示；是否看过参考要点也应按实际说明。同题再次作答可用于复习，不能冒充未见题的独立测量。"
+        },
+        "bridge": {
+          "nextDay": 6,
+          "title": "下一课怎样接上",
+          "text": "保留本次说不清的关系，下一课需要时再回看。",
+          "steps": [
+            "保存原答和疑问。",
+            "根据实际点评决定补哪一节，而不是把所有链接再读一遍。"
+          ]
+        }
+      },
+      "materialGuide": {
+        "title": "本课与原教材：怎样搭配着学",
+        "currentUse": "沿计算等待、扩展成本、设施约束和能耗定义讲清关系，用教学数字检验PUE理解。",
+        "originalValue": "原讲义18–21页的设施约束、64–65/79–82页平台图，以及55–56页云/本地对照能提供空间与系统视角。",
+        "whenToRead": "能解释GPU为何等待、扩展为何有开销、PUE不能代表任务效率，可先停在本课基础目标。想看组成与约束的位置关系时回原图。",
+        "difference": "工作台补充PUE低但总能耗更高的反例；原云/本地优势表是概括，不保证云一定便宜或本地一定合规。",
+        "scope": "完成这里的基础目标，只说明可以继续本课学习；不代表考试范围已完整覆盖、已掌握或能直接进行生产操作。",
+        "readings": [
+          {
+            "sourceId": "TRAIN",
+            "locator": "160页培训讲义，物理页 64–65 或 79（组成图）；79–82（扩展图景）",
+            "task": "第一、二节仍有疑问时选一张图，指出计算、存储、互联与管理，并说清增加节点后要交换什么。",
+            "stop": "能解释一个等待点与一种协作开销即可返回练习 01、02，不背 DGX 代际规格。",
+            "warning": "同事提供的培训讲义，不等于已认证的官方考试教材。产品条件与版本以当前官方说明为准。"
+          },
+          {
+            "sourceId": "TRAIN",
+            "locator": "物理页 18–21（设施约束）；21（PUE）",
+            "task": "第三节按需列出供电、散热、空间承重条件；第四节只看第21页核对 PUE 的分子分母。",
+            "stop": "能解释空位不代表部署条件齐全，或能解释 PUE 比值与总量的区别，即可回对应练习；综合练习 06 回看第一至三节。",
+            "warning": "设施数值需按真实设备与场地核验，课堂例子不构成部署设计。"
+          },
+          {
+            "sourceId": "TRAIN",
+            "locator": "物理页 55–56（第五节云与本地对照）",
+            "task": "用临时试验或全年服务检验图中一种优势成立需要哪些条件。",
+            "stop": "能指出一个会改变选择的约束及原因即可返回练习 05，不要求一次读完全部入口。",
+            "warning": "同事提供的培训讲义，不等于已认证的官方考试教材。产品条件与版本以当前官方说明为准。"
+          }
+        ],
+        "officialUse": "遇到具体型号、版本、指标字段或真实操作时，打开对应知识卡中的官方依据，只查与问题有关的定义/支持条件；不把官方网站全站作为当天作业。",
+        "mediaStatus": "原目录的视频与字幕可作为补讲候选，但当前只完成目录级清点，未逐段核对；本课不指定未经核验的时间码或宣称看完某段即可覆盖考点。"
+      }
+    },
+    {
+      "day": 6,
+      "title": "AI网络、GPU互联与DPU",
+      "status": "可学习（第二批内容）",
+      "cardIds": [
+        "card-network-traffic",
+        "card-ethernet-infiniband",
+        "card-rdma-roce",
+        "card-nvlink-nvswitch",
+        "card-bluefield-dpu",
+        "card-gpudirect-paths"
+      ],
+      "questionIds": [
+        "Q-D06-001",
+        "Q-D06-002",
+        "Q-D06-003",
+        "Q-D06-004",
+        "Q-D06-005",
+        "Q-D06-006",
+        "Q-D06-007",
+        "Q-D06-008",
+        "Q-D06-009",
+        "Q-D06-010"
+      ],
+      "selfCheck": "用一条训练数据路径串起存储、GPU互联和跨节点网络；再说明BMC、DPU和GPU各负责什么。",
+      "selfCheckNote": "口述自检不自动计分；一次答对不是已掌握。20/45/60分钟可分次完成本课。",
+      "teachingTrial": {
+        "id": "day6-understanding-2026-09-25",
+        "teachingRevision": "2026-10-02-day06-batch1",
+        "title": "Day 6 主课与理解练习",
+        "status": "已批准试用；教学效果待真实使用验证",
+        "approvedOn": "2026-09-25",
+        "note": "主课先说明原因，再用情境检查。先完成核心节，选读节留到有需要时；不要求一次做完六项短答。英文两项任选一项，可用中文回答。旧知识卡用于速查，原计分练习保持独立。",
+        "goals": [
+          "用端点和用途把问题说具体。",
+          "先区分是什么网络、具有什么能力、实际是否可用。",
+          "用拓扑看范围，用软件证据看收益。"
+        ],
+        "fullLesson": {
+          "title": "Day 6 主课｜数据从哪里来、到哪里去：读懂 AI 互联",
+          "intro": "Day 5 解释了为什么扩展会增加协作成本。今天沿数据路径理解网络名称：先看端点和用途，再分清技术层次。不要求配置交换机或背带宽数字。",
+          "orientation": [
+            "先用中文解释关系，再把英文术语对应上；术语表达不熟与概念错误分别反馈。",
+            "20分钟可只完成一个核心节及一项短答；45–60分钟以核心关系和两三项回答为目标，卡住时停下补讲，可分多次完成。",
+            "选读节和原教材用于特定疑问的补充，不是做题前的额外通读作业。",
+            "分两段：先讲流量、网络与紧密互联；随后讲GPUDirect路径与DPU。后两者属于需要建立的基本关系，配置细节才是选读。"
+          ],
+          "sections": [
+            {
+              "id": "L-D06-01",
+              "title": "同一集群中，数据也有不同旅程",
+              "priority": "core",
+              "cardIds": [
+                "card-network-traffic"
+              ],
+              "paragraphs": [
+                "节点是一台参与任务的计算单元，网卡提供相应网络连接能力；数据路径是数据经过哪些端点与中间环节。带宽关注单位时间可传多少，延迟关注一次传递要等多久；训练检查点是为后续恢复等用途保存的进展信息。",
+                "训练节点读取样本，是存储到计算节点的数据供给；不同节点交换计算结果，是计算协作；管理员查看健康状态，是管理通信。先区分这些旅程，才能讨论需要怎样的网络。",
+                "网络设计可以为不同流量安排不同逻辑或物理路径，但并不意味着每个系统都固定有三套完全独立的交换机。应从实际架构图确认边界、共享资源和访问方式。",
+                "带内管理通常借助主机正常网络与软件路径；带外管理可以使用独立管理入口，例如服务器 BMC。在主机操作系统不可用时，后者可能仍提供状态或控制台，但自身也需要供电和管理网络。"
+              ],
+              "example": {
+                "title": "“网络慢”先指哪段",
+                "paragraphs": [
+                  "若读入训练数据慢，先定位存储路径；若计算完却等待其他节点，关注协作路径；若SSH失联，需区分业务数据路径与管理入口。",
+                  "这三种现象都含“网络”，却未必是同一个连接或同一个问题。"
+                ]
+              },
+              "contrast": [
+                "管理网络正常不证明计算网络性能正常。"
+              ],
+              "takeaway": "用端点和用途把问题说具体。",
+              "sourceIds": [
+                "TRAIN",
+                "NOTE06",
+                "B2-NETWORK",
+                "B2-BASEPOD"
+              ],
+              "readingGuide": [
+                "培训讲义 TRAIN 物理页 40–43；先看已核对的第43页网络职责图，找出计算、存储与管理各在连接什么。",
+                "阅读任务：选一条箭头说出起点、终点和用途；能区分读取样本与交换计算结果，就返回主课，不必把所有网络名称抄一遍。",
+                "涉及型号、版本或真实部署时再查本节官方来源的支持条件；本课概念练习不要求执行安装命令。"
+              ],
+              "exerciseIds": [
+                "P-D06-01"
+              ]
+            },
+            {
+              "id": "L-D06-02",
+              "title": "Ethernet、InfiniBand 与 RDMA 的层次不同",
+              "priority": "core",
+              "cardIds": [
+                "card-ethernet-infiniband",
+                "card-rdma-roce"
+              ],
+              "paragraphs": [
+                "两台训练服务器要交换结果，先得通过适配器、线缆和交换设备连接起来。Ethernet（以太网）和InfiniBand是两种网络技术体系，规定设备如何传递数据，各自需要相应设备和协议支持；它们都可用于AI集群。",
+                "再看数据怎样进入对方内存。RDMA（远程直接内存访问）是一种传输能力，由支持它的网络适配器执行。以一次写入为例：应用先准备并授权可访问的内存区域，再提交请求；适配器从本机内存取数据，经网络写到另一台机器已准备的目标内存。这样减少CPU逐段复制和部分协议处理；准备资源、发起工作等控制任务仍可由CPU上的软件承担。",
+                "因此，Ethernet/InfiniBand回答“使用哪类网络”，RDMA回答“能否由适配器直接在应用内存之间搬数据”。InfiniBand原生支持RDMA；RoCE是一组让RDMA使用Ethernet的协议。这是能力与承载关系，不是三个同层选项。普通以太网能连通，还不能证明网卡、驱动和应用已能使用RoCE。",
+                "InfiniBand子网还需要SM（子网管理器）这类管理软件发现设备并配置网络；OpenSM是一种实现。RoCEv2则将RDMA传输内容放入UDP/IP报文，可跨IP子网路由。第一遍知道这些对象分别负责管理和传输即可，不必学习报文格式或安装命令。",
+                "最后才比较效果：设备、拓扑、配置和负载共同影响性能。支持RDMA不等于当前路径已启用，更不保证在任意任务上比另一网络快。"
+              ],
+              "example": {
+                "title": "名称不是同一层面的三选一",
+                "paragraphs": [
+                  "“Ethernet还是RDMA”这个问题可能把网络体系与访问能力放在同一层比较。先问是否需要RDMA，再看在哪种受支持的网络方案上实现。",
+                  "以太网上能ping通，只证明一种连通性，不证明RDMA路径配置正确或达到需要的性能。"
+                ]
+              },
+              "contrast": [
+                "能连通、支持某能力、该负载性能合格，是三项不同证据。"
+              ],
+              "takeaway": "先区分是什么网络、具有什么能力、实际是否可用。",
+              "sourceIds": [
+                "TRAIN",
+                "NOTE06",
+                "B2-NETWORK",
+                "B2-ROCE",
+                "B2-SM",
+                "B2-GDR"
+              ],
+              "readingGuide": [
+                "培训讲义 TRAIN 物理页 47–50：先看Ethernet/InfiniBand对照，特别留意第48页简化表不能把Ethernet等同于TCP；需要看数据搬运时再选97–99页。",
+                "阅读任务：指出网络类型、RDMA能力和RoCE承载关系；能解释“以太网连通仍不足以证明RoCE可用”即可返回。93–94页及具体管理配置按疑问选读，不必连续读完。",
+                "涉及型号、版本或真实部署时再查本节官方来源的支持条件；本课概念练习不要求执行安装命令。"
+              ],
+              "exerciseIds": [
+                "P-D06-02"
+              ]
+            },
+            {
+              "id": "L-D06-03",
+              "title": "NVLink 与 NVSwitch：紧密互联中的连接和交换",
+              "priority": "core",
+              "cardIds": [
+                "card-nvlink-nvswitch"
+              ],
+              "paragraphs": [
+                "先看一台支持NVLink/NVSwitch的多GPU服务器：GPU A完成一部分计算，GPU B的下一步需要这份结果。NVLink是支持的GPU等处理器之间的高速互联技术；NVSwitch是交换芯片，可把从一个NVLink端口收到的数据转发到相应端口，让多个GPU交换数据。它传递结果，模型计算仍由GPU执行。这个过程帮助理解连接与交换，真实拓扑要看平台。",
+                "网络范围不能只看机箱外观。某些平台的紧密互联域可以跨越机架级系统；不能把NVLink死记为只连接一台主机内部的两张卡。它也不是所有GPU、所有连接都自带的功能。",
+                "高速互联提供了更合适的数据交换条件，软件仍须采用受支持的并行方式。任意程序不会只因插上多张卡就自动获得总显存，也不会自动线性加速。"
+              ],
+              "example": {
+                "title": "两块大显存能否直接相加",
+                "paragraphs": [
+                  "某模型放不进单卡，增加另一张卡并不能单凭容量之和判断可以运行；需要检查程序如何分布模型、互联与运行条件。",
+                  "如果应用始终只使用一张卡，另一张卡和互联能力并没有自动被利用。"
+                ]
+              },
+              "contrast": [
+                "互联能力与软件怎样用它要同时成立。"
+              ],
+              "takeaway": "用拓扑看范围，用软件证据看收益。",
+              "sourceIds": [
+                "TRAIN",
+                "NOTE06",
+                "B2-NVLINK",
+                "B2-HGX"
+              ],
+              "readingGuide": [
+                "培训讲义 TRAIN 物理页 90–95：只选一张GPU互联图，辨认GPU端点、NVLink连接和NVSwitch交换位置。",
+                "阅读任务：沿图描述GPU A的结果怎样到GPU B，再说软件仍需安排什么；能解释多卡显存为何不能对任意程序自动相加即可返回，不背各代数量和带宽。",
+                "涉及型号、版本或真实部署时再查本节官方来源的支持条件；本课概念练习不要求执行安装命令。"
+              ],
+              "exerciseIds": [
+                "P-D06-03"
+              ]
+            },
+            {
+              "id": "L-D06-04",
+              "title": "GPUDirect：少走哪段路，比名字更关键",
+              "priority": "core",
+              "cardIds": [
+                "card-gpudirect-paths"
+              ],
+              "paragraphs": [
+                "先区分两处内存：主机内存是CPU使用的系统内存，GPU内存是GPU保存计算数据的显存。收到一份将交给GPU的数据时，一种常见路径是先放进主机内存，再复制到GPU内存；这一中转会占用时间和内存带宽。GPUDirect是一组缩短这类数据路径的技术，不是一张新GPU或一个统一加速开关。",
+                "GPUDirect RDMA让支持的第三方设备直接访问GPU内存。以跨节点接收数据为例，原来可能走“本机网卡→主机内存→GPU内存”；启用受支持的直接路径后，可走“本机网卡→GPU内存”。网络仍负责把数据从远端送到本机，GPUDirect RDMA优化的是网卡等设备与GPU内存之间这一段。",
+                "GPUDirect Storage（GDS）处理存储与GPU内存之间的读写。比如程序要读训练文件，通常先读到主机内存再复制给GPU；使用GDS的软件接口和受支持路径后，存储设备或网卡的搬运引擎可把数据送到GPU内存，省去这次主机内存中转。它既可涉及本地存储，也可涉及远程存储；远程路径可能借助RDMA，所以GDS和RDMA并非互斥选项。",
+                "这些箭头是用于理解数据流的简化示意，不是所有平台的固定接线图。CPU上的软件仍可负责发起读写、准备资源和同步；拓扑、驱动、文件系统或应用不支持时，也可能走兼容中转路径。要先确认当前实际路径，再讨论收益。"
+              ],
+              "example": {
+                "title": "一次读文件和一次跨节点交换",
+                "paragraphs": [
+                  "读训练文件的请求从存储开始，目标是GPU内存，先关注GDS；另一节点算出的结果已在GPU内存中，要经网卡与本机GPU交换，先关注GPUDirect RDMA。",
+                  "分别画出存储/网卡、主机内存、GPU内存，圈出期望省去的主机内存中转。若GDS读的是远程存储，路径中也可能用到RDMA；按端点分析，不把名称当作互斥选项。"
+                ]
+              },
+              "contrast": [
+                "技术名含Direct不证明当前程序真的使用了该路径。"
+              ],
+              "takeaway": "识别端点、减少的中转和所需条件。",
+              "sourceIds": [
+                "TRAIN",
+                "NOTE06",
+                "B2-GDR",
+                "B2-GDS"
+              ],
+              "readingGuide": [
+                "培训讲义 TRAIN 物理页 98–100：只看数据路径箭头；第100页远程存储示意只是GDS的一种场景，不代表GDS必须使用远程存储。",
+                "阅读任务：指出哪段数据原本经过主机内存、哪段可以省去，以及CPU仍需做的一项工作；能分别解释读文件和跨节点交换即可返回，不背加速倍数。",
+                "涉及型号、版本或真实部署时再查本节官方来源的支持条件；本课概念练习不要求执行安装命令。"
+              ],
+              "exerciseIds": [
+                "P-D06-04",
+                "P-D06-05"
+              ]
+            },
+            {
+              "id": "L-D06-05",
+              "title": "DPU卸载的是哪些工作",
+              "priority": "core",
+              "cardIds": [
+                "card-bluefield-dpu"
+              ],
+              "paragraphs": [
+                "服务器不只做模型计算，还要接收网络包、转发数据、处理存储访问及安全检查。DPU是一类集成可编程处理器核心、网络接口和加速引擎的芯片，常用于带有处理能力的网卡；BlueField是NVIDIA的相关产品系列。它是实际硬件，DOCA则提供开发相关服务的软件能力。",
+                "以服务器运行中的网络转发为例：一些数据包原由主机CPU上的虚拟交换软件解析、匹配转发规则，再交给目标工作负载。在受支持的部署中，可将部分处理交给DPU的网络与加速能力；数据包到达后由它按已配置规则处理并转发。把这部分工作从主机CPU移走，就是这里的“卸载”；支持的加解密或存储处理也可采用相似分工。",
+                "由此腾出的CPU资源可能用于应用控制或其他工作，GPU继续承担模型的并行计算。DPU与GPU是不同职责，不是“更专业所以可以取代GPU”；BMC则侧重查看硬件状态等设备管理，也不等于DPU。若任务主要受GPU计算限制，卸载网络处理未必明显缩短训练时间。",
+                "在支持的部署中，DPU还可帮助将基础设施服务与租户工作负载分离；隔离效果取决于运行模式、软件和配置。先确认移走的是哪项实际工作，再核对路径与效果，不能只凭装卡就保证加速或安全。"
+              ],
+              "example": {
+                "title": "比较两种瓶颈",
+                "paragraphs": [
+                  "任务甲的GPU一直忙于矩阵计算，CPU有空闲；任务乙的主机CPU忙于解析并转发大量网络包，应用因此等待。对乙，可先核查这部分转发是否受支持、能否卸载给DPU；对甲，不能仅靠这项卸载判断模型会算得更快。",
+                  "即使乙能够卸载，也要比较实际CPU开销和任务耗时。改由谁处理一项工作，与整个任务能快多少，是两个需要分别说明的问题。"
+                ]
+              },
+              "contrast": [
+                "安全能力需要配置和验证，不由产品名自动保证。"
+              ],
+              "takeaway": "把DPU放回基础设施服务，不与模型计算混淆。",
+              "sourceIds": [
+                "TRAIN",
+                "NOTE06",
+                "B2-DPU",
+                "B2-BLUEFIELD"
+              ],
+              "readingGuide": [
+                "培训讲义 TRAIN 物理页 34–35、67：选一张DPU示意图，先找主机CPU、网络接口和DPU的位置，其余产品信息按需选读。",
+                "阅读任务：举一项原由主机CPU处理、可交给DPU的工作，并说GPU仍负责什么；能用具体动作解释卸载即可返回，不背宣传中的固定CPU节省比例。",
+                "涉及型号、版本或真实部署时再查本节官方来源的支持条件；本课概念练习不要求执行安装命令。"
+              ],
+              "exerciseIds": [
+                "P-D06-06"
+              ]
+            }
+          ],
+          "summary": [
+            "用端点和用途把问题说具体。",
+            "先区分是什么网络、具有什么能力、实际是否可用。",
+            "用拓扑看范围，用软件证据看收益。"
+          ],
+          "timeGuide": [
+            "核心关系：同一集群中，数据也有不同旅程；Ethernet、InfiniBand 与 RDMA 的层次不同；NVLink 与 NVSwitch：紧密互联中的连接和交换；GPUDirect：少走哪段路，比名字更关键；DPU卸载的是哪些工作",
+            "第一遍认识职责与原因；产品全表、命令、支持矩阵和具体参数按需要选读，不把选读当永远跳过基础目标。",
+            "20分钟可完成一个核心节与一项原答；45–60分钟按实际进度选两三项回答。内容较多可分段完成，未学内容保持待学。"
+          ]
+        },
+        "exercises": [
+          {
+            "id": "P-D06-01",
+            "title": "三种流量",
+            "stem": "读取样本、跨节点交换训练结果、查看服务器健康信息，分别主要属于哪类流量？为什么先区分它们？",
+            "language": "zh",
+            "cardIds": [
+              "card-network-traffic"
+            ],
+            "objectiveIds": [
+              "2.7",
+              "2.5",
+              "1.2"
+            ],
+            "sourceIds": [
+              "TRAIN",
+              "NOTE06",
+              "B2-NETWORK",
+              "B2-BASEPOD"
+            ],
+            "relatedQuestionIds": [
+              "Q-D06-001",
+              "Q-D06-002"
+            ],
+            "rubric": [
+              "分别识别存储、计算协作、管理。",
+              "不同端点和用途对应不同核查路径。"
+            ],
+            "referenceExplanation": [
+              "读取样本是把数据从存储送给计算节点，属于存储流量；跨节点交换训练结果是计算节点之间协作，属于计算通信；查看服务器健康信息是在管理设备，属于管理流量。分类依据是数据为谁服务、从哪里到哪里，不是看它们是否都经过网线。",
+              "先分清用途，才能知道该检查哪段路径。例如读取样本慢要看存储供给，结果同步等待要看节点间通信；管理入口可用并不能证明这两段正常。这些用途可以共享部分设备，不能由三种用途推断一定有三套物理网络。"
+            ]
+          },
+          {
+            "id": "P-D06-02",
+            "title": "英文：技术层次",
+            "stem": "An Ethernet network is reachable. Does this prove that a working RoCE path is available? Explain one missing check.",
+            "language": "en",
+            "translation": "以太网可以连通，是否证明RoCE路径可用？说出仍需核查的一项。",
+            "cardIds": [
+              "card-ethernet-infiniband",
+              "card-rdma-roce"
+            ],
+            "objectiveIds": [
+              "2.8",
+              "2.9",
+              "2.7"
+            ],
+            "sourceIds": [
+              "TRAIN",
+              "NOTE06",
+              "B2-NETWORK",
+              "B2-ROCE",
+              "B2-SM",
+              "B2-GDR"
+            ],
+            "relatedQuestionIds": [
+              "Q-D06-003",
+              "Q-D06-004",
+              "Q-D06-005",
+              "Q-D06-006"
+            ],
+            "rubric": [
+              "普通连通性不证明RDMA能力已可用。",
+              "还需硬件、软件和网络配置支持核查。"
+            ],
+            "referenceExplanation": [
+              "不能证明。reachable说明以太网的某种连通性成立；working RoCE path要求RDMA数据能经这条以太网路径传输。以太网是承载网络，RoCE是让RDMA使用它的协议，连通证据还没有检查RDMA能力。",
+              "可以回答一项具体缺口：例如两端网卡是否支持RoCE，或者驱动和应用是否能使用对应路径。随后还需端到端配置与实际传输核验，但本题只要求解释一项缺少的检查，不要求列全配置清单。"
+            ]
+          },
+          {
+            "id": "P-D06-03",
+            "title": "多卡与软件",
+            "stem": "模型装不进一张卡，为什么不能只把两张卡的显存相加就宣布能运行？",
+            "language": "zh",
+            "cardIds": [
+              "card-nvlink-nvswitch"
+            ],
+            "objectiveIds": [
+              "2.2",
+              "2.9"
+            ],
+            "sourceIds": [
+              "TRAIN",
+              "NOTE06",
+              "B2-NVLINK",
+              "B2-HGX"
+            ],
+            "relatedQuestionIds": [
+              "Q-D06-007"
+            ],
+            "rubric": [
+              "需要模型/计算分布的软件支持与通信条件。",
+              "互联和容量并不保证任意程序自动利用。"
+            ],
+            "referenceExplanation": [
+              "两张卡首先是两个各有显存的计算设备。若程序仍把整个模型只放在第一张卡，第二张卡的空闲显存不会自动替它存下溢出的部分；因此只加总容量，尚未说明程序如何使用它们。",
+              "要运行跨卡模型，软件需采用受支持的方式分布模型或计算，并安排必要的数据交换。NVLink/NVSwitch可改善支持平台上的通信条件，不能替软件决定模型怎样分布。即使容量看起来够，也要核查实际运行方式及通信条件。"
+            ]
+          },
+          {
+            "id": "P-D06-04",
+            "title": "英文：CPU职责",
+            "stem": "A data-transfer path reduces CPU involvement. Does the application no longer need a CPU? Explain.",
+            "language": "en",
+            "translation": "数据传输路径减少CPU参与，是否意味着整个应用不再需要CPU？",
+            "cardIds": [
+              "card-ethernet-infiniband",
+              "card-rdma-roce",
+              "card-gpudirect-paths"
+            ],
+            "objectiveIds": [
+              "2.8",
+              "2.9",
+              "2.7",
+              "2.1"
+            ],
+            "sourceIds": [
+              "TRAIN",
+              "NOTE06",
+              "B2-NETWORK",
+              "B2-ROCE",
+              "B2-SM",
+              "B2-GDR",
+              "B2-GDS"
+            ],
+            "relatedQuestionIds": [
+              "Q-D06-003",
+              "Q-D06-004",
+              "Q-D06-005",
+              "Q-D06-006",
+              "Q-D06-010"
+            ],
+            "rubric": [
+              "减少搬运参与不等于移除控制及应用其他CPU任务。",
+              "结论应限定到具体传输路径。"
+            ],
+            "referenceExplanation": [
+              "不能。reduces CPU involvement限定的是数据搬运过程：例如让网卡直接把数据送到GPU内存，省去主机内存中转。它没有说整个应用的所有CPU工作都消失。",
+              "CPU上的软件仍可准备资源、提交读写请求或协调后续工作。以GDS读取训练文件为例，CPU上的文件系统驱动参与建立直接路径，实际数据搬运才由支持的设备完成。把“谁发起和控制”与“谁搬数据”分开，就能解释为何减少CPU开销仍需要CPU。"
+            ]
+          },
+          {
+            "id": "P-D06-05",
+            "title": "识别数据端点",
+            "stem": "读取存储中的训练样本，与跨节点GPU交换数据，分别为什么会关注不同的GPUDirect路径？",
+            "language": "zh",
+            "cardIds": [
+              "card-gpudirect-paths"
+            ],
+            "objectiveIds": [
+              "2.7",
+              "2.9",
+              "2.1"
+            ],
+            "sourceIds": [
+              "TRAIN",
+              "NOTE06",
+              "B2-GDR",
+              "B2-GDS"
+            ],
+            "relatedQuestionIds": [
+              "Q-D06-010"
+            ],
+            "rubric": [
+              "以存储→GPU和网络设备/GPU通信端点区分。",
+              "不从名称直接推断当前已经启用或必然加速。"
+            ],
+            "referenceExplanation": [
+              "读取训练样本时，需求是把存储中的文件内容送入GPU内存，因此关注GDS的存储读写路径。跨节点交换GPU计算结果时，数据需经过网络；GPUDirect RDMA让支持的网卡直接访问GPU内存，减少网卡与GPU之间的主机内存中转。",
+              "这是按起点、终点与用途区分，不能变成“有存储就不用RDMA”：远程存储的GDS路径也可能使用RDMA。两种场景都还要核查设备、软件及实际启用路径，名称本身不能证明加速已经发生。"
+            ]
+          },
+          {
+            "id": "P-D06-06",
+            "title": "换情境：解释卸载",
+            "stem": "同事说“DPU更专业，所以能替代GPU训练模型”。你会怎样按职责解释？",
+            "language": "zh",
+            "cardIds": [
+              "card-bluefield-dpu"
+            ],
+            "objectiveIds": [
+              "2.10",
+              "1.6"
+            ],
+            "sourceIds": [
+              "TRAIN",
+              "NOTE06",
+              "B2-DPU",
+              "B2-BLUEFIELD"
+            ],
+            "relatedQuestionIds": [
+              "Q-D06-008",
+              "Q-D06-009"
+            ],
+            "rubric": [
+              "DPU侧重基础设施网络存储安全等服务。",
+              "GPU模型计算是不同任务；系统整体收益依工作负载。"
+            ],
+            "referenceExplanation": [
+              "“更专业”必须指明专业于哪项工作。DPU可接手受支持的网络、存储或安全处理，例如按规则解析并转发网络包；GPU则承担模型训练中的大量并行计算。这两项工作都帮助训练系统运行，却不是同一职责。",
+              "将包处理交给DPU，可能减少主机CPU开销，让应用少等待；它不因此获得替代GPU训练模型的结论。是否缩短整个任务，还取决于原先是不是这项基础设施工作在限制速度。"
+            ]
+          }
+        ],
+        "diagnostic": {
+          "minutes": "约5–8",
+          "promptIds": [
+            "P-D06-01",
+            "P-D06-02",
+            "P-D06-06"
+          ],
+          "alternativeEnglishId": "P-D06-04",
+          "instructions": [
+            "短诊断可选，仅在学过后回顾使用；综合解释较慢可另分一次。",
+            "原答先保存，再看统一参考；不清楚可直接说明。"
+          ]
+        },
+        "caseStudy": {
+          "title": "数据从哪里来、到哪里去：读懂 AI 互联",
+          "setup": "Day 5 解释了为什么扩展会增加协作成本。今天沿数据路径理解网络名称：先看端点和用途，再分清技术层次。不要求配置交换机或背带宽数字。",
+          "boundary": "情境和数字为教学假设，非用户现场事实。",
+          "steps": [
+            {
+              "title": "“网络慢”先指哪段",
+              "text": "若读入训练数据慢，先定位存储路径；若计算完却等待其他节点，关注协作路径；若SSH失联，需区分业务数据路径与管理入口。 这三种现象都含“网络”，却未必是同一个连接或同一个问题。"
+            },
+            {
+              "title": "名称不是同一层面的三选一",
+              "text": "“Ethernet还是RDMA”这个问题可能把网络体系与访问能力放在同一层比较。先问是否需要RDMA，再看在哪种受支持的网络方案上实现。 以太网上能ping通，只证明一种连通性，不证明RDMA路径配置正确或达到需要的性能。"
+            },
+            {
+              "title": "两块大显存能否直接相加",
+              "text": "某模型放不进单卡，增加另一张卡并不能单凭容量之和判断可以运行；需要检查程序如何分布模型、互联与运行条件。 如果应用始终只使用一张卡，另一张卡和互联能力并没有自动被利用。"
+            },
+            {
+              "title": "一次读文件和一次跨节点交换",
+              "text": "读训练文件的请求从存储开始，目标是GPU内存，先关注GDS；另一节点算出的结果已在GPU内存中，要经网卡与本机GPU交换，先关注GPUDirect RDMA。 分别画出存储/网卡、主机内存、GPU内存，圈出期望省去的主机内存中转。若GDS读的是远程存储，路径中也可能用到RDMA；按端点分析，不把名称当作互斥选项。"
+            },
+            {
+              "title": "比较两种瓶颈",
+              "text": "任务甲的GPU一直忙于矩阵计算，CPU有空闲；任务乙的主机CPU忙于解析并转发大量网络包，应用因此等待。对乙，可先核查这部分转发是否受支持、能否卸载给DPU；对甲，不能仅靠这项卸载判断模型会算得更快。 即使乙能够卸载，也要比较实际CPU开销和任务耗时。改由谁处理一项工作，与整个任务能快多少，是两个需要分别说明的问题。"
+            }
+          ]
+        },
+        "feedback": {
+          "dimensions": [
+            "结论是否符合题目证据",
+            "能否独立说明理由和职责关系",
+            "是否保留未知与适用条件",
+            "英文阅读与技术理解分别反馈"
+          ],
+          "instructions": [
+            "先保留学习者实际回答，再对照参考要点；只评价本次表现，不把参考答案写成学习记录。",
+            "区分独立回答、看译文后回答、提示后修正和照着讲解复述。",
+            "理由不完整时只补最关键的一处，再换一个小情境检查；不通过一次修正宣布已掌握。",
+            "先输入实际回答，再按要点自查；自查不是自动判分，也不等于已获得逐句教学评阅。需要进一步反馈时，连同是否看过提示一起交给教学对话；延迟回忆与陌生场景迁移仍需后续真实作答证据。"
+          ],
+          "exposureNote": "这些题干与设计曾在讨论中展示；是否看过参考要点也应按实际说明。同题再次作答可用于复习，不能冒充未见题的独立测量。"
+        },
+        "bridge": {
+          "nextDay": 7,
+          "title": "下一课怎样接上",
+          "text": "保留本次说不清的关系，下一课需要时再回看。",
+          "steps": [
+            "保存原答和疑问。",
+            "根据实际点评决定补哪一节，而不是把所有链接再读一遍。"
+          ]
+        }
+      },
+      "materialGuide": {
+        "title": "本课与原教材：怎样搭配着学",
+        "currentUse": "按数据端点和流量用途认识协议、访问能力、互联与卸载，先建立路径再记名称。",
+        "originalValue": "原讲义40–43页网络分层、90–100页互联与RDMA路径、34–35/67页DPU示意，适合看位置与箭头。",
+        "whenToRead": "先用主课完成一个数据路径的中文解释；脑中画不出位置或箭头时，只选下方对应主题的一组页。能说明端点、搬运动作与CPU仍承担的工作就返回，不把40–100页当连续作业。",
+        "difference": "工作台补足层次区别和支持条件；原材料“绕过CPU”不是完全不需要CPU，“显存池”不等于任意程序自动相加。",
+        "scope": "完成这里的基础目标，只说明可以继续本课学习；不代表考试范围已完整覆盖、已掌握或能直接进行生产操作。",
+        "readings": [
+          {
+            "sourceId": "TRAIN",
+            "locator": "160页培训讲义，物理页 40–43；优先第43页网络职责图",
+            "task": "选一条存储、计算或管理箭头，说出它的端点与用途。",
+            "stop": "能解释为什么查看健康信息与交换训练结果要分别核查即可。",
+            "warning": "同事提供的培训讲义，不等于已认证的官方考试教材。产品条件与版本以当前官方说明为准。"
+          },
+          {
+            "sourceId": "TRAIN",
+            "locator": "160页培训讲义，物理页 47–50；需要看RDMA搬运时再选97–99",
+            "task": "对照Ethernet/InfiniBand和RDMA说明，区分网络类型、访问能力与RoCE的承载关系。",
+            "stop": "能解释以太网连通为什么不足以证明RoCE可用即可，不背速率、CPU百分比或加速倍数。",
+            "warning": "第48页简化对照不表示Ethernet等于TCP；第97页性能数字不作为普遍保证。"
+          },
+          {
+            "sourceId": "TRAIN",
+            "locator": "160页培训讲义，物理页 90–95",
+            "task": "只选一张GPU互联图，找端点、连接与交换位置，描述一次GPU间数据交换。",
+            "stop": "能说明互联负责传数据，而软件仍需安排多GPU计算即可。",
+            "warning": "图示有具体平台边界；不要把机内示意当所有NVLink域的范围，也不要把显存容量相加当程序可运行证明。"
+          },
+          {
+            "sourceId": "TRAIN",
+            "locator": "160页培训讲义，物理页 98–100",
+            "task": "沿GPUDirect示意指出数据端点和期望省去的主机内存中转。",
+            "stop": "能区分存储读文件与网卡/GPU交换，并说出CPU仍承担的一项控制工作即可。",
+            "warning": "第100页远程存储图只是GDS的一种场景；本地存储也可能使用GDS，是否直达仍取决于支持条件。"
+          },
+          {
+            "sourceId": "TRAIN",
+            "locator": "160页培训讲义，物理页 34–35、67",
+            "task": "选一张DPU示意图，指出主机CPU和DPU各处理什么，举一项可卸载的具体工作。",
+            "stop": "能用网络包处理等动作解释卸载，并保留GPU模型计算的职责即可。",
+            "warning": "同事提供的培训讲义，不等于已认证的官方考试教材。产品条件与版本以当前官方说明为准。"
+          }
+        ],
+        "officialUse": "遇到具体型号、版本、指标字段或真实操作时，打开对应知识卡中的官方依据，只查与问题有关的定义/支持条件；不把官方网站全站作为当天作业。",
+        "mediaStatus": "原目录的视频与字幕可作为补讲候选，但当前只完成目录级清点，未逐段核对；本课不指定未经核验的时间码或宣称看完某段即可覆盖考点。"
+      }
+    },
+    {
+      "day": 7,
+      "title": "GPU监控、健康指标与运维工具",
+      "status": "可学习（第二批内容）",
+      "cardIds": [
+        "card-monitor-tools",
+        "card-gpu-util-memory",
+        "card-gpu-health",
+        "card-telemetry-pipeline",
+        "card-bmc-bcm"
+      ],
+      "questionIds": [
+        "Q-D07-001",
+        "Q-D07-002",
+        "Q-D07-003",
+        "Q-D07-004",
+        "Q-D07-005",
+        "Q-D07-006",
+        "Q-D07-007",
+        "Q-D07-008",
+        "Q-D07-009",
+        "Q-D07-010"
+      ],
+      "selfCheck": "GPU显存占用很高但利用率低，为什么不能直接判定GPU损坏？你还会看哪两类证据？",
+      "selfCheckNote": "口述自检不自动计分；首次、猜对、不确定和重做继续分别保存，不据本课完成推定掌握。",
+      "teachingTrial": {
+        "id": "day7-understanding-2026-09-25",
+        "teachingRevision": "2026-10-02-day07-batch1",
+        "title": "Day 7 主课与理解练习",
+        "status": "已批准试用；教学效果待真实使用验证",
+        "approvedOn": "2026-09-25",
+        "note": "主课先说明原因，再用情境检查。先完成核心节，选读节留到有需要时；不要求一次做完六项短答。英文两项任选一项，可用中文回答。旧知识卡用于速查，原计分练习保持独立。",
+        "goals": [
+          "按问题需要组织观测，保留时间与设备身份。",
+          "先解释指标测什么，再说它不能证明什么。",
+          "用组合证据缩小范围，不用单值宣布根因。"
+        ],
+        "fullLesson": {
+          "title": "Day 7 主课｜看见一个指标之后，怎样形成有依据的判断",
+          "intro": "今天练的是从读数到判断。重点不是记住每个监控工具的功能表，而是知道一项证据能证明什么、还缺什么。所有数据情境都是教学假设。",
+          "orientation": [
+            "先用中文解释关系，再把英文术语对应上；术语表达不熟与概念错误分别反馈。",
+            "20分钟可只完成一个核心节及一项短答；45–60分钟以核心关系和两三项回答为目标，卡住时停下补讲，可分多次完成。",
+            "选读节和原教材用于特定疑问的补充，不是做题前的额外通读作业。"
+          ],
+          "sections": [
+            {
+              "id": "L-D07-02",
+              "title": "忙碌、显存占用与带宽不是一个量",
+              "priority": "core",
+              "cardIds": [
+                "card-gpu-util-memory"
+              ],
+              "paragraphs": [
+                "采样时段是这次读数概括的时间范围。GPU kernel指GPU上执行的计算代码，不是操作系统内核。先分清“占着多少空间”与“这一段时间有多活跃”，再认识工具名称。",
+                "本课的nvidia-smi GPU-Util表示采样期内至少一个GPU内核运行的时间比例，不能直接当作达到理论最大计算能力的百分比。一个GPU持续有内核运行，也可能因访存或其他限制而未充分利用所有计算能力。",
+                "特别注意：nvidia-smi的Memory利用率（utilization.memory）表示采样期内设备显存发生读写的时间比例，不是GB/s传输速度，也不是已占用显存百分比。它与显存带宽、容量占用分别理解，不能凭同一个“memory”混用。",
+                "显存占用描述已经分配或使用了多少存储空间；显存带宽描述数据搬运速度相关能力或活动。容量像“能放多少”，带宽像“搬得多快”。占满很多空间，不表示每一刻都在高速搬运，也不表示计算一定饱和。",
+                "某个工具的GPU-Util与另一个计数器的SM Activity可能有不同定义和采样方式。比较之前要看单位、采样间隔、设备标签和字段含义；无支持或无数据不能当零。"
+              ],
+              "example": {
+                "title": "两条读数能否直接下结论",
+                "paragraphs": [
+                  "假设程序已把模型放进GPU的20GB显存，随后等待下一批图片从存储读入；等待时模型数据没有被释放，所以显存占用仍高，而GPU上暂时少有计算内核运行，GPU-Util就可能较低。容量与活动描述不同方面，两条读数可以同时正确。截图本身不能证明程序确实正在等图片，还需对照任务与数据读取的时间线。",
+                  "反过来GPU忙碌时间高，也要结合任务吞吐、时延和其他资源，才能判断是否存在优化空间。"
+                ]
+              },
+              "contrast": [
+                "读数定义、观察事实、原因假设要分开。"
+              ],
+              "takeaway": "先解释指标测什么，再说它不能证明什么。",
+              "sourceIds": [
+                "TRAIN",
+                "NOTE07",
+                "SMI",
+                "DCGM"
+              ],
+              "readingGuide": [
+                "培训讲义 TRAIN 物理页 131–134：对照本节主题的原表格/示意，不必连读整份PDF。",
+                "阅读任务：用自己的话说明“先解释指标测什么，再说它不能证明什么。”；能说明后即可返回主课。",
+                "涉及型号、版本或真实部署时再查本节官方来源的支持条件；本课概念练习不要求执行安装命令。"
+              ],
+              "exerciseIds": [
+                "P-D07-02",
+                "P-D07-06"
+              ]
+            },
+            {
+              "id": "L-D07-01",
+              "title": "当前状态与长期趋势，需要不同组织方式",
+              "priority": "core",
+              "cardIds": [
+                "card-monitor-tools"
+              ],
+              "paragraphs": [
+                "nvidia-smi是可在终端运行的命令行程序：你提出查询，它通过NVIDIA管理接口取得设备读数，再输出GPU、显存、功耗等状态；部分管理命令还能改变配置。它支持循环查询，因此不能记成“只允许手动看一次”。不过在终端连续看到读数，不等于历史保存、告警通知和处置流程都已建立。",
+                "DCGM是一组GPU管理软件与接口，提供指标采集、健康检查和诊断能力，也能在单节点使用。监控系统可以调用它取得GPU信息，再交给后续保存和展示组件；它与nvidia-smi有观测能力上的重叠，不是必须先运行nvidia-smi才可运行DCGM。选择工具时先问：是核对当下某台设备，还是持续采集多个设备？数据要保留多久？谁接收异常？",
+                "主动诊断与读取监控值不同，可能使用GPU资源并影响任务。学习工具职责不意味着应该在正在工作的服务器直接运行所有诊断。先了解环境与影响，再安排实际操作。"
+              ],
+              "example": {
+                "title": "“昨晚为何变慢”不是当前截图能回答的",
+                "paragraphs": [
+                  "今天nvidia-smi显示正常，只说明当前所观察条件。要解释昨晚，应对齐当时任务、设备、时间范围和历史指标。",
+                  "没有历史数据时应明确证据缺口，不把今天正常写成昨晚没有故障。"
+                ]
+              },
+              "contrast": [
+                "工具有功能，不代表这台设备与当前版本支持每个字段。"
+              ],
+              "takeaway": "按问题需要组织观测，保留时间与设备身份。",
+              "sourceIds": [
+                "TRAIN",
+                "NOTE07",
+                "SMI",
+                "DCGM"
+              ],
+              "readingGuide": [
+                "培训讲义 TRAIN 物理页 129–133、137：对照本节主题的原表格/示意，不必连读整份PDF。",
+                "阅读任务：用自己的话说明“按问题需要组织观测，保留时间与设备身份。”；能说明后即可返回主课。",
+                "涉及型号、版本或真实部署时再查本节官方来源的支持条件；本课概念练习不要求执行安装命令。"
+              ],
+              "exerciseIds": [
+                "P-D07-01"
+              ]
+            },
+            {
+              "id": "L-D07-03",
+              "title": "温度、功耗、频率与错误要放在同一时间线上",
+              "priority": "core",
+              "cardIds": [
+                "card-gpu-health"
+              ],
+              "paragraphs": [
+                "负载增加可能让功耗和温度上升；设备策略与条件又可能影响工作频率。要判断异常，需要对照型号支持、环境、持续时间和任务表现，不能把一个温度值当作全部GPU通用的故障线。",
+                "ECC用于检测并纠正部分存储错误，需要区分可纠正与不可纠正错误；不是出现任何计数就代表同一种严重程度。",
+                "ECC相关信息需要区分错误类型、累计值与本次新增趋势。Xid是值得调查的错误线索，但不同代码、上下文和软件硬件条件需要分别分析，不能把出现一个错误码直接翻译成“GPU已坏”。",
+                "一个有用的初步报告应写：什么时间、哪台设备、什么任务、观察到什么变化、用户感受到什么影响、还缺哪些证据。它让下一步核查有方向，同时保留不确定性。"
+              ],
+              "example": {
+                "title": "性能下降与温度变化同时发生",
+                "paragraphs": [
+                  "把同一时间窗口的频率、功耗、温度、限制原因与任务速度放在一起看，才可能支持进一步判断。",
+                  "同时变化仍不自动证明因果；还要考虑负载变化、数据供给等解释，并按允许范围验证。"
+                ]
+              },
+              "contrast": [
+                "诊断通过只约束当次测试，不证明永久无故障。"
+              ],
+              "takeaway": "用组合证据缩小范围，不用单值宣布根因。",
+              "sourceIds": [
+                "TRAIN",
+                "NOTE07",
+                "SMI",
+                "DCGM",
+                "XID"
+              ],
+              "readingGuide": [
+                "培训讲义 TRAIN 物理页 130–134：对照本节主题的原表格/示意，不必连读整份PDF。",
+                "阅读任务：用自己的话说明“用组合证据缩小范围，不用单值宣布根因。”；能说明后即可返回主课。",
+                "涉及型号、版本或真实部署时再查本节官方来源的支持条件；本课概念练习不要求执行安装命令。"
+              ],
+              "exerciseIds": [
+                "P-D07-03"
+              ]
+            },
+            {
+              "id": "L-D07-04",
+              "title": "从采集到告警：每一步都可能缺环节",
+              "priority": "optional",
+              "cardIds": [
+                "card-telemetry-pipeline"
+              ],
+              "paragraphs": [
+                "把监控链看成一条信息流。在常见组合中，DCGM Exporter是提供GPU指标的软件程序：它通过DCGM取数，并把指标放在HTTP接口上，供Prometheus定期读取。Prometheus把数值与时间、GPU标签一起保存成时间序列；Grafana查询这些记录，画出一段时间内的趋势。这些是相互配合的组件，不是同一个软件的几个名字。",
+                "Exporter将指标提供出来，不能因此断言它已经永久保存全部历史。图表能画出来，也不能证明告警规则合理、通知送达或有人处理。需要逐环节确认。",
+                "设备标签错配、采样中断或时区不一致会造成误读。先确定图上的曲线对应哪台GPU和哪个任务时间，再把曲线关联到问题，否则可能研究了另一台设备。"
+              ],
+              "example": {
+                "title": "有红色曲线却没人收到告警",
+                "paragraphs": [
+                  "先核对是否真的配置了告警规则、规则何时触发以及通知链路，而不是假定“有仪表盘就有告警”。",
+                  "如果曲线一段缺失，应标注缺测，不能用补成零的曲线证明那段设备空闲。"
+                ]
+              },
+              "contrast": [
+                "采集成功、保存成功、展示正确、通知有效是不同验收点。"
+              ],
+              "takeaway": "从问题所需证据反查监控链是否完整。",
+              "sourceIds": [
+                "TRAIN",
+                "NOTE07",
+                "EXPORTER"
+              ],
+              "readingGuide": [
+                "培训讲义 TRAIN 物理页 133–137：对照本节主题的原表格/示意，不必连读整份PDF。",
+                "阅读任务：用自己的话说明“从问题所需证据反查监控链是否完整。”；能说明后即可返回主课。",
+                "涉及型号、版本或真实部署时再查本节官方来源的支持条件；本课概念练习不要求执行安装命令。"
+              ],
+              "exerciseIds": [
+                "P-D07-04"
+              ]
+            },
+            {
+              "id": "L-D07-05",
+              "title": "BMC 与 BCM：一个字母之差，作用范围不同",
+              "priority": "optional",
+              "cardIds": [
+                "card-bmc-bcm"
+              ],
+              "paragraphs": [
+                "BMC是服务器上的基板管理控制器，是运行管理固件的硬件控制器，常提供硬件传感器、远程控制台及电源相关管理。管理员通过它的管理入口可查看风扇、温度或控制台画面，不必先进入主机操作系统；这就是本节所说的带外管理。它依赖自己的管理路径与必要供电，在主机操作系统故障时仍可能有用。",
+                "BCM是Base Command Manager，属于集群部署与管理软件。例如给一批新节点选定软件镜像和配置，再由它组织节点部署与后续监控，减少逐台准备的工作。它不是每台服务器里那块BMC控制器，两者可以在一套系统里配合。",
+                "当SSH无响应时，问题是如何取得另一条观测路径；当要给许多新节点准备环境时，问题是怎样组织批量部署。按任务与范围区分，比背两个相似缩写更稳。"
+              ],
+              "example": {
+                "title": "主机连不上，下一步先保留证据",
+                "paragraphs": [
+                  "如果已获授权且管理条件存在，可通过BMC查看状态或控制台。但能操作电源不等于应该立刻重启，重启可能改变正在调查的状态。",
+                  "课堂只辨认入口；真实处置仍需根据业务影响安排。"
+                ]
+              },
+              "contrast": [
+                "带外路径也可能故障，不能称为任何情况下唯一可用入口。"
+              ],
+              "takeaway": "按单机硬件入口与集群软件管理区分。",
+              "sourceIds": [
+                "TRAIN",
+                "NOTE07",
+                "BMC",
+                "BCM"
+              ],
+              "readingGuide": [
+                "培训讲义 TRAIN 物理页 134–137：对照本节主题的原表格/示意，不必连读整份PDF。",
+                "阅读任务：用自己的话说明“按单机硬件入口与集群软件管理区分。”；能说明后即可返回主课。",
+                "涉及型号、版本或真实部署时再查本节官方来源的支持条件；本课概念练习不要求执行安装命令。"
+              ],
+              "exerciseIds": [
+                "P-D07-05"
+              ]
+            }
+          ],
+          "summary": [
+            "按问题需要组织观测，保留时间与设备身份。",
+            "先解释指标测什么，再说它不能证明什么。",
+            "用组合证据缩小范围，不用单值宣布根因。"
+          ],
+          "timeGuide": [
+            "核心关系：忙碌、显存占用与带宽不是一个量；当前状态与长期趋势，需要不同组织方式；温度、功耗、频率与错误要放在同一时间线上",
+            "第一遍认识职责与原因；产品全表、命令、支持矩阵和具体参数按需要选读，不把选读当永远跳过基础目标。",
+            "20分钟可完成一个核心节与一项原答；45–60分钟按实际进度选两三项回答。内容较多可分段完成，未学内容保持待学。"
+          ]
+        },
+        "exercises": [
+          {
+            "id": "P-D07-01",
+            "title": "历史问题需要什么",
+            "stem": "今天设备读数正常，能否证明昨晚的训练变慢与设备无关？你还需要什么证据？",
+            "language": "zh",
+            "cardIds": [
+              "card-monitor-tools"
+            ],
+            "objectiveIds": [
+              "3.1",
+              "1.1",
+              "1.6"
+            ],
+            "sourceIds": [
+              "TRAIN",
+              "NOTE07",
+              "SMI",
+              "DCGM"
+            ],
+            "relatedQuestionIds": [
+              "Q-D07-001",
+              "Q-D07-004"
+            ],
+            "rubric": [
+              "当前快照不能替代历史时段。",
+              "需要同任务同设备的时间线、指标与事件。"
+            ],
+            "referenceExplanation": [
+              "不能证明。今天正常描述的是今天这一段采样；昨晚可能出现过短暂异常，也可能是数据读取等其他环节拖慢任务，当前截图无法区分。",
+              "应找到昨晚那次训练使用的设备和起止时间，再把当时的GPU指标、任务速度和相关日志放到同一时间线上比较。例如GPU活动下降是否同时伴随输入等待，可以作为核查方向；若历史记录没有保存，就明确写缺少证据，不能用今天的读数补成昨晚的结论。"
+            ]
+          },
+          {
+            "id": "P-D07-02",
+            "title": "英文：busy不等于efficient",
+            "stem": "A GPU reports high utilization. Does this prove the workload reaches the GPU peak compute performance? Explain.",
+            "language": "en",
+            "translation": "GPU报告高利用率，是否证明任务达到GPU峰值计算性能？",
+            "cardIds": [
+              "card-gpu-util-memory"
+            ],
+            "objectiveIds": [
+              "3.3"
+            ],
+            "sourceIds": [
+              "TRAIN",
+              "NOTE07",
+              "SMI",
+              "DCGM"
+            ],
+            "relatedQuestionIds": [
+              "Q-D07-002",
+              "Q-D07-005",
+              "Q-D07-010"
+            ],
+            "rubric": [
+              "忙碌时间不等于达到峰值计算性能。",
+              "需看指标定义与任务实际表现、其他限制。"
+            ],
+            "referenceExplanation": [
+              "不能。若这里的utilization指本课的nvidia-smi GPU-Util，它回答的是“采样期间有多少时间至少有一个内核在运行”，没有直接回答“所有计算单元每秒完成了多少计算”。",
+              "例如内核持续运行，却经常等待显存中的数据，忙碌时间仍可很高，而计算能力未充分发挥。先确认字段定义，再结合任务吞吐、时延及其他限制判断；high utilization本身不是达到peak compute performance的证据。"
+            ]
+          },
+          {
+            "id": "P-D07-03",
+            "title": "不要跳到根因",
+            "stem": "出现一个错误码，同时用户说任务变慢。请写出一条观察事实、一条待验证假设和一项还需取得的证据。",
+            "language": "zh",
+            "cardIds": [
+              "card-gpu-health"
+            ],
+            "objectiveIds": [
+              "3.3",
+              "3.1"
+            ],
+            "sourceIds": [
+              "TRAIN",
+              "NOTE07",
+              "SMI",
+              "DCGM",
+              "XID"
+            ],
+            "relatedQuestionIds": [
+              "Q-D07-003",
+              "Q-D07-007"
+            ],
+            "rubric": [
+              "错误与影响分别记录。",
+              "假设不冒充根因，证据需对齐设备时间及上下文。"
+            ],
+            "referenceExplanation": [
+              "一种合适写法是：观察事实——记录到了某个错误码，用户同时报告任务变慢；待验证假设——该错误可能影响了这次任务；待补证据——取得错误的具体代码、时间和设备标识，再与该任务的运行日志或速度变化对齐。其他有依据的假设和证据也可以。",
+              "这样把“看到了什么”与“可能为什么”分开。即使二者发生在相近时间，也还要核对是不是同一设备、同一任务，并按错误码含义继续分析；目前不能把假设写成GPU硬件损坏的确定结论。"
+            ]
+          },
+          {
+            "id": "P-D07-04",
+            "title": "英文：采集与告警",
+            "stem": "Metrics are visible on a dashboard, but no alert was received. Which parts of the monitoring chain still need checking?",
+            "language": "en",
+            "translation": "仪表盘可看到指标，但没有收到告警。还需核查监控链的哪些部分？",
+            "cardIds": [
+              "card-telemetry-pipeline"
+            ],
+            "objectiveIds": [
+              "3.1",
+              "3.3",
+              "1.7"
+            ],
+            "sourceIds": [
+              "TRAIN",
+              "NOTE07",
+              "EXPORTER"
+            ],
+            "relatedQuestionIds": [
+              "Q-D07-006"
+            ],
+            "rubric": [
+              "检查规则、触发条件、通知及处置链。",
+              "图表显示不证明告警有效。"
+            ],
+            "referenceExplanation": [
+              "仪表盘显示指标，只说明有数据能被查询和展示。告警还要有规则：检查是否配置了规则，数据是否满足阈值及持续时间要求，规则是否实际触发。曲线颜色本身不等于规则已经触发。",
+              "若规则已触发，再检查通知送往哪里、接收渠道是否可用、是否送达指定人员，以及收到后是否有处理安排。沿“数据→规则判断→通知→处理”逐步核对，才能知道缺的是哪一环。"
+            ],
+            "optional": true
+          },
+          {
+            "id": "P-D07-05",
+            "title": "选择观测入口",
+            "stem": "SSH无响应与批量准备新节点分别更接近BMC还是BCM的职责？说明理由，不提出实际重启操作。",
+            "language": "zh",
+            "cardIds": [
+              "card-bmc-bcm"
+            ],
+            "objectiveIds": [
+              "3.1",
+              "1.6"
+            ],
+            "sourceIds": [
+              "TRAIN",
+              "NOTE07",
+              "BMC",
+              "BCM"
+            ],
+            "relatedQuestionIds": [
+              "Q-D07-008",
+              "Q-D07-009"
+            ],
+            "rubric": [
+              "BMC提供硬件管理及带外入口，BCM组织集群管理。",
+              "不把可以远程控制推成应立即断电重启。"
+            ],
+            "referenceExplanation": [
+              "SSH无响应时，BMC更接近所需的另一条观测入口：它是服务器上的管理控制器，在管理网络与必要供电正常时，可能仍能提供传感器状态和远程控制台。SSH失败不等于BMC一定可达，也不直接说明故障原因。",
+              "批量准备新节点更接近BCM：它是部署和管理集群的软件，可组织多台机器的软件镜像与配置。两者分别对应单机硬件管理入口和跨节点软件管理；辨认入口并不要求执行重启。"
+            ],
+            "optional": true
+          },
+          {
+            "id": "P-D07-06",
+            "title": "换情境：说明证据边界",
+            "stem": "一张截图显示显存占用高、GPU利用率低。请给出一个可能解释，并说明为什么还不能下确定结论。",
+            "language": "zh",
+            "cardIds": [
+              "card-gpu-util-memory"
+            ],
+            "objectiveIds": [
+              "3.3"
+            ],
+            "sourceIds": [
+              "TRAIN",
+              "NOTE07",
+              "SMI",
+              "DCGM"
+            ],
+            "relatedQuestionIds": [
+              "Q-D07-002",
+              "Q-D07-005",
+              "Q-D07-010"
+            ],
+            "rubric": [
+              "可提出保留模型但等待数据等假设。",
+              "单快照缺少时间、任务与其他资源上下文，不足确诊。"
+            ],
+            "referenceExplanation": [
+              "一个可能解释是：模型已经占用显存，但程序正在等下一批输入，因此暂时很少启动GPU计算。显存占用回答“数据占了多少空间”，GPU-Util回答“采样期内多长时间有内核运行”，两者同时一高一低并不矛盾。",
+              "这只是可能解释。单张截图没有告诉我们任务所处阶段、前后趋势和其他资源状态，也可能只是正常间歇。需要补任务日志和同一时段的数据供给等证据，才有条件缩小原因范围。"
+            ]
+          }
+        ],
+        "diagnostic": {
+          "minutes": "约5–8",
+          "promptIds": [
+            "P-D07-01",
+            "P-D07-02",
+            "P-D07-06"
+          ],
+          "alternativeEnglishId": "P-D07-04",
+          "instructions": [
+            "短诊断可选，仅在学过后回顾使用；综合解释较慢可另分一次。",
+            "原答先保存，再看统一参考；不清楚可直接说明。"
+          ]
+        },
+        "caseStudy": {
+          "title": "看见一个指标之后，怎样形成有依据的判断",
+          "setup": "今天练的是从读数到判断。重点不是记住每个监控工具的功能表，而是知道一项证据能证明什么、还缺什么。所有数据情境都是教学假设。",
+          "boundary": "情境和数字为教学假设，非用户现场事实。",
+          "steps": [
+            {
+              "title": "“昨晚为何变慢”不是当前截图能回答的",
+              "text": "今天nvidia-smi显示正常，只说明当前所观察条件。要解释昨晚，应对齐当时任务、设备、时间范围和历史指标。 没有历史数据时应明确证据缺口，不把今天正常写成昨晚没有故障。"
+            },
+            {
+              "title": "两条读数能否直接下结论",
+              "text": "显存占用较高而GPU忙碌时间较低，可能是模型留在显存却暂时等待输入。这个现象提供假设，不能仅凭它认定根因。 反过来GPU忙碌时间高，也要结合任务吞吐、时延和其他资源，才能判断是否存在优化空间。"
+            },
+            {
+              "title": "性能下降与温度变化同时发生",
+              "text": "把同一时间窗口的频率、功耗、温度、限制原因与任务速度放在一起看，才可能支持进一步判断。 同时变化仍不自动证明因果；还要考虑负载变化、数据供给等解释，并按允许范围验证。"
+            },
+            {
+              "title": "有红色曲线却没人收到告警",
+              "text": "先核对是否真的配置了告警规则、规则何时触发以及通知链路，而不是假定“有仪表盘就有告警”。 如果曲线一段缺失，应标注缺测，不能用补成零的曲线证明那段设备空闲。"
+            },
+            {
+              "title": "主机连不上，下一步先保留证据",
+              "text": "如果已获授权且管理条件存在，可通过BMC查看状态或控制台。但能操作电源不等于应该立刻重启，重启可能改变正在调查的状态。 课堂只辨认入口；真实处置仍需根据业务影响安排。"
+            }
+          ]
+        },
+        "feedback": {
+          "dimensions": [
+            "结论是否符合题目证据",
+            "能否独立说明理由和职责关系",
+            "是否保留未知与适用条件",
+            "英文阅读与技术理解分别反馈"
+          ],
+          "instructions": [
+            "先保留学习者实际回答，再对照参考要点；只评价本次表现，不把参考答案写成学习记录。",
+            "区分独立回答、看译文后回答、提示后修正和照着讲解复述。",
+            "理由不完整时只补最关键的一处，再换一个小情境检查；不通过一次修正宣布已掌握。",
+            "先输入实际回答，再按要点自查；自查不是自动判分，也不等于已获得逐句教学评阅。需要进一步反馈时，连同是否看过提示一起交给教学对话；延迟回忆与陌生场景迁移仍需后续真实作答证据。"
+          ],
+          "exposureNote": "这些题干与设计曾在讨论中展示；是否看过参考要点也应按实际说明。同题再次作答可用于复习，不能冒充未见题的独立测量。"
+        },
+        "bridge": {
+          "nextDay": 8,
+          "title": "下一课怎样接上",
+          "text": "保留本次说不清的关系，下一课需要时再回看。",
+          "steps": [
+            "保存原答和疑问。",
+            "根据实际点评决定补哪一节，而不是把所有链接再读一遍。"
+          ]
+        }
+      },
+      "materialGuide": {
+        "title": "本课与原教材：怎样搭配着学",
+        "currentUse": "从指标定义、时间线与任务影响组织证据，分别记录观察、假设和待补证据。",
+        "originalValue": "原讲义129–137页提供工具对照和指标概览，适合理解工具覆盖范围；具体字段需要官方定义。",
+        "whenToRead": "先学页内主课。只有分不清某个字段、两种工具或监控链某一步时，才选择下面对应的一项阅读；每次解决一个疑问后返回，不要求连读129–137页。",
+        "difference": "原讲义132页“不能持续监控”和137页nvidia-smi全称有误；工作台按官方文档修正，旧图保留但不照背。",
+        "scope": "完成这里的基础目标，只说明可以继续本课学习；不代表考试范围已完整覆盖、已掌握或能直接进行生产操作。",
+        "readings": [
+          {
+            "sourceId": "TRAIN",
+            "locator": "160页培训讲义，物理页 131–134（仅指标疑问时选读）",
+            "task": "只找与疑问字段对应的图或说明，把它归为活动时间、容量占用或其他读数；字段的准确含义以SMI官方Utilization / Memory为准。",
+            "stop": "能说明该字段测什么，以及为什么不能由单值确认根因后返回，不背完整字段表。",
+            "warning": "同事提供的培训讲义，不等于已认证的官方考试教材。产品条件与版本以当前官方说明为准。"
+          },
+          {
+            "sourceId": "SMI",
+            "locator": "Description / Query / Utilization / Memory（只选与当前问题有关的一小节）",
+            "task": "工具问题查Description / Query；利用率问题查Utilization；容量问题查Memory。注意循环查询能力，以及利用率的时间比例定义。",
+            "stop": "能将一个字段或工具动作对应回本课例子就停止，不继续阅读修改设备配置的命令。",
+            "warning": "字段支持随型号和环境变化；N/A不是0。原讲义132页的持续监控说法与137页的全称不照背。"
+          },
+          {
+            "sourceId": "EXPORTER",
+            "locator": "Introduction / Running（仅监控链疑问时选读）",
+            "task": "只辨认Exporter的HTTP指标输出与Prometheus取数这一步，再回本课区分历史保存、图表和通知。",
+            "stop": "能说清取到指标为何还不等于收到告警就返回，不执行部署命令。",
+            "warning": "文档中的运行示例不等于本课要求安装软件，也不证明现有环境已配置完整监控。"
+          }
+        ],
+        "officialUse": "遇到具体型号、版本、指标字段或真实操作时，打开对应知识卡中的官方依据，只查与问题有关的定义/支持条件；不把官方网站全站作为当天作业。",
+        "mediaStatus": "原目录的视频与字幕可作为补讲候选，但当前只完成目录级清点，未逐段核对；本课不指定未经核验的时间码或宣称看完某段即可覆盖考点。"
+      }
+    },
+    {
+      "day": 8,
+      "title": "作业调度、容器编排与GPU虚拟化",
+      "status": "可学习（第二批内容）",
+      "cardIds": [
+        "card-job-scheduling",
+        "card-slurm-kubernetes",
+        "card-k8s-gpu-operator",
+        "card-mig",
+        "card-vgpu"
+      ],
+      "questionIds": [
+        "Q-D08-001",
+        "Q-D08-002",
+        "Q-D08-003",
+        "Q-D08-004",
+        "Q-D08-005",
+        "Q-D08-006",
+        "Q-D08-007",
+        "Q-D08-008",
+        "Q-D08-009",
+        "Q-D08-010"
+      ],
+      "selfCheck": "有空闲GPU为什么任务仍会排队？MIG与vGPU为什么可以配合而不是二选一？",
+      "selfCheckNote": "口述自检不自动计分；延迟回忆和陌生场景迁移需要后续真实作答证据。",
+      "teachingTrial": {
+        "id": "day8-understanding-2026-09-25",
+        "teachingRevision": "2026-10-02-day08-batch1",
+        "title": "Day 8 主课与理解练习",
+        "status": "已批准试用；教学效果待真实使用验证",
+        "approvedOn": "2026-09-25",
+        "note": "主课先说明原因，再用情境检查。先完成核心节，选读节留到有需要时；不要求一次做完六项短答。英文两项任选一项，可用中文回答。旧知识卡用于速查，原计分练习保持独立。",
+        "goals": [
+          "可用资源必须匹配需求与策略。",
+          "用批任务与持续服务解释平台侧重。",
+          "组件准备、资源发布、任务调度分别核对。",
+          "先查支持，再匹配单任务需求与实例容量。"
+        ],
+        "fullLesson": {
+          "title": "Day 8 主课｜让多个任务共享 GPU：分配、准备和隔离",
+          "intro": "Day 7 帮你看见资源状态。今天问另一个问题：谁可以使用哪些资源、何时使用，以及不同任务如何共享？先用排队与资源需求讲清机制，再认识平台名称。",
+          "orientation": [
+            "先用中文解释关系，再把英文术语对应上；术语表达不熟与概念错误分别反馈。",
+            "20分钟可只完成一个核心节及一项短答；45–60分钟以核心关系和两三项回答为目标，卡住时停下补讲，可分多次完成。",
+            "选读节和原教材用于特定疑问的补充，不是做题前的额外通读作业。",
+            "可分成“排队、平台与GPU准备”和“MIG、vGPU共享”两段；两段基础关系都需要学习，命令、profile组合及迁移配置按需选读。"
+          ],
+          "sections": [
+            {
+              "id": "L-D08-01",
+              "title": "有空闲资源，任务为什么还会排队",
+              "priority": "core",
+              "cardIds": [
+                "card-job-scheduling"
+              ],
+              "paragraphs": [
+                "作业是交给系统执行的一项任务，例如执行一份训练脚本并保存模型；资源申请描述它需要什么；队列保存等待安排的任务。调度器是执行分配规则的软件组件，不是监控图上的利用率数字。",
+                "提交任务时，用户说明GPU数量或类型、CPU、内存和运行时间等需求。调度器把需求与可用资源、优先级、队列和配额比较：条件满足时安排资源，条件不满足时任务可能继续等待。资源申请是需求说明，不保证任务得到资源后每一刻都充分利用它。",
+                "假设任务需要同一节点的四张GPU，而系统只有分散在不同节点的四张空闲卡。数量之和满足，不代表位置和协作条件满足。等待可能是合理约束，不必然是设备故障。",
+                "公平分配也不等于每个时刻平均分给每个人；策略可能考虑排队时间、使用历史和业务优先级。要解释等待，先查看任务完整要求和排队原因，不只盯着一张空闲卡。"
+              ],
+              "example": {
+                "title": "图上空闲，任务仍不启动",
+                "paragraphs": [
+                  "核对请求是否指定型号、同节点、内存、配额或某队列，接着看系统给出的等待原因。",
+                  "没有证据时不要把等待自动写成调度器故障，也不要直接取消他人任务来“测试”。"
+                ]
+              },
+              "contrast": [
+                "监控报告状态，调度安排资源；二者合作但不是同一职责。"
+              ],
+              "takeaway": "可用资源必须匹配需求与策略。",
+              "sourceIds": [
+                "TRAIN",
+                "NOTE08",
+                "SLURM",
+                "SLURM-GPU"
+              ],
+              "readingGuide": [
+                "培训讲义 TRAIN 物理页 151–153：对照本节主题的原表格/示意，不必连读整份PDF。",
+                "阅读任务：用自己的话说明“可用资源必须匹配需求与策略。”；能说明后即可返回主课。",
+                "涉及型号、版本或真实部署时再查本节官方来源的支持条件；本课概念练习不要求执行安装命令。"
+              ],
+              "exerciseIds": [
+                "P-D08-01"
+              ]
+            },
+            {
+              "id": "L-D08-02",
+              "title": "Slurm 与 Kubernetes：从工作方式理解",
+              "priority": "core",
+              "cardIds": [
+                "card-slurm-kubernetes"
+              ],
+              "paragraphs": [
+                "Slurm与Kubernetes都是管理集群工作的软件系统。批作业通常提交后排队、运行到完成并产出结果：在Slurm中可提交训练脚本和资源要求，获分配后启动并跟踪作业。服务型工作负载则常需要持续接收请求；在Kubernetes中可声明运行几个容器副本，由相应控制器持续检查并尝试维持目标状态。这些准备、启动、维护和结束的工作构成工作负载的生命周期管理。",
+                "这只是侧重点，不是训练与推理的硬边界。Kubernetes也可以运行批处理任务，Slurm环境也可能运行容器。先说明要管理的工作方式，再比较平台能力与运维条件。",
+                "Pod是Kubernetes的基本部署对象，把一个或多个共同运行的容器组织在一起；例如一个模型服务容器可以放在一个Pod中。调度器为待安排的Pod选择合适节点，节点上的运行组件再启动容器；调度器不会凭空增加GPU。即使管理平台可自动重试，任务软件、数据与资源条件仍需成立。"
+              ],
+              "example": {
+                "title": "两种工作，不同关注点",
+                "paragraphs": [
+                  "夜间提交一次大计算，希望排队后完成；白天持续提供工单API，希望访问和副本受管理。两者关注点不同，仍应按实际生态评估。",
+                  "不能只看到“训练”就自动判Slurm、看到“推理”就自动判Kubernetes。"
+                ]
+              },
+              "contrast": [
+                "容器编排包含调度，但不等于只会做资源排队。"
+              ],
+              "takeaway": "用批任务与持续服务解释平台侧重。",
+              "sourceIds": [
+                "TRAIN",
+                "NOTE08",
+                "SLURM",
+                "K8S"
+              ],
+              "readingGuide": [
+                "培训讲义 TRAIN 物理页 151–154：对照本节主题的原表格/示意，不必连读整份PDF。",
+                "阅读任务：用自己的话说明“用批任务与持续服务解释平台侧重。”；能说明后即可返回主课。",
+                "涉及型号、版本或真实部署时再查本节官方来源的支持条件；本课概念练习不要求执行安装命令。"
+              ],
+              "exerciseIds": [
+                "P-D08-02"
+              ]
+            },
+            {
+              "id": "L-D08-03",
+              "title": "看见硬件、发布资源与安排任务是三件事",
+              "priority": "core",
+              "cardIds": [
+                "card-k8s-gpu-operator"
+              ],
+              "paragraphs": [
+                "节点装有GPU，仅说明硬件存在。应用还需要合适驱动及容器运行支持。以常见Device Plugin方式为例，设备插件是运行在节点上的软件，把可提供的GPU资源报告给Kubernetes；容器在Pod的资源声明中提出GPU需求，调度器再寻找满足条件的节点。这是把硬件变成可申请资源的过程，不是把实时GPU-Util读数当成可用卡数。",
+                "GPU Operator是在Kubernetes中管理GPU配套软件的控制器，按配置部署和维护驱动、Container Toolkit、设备插件与相关监控等组件。可以把它与设备插件的关系理解为“负责准备一组组件，其中包括负责报告资源的插件”。它解决的是组件准备和管理，不等于一个根据任意应用利用率自动把任务搬来搬去的通用调度器。",
+                "如果任务找不到GPU资源，应沿依赖关系检查：设备与驱动是否可用、资源是否正确发布、请求是否匹配、节点约束是否满足。不同失败点需要不同证据，不能一上来判硬件坏。"
+              ],
+              "example": {
+                "title": "节点有卡，Pod仍等待",
+                "paragraphs": [
+                  "假设机箱有一张GPU，设备插件尚未正常报告资源，调度器就可能找不到Pod申请的GPU；若资源已经报告，也可能因卡已被分配、申请类型或节点约束不匹配而等待。分别查看设备/驱动、资源报告和Pod等待原因，才能区分失败点。",
+                  "本课只说明排查顺序，不要求部署集群或执行生产变更。"
+                ]
+              },
+              "contrast": [
+                "Device Plugin是本课采用的一条基础路径，不声称是永久唯一机制。"
+              ],
+              "takeaway": "组件准备、资源发布、任务调度分别核对。",
+              "sourceIds": [
+                "TRAIN",
+                "NOTE08",
+                "K8S-GPU",
+                "OPERATOR"
+              ],
+              "readingGuide": [
+                "培训讲义 TRAIN 物理页 154：对照本节主题的原表格/示意，不必连读整份PDF。",
+                "阅读任务：用自己的话说明“组件准备、资源发布、任务调度分别核对。”；能说明后即可返回主课。",
+                "涉及型号、版本或真实部署时再查本节官方来源的支持条件；本课概念练习不要求执行安装命令。"
+              ],
+              "exerciseIds": [
+                "P-D08-03"
+              ]
+            },
+            {
+              "id": "L-D08-04",
+              "title": "MIG把资源分小，也把每份容量限定了",
+              "priority": "core",
+              "cardIds": [
+                "card-mig"
+              ],
+              "paragraphs": [
+                "MIG是部分GPU支持的硬件资源划分能力。在支持的配置中，管理员选择资源规格（profile）并创建实例，把一定的计算资源、显存及相关内存通路分给各实例，再把实例分配给工作负载使用。这里的实例是同一张物理GPU内受限定的一份资源，不是复制出的满规格GPU，也不是自带操作系统的虚拟机。",
+                "把大房间隔成小房间的类比可以帮助理解容量：每间有自己的空间，但放不进小房间的物件，不会因为隔了更多房间就自动放得下。类似地，一个模型需要的显存若超过单个实例容量，就必须重新评估配置或软件分布方案。",
+                "实例组合、数量和支持条件随GPU型号与配置变化。教材把L40S列入MIG支持是已核对的错误；不能背“所有新GPU都支持”或“永远七份”。真实配置需查当前支持表与部署限制。"
+              ],
+              "example": {
+                "title": "多个小任务与一个大任务",
+                "paragraphs": [
+                  "多个各自能装进支持实例的小模型可以评估MIG；一个任务装不进实例，增加更多同样小的实例不会自动修复其容量需求。",
+                  "隔离改善资源可预测性，但每份仍有上限，也不能保证任意任务都与整卡性能一样。"
+                ]
+              },
+              "contrast": [
+                "硬件分区与普通轮流使用资源并不是同一机制。"
+              ],
+              "takeaway": "先查支持，再匹配单任务需求与实例容量。",
+              "sourceIds": [
+                "TRAIN",
+                "NOTE08",
+                "MIG",
+                "MIG-SUPPORT",
+                "MIG-DEPLOY",
+                "MIG-START",
+                "L40S"
+              ],
+              "readingGuide": [
+                "培训讲义 TRAIN 物理页 105、108–116：对照本节主题的原表格/示意，不必连读整份PDF。",
+                "阅读任务：用自己的话说明“先查支持，再匹配单任务需求与实例容量。”；能说明后即可返回主课。",
+                "涉及型号、版本或真实部署时再查本节官方来源的支持条件；本课概念练习不要求执行安装命令。"
+              ],
+              "exerciseIds": [
+                "P-D08-04"
+              ]
+            },
+            {
+              "id": "L-D08-05",
+              "title": "vGPU把能力交给虚拟机：和MIG如何关联",
+              "priority": "core",
+              "cardIds": [
+                "card-vgpu"
+              ],
+              "paragraphs": [
+                "虚拟机有各自的操作系统环境，由虚拟化平台组织运行。vGPU是呈现给虚拟机使用的虚拟GPU设备，背后由物理GPU及配套软件提供能力。典型部署中，宿主侧的vGPU管理组件与虚拟机内的来宾驱动配合，让虚拟机中的应用使用获分配的GPU资源；因此要核对GPU、宿主平台、来宾驱动、配置及使用条件。",
+                "时间切片让多个负载轮流使用共享的GPU执行资源；MIG先建立硬件资源分区。在支持的MIG配合vGPU方案中，先在物理GPU上划出实例，再把相应资源通过vGPU提供给虚拟机。因此MIG说明资源怎样划分，vGPU说明虚拟机怎样取得GPU能力，二者不是绝对互斥，也不能把vGPU简单记成只服务虚拟桌面。",
+                "整卡直通、时间切片、MIG及相关vGPU组合，满足的共享与隔离需求不同。今天先问是否需要虚拟机、资源边界是什么、单任务需要多大容量；具体授权、迁移和互联兼容留给真实方案核查。"
+              ],
+              "example": {
+                "title": "业务要求每组使用自己的虚拟机",
+                "paragraphs": [
+                  "先明确虚拟机使用需求，再看支持的平台和GPU共享机制。若还要求更清晰的计算与显存边界，可进一步核对支持的MIG组合。",
+                  "不能从“虚拟化”三个字推断任何任务都无性能影响、完全隔离或支持任意迁移。"
+                ]
+              },
+              "contrast": [
+                "MIG不是只能用于容器，vGPU也不是自动拥有全部兼容功能。"
+              ],
+              "takeaway": "把运行环境、共享方式和资源容量分开比较。",
+              "sourceIds": [
+                "TRAIN",
+                "NOTE08",
+                "VGPU",
+                "MIG",
+                "MIG-DEPLOY"
+              ],
+              "readingGuide": [
+                "培训讲义 TRAIN 物理页 108–116：对照本节主题的原表格/示意，不必连读整份PDF。",
+                "阅读任务：用自己的话说明“把运行环境、共享方式和资源容量分开比较。”；能说明后即可返回主课。",
+                "涉及型号、版本或真实部署时再查本节官方来源的支持条件；本课概念练习不要求执行安装命令。"
+              ],
+              "exerciseIds": [
+                "P-D08-05",
+                "P-D08-06"
+              ]
+            }
+          ],
+          "summary": [
+            "可用资源必须匹配需求与策略。",
+            "用批任务与持续服务解释平台侧重。",
+            "组件准备、资源发布、任务调度分别核对。",
+            "先查支持，再匹配单任务需求与实例容量。"
+          ],
+          "timeGuide": [
+            "核心关系：有空闲资源，任务为什么还会排队；Slurm 与 Kubernetes：从工作方式理解；看见硬件、发布资源与安排任务是三件事；MIG把资源分小，也把每份容量限定了；vGPU把能力交给虚拟机：和MIG如何关联",
+            "第一遍认识职责与原因；产品全表、命令、支持矩阵和具体参数按需要选读，不把选读当永远跳过基础目标。",
+            "20分钟可完成一个核心节与一项原答；45–60分钟按实际进度选两三项回答。内容较多可分段完成，未学内容保持待学。"
+          ]
+        },
+        "exercises": [
+          {
+            "id": "P-D08-01",
+            "title": "数量够，为什么仍等待",
+            "stem": "任务需要同节点四张GPU，四张空闲卡却分布在四个节点。仅凭总数量能判断应立即运行吗？",
+            "language": "zh",
+            "cardIds": [
+              "card-job-scheduling"
+            ],
+            "objectiveIds": [
+              "3.2",
+              "1.7"
+            ],
+            "sourceIds": [
+              "TRAIN",
+              "NOTE08",
+              "SLURM",
+              "SLURM-GPU"
+            ],
+            "relatedQuestionIds": [
+              "Q-D08-001",
+              "Q-D08-004"
+            ],
+            "rubric": [
+              "不能；需满足拓扑/位置等完整约束。",
+              "排队不自动证明硬件或调度器故障。"
+            ],
+            "referenceExplanation": [
+              "不能。题目要求的是“同一节点内有四张可用GPU”，而目前每个节点只有一张空闲卡；四个节点的数量相加，不能满足这条位置条件。调度器因此让任务等待，可以是正确执行请求。",
+              "应查看完整资源申请和排队原因。只有任务本身支持跨节点运行且请求相应调整时，分散的卡才可能成为另一种安排；不能仅凭总量够就把当前等待认定为故障。"
+            ]
+          },
+          {
+            "id": "P-D08-02",
+            "title": "英文：平台边界",
+            "stem": "A team runs a batch training job on Kubernetes. Is this inherently contradictory? Explain.",
+            "language": "en",
+            "translation": "团队在Kubernetes运行批量训练任务，本身矛盾吗？请解释。",
+            "cardIds": [
+              "card-slurm-kubernetes"
+            ],
+            "objectiveIds": [
+              "3.2"
+            ],
+            "sourceIds": [
+              "TRAIN",
+              "NOTE08",
+              "SLURM",
+              "K8S"
+            ],
+            "relatedQuestionIds": [
+              "Q-D08-002",
+              "Q-D08-009"
+            ],
+            "rubric": [
+              "不矛盾，Kubernetes也支持批任务。",
+              "训练/推理不是与平台一一绑定的排他规则。"
+            ],
+            "referenceExplanation": [
+              "不矛盾。batch training job表示提交后运行到完成的训练任务；Kubernetes也能管理这类批任务，并非只能维持长期在线服务。Slurm常用于作业队列、Kubernetes常用于容器工作负载管理，只是常见侧重点。",
+              "训练或推理描述AI任务在做什么，平台描述怎样组织和运行任务，两者不是一一绑定的关系。具体是否合适还要看资源、软件和运维条件；题目本身没有给出无法运行的矛盾。"
+            ]
+          },
+          {
+            "id": "P-D08-03",
+            "title": "硬件存在与资源可用",
+            "stem": "节点有GPU，但工作负载申请不到GPU资源。请按依赖顺序说出三类应检查的条件。",
+            "language": "zh",
+            "cardIds": [
+              "card-k8s-gpu-operator"
+            ],
+            "objectiveIds": [
+              "3.2",
+              "1.1",
+              "1.6"
+            ],
+            "sourceIds": [
+              "TRAIN",
+              "NOTE08",
+              "K8S-GPU",
+              "OPERATOR"
+            ],
+            "relatedQuestionIds": [
+              "Q-D08-005",
+              "Q-D08-008"
+            ],
+            "rubric": [
+              "驱动/运行支持、资源发布、请求与节点条件。",
+              "Operator组件管理与调度职责的区别可作补讲；题面只问核查条件，不因未主动讲这个区别判回答缺失。"
+            ],
+            "referenceExplanation": [
+              "可按三类条件核查：先看设备驱动及容器GPU运行支持是否可用；再看设备插件等机制是否正常把GPU资源报告给Kubernetes；最后核对工作负载的资源请求、剩余可分配资源和节点约束是否匹配。前一类是能否使用设备，中间是系统是否知道能分配什么，后一类是这次请求能否得到分配。",
+              "例如驱动可用但插件未正常报告资源，说明硬件可见还没有变成可申请资源；资源已报告但被其他任务占用，则要查看分配情况。GPU Operator管理配套组件、调度器选择节点可帮助理解这些环节，但本题只要求说清三类核查条件，不要求额外展开这两个职责。"
+            ]
+          },
+          {
+            "id": "P-D08-04",
+            "title": "英文：容量限制",
+            "stem": "A model does not fit into one MIG instance. Does creating more identical instances automatically solve this? Explain.",
+            "language": "en",
+            "translation": "模型装不进一个MIG实例，多建几个相同实例就会自动解决吗？",
+            "cardIds": [
+              "card-mig"
+            ],
+            "objectiveIds": [
+              "3.4"
+            ],
+            "sourceIds": [
+              "TRAIN",
+              "NOTE08",
+              "MIG",
+              "MIG-SUPPORT",
+              "MIG-DEPLOY",
+              "MIG-START",
+              "L40S"
+            ],
+            "relatedQuestionIds": [
+              "Q-D08-003",
+              "Q-D08-006",
+              "Q-D08-010"
+            ],
+            "rubric": [
+              "不能自动解决单实例容量需求。",
+              "需匹配profile或软件分布等实际条件。"
+            ],
+            "referenceExplanation": [
+              "不能自动解决。每个MIG实例都有自己的显存容量边界；多建几个相同实例，并不会把它们自动合成一个更大的、可供该模型直接使用的显存空间。",
+              "例如仅作容量示意，一个任务需要12个单位的显存，而每个实例只有10个单位，再加一个10单位实例仍没有改变单实例的上限。应评估支持的更大profile，或确实能把任务拆分运行的软件方案，并核对相应支持条件；实例数量增加本身不是解决方案。"
+            ]
+          },
+          {
+            "id": "P-D08-05",
+            "title": "MIG与vGPU是否互斥",
+            "stem": "某方案要求虚拟机环境又希望资源边界更清楚。为什么不能简单说vGPU和MIG必须二选一？",
+            "language": "zh",
+            "cardIds": [
+              "card-vgpu"
+            ],
+            "objectiveIds": [
+              "3.4"
+            ],
+            "sourceIds": [
+              "TRAIN",
+              "NOTE08",
+              "VGPU",
+              "MIG",
+              "MIG-DEPLOY"
+            ],
+            "relatedQuestionIds": [
+              "Q-D08-007"
+            ],
+            "rubric": [
+              "支持条件下可有MIG配合vGPU的方案。",
+              "核查硬件、平台、配置与单任务需求，不能泛化。"
+            ],
+            "referenceExplanation": [
+              "MIG与vGPU回答不同问题：MIG把物理GPU的一部分计算和显存资源划成实例；vGPU让虚拟机获得GPU能力。在支持的方案中，可以先创建MIG实例，再通过vGPU把相应资源提供给虚拟机，所以不是必须二选一。",
+              "这不是说任意组合都能运行。仍需核对GPU与虚拟化平台是否支持、软件版本和配置是否匹配，以及每台虚拟机内任务所需容量是否能放入分配的资源。"
+            ]
+          },
+          {
+            "id": "P-D08-06",
+            "title": "综合说明：没有万能开关",
+            "stem": "同事希望“装GPU Operator、启用MIG，就能让所有排队任务自动快起来”。请分别解释组件管理、资源分配与任务容量的作用。",
+            "language": "zh",
+            "cardIds": [
+              "card-job-scheduling",
+              "card-slurm-kubernetes",
+              "card-k8s-gpu-operator",
+              "card-mig",
+              "card-vgpu"
+            ],
+            "objectiveIds": [
+              "3.2",
+              "1.7",
+              "1.1",
+              "1.6",
+              "3.4"
+            ],
+            "sourceIds": [
+              "TRAIN",
+              "NOTE08",
+              "SLURM",
+              "SLURM-GPU",
+              "K8S",
+              "K8S-GPU",
+              "OPERATOR",
+              "MIG",
+              "MIG-SUPPORT",
+              "MIG-DEPLOY",
+              "MIG-START",
+              "L40S",
+              "VGPU"
+            ],
+            "relatedQuestionIds": [
+              "Q-D08-001",
+              "Q-D08-002",
+              "Q-D08-003",
+              "Q-D08-004",
+              "Q-D08-005",
+              "Q-D08-006",
+              "Q-D08-007",
+              "Q-D08-008",
+              "Q-D08-009",
+              "Q-D08-010"
+            ],
+            "rubric": [
+              "Operator准备组件；调度受需求和策略约束；MIG划分而非创造资源。",
+              "性能依任务与路径，不由安装或分区自动保证。"
+            ],
+            "referenceExplanation": [
+              "GPU Operator负责部署和维护驱动、容器支持、设备插件等配套组件，使GPU具备被工作负载使用的条件；资源分配仍要由调度机制按申请、可用量和策略安排，安装组件不会自动消除排队原因。",
+              "MIG把已有资源划成较小实例，可能适合多个能放入实例的小任务，但不会增加整张GPU的总资源。若任务需要的显存超过单实例容量，划得更小反而不满足需求。因此应分别判断组件是否准备好、资源能否分配、任务是否放得下，再用实际任务表现验证是否变快。"
+            ]
+          }
+        ],
+        "diagnostic": {
+          "minutes": "约5–8",
+          "promptIds": [
+            "P-D08-01",
+            "P-D08-02",
+            "P-D08-06"
+          ],
+          "alternativeEnglishId": "P-D08-04",
+          "instructions": [
+            "短诊断可选，仅在学过后回顾使用；综合解释较慢可另分一次。",
+            "原答先保存，再看统一参考；不清楚可直接说明。"
+          ]
+        },
+        "caseStudy": {
+          "title": "让多个任务共享 GPU：分配、准备和隔离",
+          "setup": "Day 7 帮你看见资源状态。今天问另一个问题：谁可以使用哪些资源、何时使用，以及不同任务如何共享？先用排队与资源需求讲清机制，再认识平台名称。",
+          "boundary": "情境和数字为教学假设，非用户现场事实。",
+          "steps": [
+            {
+              "title": "图上空闲，任务仍不启动",
+              "text": "核对请求是否指定型号、同节点、内存、配额或某队列，接着看系统给出的等待原因。 没有证据时不要把等待自动写成调度器故障，也不要直接取消他人任务来“测试”。"
+            },
+            {
+              "title": "两种工作，不同关注点",
+              "text": "夜间提交一次大计算，希望排队后完成；白天持续提供工单API，希望访问和副本受管理。两者关注点不同，仍应按实际生态评估。 不能只看到“训练”就自动判Slurm、看到“推理”就自动判Kubernetes。"
+            },
+            {
+              "title": "节点有卡，Pod仍等待",
+              "text": "可能是资源尚未发布，也可能是申请类型或节点约束不匹配。只看机箱中的硬件数量无法区分这些情况。 本课只说明排查顺序，不要求部署集群或执行生产变更。"
+            },
+            {
+              "title": "多个小任务与一个大任务",
+              "text": "多个各自能装进支持实例的小模型可以评估MIG；一个任务装不进实例，增加更多同样小的实例不会自动修复其容量需求。 隔离改善资源可预测性，但每份仍有上限，也不能保证任意任务都与整卡性能一样。"
+            },
+            {
+              "title": "业务要求每组使用自己的虚拟机",
+              "text": "先明确虚拟机使用需求，再看支持的平台和GPU共享机制。若还要求更清晰的计算与显存边界，可进一步核对支持的MIG组合。 不能从“虚拟化”三个字推断任何任务都无性能影响、完全隔离或支持任意迁移。"
+            }
+          ]
+        },
+        "feedback": {
+          "dimensions": [
+            "结论是否符合题目证据",
+            "能否独立说明理由和职责关系",
+            "是否保留未知与适用条件",
+            "英文阅读与技术理解分别反馈"
+          ],
+          "instructions": [
+            "先保留学习者实际回答，再对照参考要点；只评价本次表现，不把参考答案写成学习记录。",
+            "区分独立回答、看译文后回答、提示后修正和照着讲解复述。",
+            "理由不完整时只补最关键的一处，再换一个小情境检查；不通过一次修正宣布已掌握。",
+            "先输入实际回答，再按要点自查；自查不是自动判分，也不等于已获得逐句教学评阅。需要进一步反馈时，连同是否看过提示一起交给教学对话；延迟回忆与陌生场景迁移仍需后续真实作答证据。"
+          ],
+          "exposureNote": "这些题干与设计曾在讨论中展示；是否看过参考要点也应按实际说明。同题再次作答可用于复习，不能冒充未见题的独立测量。"
+        },
+        "bridge": {
+          "nextDay": 8,
+          "title": "回到实际薄弱点",
+          "text": "后续按真实原答、延迟回顾与新情境表现选择复习，不以完成本课推定考试准备就绪。",
+          "steps": [
+            "保存原答和疑问。",
+            "根据实际点评决定补哪一节，而不是把所有链接再读一遍。"
+          ]
+        }
+      },
+      "materialGuide": {
+        "title": "本课与原教材：怎样搭配着学",
+        "currentUse": "把资源需求、调度、GPU组件准备、硬件分区和虚拟机使用分开，靠情境解释“有卡为何仍不能运行”。",
+        "originalValue": "原讲义151–154页平台对比和105/108–116页虚拟化示意帮助构建关系，但包含已核对的过度简化与错误。",
+        "whenToRead": "先按主课理解关系，再按卡住的位置只选下面一项：排队、组件准备、MIG或vGPU。能解释相应关系就返回作答；型号、profile组合和迁移条件留到具体问题出现时核查。",
+        "difference": "原116页把L40S列入MIG支持、固定七份，以及154页Operator按利用率重平衡不能采纳；训练/推理与Slurm/Kubernetes也非排他绑定。",
+        "scope": "完成这里的基础目标，只说明可以继续本课学习；不代表考试范围已完整覆盖、已掌握或能直接进行生产操作。",
+        "readings": [
+          {
+            "sourceId": "TRAIN",
+            "locator": "160页培训讲义，物理页 151–153（仅排队与平台侧重疑问时选读）",
+            "task": "带着“任务提出什么要求、系统怎样安排资源”查看平台对比，不把训练/推理当成互斥使用规则。",
+            "stop": "能解释同节点四卡为何不能由四个节点的单卡自动满足，就返回主课。",
+            "warning": "同事提供的培训讲义，不等于已认证的官方考试教材。产品条件与版本以当前官方说明为准。"
+          },
+          {
+            "sourceId": "TRAIN",
+            "locator": "160页培训讲义，物理页 154（仅GPU组件关系疑问时选读）",
+            "task": "找出GPU Operator与设备插件的关系，再对照本课的组件准备、资源报告、Pod请求与调度。",
+            "stop": "能分别说出谁准备组件、谁报告资源、谁选择节点就返回，不继续扩展安装步骤。",
+            "warning": "此页将Operator泛化为按利用率重平衡工作负载的说法不采用，按OPERATOR官方组件职责理解。"
+          },
+          {
+            "sourceId": "MIG",
+            "locator": "Introduction：硬件分区 / 内存路径 / 部署场景",
+            "task": "只辨认一张物理GPU怎样提供多个受限定实例，以及实例拥有各自资源边界的含义。",
+            "stop": "能解释增加相同小实例为什么不会自动扩大单实例显存，就返回。",
+            "warning": "具体实例数应查支持表；不采用原讲义116页的L40S支持错误，也不把某型号的实例数推广到全部GPU。"
+          },
+          {
+            "sourceId": "VGPU",
+            "locator": "GPU Instance Support / 软件与hypervisor支持",
+            "task": "只查看MIG实例与vGPU配合的关系，说明物理资源怎样提供给虚拟机；暂不展开版本矩阵。",
+            "stop": "能说清MIG与vGPU不必二选一、又需要支持条件，就返回。",
+            "warning": "示意关系不保证任意GPU、虚拟化平台或来宾系统都支持该组合。"
+          }
+        ],
+        "officialUse": "遇到具体型号、版本、指标字段或真实操作时，打开对应知识卡中的官方依据，只查与问题有关的定义/支持条件；不把官方网站全站作为当天作业。",
+        "mediaStatus": "原目录的视频与字幕可作为补讲候选，但当前只完成目录级清点，未逐段核对；本课不指定未经核验的时间码或宣称看完某段即可覆盖考点。"
+      }
+    }
+  ],
+  "examSpec": {
+    "verifiedOn": "2026-09-24",
+    "questions": 50,
+    "minutes": 60,
+    "domains": [
+      {
+        "name": "AI 基础知识",
+        "weight": 38
+      },
+      {
+        "name": "AI 基础架构",
+        "weight": 40
+      },
+      {
+        "name": "AI 运营",
+        "weight": 22
+      }
+    ]
+  },
+  "budgets": {
+    "20": {
+      "questions": 3
+    },
+    "45": {
+      "questions": 6
+    },
+    "60": {
+      "questions": 10
+    }
+  },
+  "path": [
+    "AI/ML/DL 与行业应用",
+    "CPU/GPU、训练与推理",
+    "驱动、CUDA、计算库和容器",
+    "NVIDIA 软件与 AI 生命周期",
+    "服务器与集群扩展",
+    "供电、散热、设施、云与本地",
+    "网络分工与 GPU 互联",
+    "RDMA、DPU 与存储",
+    "监控、管理与异常判断",
+    "编排、调度与虚拟化",
+    "限时诊断",
+    "针对薄弱项复习",
+    "新题与场景检验",
+    "覆盖检查与后续安排"
+  ],
+  "legacyAliases": {
+    "cards": {
+      "card-ai-ml-dl": "ai",
+      "card-cpu-gpu": "cpu-gpu",
+      "card-training-inference": "train-infer"
+    },
+    "questions": {
+      "Q-ORIGINAL-001": "q1",
+      "Q-ORIGINAL-002": "q2",
+      "Q-ORIGINAL-003": "q3",
+      "Q-ORIGINAL-004": "q4",
+      "Q-ORIGINAL-005": "q5"
+    }
+  },
+  "safety": {
+    "originalQuestionAnswersUnchanged": true,
+    "chatScoresImportedAsAppAttempts": false,
+    "officialExamCoverageComplete": false
+  },
+  "coverage": [
+    {
+      "id": "1.1",
+      "title": "NVIDIA软件栈",
+      "domain": "AI基础知识",
+      "domainWeight": 38,
+      "day": 3,
+      "trainingPages": "104–106、118、122–127、141、149",
+      "noteModules": "02",
+      "noteReview": "07/08完整文本已读；涉及本课的概念逐项对照官方；未采用dump和考题数量预测",
+      "beforeCardIds": [],
+      "cardIds": [
+        "card-stack-driver",
+        "card-cuda-toolkit",
+        "card-cuda-libraries",
+        "card-gpu-containers",
+        "card-compatibility",
+        "card-inference-tools",
+        "card-nim-ngc-enterprise",
+        "card-monitor-tools",
+        "card-k8s-gpu-operator"
+      ],
+      "questionIds": [
+        "Q-D03-001",
+        "Q-D03-002",
+        "Q-D03-003",
+        "Q-D03-004",
+        "Q-D03-005",
+        "Q-D03-006",
+        "Q-D03-007",
+        "Q-D03-008",
+        "Q-D03-009",
+        "Q-D03-010",
+        "Q-D04-002",
+        "Q-D04-003",
+        "Q-D04-004",
+        "Q-D04-005",
+        "Q-D04-006",
+        "Q-D04-007"
+      ],
+      "contentStatus": "待补（部分已有）",
+      "reviewStatus": "新增基础定义已对照所列官方资料；题目原创；未独立双人审题",
+      "gap": "本批补GPU运维与Kubernetes组件；软件栈广度仍不能称完整。",
+      "appStatus": "共享JSON接入网页与桌面；本机验收证据见第二批交付记录",
+      "learningDepth": "Day 3/4/7/8主课增加职责、因果与条件解释；教学目标见各课正文，原基础覆盖程度与缺口保留，不等于完整实操或用户掌握。",
+      "assessmentEvidence": "关联理解练习：P-D03-01、P-D03-02、P-D03-03、P-D03-04、P-D03-05、P-D03-06、P-D04-02、P-D04-03、P-D04-04、P-D07-01、P-D08-03、P-D08-06。可保存原答并请求点评；属于讲后教学练习，未有本轮用户作答证据，不据此推断独立迁移或考试准备度。"
+    },
+    {
+      "id": "1.2",
+      "title": "训练与推理的架构需求",
+      "domain": "AI基础知识",
+      "domainWeight": 38,
+      "day": 2,
+      "trainingPages": "28–30、150",
+      "noteModules": "03、04",
+      "noteReview": "04–06全文文本已读；TRAIN对应页已读且图示抽查；仅吸收核验后概念",
+      "beforeCardIds": [
+        "card-training-inference"
+      ],
+      "cardIds": [
+        "card-genai-stage",
+        "card-memory-compute",
+        "card-latency-throughput",
+        "card-training-inference",
+        "card-scale-up-out",
+        "card-network-traffic"
+      ],
+      "questionIds": [
+        "Q-ORIGINAL-002",
+        "Q-ORIGINAL-004",
+        "Q-D01-003",
+        "Q-D01-004",
+        "Q-D02-001",
+        "Q-D02-002",
+        "Q-D02-003",
+        "Q-D02-005",
+        "Q-D02-006",
+        "Q-D05-003"
+      ],
+      "contentStatus": "待补（部分已有）",
+      "reviewStatus": "第二批涉及定义已对照所列官方资料；AI审题，未独立人工二审",
+      "gap": "已补集群扩展和通信需求；服务规模、推理并发与端到端架构的综合比较仍待补。",
+      "appStatus": "共享JSON接入网页与桌面；本机验收证据见第二批交付记录",
+      "learningDepth": "Day 5/6主课增加职责、因果与条件解释；教学目标见各课正文，原基础覆盖程度与缺口保留，不等于完整实操或用户掌握。",
+      "assessmentEvidence": "关联理解练习：P-D05-02、P-D05-06、P-D06-01。可保存原答并请求点评；属于讲后教学练习，未有本轮用户作答证据，不据此推断独立迁移或考试准备度。"
+    },
+    {
+      "id": "1.3",
+      "title": "AI/ML/DL概念",
+      "domain": "AI基础知识",
+      "domainWeight": 38,
+      "day": 1,
+      "trainingPages": "12–15",
+      "noteModules": "01",
+      "noteReview": "02相关章节已读；其他分模块笔记仅定位，逐项核验待完成",
+      "beforeCardIds": [
+        "card-ai-ml-dl"
+      ],
+      "cardIds": [
+        "card-ai-ml-dl",
+        "card-genai-stage"
+      ],
+      "questionIds": [
+        "Q-ORIGINAL-001",
+        "Q-D01-001",
+        "Q-D01-002",
+        "Q-D01-003",
+        "Q-D01-004",
+        "Q-D01-009"
+      ],
+      "contentStatus": "已有（基础）",
+      "reviewStatus": "本批涉及定义已按所列官方资料对照；未做独立二审",
+      "gap": "已有基础讲解与练习；术语/陌生情境仍需复习",
+      "appStatus": "共享JSON接入网页与桌面；本机验收证据见第二批交付记录"
+    },
+    {
+      "id": "1.4",
+      "title": "AI发展与普及因素",
+      "domain": "AI基础知识",
+      "domainWeight": 38,
+      "day": 1,
+      "trainingPages": "9",
+      "noteModules": "01",
+      "noteReview": "02相关章节已读；其他分模块笔记仅定位，逐项核验待完成",
+      "beforeCardIds": [],
+      "cardIds": [
+        "card-ai-drivers"
+      ],
+      "questionIds": [
+        "Q-D01-005",
+        "Q-D01-006"
+      ],
+      "contentStatus": "已有（基础）",
+      "reviewStatus": "本批涉及定义已按所列官方资料对照；未做独立二审",
+      "gap": "已有基础讲解与练习；不等于学习者已掌握",
+      "appStatus": "共享JSON接入网页与桌面；本机验收证据见第二批交付记录"
+    },
+    {
+      "id": "1.5",
+      "title": "行业用例与应用场景",
+      "domain": "AI基础知识",
+      "domainWeight": 38,
+      "day": 1,
+      "trainingPages": "10、140",
+      "noteModules": "01、02",
+      "noteReview": "02相关章节已读；其他分模块笔记仅定位，逐项核验待完成",
+      "beforeCardIds": [],
+      "cardIds": [
+        "card-ai-use-cases",
+        "card-solutions"
+      ],
+      "questionIds": [
+        "Q-D01-007",
+        "Q-D01-008",
+        "Q-D04-008",
+        "Q-D04-009"
+      ],
+      "contentStatus": "已有（基础）",
+      "reviewStatus": "本批涉及定义已按所列官方资料对照；未做独立二审",
+      "gap": "已有代表用例；后续可扩充行业变化题",
+      "appStatus": "共享JSON接入网页与桌面；本机验收证据见第二批交付记录",
+      "learningDepth": "Day 4主课增加职责、因果与条件解释；教学目标见各课正文，原基础覆盖程度与缺口保留，不等于完整实操或用户掌握。",
+      "assessmentEvidence": "关联理解练习：P-D04-05。可保存原答并请求点评；属于讲后教学练习，未有本轮用户作答证据，不据此推断独立迁移或考试准备度。"
+    },
+    {
+      "id": "1.6",
+      "title": "NVIDIA解决方案用途",
+      "domain": "AI基础知识",
+      "domainWeight": 38,
+      "day": 4,
+      "trainingPages": "139–144、146",
+      "noteModules": "02",
+      "noteReview": "07/08完整文本已读；涉及本课的概念逐项对照官方；未采用dump和考题数量预测",
+      "beforeCardIds": [],
+      "cardIds": [
+        "card-inference-tools",
+        "card-nim-ngc-enterprise",
+        "card-solutions",
+        "card-cluster-components",
+        "card-bluefield-dpu",
+        "card-monitor-tools",
+        "card-bmc-bcm",
+        "card-k8s-gpu-operator"
+      ],
+      "questionIds": [
+        "Q-D04-002",
+        "Q-D04-003",
+        "Q-D04-004",
+        "Q-D04-005",
+        "Q-D04-006",
+        "Q-D04-007",
+        "Q-D04-008",
+        "Q-D04-009",
+        "Q-D05-010"
+      ],
+      "contentStatus": "待补（部分已有）",
+      "reviewStatus": "新增基础定义已对照所列官方资料；题目原创；未独立双人审题",
+      "gap": "已补DGX/HGX、DPU、DCGM、BCM和GPU Operator；更多产品的综合场景选择仍待补。",
+      "appStatus": "共享JSON接入网页与桌面；本机验收证据见第二批交付记录",
+      "learningDepth": "Day 4/5/6/7/8主课增加职责、因果与条件解释；教学目标见各课正文，原基础覆盖程度与缺口保留，不等于完整实操或用户掌握。",
+      "assessmentEvidence": "关联理解练习：P-D04-02、P-D04-03、P-D04-04、P-D04-05、P-D05-01、P-D05-06、P-D06-06、P-D07-01、P-D07-05、P-D08-03、P-D08-06。可保存原答并请求点评；属于讲后教学练习，未有本轮用户作答证据，不据此推断独立迁移或考试准备度。"
+    },
+    {
+      "id": "1.7",
+      "title": "AI生命周期的软件组成",
+      "domain": "AI基础知识",
+      "domainWeight": 38,
+      "day": 4,
+      "trainingPages": "122、141、146–149、157–160",
+      "noteModules": "02",
+      "noteReview": "07/08完整文本已读；涉及本课的概念逐项对照官方；未采用dump和考题数量预测",
+      "beforeCardIds": [],
+      "cardIds": [
+        "card-stack-driver",
+        "card-gpu-containers",
+        "card-compatibility",
+        "card-ai-lifecycle",
+        "card-inference-tools",
+        "card-nim-ngc-enterprise",
+        "card-telemetry-pipeline",
+        "card-job-scheduling"
+      ],
+      "questionIds": [
+        "Q-D03-001",
+        "Q-D03-007",
+        "Q-D03-008",
+        "Q-D03-009",
+        "Q-D04-001",
+        "Q-D04-002",
+        "Q-D04-003",
+        "Q-D04-004",
+        "Q-D04-005",
+        "Q-D04-006",
+        "Q-D04-007",
+        "Q-D04-010"
+      ],
+      "contentStatus": "待补（部分已有）",
+      "reviewStatus": "新增基础定义已对照所列官方资料；题目原创；未独立双人审题",
+      "gap": "本批补部署后的监控与调度基础；完整生命周期迁移场景仍待补。",
+      "appStatus": "共享JSON接入网页与桌面；本机验收证据见第二批交付记录",
+      "learningDepth": "Day 3/4/7/8主课增加职责、因果与条件解释；教学目标见各课正文，原基础覆盖程度与缺口保留，不等于完整实操或用户掌握。",
+      "assessmentEvidence": "关联理解练习：P-D03-01、P-D03-05、P-D03-06、P-D04-01、P-D04-02、P-D04-03、P-D04-04、P-D04-06、P-D07-04、P-D08-01、P-D08-06。可保存原答并请求点评；属于讲后教学练习，未有本轮用户作答证据，不据此推断独立迁移或考试准备度。"
+    },
+    {
+      "id": "1.8",
+      "title": "CPU/GPU架构比较",
+      "domain": "AI基础知识",
+      "domainWeight": 38,
+      "day": 2,
+      "trainingPages": "28–30、72–75",
+      "noteModules": "03",
+      "noteReview": "02相关章节已读；其他分模块笔记仅定位，逐项核验待完成",
+      "beforeCardIds": [
+        "card-cpu-gpu"
+      ],
+      "cardIds": [
+        "card-cpu-gpu",
+        "card-gpu-units",
+        "card-memory-compute"
+      ],
+      "questionIds": [
+        "Q-ORIGINAL-003",
+        "Q-ORIGINAL-005",
+        "Q-D02-001",
+        "Q-D02-004",
+        "Q-D02-005"
+      ],
+      "contentStatus": "已有（基础）",
+      "reviewStatus": "本批涉及定义已按所列官方资料对照；未做独立二审",
+      "gap": "已有核心分工、计算单元及性能概念；不背无条件型号参数",
+      "appStatus": "共享JSON接入网页与桌面；本机验收证据见第二批交付记录"
+    },
+    {
+      "id": "2.1",
+      "title": "按训练任务判断硬件需求",
+      "domain": "AI基础架构",
+      "domainWeight": 40,
+      "day": 5,
+      "trainingPages": "17、30、38、64–65、78–82、150",
+      "noteModules": "04",
+      "noteReview": "04–06全文文本已读；TRAIN对应页已读且图示抽查；仅吸收核验后概念",
+      "beforeCardIds": [
+        "card-training-inference"
+      ],
+      "cardIds": [
+        "card-memory-compute",
+        "card-training-inference",
+        "card-cluster-components",
+        "card-scale-up-out",
+        "card-onprem-cloud",
+        "card-gpudirect-paths"
+      ],
+      "questionIds": [
+        "Q-ORIGINAL-005",
+        "Q-D02-001",
+        "Q-D02-003",
+        "Q-D02-005",
+        "Q-D05-001",
+        "Q-D05-003"
+      ],
+      "contentStatus": "已有（基础）",
+      "reviewStatus": "第二批基础卡题已资料对照与独立AI交叉复核；非人工审题或全量事实认证",
+      "gap": "已有基础课程/原创练习；完整配置评估与复杂综合情境仍可继续补充，不代表用户已掌握。",
+      "appStatus": "共享JSON接入网页与桌面；本机验收证据见第二批交付记录",
+      "learningDepth": "Day 5/6主课增加职责、因果与条件解释；教学目标见各课正文，原基础覆盖程度与缺口保留，不等于完整实操或用户掌握。",
+      "assessmentEvidence": "关联理解练习：P-D05-01、P-D05-02、P-D05-05、P-D05-06、P-D06-04、P-D06-05。可保存原答并请求点评；属于讲后教学练习，未有本轮用户作答证据，不据此推断独立迁移或考试准备度。"
+    },
+    {
+      "id": "2.2",
+      "title": "GPU基础架构扩展",
+      "domain": "AI基础架构",
+      "domainWeight": 40,
+      "day": 5,
+      "trainingPages": "64–65、79–82、90–99",
+      "noteModules": "04",
+      "noteReview": "04–06全文文本已读；TRAIN对应页已读且图示抽查；仅吸收核验后概念",
+      "beforeCardIds": [],
+      "cardIds": [
+        "card-scale-up-out",
+        "card-facility",
+        "card-nvlink-nvswitch"
+      ],
+      "questionIds": [
+        "Q-D05-002",
+        "Q-D05-003",
+        "Q-D06-007"
+      ],
+      "contentStatus": "已有（基础）",
+      "reviewStatus": "第二批基础卡题已资料对照与独立AI交叉复核；非人工审题或全量事实认证",
+      "gap": "已有基础课程/原创练习；完整配置评估与复杂综合情境仍可继续补充，不代表用户已掌握。",
+      "appStatus": "共享JSON接入网页与桌面；本机验收证据见第二批交付记录",
+      "learningDepth": "Day 5/6主课增加职责、因果与条件解释；教学目标见各课正文，原基础覆盖程度与缺口保留，不等于完整实操或用户掌握。",
+      "assessmentEvidence": "关联理解练习：P-D05-02、P-D05-03、P-D05-06、P-D06-03。可保存原答并请求点评；属于讲后教学练习，未有本轮用户作答证据，不据此推断独立迁移或考试准备度。"
+    },
+    {
+      "id": "2.3",
+      "title": "供电与散热",
+      "domain": "AI基础架构",
+      "domainWeight": 40,
+      "day": 5,
+      "trainingPages": "18–21",
+      "noteModules": "05",
+      "noteReview": "04–06全文文本已读；TRAIN对应页已读且图示抽查；仅吸收核验后概念",
+      "beforeCardIds": [],
+      "cardIds": [
+        "card-power-cooling",
+        "card-pue",
+        "card-facility"
+      ],
+      "questionIds": [
+        "Q-D05-004",
+        "Q-D05-005",
+        "Q-D05-006"
+      ],
+      "contentStatus": "已有（基础）",
+      "reviewStatus": "第二批基础卡题已资料对照与独立AI交叉复核；非人工审题或全量事实认证",
+      "gap": "已有基础课程/原创练习；完整配置评估与复杂综合情境仍可继续补充，不代表用户已掌握。",
+      "appStatus": "共享JSON接入网页与桌面；本机验收证据见第二批交付记录",
+      "learningDepth": "Day 5主课增加职责、因果与条件解释；教学目标见各课正文，原基础覆盖程度与缺口保留，不等于完整实操或用户掌握。",
+      "assessmentEvidence": "关联理解练习：P-D05-03、P-D05-04、P-D05-06。可保存原答并请求点评；属于讲后教学练习，未有本轮用户作答证据，不据此推断独立迁移或考试准备度。"
+    },
+    {
+      "id": "2.4",
+      "title": "本地与云部署比较",
+      "domain": "AI基础架构",
+      "domainWeight": 40,
+      "day": 5,
+      "trainingPages": "55–56",
+      "noteModules": "04、05",
+      "noteReview": "04–06全文文本已读；TRAIN对应页已读且图示抽查；仅吸收核验后概念",
+      "beforeCardIds": [],
+      "cardIds": [
+        "card-onprem-cloud"
+      ],
+      "questionIds": [
+        "Q-D05-008",
+        "Q-D05-009"
+      ],
+      "contentStatus": "已有（基础）",
+      "reviewStatus": "第二批基础卡题已资料对照与独立AI交叉复核；非人工审题或全量事实认证",
+      "gap": "已有基础课程/原创练习；完整配置评估与复杂综合情境仍可继续补充，不代表用户已掌握。",
+      "appStatus": "共享JSON接入网页与桌面；本机验收证据见第二批交付记录",
+      "learningDepth": "Day 5主课增加职责、因果与条件解释；教学目标见各课正文，原基础覆盖程度与缺口保留，不等于完整实操或用户掌握。",
+      "assessmentEvidence": "关联理解练习：P-D05-05、P-D05-06。可保存原答并请求点评；属于讲后教学练习，未有本轮用户作答证据，不据此推断独立迁移或考试准备度。"
+    },
+    {
+      "id": "2.5",
+      "title": "加速集群关键组件",
+      "domain": "AI基础架构",
+      "domainWeight": 40,
+      "day": 5,
+      "trainingPages": "17、38、40–43、53、64–65",
+      "noteModules": "04、06",
+      "noteReview": "04–06全文文本已读；TRAIN对应页已读且图示抽查；仅吸收核验后概念",
+      "beforeCardIds": [],
+      "cardIds": [
+        "card-cluster-components",
+        "card-network-traffic"
+      ],
+      "questionIds": [
+        "Q-D05-001",
+        "Q-D05-010"
+      ],
+      "contentStatus": "已有（基础）",
+      "reviewStatus": "第二批基础卡题已资料对照与独立AI交叉复核；非人工审题或全量事实认证",
+      "gap": "已有基础课程/原创练习；完整配置评估与复杂综合情境仍可继续补充，不代表用户已掌握。",
+      "appStatus": "共享JSON接入网页与桌面；本机验收证据见第二批交付记录",
+      "learningDepth": "Day 5/6主课增加职责、因果与条件解释；教学目标见各课正文，原基础覆盖程度与缺口保留，不等于完整实操或用户掌握。",
+      "assessmentEvidence": "关联理解练习：P-D05-01、P-D05-06、P-D06-01。可保存原答并请求点评；属于讲后教学练习，未有本轮用户作答证据，不据此推断独立迁移或考试准备度。"
+    },
+    {
+      "id": "2.6",
+      "title": "设施需求",
+      "domain": "AI基础架构",
+      "domainWeight": 40,
+      "day": 5,
+      "trainingPages": "18–21",
+      "noteModules": "05",
+      "noteReview": "04–06全文文本已读；TRAIN对应页已读且图示抽查；仅吸收核验后概念",
+      "beforeCardIds": [],
+      "cardIds": [
+        "card-power-cooling",
+        "card-facility"
+      ],
+      "questionIds": [
+        "Q-D05-004",
+        "Q-D05-007"
+      ],
+      "contentStatus": "已有（基础）",
+      "reviewStatus": "第二批基础卡题已资料对照与独立AI交叉复核；非人工审题或全量事实认证",
+      "gap": "已有基础课程/原创练习；完整配置评估与复杂综合情境仍可继续补充，不代表用户已掌握。",
+      "appStatus": "共享JSON接入网页与桌面；本机验收证据见第二批交付记录",
+      "learningDepth": "Day 5主课增加职责、因果与条件解释；教学目标见各课正文，原基础覆盖程度与缺口保留，不等于完整实操或用户掌握。",
+      "assessmentEvidence": "关联理解练习：P-D05-03、P-D05-06。可保存原答并请求点评；属于讲后教学练习，未有本轮用户作答证据，不据此推断独立迁移或考试准备度。"
+    },
+    {
+      "id": "2.7",
+      "title": "AI工作负载网络需求",
+      "domain": "AI基础架构",
+      "domainWeight": 40,
+      "day": 6,
+      "trainingPages": "40–43、47–50",
+      "noteModules": "06",
+      "noteReview": "04–06全文文本已读；TRAIN对应页已读且图示抽查；仅吸收核验后概念",
+      "beforeCardIds": [],
+      "cardIds": [
+        "card-network-traffic",
+        "card-ethernet-infiniband",
+        "card-gpudirect-paths"
+      ],
+      "questionIds": [
+        "Q-D06-001",
+        "Q-D06-002",
+        "Q-D06-010"
+      ],
+      "contentStatus": "已有（基础）",
+      "reviewStatus": "第二批基础卡题已资料对照与独立AI交叉复核；非人工审题或全量事实认证",
+      "gap": "已有基础课程/原创练习；完整配置评估与复杂综合情境仍可继续补充，不代表用户已掌握。",
+      "appStatus": "共享JSON接入网页与桌面；本机验收证据见第二批交付记录",
+      "learningDepth": "Day 6主课增加职责、因果与条件解释；教学目标见各课正文，原基础覆盖程度与缺口保留，不等于完整实操或用户掌握。",
+      "assessmentEvidence": "关联理解练习：P-D06-01、P-D06-02、P-D06-04、P-D06-05。可保存原答并请求点评；属于讲后教学练习，未有本轮用户作答证据，不据此推断独立迁移或考试准备度。"
+    },
+    {
+      "id": "2.8",
+      "title": "数据中心网络协议",
+      "domain": "AI基础架构",
+      "domainWeight": 40,
+      "day": 6,
+      "trainingPages": "47–50、93–100",
+      "noteModules": "06",
+      "noteReview": "04–06全文文本已读；TRAIN对应页已读且图示抽查；仅吸收核验后概念",
+      "beforeCardIds": [],
+      "cardIds": [
+        "card-ethernet-infiniband",
+        "card-rdma-roce"
+      ],
+      "questionIds": [
+        "Q-D06-003",
+        "Q-D06-004",
+        "Q-D06-005",
+        "Q-D06-006"
+      ],
+      "contentStatus": "已有（基础）",
+      "reviewStatus": "第二批基础卡题已资料对照与独立AI交叉复核；非人工审题或全量事实认证",
+      "gap": "已有基础课程/原创练习；完整配置评估与复杂综合情境仍可继续补充，不代表用户已掌握。",
+      "appStatus": "共享JSON接入网页与桌面；本机验收证据见第二批交付记录",
+      "learningDepth": "Day 6主课增加职责、因果与条件解释；教学目标见各课正文，原基础覆盖程度与缺口保留，不等于完整实操或用户掌握。",
+      "assessmentEvidence": "关联理解练习：P-D06-02、P-D06-04。可保存原答并请求点评；属于讲后教学练习，未有本轮用户作答证据，不据此推断独立迁移或考试准备度。"
+    },
+    {
+      "id": "2.9",
+      "title": "高速网络选项与场景",
+      "domain": "AI基础架构",
+      "domainWeight": 40,
+      "day": 6,
+      "trainingPages": "47–50、90–100",
+      "noteModules": "06",
+      "noteReview": "04–06全文文本已读；TRAIN对应页已读且图示抽查；仅吸收核验后概念",
+      "beforeCardIds": [],
+      "cardIds": [
+        "card-ethernet-infiniband",
+        "card-rdma-roce",
+        "card-nvlink-nvswitch",
+        "card-gpudirect-paths"
+      ],
+      "questionIds": [
+        "Q-D06-003",
+        "Q-D06-005",
+        "Q-D06-007",
+        "Q-D06-010"
+      ],
+      "contentStatus": "已有（基础）",
+      "reviewStatus": "第二批基础卡题已资料对照与独立AI交叉复核；非人工审题或全量事实认证",
+      "gap": "已有基础课程/原创练习；完整配置评估与复杂综合情境仍可继续补充，不代表用户已掌握。",
+      "appStatus": "共享JSON接入网页与桌面；本机验收证据见第二批交付记录",
+      "learningDepth": "Day 6主课增加职责、因果与条件解释；教学目标见各课正文，原基础覆盖程度与缺口保留，不等于完整实操或用户掌握。",
+      "assessmentEvidence": "关联理解练习：P-D06-02、P-D06-03、P-D06-04、P-D06-05。可保存原答并请求点评；属于讲后教学练习，未有本轮用户作答证据，不据此推断独立迁移或考试准备度。"
+    },
+    {
+      "id": "2.10",
+      "title": "DPU用途与优势",
+      "domain": "AI基础架构",
+      "domainWeight": 40,
+      "day": 6,
+      "trainingPages": "34–35、67、99",
+      "noteModules": "06",
+      "noteReview": "04–06全文文本已读；TRAIN对应页已读且图示抽查；仅吸收核验后概念",
+      "beforeCardIds": [],
+      "cardIds": [
+        "card-bluefield-dpu"
+      ],
+      "questionIds": [
+        "Q-D06-008",
+        "Q-D06-009"
+      ],
+      "contentStatus": "已有（基础）",
+      "reviewStatus": "第二批基础卡题已资料对照与独立AI交叉复核；非人工审题或全量事实认证",
+      "gap": "已有基础课程/原创练习；完整配置评估与复杂综合情境仍可继续补充，不代表用户已掌握。",
+      "appStatus": "共享JSON接入网页与桌面；本机验收证据见第二批交付记录",
+      "learningDepth": "Day 6主课增加职责、因果与条件解释；教学目标见各课正文，原基础覆盖程度与缺口保留，不等于完整实操或用户掌握。",
+      "assessmentEvidence": "关联理解练习：P-D06-06。可保存原答并请求点评；属于讲后教学练习，未有本轮用户作答证据，不据此推断独立迁移或考试准备度。"
+    },
+    {
+      "id": "3.1",
+      "title": "数据中心管理与监控",
+      "domain": "AI运营",
+      "domainWeight": 22,
+      "day": 7,
+      "trainingPages": "129–137",
+      "noteModules": "07",
+      "noteReview": "07/08完整文本已读；涉及本课的概念逐项对照官方；未采用dump和考题数量预测",
+      "beforeCardIds": [],
+      "cardIds": [
+        "card-monitor-tools",
+        "card-gpu-health",
+        "card-telemetry-pipeline",
+        "card-bmc-bcm"
+      ],
+      "questionIds": [
+        "Q-D07-001",
+        "Q-D07-004",
+        "Q-D07-006",
+        "Q-D07-008",
+        "Q-D07-009"
+      ],
+      "contentStatus": "已有（基础）",
+      "reviewStatus": "第二批基础卡题已资料对照与独立AI交叉复核；非人工审题或全量事实认证",
+      "gap": "已有GPU工具、BMC/BCM和观测链路基础；跨系统故障处置与部署实操未验证。",
+      "appStatus": "共享JSON接入网页与桌面；本机验收证据见第二批交付记录",
+      "learningDepth": "Day 7主课增加职责、因果与条件解释；教学目标见各课正文，原基础覆盖程度与缺口保留，不等于完整实操或用户掌握。",
+      "assessmentEvidence": "关联理解练习：P-D07-01、P-D07-03、P-D07-04、P-D07-05。可保存原答并请求点评；属于讲后教学练习，未有本轮用户作答证据，不据此推断独立迁移或考试准备度。"
+    },
+    {
+      "id": "3.2",
+      "title": "编排与作业调度",
+      "domain": "AI运营",
+      "domainWeight": 22,
+      "day": 8,
+      "trainingPages": "151–154",
+      "noteModules": "08",
+      "noteReview": "07/08完整文本已读；涉及本课的概念逐项对照官方；未采用dump和考题数量预测",
+      "beforeCardIds": [],
+      "cardIds": [
+        "card-job-scheduling",
+        "card-slurm-kubernetes",
+        "card-k8s-gpu-operator"
+      ],
+      "questionIds": [
+        "Q-D08-001",
+        "Q-D08-002",
+        "Q-D08-004",
+        "Q-D08-005",
+        "Q-D08-008",
+        "Q-D08-009"
+      ],
+      "contentStatus": "已有（基础）",
+      "reviewStatus": "第二批基础卡题已资料对照与独立AI交叉复核；非人工审题或全量事实认证",
+      "gap": "已有资源调度、Slurm/Kubernetes与GPU软件准备；高级调度策略和生产配置待后续按需补充。",
+      "appStatus": "共享JSON接入网页与桌面；本机验收证据见第二批交付记录",
+      "learningDepth": "Day 8主课增加职责、因果与条件解释；教学目标见各课正文，原基础覆盖程度与缺口保留，不等于完整实操或用户掌握。",
+      "assessmentEvidence": "关联理解练习：P-D08-01、P-D08-02、P-D08-03、P-D08-06。可保存原答并请求点评；属于讲后教学练习，未有本轮用户作答证据，不据此推断独立迁移或考试准备度。"
+    },
+    {
+      "id": "3.3",
+      "title": "GPU监控指标",
+      "domain": "AI运营",
+      "domainWeight": 22,
+      "day": 7,
+      "trainingPages": "131–134",
+      "noteModules": "07",
+      "noteReview": "07/08完整文本已读；涉及本课的概念逐项对照官方；未采用dump和考题数量预测",
+      "beforeCardIds": [],
+      "cardIds": [
+        "card-gpu-util-memory",
+        "card-gpu-health",
+        "card-telemetry-pipeline"
+      ],
+      "questionIds": [
+        "Q-D07-002",
+        "Q-D07-003",
+        "Q-D07-005",
+        "Q-D07-007",
+        "Q-D07-010"
+      ],
+      "contentStatus": "已有（基础）",
+      "reviewStatus": "第二批基础卡题已资料对照与独立AI交叉复核；非人工审题或全量事实认证",
+      "gap": "已有利用率/显存/温度/功耗/错误与读数边界；实际设备趋势分析未作为学员测量。",
+      "appStatus": "共享JSON接入网页与桌面；本机验收证据见第二批交付记录",
+      "learningDepth": "Day 7主课增加职责、因果与条件解释；教学目标见各课正文，原基础覆盖程度与缺口保留，不等于完整实操或用户掌握。",
+      "assessmentEvidence": "关联理解练习：P-D07-02、P-D07-03、P-D07-04、P-D07-06。可保存原答并请求点评；属于讲后教学练习，未有本轮用户作答证据，不据此推断独立迁移或考试准备度。"
+    },
+    {
+      "id": "3.4",
+      "title": "虚拟加速基础架构",
+      "domain": "AI运营",
+      "domainWeight": 22,
+      "day": 8,
+      "trainingPages": "105、108–116",
+      "noteModules": "08",
+      "noteReview": "07/08完整文本已读；涉及本课的概念逐项对照官方；未采用dump和考题数量预测",
+      "beforeCardIds": [],
+      "cardIds": [
+        "card-mig",
+        "card-vgpu"
+      ],
+      "questionIds": [
+        "Q-D08-003",
+        "Q-D08-006",
+        "Q-D08-007",
+        "Q-D08-010"
+      ],
+      "contentStatus": "已有（基础）",
+      "reviewStatus": "第二批基础卡题已资料对照与独立AI交叉复核；非人工审题或全量事实认证",
+      "gap": "已有MIG/vGPU与支持条件；复杂互联、迁移、授权部署细节未全覆盖。",
+      "appStatus": "共享JSON接入网页与桌面；本机验收证据见第二批交付记录",
+      "learningDepth": "Day 8主课增加职责、因果与条件解释；教学目标见各课正文，原基础覆盖程度与缺口保留，不等于完整实操或用户掌握。",
+      "assessmentEvidence": "关联理解练习：P-D08-04、P-D08-05、P-D08-06。可保存原答并请求点评；属于讲后教学练习，未有本轮用户作答证据，不据此推断独立迁移或考试准备度。"
+    }
+  ]
+};
