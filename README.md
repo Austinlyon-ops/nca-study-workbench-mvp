@@ -37,6 +37,8 @@ npm run dist
 
 桌面应用默认只写本机。用户主动点击上传后，客户端才用 AES-256-GCM 加密 v2 备份，再把密文发送到 Vercel 私有 Blob。Vercel 端只保存同步口令的 SHA-256，不保存口令原文。
 
+已部署的生产服务：<https://nca-study-hub.vercel.app>。桌面应用仍需填写本机保密文件中的专属同步口令，才能读写私有备份。
+
 部署代码在 `cloud/vercel/`。完整步骤见 [Vercel 云端备份配置](docs/Vercel云端备份配置-v0.3.md)。
 
 ## 发布资料

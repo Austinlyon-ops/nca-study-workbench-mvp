@@ -12,6 +12,18 @@
 
 Vercel 环境变量只保存同步口令的 SHA-256，用于请求鉴权；不保存口令原文。原始学习记录不会以明文写入 Blob。同步口令丢失后无法解密已有备份，应放在密码管理器中。
 
+## 当前部署（2026-10-07）
+
+- Vercel 项目：`nca-study-hub`
+- 生产地址：`https://nca-study-hub.vercel.app`
+- 健康检查：`https://nca-study-hub.vercel.app/api/health`
+- 私有 Blob：`nca-study-hub-data`，区域 `iad1`
+- 本机口令文件：`C:\Users\asus\Documents\Codex\NCA-Study-Hub-Deliverables-0.3.0\Vercel同步配置-请保密.txt`
+
+生产环境已关闭 Vercel SSO 访问门槛，使桌面客户端可以访问；`/api/state` 仍要求专属 Bearer 同步口令。预览和生产环境均通过 401 鉴权、合成密文上传/下载、字节一致性及 409 ETag 冲突测试。测试后已删除全部合成 Blob，未上传真实学习记录。
+
+当前未连接 GitHub 自动部署。Vercel 账号需要先补充 GitHub Login Connection，才能启用按提交自动发布；本版本使用下述 CLI 手动流程。
+
 ## 1. 准备本地项目
 
 ```powershell
@@ -54,18 +66,22 @@ $syncTokenHash
 把 `$syncToken` 保存到密码管理器，并在桌面应用中输入。只把 `$syncTokenHash` 配置为 Vercel 环境变量：
 
 ```powershell
-$syncTokenHash | npx vercel@latest env add NCA_SYNC_TOKEN_SHA256 production
-$syncTokenHash | npx vercel@latest env add NCA_SYNC_TOKEN_SHA256 preview
+npx vercel@latest env add NCA_SYNC_TOKEN_SHA256 production --value $syncTokenHash --force --sensitive --yes
+npx vercel@latest env add NCA_SYNC_TOKEN_SHA256 preview --value $syncTokenHash --force --sensitive --yes
+npx vercel@latest env add NCA_SYNC_TOKEN_SHA256 development --value $syncTokenHash --force --sensitive --yes
 ```
 
 ## 5. 部署与验证
 
 ```powershell
+npm run build
 npx vercel@latest deploy
 npx vercel@latest deploy --prod
 ```
 
-部署后访问 `https://你的项目.vercel.app/api/health`，应得到 `ok: true`。在桌面应用“资料依据与设置”中填写生产 URL 和 `$syncToken`，依次执行“保存配置”“测试连接”“加密上传当前备份”。再使用“下载并预览恢复”，应用只有在解密、v1/v2 结构校验和用户确认全部通过后才覆盖本机状态。
+`npm run build` 必须在完整源码目录中先执行。它从唯一的 `web/index.html` 和锁定的 `ts-fsrs` 依赖生成 `public/`；Vercel 子目录的远端构建只校验这份已准备产物，不维护第二份知识库。
+
+部署后访问 `https://nca-study-hub.vercel.app/api/health`，应得到 `ok: true`。在桌面应用“资料依据与设置”中填写 `https://nca-study-hub.vercel.app` 和 `$syncToken`，依次执行“保存配置”“测试连接”“加密上传当前备份”。再使用“下载并预览恢复”，应用只有在解密、v1/v2 结构校验和用户确认全部通过后才覆盖本机状态。
 
 桌面与静态网页使用不同的服务通道，避免不同状态结构互相覆盖。v0.3.0 已实现桌面通道；静态网页仍使用浏览器本地记录，`web` 通道只为后续兼容预留。
 
