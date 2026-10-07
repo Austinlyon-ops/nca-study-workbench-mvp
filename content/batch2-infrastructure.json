@@ -1,0 +1,1782 @@
+{
+  "sources": [
+    {
+      "id": "NOTE04",
+      "name": "同事提供：04-ai-hardware-and-scaling.pdf",
+      "url": "https://drive.google.com/file/d/1nruFbzkvcdguADvzntWdbCHMNhqaWnBK/view",
+      "locator": "物理第2、5–8页；全10页文本已读",
+      "kind": "third-party",
+      "checked": "2026-09-24",
+      "note": "社区笔记；dump、题量预测、无条件硬件数字不采纳。"
+    },
+    {
+      "id": "NOTE05",
+      "name": "同事提供：05-datacenter-power-cooling-facility.pdf",
+      "url": "https://drive.google.com/file/d/1nIpHguc2PoUAQyLSRcw5evK99_ZNgmwq/view",
+      "locator": "物理第1–6页；全8页文本已读",
+      "kind": "third-party",
+      "checked": "2026-09-24",
+      "note": "社区笔记；PUE解释错误、固定散热阈值、自动合规等说法不采纳。"
+    },
+    {
+      "id": "NOTE06",
+      "name": "同事提供：06-networking-for-ai.pdf",
+      "url": "https://drive.google.com/file/d/1JCCAuLW7x_JUVUjmwIfbpsDJJnr_dmT6/view",
+      "locator": "物理第1–9页；全11页文本已读",
+      "kind": "third-party",
+      "checked": "2026-09-24",
+      "note": "社区笔记；不采纳dump题数和无条件速率/延迟/网络数量口诀。"
+    },
+    {
+      "id": "B2-BASEPOD",
+      "name": "NVIDIA DGX BasePOD：核心组件",
+      "url": "https://docs.nvidia.com/dgx-basepod/reference-architecture-infrastructure-foundation-enterprise-ai/latest/core-components.html",
+      "locator": "Compute / Network / Storage / Control Plane",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "具体配置是参考架构示例，不是所有AI集群的固定数量。"
+    },
+    {
+      "id": "B2-NETWORK",
+      "name": "NVIDIA DGX BasePOD：网络部署",
+      "url": "https://docs.nvidia.com/dgx-basepod/deployment-guide-dgx-basepod/latest/network-overview.html",
+      "locator": "Network Overview / oobmanagementnet / computenet",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "本参考架构的逻辑网络划分不等于全行业固定网络数。"
+    },
+    {
+      "id": "B2-FACILITY",
+      "name": "NVIDIA DGX SuperPOD：设施空间",
+      "url": "https://docs.nvidia.com/dgx-superpod/design-guides/dgx-superpod-data-center-design-h100/latest/infrastructure.html",
+      "locator": "Space Planning / Air Flow / Static Weight and Point Load",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "取通用规划原则；尺寸/承重/布线值仍按具体型号和设施条件。"
+    },
+    {
+      "id": "B2-POWER",
+      "name": "NVIDIA DGX SuperPOD：供电规划",
+      "url": "https://docs.nvidia.com/dgx-superpod/design-guides/dgx-superpod-data-center-design-h100/latest/electrical.html",
+      "locator": "Power Redundancy / Power Connections / rPDU / Phase Balancing",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "用于理解容量与冗余；不提供现场电气操作指令。"
+    },
+    {
+      "id": "B2-COOLING",
+      "name": "NVIDIA DGX SuperPOD：散热和气流",
+      "url": "https://docs.nvidia.com/dgx-superpod/design-guides/dgx-superpod-data-center-design-h100/latest/cooling.html",
+      "locator": "Full heat load / Aisle Containment / Cooling Oversubscription",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "不用一个固定kW阈值推定所有机房必须采用同一冷却技术。"
+    },
+    {
+      "id": "B2-PUE",
+      "name": "NVIDIA：数据中心能效指标的边界",
+      "url": "https://blogs.nvidia.com/blog/datacenter-efficiency-metrics-isc/",
+      "locator": "PUE compares total energy to computing infrastructure energy",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "PUE不衡量有用计算产出，不等于GPU利用率、总电费或模型效果。"
+    },
+    {
+      "id": "B2-DEPLOY",
+      "name": "NVIDIA AI Enterprise：部署选择（归档版）",
+      "url": "https://archive.docs.nvidia.com/ai-enterprise/release-4/latest/getting-started/deployment-guide.html",
+      "locator": "Deployment options：Public Cloud / On-Premises Bare Metal",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "归档release-4页仅支持部署方式的概念比较；不作为当前版本安装指南。"
+    },
+    {
+      "id": "B2-CONTROL",
+      "name": "NVIDIA：企业控制环境中的模型部署",
+      "url": "https://docs.nvidia.com/enterprise-reference-architectures/deploying-proprietary-models-confidential-compute-self-hosted-kubernetes/latest/introduction.html",
+      "locator": "Enterprise-controlled environments",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "客户控制的环境可含本地和云账户；所在地本身不是安全/合规保证。"
+    },
+    {
+      "id": "B2-HGX",
+      "name": "NVIDIA HGX Platform",
+      "url": "https://www.nvidia.com/en-us/data-center/hgx/",
+      "locator": "Platform overview / Partner Systems",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "只核对平台及合作伙伴系统关系；不背代际规格。"
+    },
+    {
+      "id": "B2-DGX",
+      "name": "NVIDIA DGX Platform 文档",
+      "url": "https://docs.nvidia.com/dgx/",
+      "locator": "DGX systems / BasePOD / SuperPOD",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "DGX不是单一GPU芯片；型号和参考架构随版本变化。"
+    },
+    {
+      "id": "B2-NVLINK",
+      "name": "NVIDIA NVLink：Scale-Up网络",
+      "url": "https://developer.nvidia.com/blog/nvidia-nvlink-the-scale-up-network-for-ai-factories/",
+      "locator": "正文：scale-up vs scale-out / domain / GPU communication",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "2026-07-20；读取正文，不以页面AI摘要或性能宣传倍数出题。"
+    },
+    {
+      "id": "B2-ROCE",
+      "name": "NVIDIA DOCA：RDMA over Converged Ethernet",
+      "url": "https://docs.nvidia.com/doca/sdk/rdma-over-converged-ethernet.pdf",
+      "locator": "PDF物理第3–4页定义/封装；第8页流控",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "协议定义可用；历史10/40Gb示例不当作当前速率上限。"
+    },
+    {
+      "id": "B2-SM",
+      "name": "NVIDIA：InfiniBand交换机软件管理",
+      "url": "https://docs.nvidia.com/networking/display/QM87XX/software-management.pdf",
+      "locator": "InfiniBand Subnet Manager",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "SM可以运行于交换机或相连主机；OpenSM是实现名称。"
+    },
+    {
+      "id": "B2-DPU",
+      "name": "NVIDIA：What Is a DPU?",
+      "url": "https://blogs.nvidia.com/blog/whats-a-dpu-data-processing-unit/",
+      "locator": "DPU components / infrastructure offload",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "取定义与职责，不将市场宣传视为适用于任意工作负载的性能承诺。"
+    },
+    {
+      "id": "B2-BLUEFIELD",
+      "name": "NVIDIA BlueField Networking Platform",
+      "url": "https://www.nvidia.com/en-us/networking/products/data-processing-unit/",
+      "locator": "Network / Storage / Security services",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "型号参数不进入本批练习；隔离依赖部署、配置和支持能力。"
+    },
+    {
+      "id": "B2-GDR",
+      "name": "NVIDIA GPUDirect RDMA文档",
+      "url": "https://docs.nvidia.com/cuda/gpudirect-rdma/index.html",
+      "locator": "Overview / Synchronization and Memory Ordering",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "优化数据路径并不消除全部CPU控制和同步工作。"
+    },
+    {
+      "id": "B2-GDS",
+      "name": "NVIDIA GPUDirect Storage Overview",
+      "url": "https://docs.nvidia.com/gpudirect-storage/overview-guide/index.html",
+      "locator": "Overview / Direct data path / compatibility",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "直接数据路径依赖受支持硬件、驱动、文件系统和应用；有兼容回退路径。"
+    }
+  ],
+  "cards": [
+    {
+      "id": "card-cluster-components",
+      "day": 5,
+      "title": "AI集群：GPU之外还需要什么",
+      "objectiveIds": [
+        "2.1",
+        "2.5",
+        "1.6"
+      ],
+      "minutes": 5,
+      "objective": "说清计算、存储、网络和管理怎样共同完成任务。",
+      "conclusion": "AI集群是一组计算节点与网络、存储、管理软件共同工作的系统。",
+      "explanation": "把集群看成多间协作厨房：GPU计算节点负责做菜，存储提供食材和保存成果，网络负责运输，管理节点与调度软件负责安排任务。CPU仍承担数据处理和控制；显存装模型和中间数据，系统内存、存储也不能忽略。训练数据读得太慢时，即使GPU算力很强，也会等待。DGX是NVIDIA的整套AI系统/平台家族；HGX是供合作伙伴集成系统的加速计算平台；BasePOD、SuperPOD则给出集群级组件组合。",
+      "terms": "Compute node（计算节点）/ Storage（存储）/ Fabric（互联网络）/ Control plane（控制平面）/ DGX / HGX",
+      "compare": "GPU是组件，服务器是节点，集群由多个节点及配套系统组成；DGX、HGX、SuperPOD不是三个GPU型号。",
+      "scenario": "示例：训练不断停下来等图片，先看数据读取、预处理与存储网络；不能仅凭GPU不忙就追加GPU。",
+      "trainingPages": "17、38、53、64–65、79",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE04",
+        "B2-BASEPOD",
+        "B2-HGX",
+        "B2-DGX"
+      ],
+      "sourceId": "TRAIN",
+      "extra": "选配置先列模型与中间数据所需显存、数据供给速度、节点通信及服务目标，再核对运行软件支持。",
+      "checkNotes": "保留职责关系；不采用笔记对DGX/HGX固定GPU/NIC数量或所有任务必选某型号的绝对表述。",
+      "textStatus": "对照完成（学习用）",
+      "origin": "既有培训讲义与社区笔记组织，所列NVIDIA官方资料核对；例子和练习为原创，非用户现场事实。",
+      "webId": "cluster-components"
+    },
+    {
+      "id": "card-scale-up-out",
+      "day": 5,
+      "title": "扩展GPU：Scale Up与Scale Out",
+      "objectiveIds": [
+        "2.1",
+        "2.2",
+        "1.2"
+      ],
+      "minutes": 5,
+      "objective": "区分扩大紧密互联计算域和连接更多计算节点。",
+      "conclusion": "增加GPU必须连同通信、数据供给和程序并行方式一起考虑。",
+      "explanation": "Scale up常见于增强一个系统，或扩大紧密互联的GPU计算域；Scale out把多个系统用网络连成更大集群。今天的scale-up域也可能跨到机架规模，不能死记为单台机箱。数据并行通常让多个GPU处理不同数据并交流更新；模型并行把模型计算或参数分到多个GPU。加GPU能增加资源，但通信、串行部分和存储等待都可能吃掉收益。",
+      "terms": "Scale up / Scale out / Data parallelism（数据并行）/ Model parallelism（模型并行）/ Scaling efficiency（扩展效率）",
+      "compare": "扩容数量不等于等比例提速；多张卡的显存也不会让所有单GPU程序自动看到一块连续大显存。",
+      "scenario": "示例：模型在一张卡放不下，先核对可用并行策略、每卡显存和互联；若跨节点，再验证网络带宽/延迟及框架支持。",
+      "trainingPages": "64–65、79–82、90–99",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE04",
+        "B2-NVLINK",
+        "NCCL",
+        "B2-BASEPOD"
+      ],
+      "sourceId": "TRAIN",
+      "extra": "通过代表性任务比较运行时间、通信等待和资源利用率；先辨认瓶颈再决定扩容。",
+      "checkNotes": "用官方scale-up domain概念补充“scale up永远等于机内”；不许诺线性扩展。",
+      "textStatus": "对照完成（学习用）",
+      "origin": "既有培训讲义与社区笔记组织，所列NVIDIA官方资料核对；例子和练习为原创，非用户现场事实。",
+      "webId": "scale-up-out"
+    },
+    {
+      "id": "card-power-cooling",
+      "day": 5,
+      "title": "供电与散热：能开机还不够",
+      "objectiveIds": [
+        "2.3",
+        "2.6"
+      ],
+      "minutes": 5,
+      "objective": "解释机架用电、热负载与冗余的关系。",
+      "conclusion": "电要送得进来，热要带得出去，还要按设计应对故障。",
+      "explanation": "kW是某时刻用电功率，kWh是持续一段时间累计的能量。规划不能只加GPU标称功耗，还要算CPU、内存、网卡、存储、交换机等，并按设备和设施要求留出运行/冗余能力。PDU给机架分配电力；UPS在供电异常时提供短时保障。冷却系统要匹配设备热负载；冷热通道分离是为了减少热风回到服务器进风口。",
+      "terms": "Power（功率，kW）/ Energy（能量，kWh）/ PDU / UPS / Heat load（热负载）/ Redundancy（冗余）",
+      "compare": "UPS不是制冷设备；冷却容量和电路容量需要分别核验。双电源也不自动代表上游两路供电真正独立。",
+      "scenario": "示例：机架还有空U位，但新增GPU服务器会超过已有供电或冷却能力，此时不能只因“放得下”就部署。",
+      "trainingPages": "18–21",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE05",
+        "B2-POWER",
+        "B2-COOLING"
+      ],
+      "sourceId": "TRAIN",
+      "extra": "风冷通过气流带走热量；液冷可通过冷板和冷却液回路带走部分热量。方法取决于系统设计和场地，不能用一个通用kW阈值替代设计核验。",
+      "checkNotes": "排除笔记“超过30kW必选某冷却方式”等固定口诀；本课是概念练习，不要求改电气或GPU功率设置。",
+      "textStatus": "对照完成（学习用）",
+      "origin": "既有培训讲义与社区笔记组织，所列NVIDIA官方资料核对；例子和练习为原创，非用户现场事实。",
+      "webId": "power-cooling"
+    },
+    {
+      "id": "card-pue",
+      "day": 5,
+      "title": "PUE：设施能效不等于GPU效率",
+      "objectiveIds": [
+        "2.3"
+      ],
+      "minutes": 5,
+      "objective": "算出PUE并解释它没有告诉我们的事。",
+      "conclusion": "PUE＝同一统计范围和时段的设施总能耗÷IT设备能耗。",
+      "explanation": "总能耗包含IT设备以及制冷、配电损耗、照明等配套能耗。假设同一时段总用电120kWh、IT用电100kWh，PUE就是1.2，配套部分为20kWh。相同边界下，PUE越接近1，非IT开销相对越小。PUE为2.0表示总能耗是IT的两倍，非IT部分与IT相等。它不能说明模型质量、GPU忙不忙或每个任务用了多少电。",
+      "terms": "PUE（Power Usage Effectiveness）/ Total facility energy / IT equipment energy",
+      "compare": "PUE的分母是IT设备能耗，不是全部能耗；PUE不是百分比，也不是“GPU利用率”。",
+      "scenario": "示例：甲机房PUE低，乙机房任务少、总能耗也少；只看PUE不能断定甲的总电费更低。",
+      "trainingPages": "21",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE05",
+        "B2-PUE"
+      ],
+      "sourceId": "TRAIN",
+      "extra": "比较时先对齐统计时段、设备边界和负载条件。理想下界为1；实际还需关心有用计算产出和总能耗。",
+      "checkNotes": "纠正笔记PUE≥2时“非IT耗能是IT两倍”的错误；不采纳PUE>3就是造假的无依据判断。",
+      "textStatus": "对照完成（学习用）",
+      "origin": "既有培训讲义与社区笔记组织，所列NVIDIA官方资料核对；例子和练习为原创，非用户现场事实。",
+      "webId": "pue"
+    },
+    {
+      "id": "card-facility",
+      "day": 5,
+      "title": "数据中心设施：空间、承重与布线",
+      "objectiveIds": [
+        "2.6",
+        "2.3",
+        "2.2"
+      ],
+      "minutes": 5,
+      "objective": "识别装得下之外的部署条件。",
+      "conclusion": "设施要同时容纳设备重量、供电、散热、布线和维修通道。",
+      "explanation": "U位只是机架高度单位；设备还受深度、导轨、重量和进出风方向限制。地板及搬运路线要承受设备、机柜和运输工具的总重量；电缆需要合适走线和长度，不能挡住通风或维修。未来扩展还要预留空间、配电与冷却能力。物理访问控制等设施要求也应与实际部署一起考虑。",
+      "terms": "Rack（机架）/ Rack unit（U）/ Floor loading（地板承重）/ Cable routing（走线）/ Clearance（维护净空）",
+      "compare": "空U位不等于可用部署容量；CPU/GPU的算力规格不能代替设施承载条件。",
+      "scenario": "示例：把机架拉远可以缓解局部散热压力，但会增加走线长度；应同时检查光模块/线缆的支持距离和布局。",
+      "trainingPages": "18–21",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE05",
+        "B2-FACILITY",
+        "B2-COOLING"
+      ],
+      "sourceId": "TRAIN",
+      "extra": "学习时只需要会列出核验维度；不背某一参考架构的承重、环境温湿度或消防参数作为普遍标准。",
+      "checkNotes": "官方设施文档为具体H100部署，提取原则并保留版本条件；不继承第三方无来源的消防/承重数值。",
+      "textStatus": "对照完成（学习用）",
+      "origin": "既有培训讲义与社区笔记组织，所列NVIDIA官方资料核对；例子和练习为原创，非用户现场事实。",
+      "webId": "facility"
+    },
+    {
+      "id": "card-onprem-cloud",
+      "day": 5,
+      "title": "本地、云与混合：按约束选择",
+      "objectiveIds": [
+        "2.4",
+        "2.1"
+      ],
+      "minutes": 5,
+      "objective": "用利用率、数据控制和运维能力解释部署选择。",
+      "conclusion": "本地偏自主控制，云偏按需取得资源；没有永远更便宜的一方。",
+      "explanation": "On-premises是自建或自己负责的本地基础设施，需要承担采购、机房和运维。Cloud按服务使用GPU资源，通常降低一次性购置门槛，并提供扩缩能力，但可用容量、计费、数据传输和管理责任都要核对。Hybrid混合两者。数据在哪里、谁能访问、如何备份/加密是具体设计问题；选择本地不会自动安全合规，选择云也不等于放弃数据控制。",
+      "terms": "On-premises / Cloud / Hybrid / CapEx（资本支出）/ OpEx（运营支出）/ Data residency（数据驻留）",
+      "compare": "低入门成本不等于长期总成本最低；云的弹性也不等于任何时刻都有无限GPU。",
+      "scenario": "示例：两周试验且没有机房可先评估云；长时间稳定高利用率且有运维团队，可比较本地的完整成本。两者都要先核对数据要求。",
+      "trainingPages": "55–56、79",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE05",
+        "B2-DEPLOY",
+        "B2-CONTROL"
+      ],
+      "sourceId": "TRAIN",
+      "extra": "成本比较至少含设备/租用、供电散热、人员、闲置率和数据移动；这是判断框架，不提供采购报价或合规结论。",
+      "checkNotes": "已渲染讲义56页确认Cloud/On-Prem图文关系，避免PDF文本提取次序造成标签互换；归档官方部署页仅用于概念。",
+      "textStatus": "对照完成（学习用）",
+      "origin": "既有培训讲义与社区笔记组织，所列NVIDIA官方资料核对；例子和练习为原创，非用户现场事实。",
+      "webId": "onprem-cloud"
+    },
+    {
+      "id": "card-network-traffic",
+      "day": 6,
+      "title": "AI网络先看流量：计算、存储、管理",
+      "objectiveIds": [
+        "2.7",
+        "2.5",
+        "1.2"
+      ],
+      "minutes": 5,
+      "objective": "判断一条流量在做什么，再判断性能和隔离需求。",
+      "conclusion": "GPU通信、数据读取、日常管理和带外恢复有不同目标。",
+      "explanation": "计算流量包含训练时的GPU协作与同步；存储流量读数据集、写检查点；带内管理通过运行中的系统路径提供登录、调度等服务。带外管理（OOB）经独立管理控制器和通路，在生产路径或主机系统异常时仍可能可达。大数据搬运看带宽，频繁同步看延迟，也需考虑拥塞、可靠性与隔离。",
+      "terms": "Compute fabric / Storage fabric / In-band management / Out-of-band（OOB）/ BMC / Checkpoint",
+      "compare": "这些是职责分类，不是每个集群必须有固定三张或四张物理网络；逻辑/物理划分取决于具体架构。",
+      "scenario": "示例：服务器OS登录失败但BMC和管理网络仍有电、可达，可通过OOB查看状态；整机失电或管理通路也坏时，OOB不保证可用。",
+      "trainingPages": "40–43",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE06",
+        "B2-NETWORK",
+        "B2-BASEPOD"
+      ],
+      "sourceId": "TRAIN",
+      "extra": "带外通路同样需要访问控制；它能帮助恢复，不会自动修好计算网络。",
+      "checkNotes": "不采用固定网络数dump口诀；本课不要求对真实设备执行重启或远程电源控制。",
+      "textStatus": "对照完成（学习用）",
+      "origin": "既有培训讲义与社区笔记组织，所列NVIDIA官方资料核对；例子和练习为原创，非用户现场事实。",
+      "webId": "network-traffic"
+    },
+    {
+      "id": "card-ethernet-infiniband",
+      "day": 6,
+      "title": "Ethernet与InfiniBand：网络类型与管理",
+      "objectiveIds": [
+        "2.8",
+        "2.9",
+        "2.7"
+      ],
+      "minutes": 5,
+      "objective": "说明两类网络都能服务AI，以及IB为什么需要SM。",
+      "conclusion": "Ethernet和InfiniBand都是互联选择，场景和完整设计比单个速率数字重要。",
+      "explanation": "Ethernet以太网生态广，既用于企业网络，也能承载AI集群。InfiniBand面向高性能互联，提供RDMA等能力，重视低延迟和高带宽。Ethernet可通过RoCE使用RDMA，所以“以太网不支持RDMA”是错的。InfiniBand子网需要Subnet Manager（SM）发现和配置网络；OpenSM是一种实现，SM可以运行在合适主机或受支持交换机上。",
+      "terms": "Ethernet / InfiniBand（IB）/ HCA（Host Channel Adapter）/ NIC / Subnet Manager（SM）/ OpenSM",
+      "compare": "Ethernet不是TCP/IP的同义词；OpenSM不是训练框架，也不是所有以太网必须安装的组件。",
+      "scenario": "示例：组织已有成熟以太网运维，可评估RoCE方案；通信密集任务也可评估IB。应比较实际端到端表现、软件支持和运维，而不是只比较名义速率。",
+      "trainingPages": "47–50、93–94",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE06",
+        "B2-NETWORK",
+        "B2-ROCE",
+        "B2-SM"
+      ],
+      "sourceId": "TRAIN",
+      "extra": "网络吞吐可能受拥塞和拓扑限制；规格上的Gb/s不保证应用实际同等吞吐。",
+      "checkNotes": "补充SM职责与实现区别；不背讲义中旧速率上限或固定微秒延迟作为普遍事实。",
+      "textStatus": "对照完成（学习用）",
+      "origin": "既有培训讲义与社区笔记组织，所列NVIDIA官方资料核对；例子和练习为原创，非用户现场事实。",
+      "webId": "ethernet-infiniband"
+    },
+    {
+      "id": "card-rdma-roce",
+      "day": 6,
+      "title": "RDMA与RoCE：少让CPU搬数据",
+      "objectiveIds": [
+        "2.8",
+        "2.9"
+      ],
+      "minutes": 5,
+      "objective": "区分数据传输能力和承载它的网络。",
+      "conclusion": "RDMA是远程内存访问能力；RoCE是在Ethernet上实现RDMA的一类协议。",
+      "explanation": "普通数据传送可能需要CPU参与协议处理和多次复制。RDMA让支持它的网络适配器承担数据搬运，减少CPU数据路径开销和延迟。InfiniBand原生支持RDMA；RoCE把这类能力带到Ethernet。RoCEv2使用UDP/IP封装，可跨IP子网路由，但仍需匹配的网卡、驱动、应用和网络设计；接上普通网线不会自动得到RDMA。",
+      "terms": "RDMA（Remote Direct Memory Access）/ RoCE（RDMA over Converged Ethernet）/ RoCEv2 / Hardware offload",
+      "compare": "CPU少搬数据不等于整个应用不用CPU；RoCE使用UDP封装也不意味着随便丢包都没有代价。",
+      "scenario": "示例：通信开销占用大量CPU且限制数据供给时，团队可评估RDMA；如果真正瓶颈是GPU计算，换协议未必有明显收益。",
+      "trainingPages": "49–50、97–99",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE06",
+        "B2-ROCE",
+        "B2-GDR"
+      ],
+      "sourceId": "TRAIN",
+      "extra": "RoCE部署需要按方案处理拥塞/流控和丢包影响，常见设计涉及PFC/ECN；本课不将某种设置写成跨所有产品版本的唯一规则。",
+      "checkNotes": "排除DMA固定CPU百分比和10–100倍加速；区分传输数据路径卸载与初始化/控制工作。",
+      "textStatus": "对照完成（学习用）",
+      "origin": "既有培训讲义与社区笔记组织，所列NVIDIA官方资料核对；例子和练习为原创，非用户现场事实。",
+      "webId": "rdma-roce"
+    },
+    {
+      "id": "card-nvlink-nvswitch",
+      "day": 6,
+      "title": "NVLink与NVSwitch：GPU紧密协作",
+      "objectiveIds": [
+        "2.2",
+        "2.9"
+      ],
+      "minutes": 5,
+      "objective": "辨认GPU计算域互联与跨系统网络的关系。",
+      "conclusion": "NVLink提供GPU等处理器间高速互联，NVSwitch把多条NVLink组成交换网络。",
+      "explanation": "可以把NVLink想成计算域内的快速通道，NVSwitch像组织这些通道的交换枢纽，让多GPU更高效通信。传统多GPU服务器常在机内使用；新的平台也有机架级NVLink域。跨多个系统/计算域的扩展通常还要InfiniBand或Ethernet。它们服务不同层次，可以配合，并不是购买NVLink后就不需要其他网络。",
+      "terms": "NVLink / NVSwitch / NVLink domain / Scale-up fabric / Scale-out fabric / PCIe",
+      "compare": "NVLink不是网卡型号；NVSwitch不是通用Ethernet交换机；NVLink也不是仅能连接两张GPU的桥。",
+      "scenario": "示例：一个大模型分布在紧密协作的GPU上，域内通信可利用NVLink/NVSwitch；再扩大到更多系统时，需要同时规划域间网络。",
+      "trainingPages": "90–95",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE06",
+        "B2-NVLINK",
+        "B2-HGX"
+      ],
+      "sourceId": "TRAIN",
+      "extra": "连接方式和支持范围按具体平台；不会因为互联更快就让任意应用自动把显存完全合并。",
+      "checkNotes": "不把“只能机内”当定义；不要求背每代NVLink/NVSwitch数量或宣传加速倍数。",
+      "textStatus": "对照完成（学习用）",
+      "origin": "既有培训讲义与社区笔记组织，所列NVIDIA官方资料核对；例子和练习为原创，非用户现场事实。",
+      "webId": "nvlink-nvswitch"
+    },
+    {
+      "id": "card-bluefield-dpu",
+      "day": 6,
+      "title": "BlueField / DPU：基础设施服务卸载",
+      "objectiveIds": [
+        "2.10",
+        "1.6"
+      ],
+      "minutes": 5,
+      "objective": "说明DPU卸载什么，以及与GPU/BMC的区别。",
+      "conclusion": "DPU主要卸载、加速和隔离网络、存储、安全等基础设施工作。",
+      "explanation": "DPU（数据处理单元）包含可编程处理器、网络接口及加速能力。BlueField是NVIDIA相关产品家族；可把部分网络、存储或安全服务从主机CPU转移出去，为应用腾出资源。DPU还能帮助把基础设施服务与租户工作负载分离，实际效果依赖模式、软件和配置。DOCA提供开发这些服务的软件能力。",
+      "terms": "DPU（Data Processing Unit）/ BlueField / Offload / Accelerate / Isolate / DOCA",
+      "compare": "GPU擅长并行计算；DPU偏基础设施数据处理；BMC偏设备管理。DPU不是通用备份系统，也不是空调控制器。",
+      "scenario": "示例：多租户服务器希望隔离并加速网络/安全服务，可评估DPU；不能仅因安装卡片就宣称已解决全部安全问题。",
+      "trainingPages": "34–35、67",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE06",
+        "B2-DPU",
+        "B2-BLUEFIELD"
+      ],
+      "sourceId": "TRAIN",
+      "extra": "普通NIC与DPU都涉及网络，但DPU强调可编程基础设施服务；BlueField不同模式/产品不能无条件等同。",
+      "checkNotes": "不将DOCA叫操作系统，不把隔离说成任何情况下主机绝不可能影响DPU，不许诺CPU开销完全消失。",
+      "textStatus": "对照完成（学习用）",
+      "origin": "既有培训讲义与社区笔记组织，所列NVIDIA官方资料核对；例子和练习为原创，非用户现场事实。",
+      "webId": "bluefield-dpu"
+    },
+    {
+      "id": "card-gpudirect-paths",
+      "day": 6,
+      "title": "GPUDirect RDMA与Storage：看数据从哪里来",
+      "objectiveIds": [
+        "2.7",
+        "2.9",
+        "2.1"
+      ],
+      "minutes": 5,
+      "objective": "根据端点区分网络直达GPU和存储直达GPU的数据路径。",
+      "conclusion": "GPUDirect优化数据路径；RDMA关注网络设备与GPU，Storage关注存储与GPU。",
+      "explanation": "GPUDirect RDMA允许受支持的第三方设备（例如RDMA网卡）直接访问GPU内存，减少经CPU内存中转。GPUDirect Storage（GDS）为受支持存储和GPU内存之间建立直接数据路径，例如从本地NVMe或远程存储读取数据。它们是相关优化能力，不是新GPU或文件系统的名字。",
+      "terms": "GPUDirect RDMA / GPUDirect Storage（GDS）/ GPU memory / Bounce buffer（中转缓冲）/ NVMe",
+      "compare": "直达数据路径不等于整个系统不用CPU；GPU、设备拓扑、驱动、存储和应用仍需满足支持条件。",
+      "scenario": "示例：节点间网络交换训练数据，关注GPUDirect RDMA；数据集从兼容存储读入GPU，关注GDS，先确认实际路径是否启用。",
+      "trainingPages": "98–100",
+      "sourceIds": [
+        "TRAIN",
+        "NOTE06",
+        "B2-GDR",
+        "B2-GDS"
+      ],
+      "sourceId": "TRAIN",
+      "extra": "GDS既可能涉及本地存储，也可能涉及远程存储；不能把讲义中远程RDMA示意图看成所有GDS的唯一结构。",
+      "checkNotes": "讲义100页远程网络图只作示意；不继承“任何存储都自动直达GPU”的泛化。",
+      "textStatus": "对照完成（学习用）",
+      "origin": "既有培训讲义与社区笔记组织，所列NVIDIA官方资料核对；例子和练习为原创，非用户现场事实。",
+      "webId": "gpudirect-paths"
+    }
+  ],
+  "questions": [
+    {
+      "id": "Q-D05-001",
+      "day": 5,
+      "type": "single",
+      "domain": "AI 基础架构",
+      "cardId": "card-cluster-components",
+      "objectiveIds": [
+        "2.1",
+        "2.5"
+      ],
+      "stem": "一组训练GPU经常等待读取图片，计算时却足够快。优先检查哪一组环节最有针对性？",
+      "options": [
+        [
+          "a",
+          "显示器分辨率与桌面主题"
+        ],
+        [
+          "b",
+          "数据预处理、存储及数据传输路径"
+        ],
+        [
+          "c",
+          "把所有训练任务改称推理"
+        ],
+        [
+          "d",
+          "只比较GPU总数量"
+        ]
+      ],
+      "answer": [
+        "b"
+      ],
+      "explanation": "题干给出的线索是数据供给等待，应检查产生等待的链路，再决定是否扩容。",
+      "analysis": {
+        "a": "与数据供给瓶颈无直接关系。",
+        "b": "正确：数据准备、读取和传输都可能让GPU等输入。",
+        "c": "改名字不会改变工作负载或瓶颈。",
+        "d": "数量不能说明供给速度；继续加GPU可能仍在等待。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE04",
+        "B2-BASEPOD",
+        "B2-HGX",
+        "B2-DGX"
+      ],
+      "reviewStatus": "资料对照完成；AI审题，未独立人工二审",
+      "origin": "本轮原创练习；非官方真题，不复制社区dump题干",
+      "webId": "Q-D05-001"
+    },
+    {
+      "id": "Q-D05-002",
+      "day": 5,
+      "type": "multiple",
+      "domain": "AI 基础架构",
+      "cardId": "card-scale-up-out",
+      "objectiveIds": [
+        "2.2"
+      ],
+      "stem": "哪两项属于合理的GPU扩展判断？（选两项）",
+      "options": [
+        [
+          "a",
+          "GPU数量加倍就保证训练时间减半"
+        ],
+        [
+          "b",
+          "所有单GPU应用会自动使用多卡总显存"
+        ],
+        [
+          "c",
+          "扩大紧密互联计算域时仍要检查程序并行支持"
+        ],
+        [
+          "d",
+          "连接更多节点时需要评估通信与存储供给"
+        ]
+      ],
+      "answer": [
+        "c",
+        "d"
+      ],
+      "explanation": "扩展效果依赖程序能否并行及计算之外的供给和通信。",
+      "analysis": {
+        "a": "通信、串行步骤和等待会限制收益。",
+        "b": "多卡内存利用取决于软件分片/并行设计，并非自动合并。",
+        "c": "正确：互联硬件不能代替程序支持。",
+        "d": "正确：跨节点同步和数据供给可能成为瓶颈。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE04",
+        "B2-NVLINK",
+        "NCCL",
+        "B2-BASEPOD"
+      ],
+      "reviewStatus": "资料对照完成；AI审题，未独立人工二审",
+      "origin": "本轮原创练习；非官方真题，不复制社区dump题干",
+      "webId": "Q-D05-002"
+    },
+    {
+      "id": "Q-D05-003",
+      "day": 5,
+      "type": "single",
+      "domain": "AI 基础架构",
+      "cardId": "card-scale-up-out",
+      "objectiveIds": [
+        "2.1",
+        "2.2",
+        "1.2"
+      ],
+      "stem": "模型在单卡显存中放不下，团队拟用多GPU分担模型。最完整的下一步是？",
+      "options": [
+        [
+          "a",
+          "只求多张卡显存相加够大，程序无需改动"
+        ],
+        [
+          "b",
+          "换成云部署就不需要检查每卡显存"
+        ],
+        [
+          "c",
+          "检查模型划分策略、每卡内存需求和GPU互联"
+        ],
+        [
+          "d",
+          "只增加共享磁盘容量即可保证解决"
+        ]
+      ],
+      "answer": [
+        "c"
+      ],
+      "explanation": "模型并行需要软件真正把计算和数据分布出去，通信及每卡资源也要匹配。",
+      "analysis": {
+        "a": "总和够大是候选条件，不能保证程序能有效使用。",
+        "b": "云仍有具体硬件和程序约束。",
+        "c": "正确：同时考虑容量、并行实现和通信。",
+        "d": "磁盘容量与GPU工作显存是不同资源。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE04",
+        "B2-NVLINK",
+        "NCCL",
+        "B2-BASEPOD"
+      ],
+      "reviewStatus": "资料对照完成；AI审题，未独立人工二审",
+      "origin": "本轮原创练习；非官方真题，不复制社区dump题干",
+      "webId": "Q-D05-003"
+    },
+    {
+      "id": "Q-D05-004",
+      "day": 5,
+      "type": "single",
+      "domain": "AI 基础架构",
+      "cardId": "card-power-cooling",
+      "objectiveIds": [
+        "2.3",
+        "2.6"
+      ],
+      "stem": "机架还有空位，但现有散热能力接近上限。应怎样判断是否加服务器？",
+      "options": [
+        [
+          "a",
+          "核对新增总热负载和供电，再评估散热/布局改造"
+        ],
+        [
+          "b",
+          "只要能插上电源就可以长期满负载"
+        ],
+        [
+          "c",
+          "有UPS便不需要增加冷却能力"
+        ],
+        [
+          "d",
+          "把空U位当作完整可用容量"
+        ]
+      ],
+      "answer": [
+        "a"
+      ],
+      "explanation": "空间、电力和散热是同时存在的限制，不能互相替代。",
+      "analysis": {
+        "a": "正确：需要按整机/机架负载和设施能力核验。",
+        "b": "短时能通电不证明长期负载条件满足。",
+        "c": "UPS服务供电保障，不负责带走热量。",
+        "d": "U位只表达高度空间，不包括电热约束。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE05",
+        "B2-POWER",
+        "B2-COOLING"
+      ],
+      "reviewStatus": "资料对照完成；AI审题，未独立人工二审",
+      "origin": "本轮原创练习；非官方真题，不复制社区dump题干",
+      "webId": "Q-D05-004"
+    },
+    {
+      "id": "Q-D05-005",
+      "day": 5,
+      "type": "single",
+      "domain": "AI 基础架构",
+      "cardId": "card-pue",
+      "objectiveIds": [
+        "2.3"
+      ],
+      "stem": "同一统计时段，机房总用电150kWh，IT设备用电100kWh。PUE及非IT用电分别是多少？",
+      "options": [
+        [
+          "a",
+          "0.67和50kWh"
+        ],
+        [
+          "b",
+          "1.5和150kWh"
+        ],
+        [
+          "c",
+          "1.5和50kWh"
+        ],
+        [
+          "d",
+          "50%和100kWh"
+        ]
+      ],
+      "answer": [
+        "c"
+      ],
+      "explanation": "150÷100＝1.5；非IT部分＝150－100＝50kWh。",
+      "analysis": {
+        "a": "把PUE分子分母倒置了。",
+        "b": "PUE对，但非IT不是总能耗。",
+        "c": "正确：比例和差额都来自相同统计边界。",
+        "d": "PUE是比值，不按此处百分比定义。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE05",
+        "B2-PUE"
+      ],
+      "reviewStatus": "资料对照完成；AI审题，未独立人工二审",
+      "origin": "本轮原创练习；非官方真题，不复制社区dump题干",
+      "webId": "Q-D05-005"
+    },
+    {
+      "id": "Q-D05-006",
+      "day": 5,
+      "type": "single",
+      "domain": "AI 基础架构",
+      "cardId": "card-pue",
+      "objectiveIds": [
+        "2.3"
+      ],
+      "stem": "两个机房PUE分别为1.2和1.6。仅凭这两个数字，最可靠的结论是？",
+      "options": [
+        [
+          "a",
+          "1.2机房的GPU利用率一定更高"
+        ],
+        [
+          "b",
+          "1.2机房的年度总电费一定更低"
+        ],
+        [
+          "c",
+          "1.2机房训练出的模型一定更准"
+        ],
+        [
+          "d",
+          "在可比统计条件下，1.2的非IT开销相对IT更小"
+        ]
+      ],
+      "answer": [
+        "d"
+      ],
+      "explanation": "PUE说明设施能耗比例，不直接测量计算产出、总电量或模型效果。",
+      "analysis": {
+        "a": "GPU利用率不是PUE的定义。",
+        "b": "还缺总用电和电价等信息。",
+        "c": "能耗比例不能推定模型准确率。",
+        "d": "正确：这是PUE能支持的有限结论。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE05",
+        "B2-PUE"
+      ],
+      "reviewStatus": "资料对照完成；AI审题，未独立人工二审",
+      "origin": "本轮原创练习；非官方真题，不复制社区dump题干",
+      "webId": "Q-D05-006"
+    },
+    {
+      "id": "Q-D05-007",
+      "day": 5,
+      "type": "multiple",
+      "domain": "AI 基础架构",
+      "cardId": "card-facility",
+      "objectiveIds": [
+        "2.6"
+      ],
+      "stem": "规划高密度GPU机架时，哪两项确实属于设施核验？（选两项）",
+      "options": [
+        [
+          "a",
+          "承重、搬运路径及维修净空"
+        ],
+        [
+          "b",
+          "只确认训练框架名称"
+        ],
+        [
+          "c",
+          "仅统计模型分类标签数量"
+        ],
+        [
+          "d",
+          "配电、冷却、走线与进出风方向"
+        ]
+      ],
+      "answer": [
+        "a",
+        "d"
+      ],
+      "explanation": "设备可安全部署和持续运行需要物理设施条件配合。",
+      "analysis": {
+        "a": "正确：重量和搬运/维护路径影响能否安装与维护。",
+        "b": "框架是软件要求，不能代替设施核验。",
+        "c": "模型类别不是机房承载条件。",
+        "d": "正确：这些共同决定机架能否稳定运行。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE05",
+        "B2-FACILITY",
+        "B2-COOLING"
+      ],
+      "reviewStatus": "资料对照完成；AI审题，未独立人工二审",
+      "origin": "本轮原创练习；非官方真题，不复制社区dump题干",
+      "webId": "Q-D05-007"
+    },
+    {
+      "id": "Q-D05-008",
+      "day": 5,
+      "type": "single",
+      "domain": "AI 基础架构",
+      "cardId": "card-onprem-cloud",
+      "objectiveIds": [
+        "2.4"
+      ],
+      "stem": "团队只需进行两周GPU实验，没有现成机房，希望减少最初一次性设备采购。哪种判断最合理？",
+      "options": [
+        [
+          "a",
+          "先评估按需云GPU，并核对容量、数据要求和完整费用"
+        ],
+        [
+          "b",
+          "云GPU对任何期限都保证总成本最低"
+        ],
+        [
+          "c",
+          "本地部署不需要运维人员"
+        ],
+        [
+          "d",
+          "混合部署可以忽略数据传输"
+        ]
+      ],
+      "answer": [
+        "a"
+      ],
+      "explanation": "按需云资源可降低初始采购门槛；题干不足以证明长期总成本或数据适配。",
+      "analysis": {
+        "a": "正确：建议由明确约束驱动并保留条件。",
+        "b": "长期成本受利用率、价格和传输等因素影响。",
+        "c": "本地仍要承担硬件与软件运维。",
+        "d": "混合架构仍需规划数据流和费用。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE05",
+        "B2-DEPLOY",
+        "B2-CONTROL"
+      ],
+      "reviewStatus": "资料对照完成；AI审题，未独立人工二审",
+      "origin": "本轮原创练习；非官方真题，不复制社区dump题干",
+      "webId": "Q-D05-008"
+    },
+    {
+      "id": "Q-D05-009",
+      "day": 5,
+      "type": "multiple",
+      "domain": "AI 基础架构",
+      "cardId": "card-onprem-cloud",
+      "objectiveIds": [
+        "2.4"
+      ],
+      "stem": "哪两项对本地与云部署的比较成立？（选两项）",
+      "options": [
+        [
+          "a",
+          "只要本地部署就自动满足所有安全要求"
+        ],
+        [
+          "b",
+          "本地可增加控制，同时承担采购及运维责任"
+        ],
+        [
+          "c",
+          "云的弹性仍受可用资源和服务条款约束"
+        ],
+        [
+          "d",
+          "租用云GPU后应用与数据治理不再需要负责"
+        ]
+      ],
+      "answer": [
+        "b",
+        "c"
+      ],
+      "explanation": "部署位置影响责任和控制方式，但不免除实际设计与运行责任。",
+      "analysis": {
+        "a": "安全取决于具体设计、访问和治理。",
+        "b": "正确：自主控制伴随设施和运维责任。",
+        "c": "正确：弹性不是无限、无条件的资源保证。",
+        "d": "应用、数据和权限等责任仍需按服务边界落实。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE05",
+        "B2-DEPLOY",
+        "B2-CONTROL"
+      ],
+      "reviewStatus": "资料对照完成；AI审题，未独立人工二审",
+      "origin": "本轮原创练习；非官方真题，不复制社区dump题干",
+      "webId": "Q-D05-009"
+    },
+    {
+      "id": "Q-D05-010",
+      "day": 5,
+      "type": "single",
+      "domain": "AI 基础架构",
+      "cardId": "card-cluster-components",
+      "objectiveIds": [
+        "1.6",
+        "2.5"
+      ],
+      "stem": "采购讨论中把GPU、HGX、DGX和SuperPOD都叫成“GPU型号”。哪项纠正更准确？",
+      "options": [
+        [
+          "a",
+          "它们只是同一芯片的不同营销名称"
+        ],
+        [
+          "b",
+          "SuperPOD只是单张GPU上的计算核心"
+        ],
+        [
+          "c",
+          "HGX与DGX都只提供文件存储"
+        ],
+        [
+          "d",
+          "GPU是组件；HGX/DGX涉及系统平台，SuperPOD涉及集群级基础设施"
+        ]
+      ],
+      "answer": [
+        "d"
+      ],
+      "explanation": "辨认组件、系统与集群层次，才不会把品牌名当作同一类硬件来比较。",
+      "analysis": {
+        "a": "产品层次和用途不同。",
+        "b": "SuperPOD不是芯片内计算单元。",
+        "c": "平台涉及GPU计算及配套系统。",
+        "d": "正确：抓住层次，不强记单一代际数量。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE04",
+        "B2-BASEPOD",
+        "B2-HGX",
+        "B2-DGX"
+      ],
+      "reviewStatus": "资料对照完成；AI审题，未独立人工二审",
+      "origin": "本轮原创练习；非官方真题，不复制社区dump题干",
+      "webId": "Q-D05-010"
+    },
+    {
+      "id": "Q-D06-001",
+      "day": 6,
+      "type": "multiple",
+      "domain": "AI 基础架构",
+      "cardId": "card-network-traffic",
+      "objectiveIds": [
+        "2.7"
+      ],
+      "stem": "哪两组流量与用途的对应正确？（选两项）",
+      "options": [
+        [
+          "a",
+          "带外管理流量—每一步训练的梯度计算本身"
+        ],
+        [
+          "b",
+          "计算流量—GPU之间交换训练更新"
+        ],
+        [
+          "c",
+          "存储流量—把机房供电变成直流"
+        ],
+        [
+          "d",
+          "存储流量—读取数据集和保存检查点"
+        ]
+      ],
+      "answer": [
+        "b",
+        "d"
+      ],
+      "explanation": "按数据在做什么分类，有助于定位拥塞和选择网络需求。",
+      "analysis": {
+        "a": "带外偏设备状态和恢复管理，并非模型数学计算。",
+        "b": "正确：多GPU训练的协作数据属于计算通信。",
+        "c": "供电变换不是存储网络职责。",
+        "d": "正确：数据集与检查点都是存储访问。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE06",
+        "B2-NETWORK",
+        "B2-BASEPOD"
+      ],
+      "reviewStatus": "资料对照完成；AI审题，未独立人工二审",
+      "origin": "本轮原创练习；非官方真题，不复制社区dump题干",
+      "webId": "Q-D06-001"
+    },
+    {
+      "id": "Q-D06-002",
+      "day": 6,
+      "type": "single",
+      "domain": "AI 基础架构",
+      "cardId": "card-network-traffic",
+      "objectiveIds": [
+        "2.7"
+      ],
+      "stem": "集中写检查点时，多节点训练变慢；已观察到存储和计算流量争用同一链路。更合理的评估方向是？",
+      "options": [
+        [
+          "a",
+          "按流量目标评估带宽、拥塞及逻辑或物理隔离"
+        ],
+        [
+          "b",
+          "只把网络命名为计算网络便能避免争用"
+        ],
+        [
+          "c",
+          "直接认定所有AI集群必须有四张物理网络"
+        ],
+        [
+          "d",
+          "仅看端口峰值速率，不再检查任务实际吞吐"
+        ]
+      ],
+      "answer": [
+        "a"
+      ],
+      "explanation": "计算同步与存储写入可能互相干扰，应依据实际负载和拓扑评估容量与隔离方式。",
+      "analysis": {
+        "a": "正确：针对已观察到的争用，检查流量需求与实际网络设计。",
+        "b": "名字不会改变带宽、拥塞或隔离配置。",
+        "c": "物理和逻辑网络划分依具体架构，不能由固定数量代替设计。",
+        "d": "名义速率不能反映拥塞下的端到端应用表现。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE06",
+        "B2-NETWORK",
+        "B2-BASEPOD"
+      ],
+      "reviewStatus": "资料对照完成；AI审题，未独立人工二审",
+      "origin": "本轮原创练习；非官方真题，不复制社区dump题干",
+      "webId": "Q-D06-002"
+    },
+    {
+      "id": "Q-D06-003",
+      "day": 6,
+      "type": "single",
+      "domain": "AI 基础架构",
+      "cardId": "card-ethernet-infiniband",
+      "objectiveIds": [
+        "2.8",
+        "2.9"
+      ],
+      "stem": "关于Ethernet与InfiniBand，哪项最准确？",
+      "options": [
+        [
+          "a",
+          "Ethernet无法承载任何RDMA流量"
+        ],
+        [
+          "b",
+          "IB在任意产品组合下都必然拥有更高名义带宽"
+        ],
+        [
+          "c",
+          "两者都可用于AI；Ethernet可通过RoCE承载RDMA"
+        ],
+        [
+          "d",
+          "二者区别仅在网线颜色"
+        ]
+      ],
+      "answer": [
+        "c"
+      ],
+      "explanation": "选择需要考虑完整软硬件和应用表现，不能靠绝对化口诀。",
+      "analysis": {
+        "a": "RoCE就是Ethernet上的RDMA方案。",
+        "b": "代际和配置不同，不能作无条件比较。",
+        "c": "正确：这是技术关系及使用场景的合理表述。",
+        "d": "协议、适配器、交换与管理方式都有实质区别。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE06",
+        "B2-NETWORK",
+        "B2-ROCE",
+        "B2-SM"
+      ],
+      "reviewStatus": "资料对照完成；AI审题，未独立人工二审",
+      "origin": "本轮原创练习；非官方真题，不复制社区dump题干",
+      "webId": "Q-D06-003"
+    },
+    {
+      "id": "Q-D06-004",
+      "day": 6,
+      "type": "single",
+      "domain": "AI 基础架构",
+      "cardId": "card-ethernet-infiniband",
+      "objectiveIds": [
+        "2.8"
+      ],
+      "stem": "InfiniBand子网中的Subnet Manager（SM）主要负责什么？",
+      "options": [
+        [
+          "a",
+          "替代深度学习框架自动训练模型"
+        ],
+        [
+          "b",
+          "发现和配置子网；OpenSM是一种实现"
+        ],
+        [
+          "c",
+          "保证所有Ethernet网络无需交换机"
+        ],
+        [
+          "d",
+          "给GPU风扇直接供电"
+        ]
+      ],
+      "answer": [
+        "b"
+      ],
+      "explanation": "SM负责InfiniBand子网管理，可运行在受支持交换机或相连主机。",
+      "analysis": {
+        "a": "训练由框架及计算资源完成。",
+        "b": "正确：区分管理职责和实现名称。",
+        "c": "SM不替代以太网交换网络。",
+        "d": "风扇供电不是子网管理职责。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE06",
+        "B2-NETWORK",
+        "B2-ROCE",
+        "B2-SM"
+      ],
+      "reviewStatus": "资料对照完成；AI审题，未独立人工二审",
+      "origin": "本轮原创练习；非官方真题，不复制社区dump题干",
+      "webId": "Q-D06-004"
+    },
+    {
+      "id": "Q-D06-005",
+      "day": 6,
+      "type": "multiple",
+      "domain": "AI 基础架构",
+      "cardId": "card-rdma-roce",
+      "objectiveIds": [
+        "2.8",
+        "2.9"
+      ],
+      "stem": "关于RDMA/RoCE，哪两项正确？（选两项）",
+      "options": [
+        [
+          "a",
+          "RDMA网卡可减少CPU在数据搬运路径上的开销"
+        ],
+        [
+          "b",
+          "RoCEv2运行后整个应用不再需要CPU"
+        ],
+        [
+          "c",
+          "任意普通网卡都自动支持RDMA"
+        ],
+        [
+          "d",
+          "RoCE把RDMA能力带到Ethernet，仍需端到端支持"
+        ]
+      ],
+      "answer": [
+        "a",
+        "d"
+      ],
+      "explanation": "RDMA优化数据路径，能力必须由硬件、驱动、软件和网络设计配合。",
+      "analysis": {
+        "a": "正确：硬件承担数据搬运是主要收益之一。",
+        "b": "应用控制、初始化和同步等仍可能使用CPU。",
+        "c": "普通以太网能力不等于RDMA支持。",
+        "d": "正确：协议名不是免配置或免兼容的承诺。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE06",
+        "B2-ROCE",
+        "B2-GDR"
+      ],
+      "reviewStatus": "资料对照完成；AI审题，未独立人工二审",
+      "origin": "本轮原创练习；非官方真题，不复制社区dump题干",
+      "webId": "Q-D06-005"
+    },
+    {
+      "id": "Q-D06-006",
+      "day": 6,
+      "type": "single",
+      "domain": "AI 基础架构",
+      "cardId": "card-rdma-roce",
+      "objectiveIds": [
+        "2.8"
+      ],
+      "stem": "团队要让RoCE流量跨IP子网，下面哪项描述有助于判断方案？",
+      "options": [
+        [
+          "a",
+          "RoCEv2只能在同一根物理线缆上工作"
+        ],
+        [
+          "b",
+          "RoCE就是NVSwitch的别名"
+        ],
+        [
+          "c",
+          "RoCEv2使用UDP/IP封装，但仍需规划路由和拥塞控制"
+        ],
+        [
+          "d",
+          "使用UDP封装后丢包就不会影响传输性能"
+        ]
+      ],
+      "answer": [
+        "c"
+      ],
+      "explanation": "RoCEv2支持IP层路由；能路由不意味着所有网络条件自动合格。",
+      "analysis": {
+        "a": "IP层能力允许适当配置下跨子网。",
+        "b": "NVSwitch是NVLink交换组件，概念不同。",
+        "c": "正确：封装能力与实际网络设计需要一起考虑。",
+        "d": "丢包仍可能带来重传与性能影响。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE06",
+        "B2-ROCE",
+        "B2-GDR"
+      ],
+      "reviewStatus": "资料对照完成；AI审题，未独立人工二审",
+      "origin": "本轮原创练习；非官方真题，不复制社区dump题干",
+      "webId": "Q-D06-006"
+    },
+    {
+      "id": "Q-D06-007",
+      "day": 6,
+      "type": "single",
+      "domain": "AI 基础架构",
+      "cardId": "card-nvlink-nvswitch",
+      "objectiveIds": [
+        "2.2",
+        "2.9"
+      ],
+      "stem": "哪项最能说明NVLink、NVSwitch与IB/Ethernet的关系？",
+      "options": [
+        [
+          "a",
+          "NVSwitch是任意Ethernet网卡的新名称"
+        ],
+        [
+          "b",
+          "NVLink保证任意软件自动把所有显存合成一块"
+        ],
+        [
+          "c",
+          "有NVLink就完全不需要集群网络"
+        ],
+        [
+          "d",
+          "NVLink/NVSwitch组织紧密GPU计算域，IB/Ethernet可继续连接更多系统"
+        ]
+      ],
+      "answer": [
+        "d"
+      ],
+      "explanation": "域内紧密协作和系统间扩展是相互配合的层次；现代NVLink域也可能达到机架规模。",
+      "analysis": {
+        "a": "NVSwitch服务NVLink交换，不是通用网卡。",
+        "b": "内存使用仍需软件支持。",
+        "c": "外部节点、存储和管理等仍有互联需要。",
+        "d": "正确：抓住互补层次，而不是绝对机内/机外口诀。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE06",
+        "B2-NVLINK",
+        "B2-HGX"
+      ],
+      "reviewStatus": "资料对照完成；AI审题，未独立人工二审",
+      "origin": "本轮原创练习；非官方真题，不复制社区dump题干",
+      "webId": "Q-D06-007"
+    },
+    {
+      "id": "Q-D06-008",
+      "day": 6,
+      "type": "single",
+      "domain": "AI 基础架构",
+      "cardId": "card-bluefield-dpu",
+      "objectiveIds": [
+        "2.10"
+      ],
+      "stem": "团队希望把部分网络、安全和存储服务从主机CPU卸载，并与租户应用隔离，更直接评估哪类组件？",
+      "options": [
+        [
+          "a",
+          "PUE比值"
+        ],
+        [
+          "b",
+          "UPS电池"
+        ],
+        [
+          "c",
+          "BlueField DPU及其软件服务"
+        ],
+        [
+          "d",
+          "只包含模型权重的文件"
+        ]
+      ],
+      "answer": [
+        "c"
+      ],
+      "explanation": "DPU针对基础设施服务的数据处理与隔离；部署效果仍需验证。",
+      "analysis": {
+        "a": "PUE是设施能效指标，不是处理器。",
+        "b": "UPS负责供电保障，不执行这些基础设施服务。",
+        "c": "正确：这与DPU的职责匹配。",
+        "d": "权重文件不提供基础设施卸载能力。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE06",
+        "B2-DPU",
+        "B2-BLUEFIELD"
+      ],
+      "reviewStatus": "资料对照完成；AI审题，未独立人工二审",
+      "origin": "本轮原创练习；非官方真题，不复制社区dump题干",
+      "webId": "Q-D06-008"
+    },
+    {
+      "id": "Q-D06-009",
+      "day": 6,
+      "type": "multiple",
+      "domain": "AI 基础架构",
+      "cardId": "card-bluefield-dpu",
+      "objectiveIds": [
+        "2.10"
+      ],
+      "stem": "哪两项关于DPU的边界说明正确？（选两项）",
+      "options": [
+        [
+          "a",
+          "装上DPU即可保证任何配置都完全安全"
+        ],
+        [
+          "b",
+          "它可以帮助卸载基础设施服务，但不是通用GPU替代品"
+        ],
+        [
+          "c",
+          "DOCA就是冷却液分配设备"
+        ],
+        [
+          "d",
+          "隔离与加速效果需要核对具体硬件模式、软件和配置"
+        ]
+      ],
+      "answer": [
+        "b",
+        "d"
+      ],
+      "explanation": "产品职责与条件要同时理解，不能把部署组件当作自动完成所有目标。",
+      "analysis": {
+        "a": "安全不是只由一张卡决定。",
+        "b": "正确：GPU和DPU侧重不同工作。",
+        "c": "DOCA提供软件开发能力；CDU才与冷却液分配相关。",
+        "d": "正确：启用方式和支持能力影响实际结果。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE06",
+        "B2-DPU",
+        "B2-BLUEFIELD"
+      ],
+      "reviewStatus": "资料对照完成；AI审题，未独立人工二审",
+      "origin": "本轮原创练习；非官方真题，不复制社区dump题干",
+      "webId": "Q-D06-009"
+    },
+    {
+      "id": "Q-D06-010",
+      "day": 6,
+      "type": "single",
+      "domain": "AI 基础架构",
+      "cardId": "card-gpudirect-paths",
+      "objectiveIds": [
+        "2.7",
+        "2.9"
+      ],
+      "stem": "哪项对应最合理？",
+      "options": [
+        [
+          "a",
+          "GPUDirect RDMA关注网络设备访问GPU内存；GDS关注存储与GPU的数据路径"
+        ],
+        [
+          "b",
+          "GDS只负责风扇转速，RDMA只负责模型准确率"
+        ],
+        [
+          "c",
+          "GPUDirect等于把CPU从服务器中物理拆掉"
+        ],
+        [
+          "d",
+          "所有NVMe和GPU组合都会自动启用GDS直接路径"
+        ]
+      ],
+      "answer": [
+        "a"
+      ],
+      "explanation": "看数据路径的端点，能分清两类能力；两者均有软硬件支持条件。",
+      "analysis": {
+        "a": "正确：区分网络设备与存储两个主要入口。",
+        "b": "二者都不是这些职责。",
+        "c": "CPU仍有控制、调度和应用等工作。",
+        "d": "必须核对兼容、驱动、文件系统和实际路径。"
+      },
+      "sourceIds": [
+        "TRAIN",
+        "NOTE06",
+        "B2-GDR",
+        "B2-GDS"
+      ],
+      "reviewStatus": "资料对照完成；AI审题，未独立人工二审",
+      "origin": "本轮原创练习；非官方真题，不复制社区dump题干",
+      "webId": "Q-D06-010"
+    }
+  ],
+  "lessons": [
+    {
+      "day": 5,
+      "title": "AI集群扩展、设施与部署选择",
+      "status": "可学习（第二批内容）",
+      "cardIds": [
+        "card-cluster-components",
+        "card-scale-up-out",
+        "card-power-cooling",
+        "card-pue",
+        "card-facility",
+        "card-onprem-cloud"
+      ],
+      "questionIds": [
+        "Q-D05-001",
+        "Q-D05-002",
+        "Q-D05-003",
+        "Q-D05-004",
+        "Q-D05-005",
+        "Q-D05-006",
+        "Q-D05-007",
+        "Q-D05-008",
+        "Q-D05-009",
+        "Q-D05-010"
+      ],
+      "selfCheck": "GPU增加后训练没更快，怎样依次检查数据供给、通信和设施约束？PUE低能证明什么、不能证明什么？",
+      "selfCheckNote": "口述自检不自动计分；一次答对不是已掌握。20/45/60分钟可分次完成本课。"
+    },
+    {
+      "day": 6,
+      "title": "AI网络、GPU互联与DPU",
+      "status": "可学习（第二批内容）",
+      "cardIds": [
+        "card-network-traffic",
+        "card-ethernet-infiniband",
+        "card-rdma-roce",
+        "card-nvlink-nvswitch",
+        "card-bluefield-dpu",
+        "card-gpudirect-paths"
+      ],
+      "questionIds": [
+        "Q-D06-001",
+        "Q-D06-002",
+        "Q-D06-003",
+        "Q-D06-004",
+        "Q-D06-005",
+        "Q-D06-006",
+        "Q-D06-007",
+        "Q-D06-008",
+        "Q-D06-009",
+        "Q-D06-010"
+      ],
+      "selfCheck": "用一条训练数据路径串起存储、GPU互联和跨节点网络；再说明BMC、DPU和GPU各负责什么。",
+      "selfCheckNote": "口述自检不自动计分；一次答对不是已掌握。20/45/60分钟可分次完成本课。"
+    }
+  ],
+  "coverageUpdates": [
+    {
+      "id": "1.2",
+      "day": 5,
+      "addCardIds": [
+        "card-scale-up-out",
+        "card-network-traffic"
+      ],
+      "addQuestionIds": [
+        "Q-D05-003"
+      ],
+      "contentStatus": "待补（部分已有）",
+      "reviewStatus": "第二批涉及定义已对照所列官方资料；AI审题，未独立人工二审",
+      "noteReview": "04–06全文文本已读；TRAIN对应页已读且图示抽查；仅吸收核验后概念",
+      "gap": "本批补GPU扩展/集群平台/DPU；更广产品与复杂架构仍待补，不称穷尽覆盖。"
+    },
+    {
+      "id": "1.6",
+      "day": 5,
+      "addCardIds": [
+        "card-cluster-components",
+        "card-bluefield-dpu"
+      ],
+      "addQuestionIds": [
+        "Q-D05-010"
+      ],
+      "contentStatus": "待补（部分已有）",
+      "reviewStatus": "第二批涉及定义已对照所列官方资料；AI审题，未独立人工二审",
+      "noteReview": "04–06全文文本已读；TRAIN对应页已读且图示抽查；仅吸收核验后概念",
+      "gap": "本批补GPU扩展/集群平台/DPU；更广产品与复杂架构仍待补，不称穷尽覆盖。"
+    },
+    {
+      "id": "2.1",
+      "day": 5,
+      "addCardIds": [
+        "card-cluster-components",
+        "card-scale-up-out",
+        "card-onprem-cloud",
+        "card-gpudirect-paths"
+      ],
+      "addQuestionIds": [
+        "Q-D05-001",
+        "Q-D05-003"
+      ],
+      "contentStatus": "已有（基础）",
+      "reviewStatus": "第二批涉及定义已对照所列官方资料；AI审题，未独立人工二审",
+      "noteReview": "04–06全文文本已读；TRAIN对应页已读且图示抽查；仅吸收核验后概念",
+      "gap": "已有基础课程/原创练习；完整配置评估与复杂综合情境仍可继续补充，不代表用户已掌握。"
+    },
+    {
+      "id": "2.2",
+      "day": 5,
+      "addCardIds": [
+        "card-scale-up-out",
+        "card-facility",
+        "card-nvlink-nvswitch"
+      ],
+      "addQuestionIds": [
+        "Q-D05-002",
+        "Q-D05-003",
+        "Q-D06-007"
+      ],
+      "contentStatus": "已有（基础）",
+      "reviewStatus": "第二批涉及定义已对照所列官方资料；AI审题，未独立人工二审",
+      "noteReview": "04–06全文文本已读；TRAIN对应页已读且图示抽查；仅吸收核验后概念",
+      "gap": "已有基础课程/原创练习；完整配置评估与复杂综合情境仍可继续补充，不代表用户已掌握。"
+    },
+    {
+      "id": "2.3",
+      "day": 5,
+      "addCardIds": [
+        "card-power-cooling",
+        "card-pue",
+        "card-facility"
+      ],
+      "addQuestionIds": [
+        "Q-D05-004",
+        "Q-D05-005",
+        "Q-D05-006"
+      ],
+      "contentStatus": "已有（基础）",
+      "reviewStatus": "第二批涉及定义已对照所列官方资料；AI审题，未独立人工二审",
+      "noteReview": "04–06全文文本已读；TRAIN对应页已读且图示抽查；仅吸收核验后概念",
+      "gap": "已有基础课程/原创练习；完整配置评估与复杂综合情境仍可继续补充，不代表用户已掌握。"
+    },
+    {
+      "id": "2.4",
+      "day": 5,
+      "addCardIds": [
+        "card-onprem-cloud"
+      ],
+      "addQuestionIds": [
+        "Q-D05-008",
+        "Q-D05-009"
+      ],
+      "contentStatus": "已有（基础）",
+      "reviewStatus": "第二批涉及定义已对照所列官方资料；AI审题，未独立人工二审",
+      "noteReview": "04–06全文文本已读；TRAIN对应页已读且图示抽查；仅吸收核验后概念",
+      "gap": "已有基础课程/原创练习；完整配置评估与复杂综合情境仍可继续补充，不代表用户已掌握。"
+    },
+    {
+      "id": "2.5",
+      "day": 5,
+      "addCardIds": [
+        "card-cluster-components",
+        "card-network-traffic"
+      ],
+      "addQuestionIds": [
+        "Q-D05-001",
+        "Q-D05-010"
+      ],
+      "contentStatus": "已有（基础）",
+      "reviewStatus": "第二批涉及定义已对照所列官方资料；AI审题，未独立人工二审",
+      "noteReview": "04–06全文文本已读；TRAIN对应页已读且图示抽查；仅吸收核验后概念",
+      "gap": "已有基础课程/原创练习；完整配置评估与复杂综合情境仍可继续补充，不代表用户已掌握。"
+    },
+    {
+      "id": "2.6",
+      "day": 5,
+      "addCardIds": [
+        "card-power-cooling",
+        "card-facility"
+      ],
+      "addQuestionIds": [
+        "Q-D05-004",
+        "Q-D05-007"
+      ],
+      "contentStatus": "已有（基础）",
+      "reviewStatus": "第二批涉及定义已对照所列官方资料；AI审题，未独立人工二审",
+      "noteReview": "04–06全文文本已读；TRAIN对应页已读且图示抽查；仅吸收核验后概念",
+      "gap": "已有基础课程/原创练习；完整配置评估与复杂综合情境仍可继续补充，不代表用户已掌握。"
+    },
+    {
+      "id": "2.7",
+      "day": 6,
+      "addCardIds": [
+        "card-network-traffic",
+        "card-ethernet-infiniband",
+        "card-gpudirect-paths"
+      ],
+      "addQuestionIds": [
+        "Q-D06-001",
+        "Q-D06-002",
+        "Q-D06-010"
+      ],
+      "contentStatus": "已有（基础）",
+      "reviewStatus": "第二批涉及定义已对照所列官方资料；AI审题，未独立人工二审",
+      "noteReview": "04–06全文文本已读；TRAIN对应页已读且图示抽查；仅吸收核验后概念",
+      "gap": "已有基础课程/原创练习；完整配置评估与复杂综合情境仍可继续补充，不代表用户已掌握。"
+    },
+    {
+      "id": "2.8",
+      "day": 6,
+      "addCardIds": [
+        "card-ethernet-infiniband",
+        "card-rdma-roce"
+      ],
+      "addQuestionIds": [
+        "Q-D06-003",
+        "Q-D06-004",
+        "Q-D06-005",
+        "Q-D06-006"
+      ],
+      "contentStatus": "已有（基础）",
+      "reviewStatus": "第二批涉及定义已对照所列官方资料；AI审题，未独立人工二审",
+      "noteReview": "04–06全文文本已读；TRAIN对应页已读且图示抽查；仅吸收核验后概念",
+      "gap": "已有基础课程/原创练习；完整配置评估与复杂综合情境仍可继续补充，不代表用户已掌握。"
+    },
+    {
+      "id": "2.9",
+      "day": 6,
+      "addCardIds": [
+        "card-ethernet-infiniband",
+        "card-rdma-roce",
+        "card-nvlink-nvswitch",
+        "card-gpudirect-paths"
+      ],
+      "addQuestionIds": [
+        "Q-D06-003",
+        "Q-D06-005",
+        "Q-D06-007",
+        "Q-D06-010"
+      ],
+      "contentStatus": "已有（基础）",
+      "reviewStatus": "第二批涉及定义已对照所列官方资料；AI审题，未独立人工二审",
+      "noteReview": "04–06全文文本已读；TRAIN对应页已读且图示抽查；仅吸收核验后概念",
+      "gap": "已有基础课程/原创练习；完整配置评估与复杂综合情境仍可继续补充，不代表用户已掌握。"
+    },
+    {
+      "id": "2.10",
+      "day": 6,
+      "addCardIds": [
+        "card-bluefield-dpu"
+      ],
+      "addQuestionIds": [
+        "Q-D06-008",
+        "Q-D06-009"
+      ],
+      "contentStatus": "已有（基础）",
+      "reviewStatus": "第二批涉及定义已对照所列官方资料；AI审题，未独立人工二审",
+      "noteReview": "04–06全文文本已读；TRAIN对应页已读且图示抽查；仅吸收核验后概念",
+      "gap": "已有基础课程/原创练习；完整配置评估与复杂综合情境仍可继续补充，不代表用户已掌握。"
+    }
+  ]
+}

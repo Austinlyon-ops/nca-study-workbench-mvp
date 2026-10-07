@@ -1,0 +1,43 @@
+{
+  "name": "nca-study-desk",
+  "version": "0.2.0",
+  "description": "个人离线 NCA-AIIO 学习辅助桌面应用",
+  "main": "src/main.cjs",
+  "author": "NCA Study Desk",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test test/*.test.mjs && node test/content-release.check.cjs",
+    "build:content": "node scripts/build-content.cjs",
+    "test:windows": "node scripts/acceptance-windows.cjs final",
+    "make-icon": "node scripts/make-icon.mjs",
+    "smoke:electron": "node scripts/smoke-electron.cjs",
+    "dist": "npm run make-icon && electron-builder --win nsis --config.directories.output=\"C:\\Users\\asus\\Documents\\Codex\\NCA-Study-Desk-Build-0.2.0\""
+  },
+  "build": {
+    "appId": "com.personal.ncastudydesk",
+    "productName": "NCA Study Desk",
+    "artifactName": "NCA-Study-Desk-Setup-${version}-x64.${ext}",
+    "asar": true,
+    "directories": { "output": "release", "buildResources": "assets" },
+    "files": ["src/**/*", "assets/**/*", "package.json"],
+    "win": { "target": [{ "target": "nsis", "arch": ["x64"] }], "icon": "assets/app.ico" },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": false,
+      "perMachine": false,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "NCA 备考工作台",
+      "language": 2052,
+      "uninstallDisplayName": "NCA 备考工作台"
+    }
+  },
+  "devDependencies": {
+    "electron": "^37.4.0",
+    "electron-builder": "^26.0.12",
+    "playwright-core": "^1.55.1",
+    "png-to-ico": "^3.0.1",
+    "sharp": "^0.34.3"
+  }
+}

@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>个人知识库 · Knowledge Desk</title>
+  <style>
+    :root { --bg:#f4f5f1; --paper:#fff; --ink:#263b35; --muted:#687870; --line:#dce4dc; --green:#28644f; --green-light:#eaf3ec; --red:#a33b36; --shadow:0 8px 30px #24392a06; }
+    * { box-sizing:border-box; }
+    [hidden] { display:none !important; }
+    body { margin:0; background:var(--bg); color:var(--ink); font:15px/1.65 "Segoe UI","Microsoft YaHei",system-ui,sans-serif; }
+    button,input,textarea { font:inherit; }
+    button { min-height:44px; cursor:pointer; border:1px solid var(--line); border-radius:10px; padding:9px 16px; background:var(--paper); color:var(--ink); font-weight:600; }
+    button:hover { background:#f0f5ef; border-color:#9cb5a4; }
+    button:disabled { cursor:not-allowed; opacity:.5; }
+    :focus-visible { outline:3px solid #82b69c; outline-offset:3px; }
+    .primary { background:var(--green); border-color:var(--green); color:white; }
+    .primary:hover { background:#1f503f; color:white; }
+    .danger { color:var(--red); border-color:#e5c9c5; }
+    .danger:hover { background:#fff1ef; border-color:#ccaaa3; }
+    input,textarea { width:100%; min-width:0; color:var(--ink); background:#fff; border:1px solid #cbd8ce; border-radius:10px; padding:11px 13px; }
+    input { min-height:46px; }
+    textarea { min-height:250px; resize:vertical; line-height:1.85; }
+    input:focus,textarea:focus { outline:2px solid #a6cbb6; outline-offset:1px; border-color:var(--green); }
+    .shell { max-width:1500px; margin:0 auto; padding:30px 36px 20px; }
+    .top { display:flex; align-items:center; flex-wrap:wrap; gap:22px; padding-bottom:24px; }
+    .brand { display:flex; align-items:center; gap:12px; flex-shrink:0; }
+    .brand-icon { width:44px; height:44px; background:var(--green); color:#fff; border-radius:13px; padding:10px; }
+    h1 { font-size:23px; letter-spacing:1px; margin:0; line-height:1.3; }
+    .eyebrow { margin:2px 0 0; color:var(--muted); font-size:11px; letter-spacing:1.8px; }
+    .search-box { flex:1; min-width:220px; position:relative; }
+    .search-box input { padding-left:42px; padding-right:48px; background:#fff; }
+    .search-box input::-webkit-search-cancel-button { -webkit-appearance:none; appearance:none; }
+    .search-icon { position:absolute; left:14px; top:14px; width:20px; height:20px; color:var(--muted); pointer-events:none; }
+    .clear-search { position:absolute; right:2px; top:2px; width:42px; padding:0; border:0; min-height:42px; background:transparent; font-size:20px; font-weight:400; }
+    .top-actions { display:flex; gap:8px; flex-wrap:wrap; }
+    .status-line { display:flex; justify-content:space-between; flex-wrap:wrap; align-items:center; gap:8px 16px; margin-bottom:14px; color:var(--muted); font-size:13px; }
+    .local-dot::before { content:""; display:inline-block; width:7px; height:7px; border-radius:50%; background:#488265; margin-right:8px; }
+    .workspace { display:grid; grid-template-columns:340px minmax(0,1fr); gap:22px; align-items:start; }
+    .sidebar,.detail-panel { background:var(--paper); border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow); min-width:0; }
+    .sidebar { overflow:hidden; }
+    .sidebar-head { padding:22px 22px 18px; border-bottom:1px solid var(--line); }
+    .section-heading { display:flex; align-items:center; justify-content:space-between; gap:10px; }
+    h2 { font-size:16px; margin:0; }
+    #list-count { font-size:12px; color:var(--muted); background:var(--bg); padding:2px 8px; border-radius:6px; }
+    .filter-label { color:var(--muted); font-size:12px; margin:17px 0 7px; }
+    .filters { display:flex; flex-wrap:wrap; gap:5px; }
+    .filter { border-radius:8px; font-size:13px; padding:7px 11px; border-color:transparent; background:#f5f7f3; font-weight:400; max-width:100%; overflow-wrap:anywhere; }
+    .filter[aria-pressed="true"] { background:var(--green); color:white; font-weight:600; }
+    .entry-list { list-style:none; margin:0; padding:8px; max-height:calc(100vh - 340px); min-height:220px; overflow-y:auto; }
+    .entry-item { margin-bottom:5px; }
+    .entry-button { display:block; text-align:left; padding:16px 14px; width:100%; border:1px solid transparent; border-radius:10px; font-weight:400; }
+    .entry-button[aria-current="true"] { background:var(--green-light); border-color:#c4dbca; box-shadow:inset 3px 0 0 var(--green); }
+    .entry-title { display:block; font-size:15px; font-weight:650; overflow-wrap:anywhere; }
+    .chips { display:flex; flex-wrap:wrap; gap:6px; }
+    .entry-button .chips { margin:9px 0; }
+    .chip { display:inline-block; background:#eff3ec; border:1px solid #e2e8df; border-radius:6px; padding:1px 8px; color:#52684e; font-size:12px; font-weight:400; max-width:100%; overflow-wrap:anywhere; }
+    .entry-button[aria-current="true"] .chip { background:#fff9; border-color:#d3e2d4; }
+    .entry-date { display:block; color:var(--muted); font-size:12px; }
+    .snippet { margin:8px 0; color:#5c6a61; font-size:13px; font-weight:400; overflow-wrap:anywhere; display:block; }
+    mark { background:#f7eaa6; color:inherit; padding:0 1px; border-radius:2px; }
+    .list-empty { padding:30px 12px; color:var(--muted); text-align:center; font-size:14px; }
+    .detail-panel { min-height:625px; padding:30px 36px; }
+    .detail-top { display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-bottom:25px; align-items:center; }
+    .kicker { font-size:12px; color:var(--muted); letter-spacing:1px; }
+    .detail-actions { display:flex; gap:8px; }
+    .detail-title { margin:0 0 14px; font-size:28px; line-height:1.5; letter-spacing:.3px; overflow-wrap:anywhere; }
+    .metadata { display:flex; flex-wrap:wrap; gap:6px 24px; margin:20px 0 0; padding-bottom:22px; border-bottom:1px solid var(--line); color:var(--muted); font-size:12px; }
+    .content { margin-top:26px; line-height:1.95; font-size:16px; white-space:pre-wrap; overflow-wrap:anywhere; }
+    .muted { color:var(--muted); }
+    .empty-state { min-height:555px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:20px; }
+    .empty-icon { width:64px; height:64px; padding:17px; background:#eff4eb; border-radius:20px; color:var(--green); margin-bottom:22px; }
+    .empty-state h2 { font-size:20px; margin-bottom:8px; }
+    .empty-state p { margin:0 0 22px; color:var(--muted); }
+    .editor-heading { font-size:23px; margin-bottom:5px; }
+    .editor-hint { color:var(--muted); font-size:13px; margin:0 0 25px; }
+    .field { margin-bottom:21px; }
+    .field label { display:block; font-weight:600; font-size:14px; margin-bottom:7px; }
+    .required { color:var(--red); font-size:12px; font-weight:400; margin-left:7px; }
+    .field-hint { color:var(--muted); font-size:12px; margin:5px 0 0; }
+    .form-actions { display:flex; gap:10px; flex-wrap:wrap; padding-top:5px; align-items:center; }
+    .draft-hint { font-size:12px; color:var(--muted); }
+    .message { margin:0 0 16px; padding:12px 15px; border-radius:10px; background:#e9f3ea; border:1px solid #c5dccb; font-size:14px; overflow-wrap:anywhere; }
+    .message[data-kind="error"] { background:#fff1ee; border-color:#e7c4bb; color:#973e34; }
+    #form-error { margin-top:10px; color:var(--red); font-size:13px; }
+    .footer { margin-top:18px; color:var(--muted); font-size:12px; display:flex; flex-wrap:wrap; gap:8px 15px; justify-content:space-between; align-items:center; }
+    .safety { padding:5px 11px; font-size:12px; font-weight:400; background:transparent; }
+    .sr-only { position:absolute; width:1px; height:1px; padding:0; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+    @media (max-width:1120px) {
+      .shell { padding:22px; }
+      .search-box { order:3; flex-basis:100%; }
+      .top { justify-content:space-between; gap:16px; }
+      .workspace { grid-template-columns:300px minmax(0,1fr); gap:16px; }
+      .detail-panel { padding:25px; }
+      .entry-list { max-height:600px; }
+    }
+    @media (max-width:700px) {
+      .shell { padding:18px 14px; }
+      h1 { font-size:21px; }
+      .top { gap:17px; padding-bottom:19px; }
+      .top-actions { width:100%; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); }
+      .top-actions button { padding:9px 4px; font-size:13px; }
+      .search-box { min-width:0; order:0; flex-basis:100%; }
+      .workspace { grid-template-columns:minmax(0,1fr); }
+      .sidebar-head { padding:17px; }
+      .entry-list { max-height:300px; min-height:0; }
+      .detail-panel { min-height:340px; padding:22px 19px; scroll-margin-top:12px; }
+      .empty-state { min-height:295px; padding:10px 0; }
+      .detail-title { font-size:24px; }
+      .detail-top { margin-bottom:20px; }
+      .metadata { gap:5px; flex-direction:column; }
+      .content { font-size:15px; }
+      textarea { min-height:230px; }
+    }
+    @media print {
+      body { background:white; }
+      .top,.status-line,.sidebar,.footer,.detail-actions,.message { display:none; }
+      .workspace { display:block; }
+      .detail-panel { border:0; padding:0; box-shadow:none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="top">
+      <div class="brand">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 4.5h6a4 4 0 0 1 3 1.3 4 4 0 0 1 3-1.3h6V20h-6a4 4 0 0 0-3 1 4 4 0 0 0-3-1H3zM12 6v15M6 9h3M15 9h3M6 13h3M15 13h3"/></svg>
+        <div><h1>个人知识库</h1><p class="eyebrow">KNOWLEDGE DESK</p></div>
+      </div>
+      <div class="search-box" role="search">
+        <label for="search" class="sr-only">搜索标题或正文</label>
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg>
+        <input id="search" type="search" placeholder="搜索标题或正文…" autocomplete="off">
+        <button id="clear-search" class="clear-search" type="button" aria-label="清空搜索" hidden>×</button>
+      </div>
+      <div class="top-actions">
+        <button id="new-entry" class="primary" type="button">＋ 新增条目</button>
+        <button id="export" type="button">导出备份</button>
+        <button id="import" type="button">导入恢复</button>
+        <input id="import-file" class="sr-only" type="file" accept=".json,application/json" tabindex="-1" aria-label="选择 JSON 备份文件">
+      </div>
+    </header>
+
+    <div class="status-line"><span class="local-dot" id="storage-status">本地知识 · 只保存在此浏览器</span><span>随手记录，随时找回。</span></div>
+    <div id="message" class="message" role="status" aria-live="polite" hidden></div>
+    <div id="storage-error" class="message" data-kind="error" role="alert" hidden></div>
+
+    <main class="workspace">
+      <aside class="sidebar" aria-label="知识列表与标签筛选">
+        <div class="sidebar-head">
+          <div class="section-heading"><h2>我的知识</h2><span id="list-count" aria-live="polite"></span></div>
+          <p class="filter-label">按标签筛选</p>
+          <div id="filters" class="filters" aria-label="标签筛选"></div>
+        </div>
+        <ul id="entry-list" class="entry-list" aria-label="知识条目"></ul>
+        <p id="list-empty" class="list-empty" hidden></p>
+      </aside>
+
+      <section id="detail-panel" class="detail-panel" aria-label="知识详情或编辑区" tabindex="-1">
+        <div id="empty-state" class="empty-state">
+          <svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 3h11l5 5v13H4zM14 3v6h6M8 13h8M8 17h5"/></svg>
+          <h2 id="empty-title">给知识一个安放的地方</h2>
+          <p id="empty-description">从左侧选择一条知识，<br>或点击“新增条目”开始记录。</p>
+          <button id="empty-new" class="primary" type="button">＋ 记录第一条知识</button>
+        </div>
+
+        <article id="detail" hidden>
+          <div class="detail-top"><span class="kicker">知识详情</span><div class="detail-actions"><button id="edit" type="button">编辑</button><button id="delete" class="danger" type="button">删除</button></div></div>
+          <h2 id="detail-title" class="detail-title"></h2>
+          <div id="detail-tags" class="chips"></div>
+          <div class="metadata"><span>创建于 <time id="created-at"></time></span><span>最后修改 <time id="updated-at"></time></span></div>
+          <div id="detail-content" class="content"></div>
+        </article>
+
+        <form id="editor" novalidate hidden>
+          <h2 id="editor-heading" class="editor-heading">新增条目</h2>
+          <p class="editor-hint">先记下来，再慢慢整理。点击保存后才会写入知识库。</p>
+          <div class="field"><label for="title">标题<span class="required">必填</span></label><input id="title" maxlength="300" required placeholder="给这条知识起个清晰的标题" aria-describedby="form-error"></div>
+          <div class="field"><label for="tags">标签</label><input id="tags" maxlength="2000" placeholder="例如：AI, GPU, 网络" aria-describedby="tags-hint"><p id="tags-hint" class="field-hint">多个标签用中文或英文逗号分隔，重复标签会自动合并。</p></div>
+          <div class="field"><label for="content">正文</label><textarea id="content" maxlength="200000" placeholder="记录你的理解、操作步骤，或值得留存的一段内容…"></textarea></div>
+          <p id="form-error" role="alert" hidden></p>
+          <div class="form-actions"><button id="save" type="submit" class="primary">保存条目</button><button id="cancel" type="button">取消编辑</button><span class="draft-hint">未保存的修改不会写入本地</span></div>
+        </form>
+      </section>
+    </main>
+    <footer class="footer"><span>无需联网，无需登录。换浏览器、移动文件或清理浏览器数据前，请先导出备份。</span><button id="safety-export" class="safety" type="button" hidden>下载覆盖前安全备份</button></footer>
+    <noscript><p class="message" data-kind="error">请在浏览器中启用 JavaScript 后使用此应用。</p></noscript>
+  </div>
+
+  <script>
+  'use strict';
+  (() => {
+    const STORAGE_KEY = 'personalKnowledgeBase_v1';
+    const SAFETY_KEY = STORAGE_KEY + '_safetyBackup';
+    const MAX_BACKUP_BYTES = 10 * 1024 * 1024;
+    const $ = id => document.getElementById(id);
+    let entries = [], selectedId = null, activeTag = null, query = '';
+    let editingId = null, editing = false, baseline = '', lastRaw = null;
+    let blocked = false, importing = false;
+
+    function notify(text, isError = false) {
+      $('message').textContent = text;
+      $('message').dataset.kind = isError ? 'error' : 'success';
+      $('message').hidden = false;
+    }
+
+    function storageWarning(text) {
+      $('storage-error').textContent = text;
+      $('storage-error').hidden = false;
+      $('storage-status').textContent = '本地存储需要处理 · 请先保留备份';
+    }
+
+    const pack = list => ({ version: 1, entries: list });
+    const currentDraft = () => JSON.stringify([$('title').value, $('tags').value, $('content').value]);
+    const isDirty = () => editing && currentDraft() !== baseline;
+    const allowLeave = () => !isDirty() || window.confirm('有尚未保存的修改，确定放弃吗？');
+    const formatDate = iso => new Date(iso).toLocaleString('zh-CN', { year:'numeric', month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:false });
+
+    function sampleEntries() {
+      const now = new Date().toISOString();
+      return [
+        { id:'sample-cpu-gpu', title:'GPU 与 CPU 的区别', tags:['GPU','AI基础'], content:'CPU 擅长处理通用任务和复杂的控制流程；GPU 擅长同时处理大量相似的计算。\n\n例如：服务器上的 CPU 负责组织任务，GPU 可以并行计算大量矩阵运算，两者通常协同工作。GPU 并非在所有任务上都比 CPU 快。\n\n这是一条可编辑、可删除的演示知识。\n参考：NVIDIA 官方博客《What’s the Difference Between a CPU and a GPU?》\nhttps://blogs.nvidia.com/blog/whats-the-difference-between-a-cpu-and-a-gpu/', createdAt:now, updatedAt:now },
+        { id:'sample-nvlink', title:'NVLink 是什么', tags:['GPU','网络'], content:'NVLink 是 NVIDIA 的高速互连技术，可用于 GPU 之间的数据通信，帮助多个 GPU 协同处理大规模计算任务。\n\n它不等于普通以太网接口；具体连接方式和能力取决于硬件平台。\n\n这是一条可编辑、可删除的演示知识。\n参考：NVIDIA NVLink 产品介绍\nhttps://www.nvidia.com/en-us/data-center/nvlink/', createdAt:now, updatedAt:now },
+        { id:'sample-dcgm', title:'DCGM 的用途', tags:['GPU','运维'], content:'DCGM 是 NVIDIA Data Center GPU Manager 的缩写，用于数据中心 GPU 的监控与管理。\n\n运维时可以用它了解 GPU 健康状态、采集指标并进行诊断。告警或诊断结果是排查线索，不应直接当作唯一的故障根因结论。\n\n这是一条可编辑、可删除的演示知识。\n参考：NVIDIA DCGM 产品介绍\nhttps://developer.nvidia.com/dcgm', createdAt:now, updatedAt:now }
+      ];
+    }
+
+    // Validate all data before asking for permission or writing any storage.
+    function validateBackup(data) {
+      if (!data || typeof data !== 'object' || Array.isArray(data) || data.version !== 1 || !Array.isArray(data.entries)) {
+        throw new Error('备份结构不正确：需要 version 为 1，并包含 entries 条目数组。请选择本应用导出的 JSON 文件。');
+      }
+      if (data.entries.length > 10000) throw new Error('备份超过 10000 条，无法导入。');
+      const ids = new Set();
+      return data.entries.map((entry, index) => {
+        const prefix = '第 ' + (index + 1) + ' 条知识：';
+        if (!entry || typeof entry !== 'object' || Array.isArray(entry)) throw new Error(prefix + '不是有效的条目对象。');
+        if (typeof entry.id !== 'string' || !entry.id.trim() || entry.id.length > 200 || ids.has(entry.id)) throw new Error(prefix + 'id 无效或重复。');
+        if (typeof entry.title !== 'string' || !entry.title.trim() || entry.title.length > 300) throw new Error(prefix + '标题不能为空且不能超过 300 字。');
+        if (typeof entry.content !== 'string' || entry.content.length > 200000) throw new Error(prefix + '正文必须是文本，且不能超过 200000 字。');
+        if (!Array.isArray(entry.tags) || entry.tags.length > 30 || entry.tags.some(tag => typeof tag !== 'string' || !tag.trim() || tag.length > 50 || /[,，\n]/.test(tag))) throw new Error(prefix + '标签必须是文本数组，每个标签 1～50 字、最多 30 个，且不含逗号或换行。');
+        if (entry.tags.join(', ').length > 2000) throw new Error(prefix + '标签内容过长。');
+        for (const field of ['createdAt','updatedAt']) {
+          if (typeof entry[field] !== 'string' || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/.test(entry[field]) || !Number.isFinite(Date.parse(entry[field])) || new Date(entry[field]).toISOString() !== entry[field]) throw new Error(prefix + field + ' 必须是有效的 ISO 时间。');
+        }
+        if (Date.parse(entry.updatedAt) < Date.parse(entry.createdAt)) throw new Error(prefix + '修改时间不能早于创建时间。');
+        ids.add(entry.id);
+        return { id:entry.id, title:entry.title, tags:[...entry.tags], content:entry.content, createdAt:entry.createdAt, updatedAt:entry.updatedAt };
+      });
+    }
+
+    function initialize() {
+      try {
+        lastRaw = localStorage.getItem(STORAGE_KEY);
+        if (lastRaw === null) {
+          const initial = sampleEntries();
+          const raw = JSON.stringify(pack(initial));
+          localStorage.setItem(STORAGE_KEY, raw);
+          lastRaw = raw;
+          entries = initial;
+        } else {
+          entries = validateBackup(JSON.parse(lastRaw));
+        }
+      } catch (error) {
+        blocked = true;
+        storageWarning('无法读取或保存本地知识库。原有数据未被覆盖。请确认浏览器允许本地存储，或使用有效备份导入恢复。错误：' + error.message);
+      }
+      refreshSafetyButton();
+      render();
+    }
+
+    function refreshSafetyButton() {
+      try { $('safety-export').hidden = localStorage.getItem(SAFETY_KEY) === null; }
+      catch { $('safety-export').hidden = true; }
+    }
+
+    // Commit to persistent storage first. On failure, the old state and draft survive.
+    function commit(next, forImport = false) {
+      try {
+        validateBackup(pack(next));
+        if (localStorage.getItem(STORAGE_KEY) !== lastRaw) throw new Error('此文件在其他窗口中的数据已更改。请先保留未保存的文字，再刷新本页后操作。');
+        const raw = JSON.stringify(pack(next));
+        if (forImport) {
+          localStorage.setItem(SAFETY_KEY, lastRaw === null ? JSON.stringify(pack([])) : lastRaw);
+        }
+        localStorage.setItem(STORAGE_KEY, raw);
+        lastRaw = raw;
+        entries = next;
+        blocked = false;
+        $('storage-error').hidden = true;
+        $('storage-status').textContent = '已保存到本地 · 只保存在此浏览器';
+        refreshSafetyButton();
+        return true;
+      } catch (error) {
+        notify((forImport ? '恢复未完成' : '保存未完成') + '，当前知识库未被替换。可能是存储空间不足或浏览器限制。请先导出备份。详情：' + error.message, true);
+        refreshSafetyButton();
+        return false;
+      }
+    }
+
+    function allTags() {
+      return [...new Set(entries.flatMap(entry => entry.tags))].sort((a,b) => a.localeCompare(b,'zh-CN'));
+    }
+
+    function visibleEntries() {
+      const term = query.toLocaleLowerCase();
+      return entries.filter(entry => (!activeTag || entry.tags.includes(activeTag)) && (!term || entry.title.toLocaleLowerCase().includes(term) || entry.content.toLocaleLowerCase().includes(term)))
+        .sort((a,b) => b.updatedAt.localeCompare(a.updatedAt) || a.title.localeCompare(b.title,'zh-CN'));
+    }
+
+    // User text is always rendered as text nodes, including literal HTML and regex symbols.
+    function highlight(target, text) {
+      target.replaceChildren();
+      if (!query) { target.textContent = text; return; }
+      const lowered = text.toLocaleLowerCase(), needle = query.toLocaleLowerCase();
+      let start = 0, match = lowered.indexOf(needle);
+      while (match !== -1) {
+        target.append(document.createTextNode(text.slice(start, match)));
+        const mark = document.createElement('mark');
+        mark.textContent = text.slice(match, match + query.length);
+        target.append(mark);
+        start = match + query.length;
+        match = lowered.indexOf(needle, start);
+      }
+      target.append(document.createTextNode(text.slice(start)));
+    }
+
+    function renderTags(target, tags) {
+      target.replaceChildren();
+      tags.forEach(tag => { const chip = document.createElement('span'); chip.className = 'chip'; chip.textContent = tag; target.append(chip); });
+      if (!tags.length) { const empty = document.createElement('span'); empty.className = 'muted'; empty.textContent = '未分类'; target.append(empty); }
+    }
+
+    function renderFilters() {
+      const tags = allTags();
+      if (activeTag && !tags.includes(activeTag)) activeTag = null;
+      $('filters').replaceChildren();
+      [null, ...tags].forEach(tag => {
+        const button = document.createElement('button');
+        button.type = 'button'; button.className = 'filter';
+        button.textContent = tag === null ? '全部' : tag === '全部' ? '标签：全部' : tag;
+        button.setAttribute('aria-pressed', String(activeTag === tag));
+        button.addEventListener('click', () => { activeTag = tag; render(); });
+        $('filters').append(button);
+      });
+    }
+
+    function renderList() {
+      const visible = visibleEntries();
+      $('list-count').textContent = (query || activeTag ? visible.length + ' / ' + entries.length : entries.length) + ' 条';
+      $('entry-list').replaceChildren();
+      $('list-empty').hidden = visible.length > 0;
+      $('list-empty').textContent = entries.length ? '没有匹配的知识，试试其他关键词或标签。' : '还没有知识，点击“新增条目”开始。';
+      visible.forEach(entry => {
+        const li = document.createElement('li'); li.className = 'entry-item';
+        const button = document.createElement('button'); button.type = 'button'; button.className = 'entry-button';
+        button.dataset.id = entry.id; button.setAttribute('aria-current', String(selectedId === entry.id));
+        const title = document.createElement('span'); title.className = 'entry-title'; highlight(title, entry.title);
+        const tags = document.createElement('span'); tags.className = 'chips'; renderTags(tags, entry.tags);
+        button.append(title, tags);
+        if (query && entry.content.toLocaleLowerCase().includes(query.toLocaleLowerCase())) {
+          const match = entry.content.toLocaleLowerCase().indexOf(query.toLocaleLowerCase());
+          const start = Math.max(0, match - 28), end = Math.min(entry.content.length, match + query.length + 60);
+          const snippet = document.createElement('span'); snippet.className = 'snippet';
+          highlight(snippet, (start ? '…' : '') + entry.content.slice(start, end) + (end < entry.content.length ? '…' : ''));
+          button.append(snippet);
+        }
+        const date = document.createElement('time'); date.className = 'entry-date'; date.dateTime = entry.updatedAt; date.textContent = '修改于 ' + formatDate(entry.updatedAt);
+        button.append(date);
+        button.addEventListener('click', () => {
+          if (!allowLeave()) return;
+          editing = false; selectedId = entry.id;
+          render(); focusDetail();
+        });
+        li.append(button); $('entry-list').append(li);
+      });
+    }
+
+    function renderDetail() {
+      const entry = entries.find(item => item.id === selectedId);
+      $('editor').hidden = !editing;
+      $('detail').hidden = editing || !entry;
+      $('empty-state').hidden = editing || !!entry;
+      $('empty-new').hidden = entries.length > 0 || blocked;
+      if (!editing && entry) {
+        highlight($('detail-title'), entry.title);
+        renderTags($('detail-tags'), entry.tags);
+        highlight($('detail-content'), entry.content || '这条知识还没有正文，点击“编辑”补充。');
+        $('detail-content').classList.toggle('muted', !entry.content);
+        for (const [id, value] of [['created-at',entry.createdAt],['updated-at',entry.updatedAt]]) { $(id).dateTime = value; $(id).textContent = formatDate(value); }
+      }
+    }
+
+    function render() {
+      renderFilters();
+      if (!editing && selectedId && !visibleEntries().some(entry => entry.id === selectedId)) selectedId = null;
+      renderList(); renderDetail();
+      $('clear-search').hidden = !query && !$('search').value;
+      $('new-entry').disabled = blocked || importing;
+      $('empty-new').disabled = blocked || importing;
+      $('export').disabled = blocked;
+      $('import').disabled = importing;
+    }
+
+    function focusDetail() {
+      if (window.matchMedia('(max-width:700px)').matches) $('detail-panel').scrollIntoView({ block:'start' });
+      $('detail-panel').focus({ preventScroll:true });
+    }
+
+    function openEditor(entry = null) {
+      if (blocked || importing || !allowLeave()) return;
+      $('message').hidden = true;
+      editing = true; editingId = entry ? entry.id : null;
+      $('editor-heading').textContent = entry ? '编辑知识' : '新增条目';
+      $('title').value = entry ? entry.title : '';
+      $('tags').value = entry ? entry.tags.join(', ') : '';
+      $('content').value = entry ? entry.content : '';
+      $('form-error').hidden = true;
+      $('title').removeAttribute('aria-invalid');
+      baseline = currentDraft();
+      render(); focusDetail(); $('title').focus({ preventScroll:true });
+    }
+
+    function normalizedTags(value) {
+      const result = [], seen = new Set();
+      value.split(/[,，\n]/).forEach(part => { const tag = part.trim(); if (tag && !seen.has(tag.toLocaleLowerCase())) { seen.add(tag.toLocaleLowerCase()); result.push(tag); } });
+      return result;
+    }
+
+    function resetFilters() { query = ''; activeTag = null; $('search').value = ''; }
+
+    $('editor').addEventListener('submit', event => {
+      event.preventDefault();
+      const title = $('title').value.trim(), tags = normalizedTags($('tags').value);
+      $('form-error').hidden = true;
+      $('title').removeAttribute('aria-invalid');
+      if (!title) {
+        $('form-error').textContent = '请填写标题，不能只输入空格。'; $('form-error').hidden = false;
+        $('title').setAttribute('aria-invalid','true'); $('title').focus(); return;
+      }
+      if (tags.length > 30 || tags.some(tag => tag.length > 50)) {
+        $('form-error').textContent = '最多可添加 30 个标签，每个标签不超过 50 字。'; $('form-error').hidden = false; $('tags').focus(); return;
+      }
+      const previous = entries.find(entry => entry.id === editingId);
+      const now = new Date(Math.max(Date.now(), previous ? Date.parse(previous.updatedAt) + 1 : 0)).toISOString();
+      const id = previous ? previous.id : (globalThis.crypto && crypto.randomUUID ? crypto.randomUUID() : 'kb-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2));
+      const entry = { id, title, tags, content:$('content').value, createdAt:previous ? previous.createdAt : now, updatedAt:now };
+      const next = previous ? entries.map(item => item.id === id ? entry : item) : [...entries,entry];
+      if (!commit(next)) return;
+      editing = false; selectedId = id; resetFilters(); render(); focusDetail();
+      notify(previous ? '修改已保存到本地。' : '新知识已保存到本地。');
+    });
+
+    $('new-entry').addEventListener('click', () => openEditor());
+    $('empty-new').addEventListener('click', () => openEditor());
+    $('edit').addEventListener('click', () => openEditor(entries.find(entry => entry.id === selectedId)));
+    $('cancel').addEventListener('click', () => { editing = false; render(); focusDetail(); notify('已取消编辑，未保存本次修改。'); });
+    $('delete').addEventListener('click', () => {
+      if (!selectedId || !window.confirm('确定删除这条知识吗？删除后无法从当前知识库恢复。')) return;
+      const next = entries.filter(entry => entry.id !== selectedId);
+      if (!commit(next)) return;
+      selectedId = visibleEntries()[0]?.id || null;
+      render(); notify('已删除这条知识。'); focusDetail();
+    });
+    $('search').addEventListener('input', () => { query = $('search').value.trim(); render(); });
+    $('clear-search').addEventListener('click', () => { $('search').value = ''; query = ''; render(); $('search').focus(); });
+    window.addEventListener('beforeunload', event => { if (isDirty()) { event.preventDefault(); event.returnValue = ''; } });
+
+    function download(raw, name) {
+      const url = URL.createObjectURL(new Blob([raw], { type:'application/json;charset=utf-8' }));
+      const anchor = document.createElement('a'); anchor.href = url; anchor.download = name;
+      document.body.append(anchor); anchor.click(); anchor.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 30000);
+    }
+
+    function dateName() {
+      const now = new Date();
+      return [now.getFullYear(), String(now.getMonth() + 1).padStart(2,'0'), String(now.getDate()).padStart(2,'0')].join('-');
+    }
+
+    $('export').addEventListener('click', () => {
+      download(JSON.stringify({ ...pack(entries), exportedAt:new Date().toISOString() }, null, 2), 'knowledge-base-backup-' + dateName() + '.json');
+      notify('已发起下载：包含全部 ' + entries.length + ' 条已保存的知识。请在浏览器下载列表中确认文件。' + (editing ? '当前未保存的编辑不包含在备份中。' : ''));
+    });
+
+    $('import').addEventListener('click', () => { if (allowLeave()) $('import-file').click(); });
+    $('import-file').addEventListener('change', async event => {
+      const file = event.target.files[0];
+      event.target.value = '';
+      if (!file) return;
+      importing = true; $('import').disabled = true;
+      try {
+        if (file.size > MAX_BACKUP_BYTES) throw new Error('文件超过 10 MB，请选择较小的知识库备份。');
+        const raw = (await file.text()).replace(/^\uFEFF/,'');
+        let data;
+        try { data = JSON.parse(raw); } catch { throw new Error('JSON 格式错误，文件无法解析。请选择完整、未损坏的 JSON 备份。'); }
+        const recovered = validateBackup(data);
+        if (!window.confirm('导入将使用备份内容恢复知识库，是否继续？')) { notify('已取消导入，当前知识库未更改。'); return; }
+        if (!commit(recovered, true)) return;
+        editing = false; resetFilters(); selectedId = recovered[0]?.id || null;
+        notify('已恢复 ' + recovered.length + ' 条知识。覆盖前的数据已另存一份安全备份，可在页面底部下载。');
+      } catch (error) {
+        notify('导入失败：' + error.message + ' 当前知识库未更改。', true);
+      } finally {
+        importing = false; render();
+      }
+    });
+
+    $('safety-export').addEventListener('click', () => {
+      try {
+        const raw = localStorage.getItem(SAFETY_KEY);
+        if (raw === null) { refreshSafetyButton(); notify('没有可下载的覆盖前安全备份。', true); return; }
+        download(raw, 'knowledge-base-before-import-' + dateName() + '.json');
+        notify('已发起下载覆盖前的安全备份。仅保留最近一次导入之前的数据；如需长期保留，请保存下载文件。');
+      } catch (error) { notify('无法读取安全备份：' + error.message, true); }
+    });
+
+    initialize();
+  })();
+  </script>
+</body>
+</html>
