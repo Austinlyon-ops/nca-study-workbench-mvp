@@ -51,6 +51,8 @@ function validateContent(p) {
     assert.deepEqual([...l.questionIds].sort(), p.questions.filter(q => q.day === l.day).map(q => q.id).sort());
     assert.ok(l.questionIds.length >= Math.max(...Object.values(p.budgets).map(b => b.questions)), 'budget exceeds available questions');
   }
+  const strings = (rows, label) => assert.ok(Array.isArray(rows) && rows.length && rows.every(s => typeof s === 'string' && s.trim()), label);
+  const textFields = (row, fields, label) => fields.forEach(k => assert.ok(typeof row[k] === 'string' && row[k].trim(), label + ': ' + k));
   for (const row of p.coverage) {
     assert.deepEqual([...row.cardIds].sort(), p.cards.filter(c => c.objectiveIds.includes(row.id)).map(c => c.id).sort(), row.id + ' stale card coverage');
     assert.deepEqual([...row.questionIds].sort(), p.questions.filter(q => q.objectiveIds.includes(row.id)).map(q => q.id).sort(), row.id + ' stale question coverage');
@@ -59,8 +61,23 @@ function validateContent(p) {
       assert.ok(typeof row.assessmentEvidence === 'string' && row.assessmentEvidence.trim(), row.id + ' assessment evidence');
     }
   }
-  const strings = (rows, label) => assert.ok(Array.isArray(rows) && rows.length && rows.every(s => typeof s === 'string' && s.trim()), label);
-  const textFields = (row, fields, label) => fields.forEach(k => assert.ok(typeof row[k] === 'string' && row[k].trim(), label + ': ' + k));
+  const cases = unique(p.cases || [], 'id', 'case');
+  assert.ok(cases.size >= 6, 'at least six teaching cases');
+  const coverageDomains = new Set(p.coverage.map(row => row.domain));
+  for (const item of p.cases) {
+    textFields(item, ['title', 'domain', 'status', 'background', 'task'], item.id);
+    assert.equal(item.status, '虚构教学案例', item.id + ' fictional label');
+    assert.ok(coverageDomains.has(item.domain), item.id + ' domain');
+    strings(item.knownEvidence, item.id + ' evidence');
+    strings(item.unknowns, item.id + ' unknowns');
+    strings(item.referenceAnalysis, item.id + ' reference analysis');
+    refs(item.objectiveIds, objectives, item.id + ' objectives');
+    refs(item.cardIds, cards, item.id + ' cards');
+    refs(item.sourceIds, sources, item.id + ' sources');
+  }
+  for (const domain of coverageDomains) {
+    assert.ok(p.cases.filter(item => item.domain === domain).length >= 2, domain + ' needs two cases');
+  }
   const steps = (rows, label) => {
     assert.ok(Array.isArray(rows) && rows.length, label);
     rows.forEach(row => textFields(row, ['title', 'text'], label));

@@ -19,16 +19,17 @@ const { tmpdir } = require('node:os');
     await page.waitForTimeout(150);
     await page.getByText('提交并查看解析', { exact: true }).click();
     await page.getByText('这题暂时答错了', { exact: true }).waitFor();
-    await page.getByRole('button', { name: '错题与复习' }).click();
-    await page.getByText('待复习（1）', { exact: true }).waitFor();
+    await page.getByRole('button', { name: '到期复习' }).click();
+    await page.getByText('查看未来安排（1）', { exact: true }).waitFor();
     await page.waitForTimeout(350);
   } finally { await electronApp.close(); }
   const reopenedApp = await _electron.launch(config);
   try {
     const reopened = await reopenedApp.firstWindow();
-    await reopened.getByText('待复习（1）', { exact: true }).waitFor();
+    await reopened.getByRole('button', { name: '到期复习' }).click();
+    await reopened.getByText('查看未来安排（1）', { exact: true }).waitFor();
     if ((await reopened.locator('#notice').textContent()).trim()) throw new Error('unexpected save-failure notice after reopen');
     await reopened.screenshot({ path: 'output/playwright/electron-learning-review-flow.png', fullPage: true });
-    console.log('Electron UI smoke passed: learning -> wrong answer -> review queue -> close/reopen persistence');
+    console.log('Electron UI smoke passed: learning -> wrong answer -> FSRS future review -> close/reopen persistence');
   } finally { await reopenedApp.close(); }
 })();

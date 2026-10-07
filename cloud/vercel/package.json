@@ -1,0 +1,13 @@
+{
+  "name": "nca-study-hub-vercel",
+  "private": true,
+  "version": "0.3.0",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "test": "node --test test/*.test.mjs"
+  },
+  "dependencies": {
+    "@vercel/blob": "2.8.1"
+  }
+}

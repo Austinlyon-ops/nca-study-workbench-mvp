@@ -1,36 +1,50 @@
 # NCA Study Hub
 
-本仓库用于公开发布学习工作台的源码与静态学习页面。与本机 ChatGPT/Codex 对话绑定的反馈桥接脚本、真实学习记录和本地构建产物不随仓库发布；GitHub Pages 只提供 `web/` 静态学习页面。
+NCA Study Hub 是个人本地优先的 NCA-AIIO 学习工作台。v0.3.0 保留 Day 1–8、40 张知识卡、80 道原创练习、20/45/60 分钟预算、猜测/不确定标记、错题回卡、原答、点评、来源追踪和备份，并补充：
 
-显示名称于2026-10-02统一为 NCA Study Hub。项目目录、数据标识及既有点评任务绑定沿用原名，以保持已有学习记录和工作流连续；本次仅更新网页与桌面窗口内显示，没有重新打包安装。
+- 3 个考试领域、22 个考点的应用内地图；
+- 6 个明确标为“虚构教学案例”的案例柜；
+- 使用 `ts-fsrs@5.4.2` 的知识卡到期复习；
+- schema v2、v1→v2 迁移及 v1/v2 备份导入；
+- 可选的 Vercel 私有 Blob 客户端加密备份。
 
-当前源码应用版本 **0.2.0**，内容版本 **0.2.0-batch2**：Day1–8、40张知识卡、80道原创练习。不是NVIDIA官方产品或真题库，基础覆盖不等于完整备考或已掌握。
+内容覆盖、学习活动、到期排期和作答表现分别展示。应用不输出“已掌握率”、通过概率或考试准备度，也不把案例回答计入正确率或 FSRS。
 
-## 现在怎么用
+## 桌面开发
 
-需要学习和点评时，双击项目根目录或本目录的 **`启动学习工作台.cmd`**：自动准备点评服务，用 Chrome 打开原路径的 HTML。保存回答后点击“请求点评”，在原答下查看返回结果。原“启动学习点评.cmd”也进入同一流程；无需手动连接。启动并不发送答案。若 Chrome 有多个配置，请使用原来保存学习记录的配置。
+环境：Windows 10/11 x64、Node.js 20 或更高版本、npm。
 
-直接用原来的Edge/Chrome打开 `web/index.html`，保持同一个文件位置和浏览器配置。选Day与20/45/60分钟预算，读卡、答题、标记猜测/不确定，再从复习回到对应卡。新版已在本机真实Edge与原生Electron验收。
+```powershell
+npm ci
+npm run build:content
+npm test
+npm run smoke:electron
+npm run accept:v03
+npm run dist
+```
 
-网页和桌面各自保存记录，不自动互相同步；内容和答案来自同一份JSON。学习后可导出备份，反馈Day、题号、首次/重做、错答/猜测/不确定与卡住的位置。一次答对不会变成已掌握。
+正式安装包输出到 `C:\Users\asus\Documents\Codex\NCA-Study-Hub-Build-0.3.0`。
 
-## 桌面版本要分开看
-
-- 源码/本轮测试版本：0.2.0，内容0.2.0-batch2。
-- 新测试包目录：`C:\Users\asus\Documents\Codex\NCA-Study-Desk-Build-0.2.0`。
-- 电脑原来已安装的EXE仍是0.1.0（3卡5题）；本轮未运行安装向导覆盖它。
-- 安装包构建和独立EXE验收不能代替升级安装流程、签名信誉或另一台干净电脑验收。
-
-开发启动在本目录执行 `npm start`。本轮自动化用 `NCA_DESK_USER_DATA` 和独立浏览器配置保存测试数据，不触碰真实学习记录。
+开发和验收必须设置 `NCA_DESK_USER_DATA` 指向专用隔离目录。安装版显示名称已改为 **NCA Study Hub**，但继续使用旧 `NCA Study Desk` 用户数据目录和 `com.personal.ncastudydesk` 应用身份，避免升级后记录看似丢失。
 
 ## 内容维护
 
-唯一运行内容源：`content/nca-content-v0.2.json`。改完运行 `npm run build:content`，生成网页数据、桌面内容和考点覆盖表，再运行 `npm test`。构建拒绝无效题型、答案、来源、考点映射和重复ID，未变化内容不重写。
+唯一运行内容源仍是 `content/nca-content-v0.2.json`。文件名保持不变是为了避免建立第二套内容库；内部版本已经升级为 0.3.0。修改后执行 `npm run build:content`，它会生成桌面内容、网页内容、课程文档和考点覆盖表。
 
-- `npm run test:windows`：本机Edge与原生Electron完整隔离验收。
-- `npm run smoke:electron`：桌面阅读→错答→复习→关闭重开。
-- `npm run dist`：输出新测试安装包到上述云盘外目录。
+内容构建会拒绝悬空的来源、考点、卡片、题目、案例关联以及无效答案。测试通过只证明软件和内容关系符合规则，不表示学习效果或个人掌握已经验证。
 
-[当前交付说明](docs/content-release-v0.2.md) · [Day 3 第二节教学试点](docs/day03-section02-teaching-pilot.md) · [考点覆盖](docs/exam-coverage-v0.2.md) · [材料处理](docs/content-processing-v0.2.md) · [历史题库抽查](docs/question-bank-audit-v0.2-batch2.md)
+## 云端备份
 
-`knowledge-base/` 是原有独立个人笔记页，本轮保留未改。NCA知识内容继续在Study Desk的JSON/卡题/来源关系中维护，不再建一套重复系统。
+桌面应用默认只写本机。用户主动点击上传后，客户端才用 AES-256-GCM 加密 v2 备份，再把密文发送到 Vercel 私有 Blob。Vercel 端只保存同步口令的 SHA-256，不保存口令原文。
+
+部署代码在 `cloud/vercel/`。完整步骤见 [Vercel 云端备份配置](docs/Vercel云端备份配置-v0.3.md)。
+
+## 发布资料
+
+- [开发 SOP](docs/开发SOP-v0.3.md)
+- [上线准备清单](docs/上线准备清单-v0.3.md)
+- [v0.3.0 交付记录](docs/交付记录-v0.3.md)
+- [第三方声明](THIRD_PARTY_NOTICES.md)
+- [考点覆盖](docs/exam-coverage-v0.2.md)
+
+本项目不是 NVIDIA 官方产品或真题库。源码当前仍标记为 `UNLICENSED`；公开可见不等于授予第三方复用许可。

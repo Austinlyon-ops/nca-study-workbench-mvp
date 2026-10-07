@@ -1,10 +1,10 @@
 // Generated from content/nca-content-v0.2.json; edit the shared source, then rebuild.
 module.exports = {
   "format": "nca-study-content",
-  "version": "0.2.0-batch2",
-  "builtOn": "2026-09-24",
+  "version": "0.3.0",
+  "builtOn": "2026-10-07",
   "teachingRevision": "2026-09-25-trial3",
-  "description": "Day1–8基础学习单元；40卡80道原创练习。22考点均有基础卡题映射，仍非完整教材或正式模拟，不代表个人掌握。",
+  "description": "Day1–8基础学习单元；40卡80道原创练习、22考点地图和6个虚构教学案例。仍非完整教材或正式模拟，不代表个人掌握。",
   "source": {
     "id": "SRC-OFFICIAL-20260919",
     "name": "NVIDIA 中国：NCA-AIIO 认证页",
@@ -9299,6 +9299,226 @@ module.exports = {
     "chatScoresImportedAsAppAttempts": false,
     "officialExamCoverageComplete": false
   },
+  "cases": [
+    {
+      "id": "CASE-AI-001",
+      "title": "容器换到新主机后无法使用 GPU",
+      "domain": "AI基础知识",
+      "status": "虚构教学案例",
+      "background": "团队把已在开发机运行的推理容器复制到一台新主机。容器可以启动，但应用报告找不到 GPU。",
+      "knownEvidence": [
+        "同一镜像在原主机可以运行",
+        "新主机能够启动普通容器",
+        "尚未提供新主机驱动、GPU 可见性或容器运行参数的检查结果"
+      ],
+      "unknowns": [
+        "新主机是否安装并加载了受支持的 GPU 驱动",
+        "容器运行时是否已配置 GPU 访问",
+        "应用、CUDA 用户态组件与主机驱动是否满足支持条件"
+      ],
+      "task": "区分镜像已经证明的内容与仍需核查的主机条件，并列出下一步证据。",
+      "objectiveIds": [
+        "1.1",
+        "1.7"
+      ],
+      "cardIds": [
+        "card-stack-driver",
+        "card-gpu-containers",
+        "card-compatibility"
+      ],
+      "sourceIds": [
+        "CUDA",
+        "COMPAT",
+        "CONTAINER-INSTALL"
+      ],
+      "referenceAnalysis": [
+        "镜像可证明应用和部分用户态依赖被打包，不能证明另一台主机已经具备 GPU、驱动和容器 GPU 访问条件。",
+        "先保留错误信息，再分别检查硬件可见性、驱动状态、容器运行时配置和支持矩阵；不要仅靠重新拉取镜像得出结论。"
+      ]
+    },
+    {
+      "id": "CASE-AI-002",
+      "title": "吞吐提高但单条请求等待更久",
+      "domain": "AI基础知识",
+      "status": "虚构教学案例",
+      "background": "工单分类服务启用批处理后，每分钟处理量上升，但用户反映单条请求等待时间变长。",
+      "knownEvidence": [
+        "启用批处理后总吞吐上升",
+        "部分单条请求的端到端延迟增加",
+        "目前只有开发环境的小样本测量"
+      ],
+      "unknowns": [
+        "批次形成需要等待多久",
+        "高峰与低峰的到达率和队列长度",
+        "模型执行时间、网络时间和排队时间分别占多少"
+      ],
+      "task": "解释为什么吞吐与延迟可以朝不同方向变化，并提出至少两项后续测量。",
+      "objectiveIds": [
+        "1.2",
+        "1.6"
+      ],
+      "cardIds": [
+        "card-latency-throughput",
+        "card-training-inference",
+        "card-inference-tools"
+      ],
+      "sourceIds": [
+        "BATCH",
+        "TRT",
+        "TRITON"
+      ],
+      "referenceAnalysis": [
+        "批处理可以提高设备利用率和总吞吐，但凑批与排队可能增加单条请求等待。",
+        "需要分别测量队列、预处理、模型执行和返回路径，并在不同负载下比较，不能用单一吞吐数字宣布服务已经优化。"
+      ]
+    },
+    {
+      "id": "CASE-INFRA-001",
+      "title": "新增 GPU 服务器前的供电与散热判断",
+      "domain": "AI基础架构",
+      "status": "虚构教学案例",
+      "background": "机房计划在现有机柜加入两台高密度 GPU 服务器。采购清单已经确定，但现场尚未完成容量核查。",
+      "knownEvidence": [
+        "设备型号和厂商额定功耗已知",
+        "机柜当前仍有物理空间",
+        "尚未提供支路容量、冗余方式、实际热负载或气流数据"
+      ],
+      "unknowns": [
+        "供电支路和 rPDU 是否有足够容量及冗余",
+        "机柜承重、布线和气流是否满足条件",
+        "现有冷却系统在目标负载下是否仍有余量"
+      ],
+      "task": "说明为什么有机柜空间不等于可以直接上架，并按证据顺序列出上线前核查项。",
+      "objectiveIds": [
+        "2.3",
+        "2.6"
+      ],
+      "cardIds": [
+        "card-power-cooling",
+        "card-pue",
+        "card-facility"
+      ],
+      "sourceIds": [
+        "B2-POWER",
+        "B2-COOLING",
+        "B2-FACILITY"
+      ],
+      "referenceAnalysis": [
+        "物理空间只证明能放置，不证明供电、承重、散热、冗余和布线已经满足。",
+        "应基于具体设备规格和现场测量核查，不能用固定功率阈值或 PUE 单值替代设备级容量判断。"
+      ]
+    },
+    {
+      "id": "CASE-INFRA-002",
+      "title": "多节点训练时 GPU 等待通信",
+      "domain": "AI基础架构",
+      "status": "虚构教学案例",
+      "background": "训练任务从单节点扩展到四个节点后，设备数量增加，但迭代速度提升有限，监控显示部分时间 GPU 在等待。",
+      "knownEvidence": [
+        "单节点基线已经记录",
+        "四节点任务能正常运行",
+        "节点间交换梯度时等待明显"
+      ],
+      "unknowns": [
+        "网络带宽、时延、拥塞和丢包情况",
+        "通信库与网络传输路径的实际配置",
+        "数据加载、计算和通信各阶段所占时间"
+      ],
+      "task": "判断现有证据能说明什么，为什么不能直接断言 GPU 数量不足，并提出分层测量方案。",
+      "objectiveIds": [
+        "2.7",
+        "2.8",
+        "2.9"
+      ],
+      "cardIds": [
+        "card-network-traffic",
+        "card-ethernet-infiniband",
+        "card-rdma-roce",
+        "card-gpudirect-paths"
+      ],
+      "sourceIds": [
+        "B2-NETWORK",
+        "B2-BASEPOD",
+        "NCCL"
+      ],
+      "referenceAnalysis": [
+        "现象提示通信可能成为限制，但仍需把数据加载、计算、集合通信和网络传输分开测量。",
+        "应核对拓扑、协议、拥塞、通信库和数据路径；增加 GPU 不会自动消除跨节点等待。"
+      ]
+    },
+    {
+      "id": "CASE-OPS-001",
+      "title": "利用率偶尔归零是否代表 GPU 故障",
+      "domain": "AI运营",
+      "status": "虚构教学案例",
+      "background": "监控图上某张 GPU 的利用率每隔几分钟短暂降到零，但任务最终仍能完成。值班人员准备直接更换硬件。",
+      "knownEvidence": [
+        "利用率曲线存在周期性低点",
+        "任务没有立即失败",
+        "尚未关联显存、温度、功耗、错误、CPU、存储和数据加载指标"
+      ],
+      "unknowns": [
+        "采样间隔和指标口径",
+        "低点期间任务是否在等待数据、同步或检查点",
+        "是否存在硬件错误、节流或应用日志异常"
+      ],
+      "task": "区分一条利用率曲线可以证明和不能证明的内容，并给出下一步关联检查。",
+      "objectiveIds": [
+        "3.1",
+        "3.3"
+      ],
+      "cardIds": [
+        "card-gpu-util-memory",
+        "card-gpu-health",
+        "card-telemetry-pipeline"
+      ],
+      "sourceIds": [
+        "SMI",
+        "DCGM"
+      ],
+      "referenceAnalysis": [
+        "瞬时利用率为零不等于硬件故障，也不等于任务没有进展；它可能来自等待、同步、采样或工作负载阶段变化。",
+        "需要把利用率与错误、温度、功耗、时钟、显存、作业日志和上下游资源放在同一时间线核对。"
+      ]
+    },
+    {
+      "id": "CASE-OPS-002",
+      "title": "安装 GPU Operator 后任务仍在排队",
+      "domain": "AI运营",
+      "status": "虚构教学案例",
+      "background": "Kubernetes 集群安装 GPU Operator 后，节点能够报告 GPU 资源，但一个训练任务仍长期 Pending。团队认为安装没有生效。",
+      "knownEvidence": [
+        "GPU 相关组件已部署",
+        "节点向集群报告了 GPU 资源",
+        "作业处于 Pending，尚未提供调度事件"
+      ],
+      "unknowns": [
+        "任务申请的 GPU 数量、显存和其他资源",
+        "节点可分配量、污点、容忍、亲和性和队列策略",
+        "任务是否要求特定 MIG 或 vGPU 配置"
+      ],
+      "task": "区分组件准备、资源发布和任务调度，并说明应先读取哪些事件或配置。",
+      "objectiveIds": [
+        "3.2",
+        "3.4"
+      ],
+      "cardIds": [
+        "card-job-scheduling",
+        "card-k8s-gpu-operator",
+        "card-mig",
+        "card-vgpu"
+      ],
+      "sourceIds": [
+        "OPERATOR",
+        "MIG",
+        "MIG-DEPLOY"
+      ],
+      "referenceAnalysis": [
+        "Operator 负责准备和维护部分 GPU 软件组件，不会自动保证每个任务都能被调度。",
+        "先看调度事件和资源申请，再核对可分配量、策略与实例容量；MIG 是划分已有资源，不会创造额外容量。"
+      ]
+    }
+  ],
   "coverage": [
     {
       "id": "1.1",

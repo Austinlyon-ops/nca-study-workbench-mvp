@@ -1,36 +1,59 @@
 {
   "name": "nca-study-desk",
-  "version": "0.2.0",
-  "description": "个人离线 NCA-AIIO 学习辅助桌面应用",
+  "version": "0.3.0",
+  "description": "个人本地优先的 NCA-AIIO 学习辅助桌面应用",
   "main": "src/main.cjs",
-  "author": "NCA Study Desk",
+  "author": "NCA Study Hub",
   "license": "UNLICENSED",
   "scripts": {
     "start": "electron .",
     "test": "node --test test/*.test.mjs && node test/content-release.check.cjs",
     "build:content": "node scripts/build-content.cjs",
+    "verify:content": "node scripts/verify-content-reproducibility.cjs",
     "test:windows": "node scripts/acceptance-windows.cjs final",
     "make-icon": "node scripts/make-icon.mjs",
+    "verify-icon": "node scripts/verify-icon.mjs",
     "smoke:electron": "node scripts/smoke-electron.cjs",
-    "dist": "npm run make-icon && electron-builder --win nsis --config.directories.output=\"C:\\Users\\asus\\Documents\\Codex\\NCA-Study-Desk-Build-0.2.0\""
+    "accept:v03": "node scripts/acceptance-v03-electron.cjs",
+    "dist": "npm run make-icon && npm run verify-icon && electron-builder --win nsis --config.directories.output=\"C:\\Users\\asus\\Documents\\Codex\\NCA-Study-Hub-Build-0.3.0\""
   },
   "build": {
     "appId": "com.personal.ncastudydesk",
-    "productName": "NCA Study Desk",
-    "artifactName": "NCA-Study-Desk-Setup-${version}-x64.${ext}",
+    "productName": "NCA Study Hub",
+    "artifactName": "NCA-Study-Hub-Setup-${version}-x64.${ext}",
     "asar": true,
-    "directories": { "output": "release", "buildResources": "assets" },
-    "files": ["src/**/*", "assets/**/*", "package.json"],
-    "win": { "target": [{ "target": "nsis", "arch": ["x64"] }], "icon": "assets/app.ico" },
+    "directories": {
+      "output": "release",
+      "buildResources": "assets"
+    },
+    "files": [
+      "src/**/*",
+      "assets/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "assets/app.ico"
+    },
     "nsis": {
       "oneClick": false,
       "allowToChangeInstallationDirectory": false,
       "perMachine": false,
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
-      "shortcutName": "NCA 备考工作台",
+      "shortcutName": "NCA Study Hub",
       "language": 2052,
-      "uninstallDisplayName": "NCA 备考工作台"
+      "installerIcon": "assets/app.ico",
+      "uninstallerIcon": "assets/app.ico",
+      "installerHeaderIcon": "assets/app.ico",
+      "uninstallDisplayName": "NCA Study Hub"
     }
   },
   "devDependencies": {
@@ -39,5 +62,8 @@
     "playwright-core": "^1.55.1",
     "png-to-ico": "^3.0.1",
     "sharp": "^0.34.3"
+  },
+  "dependencies": {
+    "ts-fsrs": "5.4.2"
   }
 }
