@@ -45,9 +45,10 @@ for(const r of p.coverage)coverage+=`|${r.id}|${cell(r.title)}|${r.domainWeight}
 coverage+='\n## 可追溯映射\n';
 for(const r of p.coverage)coverage+=`\n### ${r.id} ${r.title}\n\n- 教材物理页：${r.trainingPages}\n- 知识卡：${r.cardIds.join(', ')||'待补'}\n- 练习：${r.questionIds.join(', ')||'待补'}\n- 证据状态：${r.reviewStatus}\n- 模块阅读：${r.noteReview}\n`;
 if(p.coverage.some(r=>r.learningDepth)){
-  coverage+=`\n## 理解层次与检查方式｜教学补充 ${p.teachingRevision}\n\n以下为已批准试用的教学目标，不改变上文覆盖程度，也不表示用户已完成检查。Day 3–8 每课六项口述/短答，共36项教学练习单列，不计入原80道自动计分题；每次精选少量回答，不要求一次完成全部。以下只表示教学关联，不升级原覆盖程度。\n\n|考点|需理解到的程度|怎样检查及证据边界|\n|---|---|---|\n`;
+  const exerciseCount=p.lessons.reduce((count,lesson)=>count+(lesson.teachingTrial?.exercises.length||0),0);
+  coverage+=`\n## 理解层次与检查方式｜教学补充 ${p.teachingRevision}\n\n以下为试用中的教学目标，不改变上文覆盖程度，也不表示用户已完成检查。Day 1–8 每课六项口述/短答，共${exerciseCount}项教学练习单列，不计入原80道自动计分题；每次精选少量回答，不要求一次完成全部。以下只表示教学关联，不升级原覆盖程度。\n\n|考点|需理解到的程度|怎样检查及证据边界|\n|---|---|---|\n`;
   for(const r of p.coverage.filter(r=>r.learningDepth))coverage+=`|${r.id}|${cell(r.learningDepth)}|${cell(r.assessmentEvidence)}|\n`;
-  coverage+='\n使用位置：Day 3–8 的完整主课与理解练习；Day 1–8 均有原教材导读。课程示例入口：[Day 3 可读课程](day-03-lesson-v0.2.md)、[Day 4 可读课程](day-04-lesson-v0.2.md)。\n';
+  coverage+='\n使用位置：Day 1–8 的完整主课与理解练习，均有原教材导读。课程示例入口：[Day 1 可读课程](day-01-lesson-v0.2.md)、[Day 2 可读课程](day-02-lesson-v0.2.md)。\n';
 }
 coverage+='\n## 来源与边界\n\n[当前官方认证页](https://www.nvidia.cn/training/certification/ai-infrastructure-operations-associate/)；[Feb 2026官方中文指南](https://images.nvidia.cn/aem-dam/zh_cn/Solutions/training/certification/nvt-certification-exam-study-guide-aiio-a4-web-zhCN-5103850.pdf)。编号来自指南物理4–6页。培训讲义原文件160物理页，第三方笔记只作教学线索，不接受dump/必出题量声明。来源逐卡登记于共享JSON，原教材与真实学习备忘未改。\n';
 writeChanged(path.join(root,'docs/exam-coverage-v0.2.md'),coverage);

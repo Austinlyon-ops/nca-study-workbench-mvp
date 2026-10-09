@@ -1,6 +1,6 @@
 {
   "name": "nca-study-desk",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "个人本地优先的 NCA-AIIO 学习辅助桌面应用",
   "main": "src/main.cjs",
   "author": "NCA Study Hub",
@@ -15,7 +15,7 @@
     "verify-icon": "node scripts/verify-icon.mjs",
     "smoke:electron": "node scripts/smoke-electron.cjs",
     "accept:v03": "node scripts/acceptance-v03-electron.cjs",
-    "dist": "npm run make-icon && npm run verify-icon && electron-builder --win nsis --config.directories.output=\"C:\\Users\\asus\\Documents\\Codex\\NCA-Study-Hub-Build-0.3.0\""
+    "dist": "npm run make-icon && npm run verify-icon && electron-builder --win nsis --config.directories.output=\"C:\\Users\\asus\\Documents\\Codex\\NCA-Study-Hub-Build-0.3.1\""
   },
   "build": {
     "appId": "com.personal.ncastudydesk",

@@ -33,7 +33,7 @@ const understanding = require('../src/understanding.cjs');
   const first=await runtime.page.evaluate(()=>window.ncaDesk.getState());
   assert.equal(first.schemaVersion,2);assert.deepEqual(first.attempts,fixture.attempts);
   const identity=await runtime.electronApp.evaluate(({app,BrowserWindow})=>({version:app.getVersion(),name:app.getName(),title:BrowserWindow.getAllWindows()[0].getTitle(),userData:app.getPath('userData'),isPackaged:app.isPackaged}));
-  assert.equal(identity.version,'0.3.0');assert.equal(identity.title,'NCA Study Hub');assert.equal(identity.userData,profile);assert.equal(identity.isPackaged,true);
+  assert.equal(identity.version,'0.3.1');assert.equal(identity.title,'NCA Study Hub');assert.equal(identity.userData,profile);assert.equal(identity.isPackaged,true);
   for(const screen of ['home','map','cases','review','sources']){await runtime.page.locator(`[data-nav="${screen}"]`).click();await runtime.page.locator('#app h1').waitFor();}
   await runtime.page.screenshot({path:path.join(out,'installed-app.png')});
   await runtime.electronApp.close();

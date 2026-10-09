@@ -75,7 +75,8 @@ test('lesson revisions validate and appear in HTML and Markdown for days without
   const copy = structuredClone(content);
   for (const day of [1, 2]) {
     const lesson = copy.lessons.find(l => l.day === day);
-    assert.equal(lesson.teachingTrial, undefined);
+    // 旧版课程只有课级修订号；保留此迁移前形态的渲染兼容测试。
+    delete lesson.teachingTrial;
     lesson.teachingRevision = `day${day}-fixture`;
     assert.doesNotThrow(() => validator.validateContent(copy));
     const html = teaching.renderTeaching(lesson, copy);
@@ -93,6 +94,21 @@ test('lesson revisions validate and appear in HTML and Markdown for days without
   trialLesson.teachingTrial.teachingRevision = 'trial-preferred';
   assert.match(teaching.renderTeaching(trialLesson, copy), /data-teaching-revision="trial-preferred"/);
   assert.match(teaching.lessonMarkdown(trialLesson, copy), /NCA teaching revision: trial-preferred/);
+});
+
+test('Day 1/2 主课在网页和桌面共用同一修订，短答不混入旧计分题', () => {
+  for (const day of [1, 2]) {
+    const lesson = content.lessons.find(l => l.day === day);
+    const html = teaching.renderTeaching(lesson, content);
+    assert.equal(lesson.teachingRevision, `2026-10-02-day0${day}-batch1`);
+    assert.match(html, new RegExp(`data-teaching-revision="2026-10-09-day0${day}-full1"`));
+    assert.equal((html.match(/data-full-lesson/g) || []).length, 5);
+    assert.equal((html.match(/data-teaching-exercise=/g) || []).length, 6);
+    assert.equal((html.match(/<textarea\b/g) || []).length, 6);
+    assert.ok(lesson.teachingTrial.exercises.every(e => !lesson.questionIds.includes(e.id)));
+  }
+  assert.equal(content.cards.length, 40);
+  assert.equal(content.questions.length, 80);
 });
 
 test('完整主课关系缺失会阻止生成，不把来源链接当正文',()=>{

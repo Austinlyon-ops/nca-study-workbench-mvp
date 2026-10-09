@@ -246,11 +246,11 @@ D：不能由此判断训练。
 
 <!-- NCA_TEACHING_START -->
 
-<!-- NCA teaching revision: 2026-10-02-day02-batch1 -->
+<!-- NCA teaching revision: 2026-10-09-day02-full1 -->
 
 ## 本课与原教材：怎样搭配着学
 
-当前主课：用容量、带宽、计算能力以及吞吐/延迟分别判断问题，避免把“更快GPU”当通用结论。
+当前主课：先读五节主课，按并行程度、计算单元、容量/带宽/计算以及吞吐/延迟判断虚构情境；选少量理解练习保存原答，知识卡供学后速查。避免把“更快GPU”当通用结论。
 
 何时先用主课：能解释为何总吞吐增加不保证每条请求等待更短、数据搬运与计算不同，可先以当前内容练习；需要看硬件结构再回原图。
 
@@ -280,5 +280,349 @@ D：不能由此判断训练。
 原目录的视频与字幕可作为补讲候选，但当前只完成目录级清点，未逐段核对；本课不指定未经核验的时间码或宣称看完某段即可覆盖考点。
 
 完成这里的基础目标，只说明可以继续本课学习；不代表考试范围已完整覆盖、已掌握或能直接进行生产操作。
+
+## Day 2 主课与理解练习：按瓶颈判断计算与性能
+
+状态：新增试用；学习效果待验证；用户批准日期：2026-10-09。
+
+主课以虚构批量工单与交互请求为例；短答保存原答和接触情况，不自动更新题库正确率或 FSRS。
+
+### 需要理解到什么程度
+
+- 能按并行程度解释 CPU/GPU 分工。
+- 能区分计算单元、容量、带宽和计算能力。
+- 能解释批处理可能提高吞吐却增加等待。
+- 能从是否更新参数区分训练与推理，保留实测未知。
+
+## Day 2 主课｜CPU/GPU 分工、瓶颈与训练推理
+
+延续虚构工单助手：既要批量处理历史记录，也要及时回应单个员工。先分清任务能否并行，再看 GPU 单元、计算与数据搬运、延迟与吞吐，最后回到训练和推理。所有数值和情境仅为教学假设。
+
+- 沿着一条请求追问：控制和分支在哪里，重复计算在哪里，数据放得下吗、送得动吗，用户等多久、系统总共做多少？
+- CPU 和 GPU 是不同的计算角色；具体加速取决于任务结构、数据移动和软件实现。宣传峰值不是某个应用的实际完成时间。
+- 先读主课再练短答；知识卡供复习速查，选择题仍按原规则独立计分。
+
+### 一、CPU 与 GPU 按工作结构分工（核心）
+
+CPU 擅长通用控制、复杂分支和协调任务。GPU 能同时处理大量相似计算，适合可拆成许多相近工作单元的负载。一个应用常由 CPU 准备、调度数据，GPU 完成适合并行的部分，而不是二者选其一。
+
+若每一步必须等前一步的结果，或数据量很小且搬运开销显著，把任务交给 GPU 可能没有收益。先识别可并行部分及数据流，再讨论是否值得加速。
+
+#### 批量图像与依赖链
+
+对许多独立图像做同样变换，存在并行机会；一条必须按前一步决定下一步的小型控制流程，难以用大量并行单元同时完成。
+
+- GPU 核心多不意味着任何单条任务都更快。
+- CPU 负责调度不等于 CPU 没有计算能力。
+
+**这一节带走：** 并行程度与搬运成本是判断起点。
+
+<details>
+<summary>依据与选读</summary>
+
+- [同事提供：NVIDIA Training NCA - AIIO.pdf](https://drive.google.com/file/d/1tdZ1BczaM8FsbGnn0KeVlAZ5t_ikvcva/view) — 每卡另附物理页码；本轮原始文件160页
+
+讲义结构图帮助看设计侧重，不代表所有实际程序具有相同加速比。
+
+</details>
+
+### 二、硬件计算单元与软件程序不要混叫（核心）
+
+CUDA Core 和 Tensor Core 是 GPU 上承担不同计算的硬件单元；CUDA 也指开发和运行相关的软件平台。它们名字相似，却不是同一对象。需要说明是硬件能力、编程环境，还是具体应用。
+
+Tensor Core 针对适配的矩阵运算和数据类型提供能力，并不让每一段代码自动变快。能否使用还依赖硬件型号、运算形式和软件实现。
+
+#### 读取一条性能宣传
+
+“有 Tensor Core”说明存在某类硬件能力；若工单程序主要在等待网络或做复杂分支，不能因此推定它的端到端响应就会变快。
+
+- 不要把 CUDA Core 写成 CUDA 软件工具包。
+- 不要把理论运算能力当成应用实测。
+
+**这一节带走：** 先问所说的是硬件、软件还是工作负载。
+
+<details>
+<summary>依据与选读</summary>
+
+- [同事提供：NVIDIA Training NCA - AIIO.pdf](https://drive.google.com/file/d/1tdZ1BczaM8FsbGnn0KeVlAZ5t_ikvcva/view) — 每卡另附物理页码；本轮原始文件160页
+- [CUDA Linux Installation Guide](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html) — Introduction/Toolkit/system requirements
+
+讲义单元图用于区分角色，型号规格须查对应官方文档。
+
+</details>
+
+### 三、计算能力、显存容量与带宽分别限住什么（核心）
+
+计算能力描述可完成运算的速度维度；显存容量关系到模型、输入和中间数据能否在设备上容纳；内存带宽关系到单位时间能移动多少数据。应用变慢或无法运行，可能分别由计算、容量或搬运造成。
+
+“放得下”不等于“算得快”。容量不足可能使任务无法按当前方式运行，带宽不足可能让计算单元等待数据，计算不足则可能让大量运算耗时。实际判断要结合测量，不可只看单个峰值指标。
+
+#### 大模型与数据搬运
+
+模型与批次需要的内存超过可用容量，先是能否容纳的问题；若能容纳但计算单元常在等数据，带宽和数据访问可能是线索。
+
+- 显存容量翻倍不等于吞吐翻倍。
+- 带宽更高也不保证计算密集阶段更快。
+
+**这一节带走：** 按容量、搬运、运算三个维度定位瓶颈。
+
+<details>
+<summary>依据与选读</summary>
+
+- [同事提供：NVIDIA Training NCA - AIIO.pdf](https://drive.google.com/file/d/1tdZ1BczaM8FsbGnn0KeVlAZ5t_ikvcva/view) — 每卡另附物理页码；本轮原始文件160页
+- [NVIDIA GPU Performance Background](https://docs.nvidia.com/deeplearning/performance/dl-performance-gpu-background/index.html) — 架构/性能限制
+
+性能资料用于核对概念；真实瓶颈需来自目标负载的测量。
+
+</details>
+
+### 四、吞吐与延迟可能朝不同方向变化（核心）
+
+延迟描述一条请求从提交到得到结果所经历的时间；吞吐描述单位时间处理的总量。批处理把多个请求放在一起计算，可能提高设备利用率和总吞吐，但等待凑批也可能增加某些请求的延迟。
+
+比较方案时先写服务目标：批量离线任务关心总完成量，交互问答还要关心单条等待。平均数也可能掩盖尾部等待，不能用一个“更快”代替两个指标。
+
+#### 两条请求和一个批次
+
+假设首条请求到达后需等第二条才成批，总体每分钟处理更多，但首条额外等候。没有实测数据时只说明“可能”，不宣布该配置最优。
+
+- 吞吐上升不保证每条请求都更早完成。
+- 延迟下降也不等于系统总产量一定增加。
+
+**这一节带走：** 先选指标，再说明批处理引入的等待和利用率权衡。
+
+<details>
+<summary>依据与选读</summary>
+
+- [同事提供：NVIDIA Training NCA - AIIO.pdf](https://drive.google.com/file/d/1tdZ1BczaM8FsbGnn0KeVlAZ5t_ikvcva/view) — 每卡另附物理页码；本轮原始文件160页
+- [TensorRT 性能优化](https://docs.nvidia.com/deeplearning/tensorrt/latest/performance/optimization.html) — Batching/吞吐/延迟
+- [NVIDIA GPU Performance Background](https://docs.nvidia.com/deeplearning/performance/dl-performance-gpu-background/index.html) — 架构/性能限制
+
+按需看官方批处理说明，只用来理解机制，不把示意当本应用测量。
+
+</details>
+
+### 五、训练和推理的资源需求按阶段看（核心）
+
+训练利用样本计算并更新参数，通常还要保存与更新相关的中间信息；推理使用已有参数处理新输入，通常不在这次请求中更新模型。两者都可能需要大量计算，但内存与性能目标要按模型、批次、精度和实现分别核对。
+
+推理服务可以用批处理提高总处理量，却要考虑交互等待；训练也会受数据供给和内存限制。不能因为“推理”就断言一定轻量，也不能因为“训练”就给出固定显存倍数。
+
+#### 历史工单与新工单
+
+用标注的历史工单更新模型参数是训练；员工提交新工单并得到预测是推理。即便模型相同，两阶段需要的工作与性能指标也不完全一样。
+
+- 生成回答不意味着这次请求在训练。
+- 只看 GPU 峰值不能决定训练或推理的实际容量。
+
+**这一节带走：** 先确认是否更新参数，再按目标负载测量资源与响应。
+
+<details>
+<summary>依据与选读</summary>
+
+- [同事提供：NVIDIA Training NCA - AIIO.pdf](https://drive.google.com/file/d/1tdZ1BczaM8FsbGnn0KeVlAZ5t_ikvcva/view) — 每卡另附物理页码；本轮原始文件160页
+- [TensorRT 性能优化](https://docs.nvidia.com/deeplearning/tensorrt/latest/performance/optimization.html) — Batching/吞吐/延迟
+
+讲义阶段图用于概念对照；实际内存和性能应在目标环境验证。
+
+</details>
+
+### 本课关系总结
+
+- CPU 组织通用控制，GPU 适合大量相似并行运算；收益取决于任务结构。
+- 硬件单元、软件平台与程序负载要分别指认。
+- 容量、带宽、计算与延迟、吞吐是不同维度；单个峰值不能证明应用效果。
+- 训练更新参数，推理使用已有参数；短答只记录这次理解表现。
+
+- 20分钟读前三节并选一道短答；余下内容可下次继续。
+- 45分钟覆盖五节与一条性能情境；60分钟再对照知识卡、来源或选择题。
+- 时间安排不是用户完成记录；英文题可用中文回答，看过译文应如实记录。
+
+## 理解练习
+
+网页和桌面源码可保存原答、修改稿与点评；本 Markdown 是可读讲义，不采集回答。先学后练，允许看提示；参考解释不等于针对性点评。
+
+### 1. 并行性判断
+
+试用练习ID：`P-D02-01`。
+
+任务 A 对一批彼此独立的图像做相同变换；任务 B 每一步都依赖上一步的选择。哪项更可能受益于 GPU 大量并行工作？还需要核查什么？
+
+<details>
+<summary>完成自己的回答后，再看参考解释与核对要点</summary>
+
+**为什么这样理解：**
+
+GPU 擅长大量相似并行计算，因此 A 更有机会；B 的顺序依赖限制并行。是否真正更快还要看数据量、搬运与实现。
+
+**核对要点（原评价标准）：**
+
+- A 有更明显的并行机会。
+- 提到数据搬运、软件实现或任务规模仍需验证实际收益。
+
+对应知识卡：card-cpu-gpu；考点：1.8；相关旧题：Q-ORIGINAL-002、Q-D02-001。
+
+- [同事提供：NVIDIA Training NCA - AIIO.pdf](https://drive.google.com/file/d/1tdZ1BczaM8FsbGnn0KeVlAZ5t_ikvcva/view) — 每卡另附物理页码；本轮原始文件160页
+
+</details>
+
+### 2. 硬件与软件辨析
+
+试用练习ID：`P-D02-02`。
+
+同事说“装了 CUDA Core 软件，所以任何程序都用上 Tensor Core”。请指出至少两处概念混淆，并说明需要什么证据才能判断程序是否受益。
+
+<details>
+<summary>完成自己的回答后，再看参考解释与核对要点</summary>
+
+**为什么这样理解：**
+
+CUDA Core 与 Tensor Core 是 GPU 硬件单元；CUDA 平台是软件相关概念。Tensor Core 加速特定适配运算，需核查型号、运算与程序路径，最好在目标负载中测量。
+
+**核对要点（原评价标准）：**
+
+- CUDA Core 和 Tensor Core 是硬件计算单元，不能称为装的软件。
+- 是否用到相关运算取决于硬件支持、运算和实现，不能推定任何程序自动获益。
+
+对应知识卡：card-gpu-units；考点：1.8；相关旧题：Q-ORIGINAL-003、Q-D02-002。
+
+- [同事提供：NVIDIA Training NCA - AIIO.pdf](https://drive.google.com/file/d/1tdZ1BczaM8FsbGnn0KeVlAZ5t_ikvcva/view) — 每卡另附物理页码；本轮原始文件160页
+- [CUDA Linux Installation Guide](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html) — Introduction/Toolkit/system requirements
+
+</details>
+
+### 3. 定位三种限制
+
+试用练习ID：`P-D02-03`。
+
+虚构模型一度因显存不够无法装入；缩小批次后能运行，但计算单元经常等数据。分别对应容量、带宽或计算的哪类线索？为什么不能只报一个峰值算力？
+
+<details>
+<summary>完成自己的回答后，再看参考解释与核对要点</summary>
+
+**为什么这样理解：**
+
+能否容纳是容量问题；常等数据可能与带宽或访问模式有关，但需测量排除其他因素。即使峰值运算能力高，数据不到位也无法兑现。
+
+**核对要点（原评价标准）：**
+
+- 放不下首先是容量限制。
+- 等待数据提示搬运或带宽线索，仍需测量确认。
+- 峰值计算能力不能覆盖容量和数据供给。
+
+对应知识卡：card-memory-compute；考点：2.1；相关旧题：Q-ORIGINAL-004、Q-D02-003。
+
+- [同事提供：NVIDIA Training NCA - AIIO.pdf](https://drive.google.com/file/d/1tdZ1BczaM8FsbGnn0KeVlAZ5t_ikvcva/view) — 每卡另附物理页码；本轮原始文件160页
+- [NVIDIA GPU Performance Background](https://docs.nvidia.com/deeplearning/performance/dl-performance-gpu-background/index.html) — 架构/性能限制
+
+</details>
+
+### 4. 批处理与等待（英文，可中文答）（英文，可用中文回答）
+
+试用练习ID：`P-D02-04`。
+
+A service batches more requests and finishes more requests per minute, while some users wait longer for a reply. Is this contradictory? Explain throughput and latency separately. You may answer in Chinese.
+
+<details>
+<summary>完成自己的回答后，再看参考解释与核对要点与译文</summary>
+
+**题意：** 服务把更多请求凑成批次，每分钟完成的请求更多，但有些用户等待回复更久。这矛盾吗？请分别解释吞吐和延迟。可以用中文回答。
+
+**为什么这样理解：**
+
+吞吐是单位时间完成数量，延迟是单条请求等待。凑批可让设备更忙、总量上升；较早到达的请求可能要等其他请求，因此等待变长。
+
+**核对要点（原评价标准）：**
+
+- 不矛盾；总处理量与单条等待时间是不同指标。
+- 凑批可能提高利用率，也可能增加部分请求的排队时间。
+
+对应知识卡：card-latency-throughput；考点：2.1；相关旧题：Q-ORIGINAL-005、Q-D02-004。
+
+- [TensorRT 性能优化](https://docs.nvidia.com/deeplearning/tensorrt/latest/performance/optimization.html) — Batching/吞吐/延迟
+- [NVIDIA GPU Performance Background](https://docs.nvidia.com/deeplearning/performance/dl-performance-gpu-background/index.html) — 架构/性能限制
+
+</details>
+
+### 5. 为两类负载选指标
+
+试用练习ID：`P-D02-05`。
+
+虚构服务夜间离线处理历史工单，白天让员工等单条回复。两段工作各优先看什么指标？如果只报告“平均每分钟处理量上升”，还缺什么用户体验证据？
+
+<details>
+<summary>完成自己的回答后，再看参考解释与核对要点</summary>
+
+**为什么这样理解：**
+
+批量任务可先看总处理量；交互服务还应测量单条及较慢请求的等待。吞吐上升不说明每个员工都更早得到结果。
+
+**核对要点（原评价标准）：**
+
+- 夜间批量关注总完成量或吞吐，白天交互关注请求延迟。
+- 指出平均或尾部等待仍需测量，不能从总量推出用户体验。
+
+对应知识卡：card-latency-throughput；考点：2.1；相关旧题：Q-D02-004、Q-D02-005。
+
+- [同事提供：NVIDIA Training NCA - AIIO.pdf](https://drive.google.com/file/d/1tdZ1BczaM8FsbGnn0KeVlAZ5t_ikvcva/view) — 每卡另附物理页码；本轮原始文件160页
+- [TensorRT 性能优化](https://docs.nvidia.com/deeplearning/tensorrt/latest/performance/optimization.html) — Batching/吞吐/延迟
+
+</details>
+
+### 6. 训练与推理资源（英文，可中文答）（英文，可用中文回答）
+
+试用练习ID：`P-D02-06`。
+
+A team updates model parameters using labeled historical tickets, then serves predictions for new tickets. Which stage is training, which is inference, and why should capacity and latency be checked separately? You may answer in Chinese.
+
+<details>
+<summary>完成自己的回答后，再看参考解释与核对要点与译文</summary>
+
+**题意：** 团队用带标签的历史工单更新模型参数，然后为新工单提供预测。哪一段是训练、哪一段是推理？为何要分别核查容量与延迟？可以用中文回答。
+
+**为什么这样理解：**
+
+历史标注数据用于更新参数，是训练；新请求用已有参数得到预测，是推理。训练和推理都需核查模型、批次与内存；交互推理还要看单条等待，不能用容量推断延迟。
+
+**核对要点（原评价标准）：**
+
+- 更新参数的是训练；使用已有参数处理新工单的是推理。
+- 容量决定模型与工作数据能否容纳，延迟描述一次回复等待；实际要求应按阶段和负载测量。
+
+对应知识卡：card-training-inference、card-memory-compute；考点：1.2、2.1；相关旧题：Q-D02-005、Q-D02-006。
+
+- [同事提供：NVIDIA Training NCA - AIIO.pdf](https://drive.google.com/file/d/1tdZ1BczaM8FsbGnn0KeVlAZ5t_ikvcva/view) — 每卡另附物理页码；本轮原始文件160页
+- [NVIDIA GPU Performance Background](https://docs.nvidia.com/deeplearning/performance/dl-performance-gpu-background/index.html) — 架构/性能限制
+
+</details>
+
+### 回答后的反馈
+
+- 结论与题目证据
+- 能否用自己的话说明理由
+- 条件和未知项
+- 英文阅读与概念理解分别记录
+
+- 先保存实际原答，再对照默认折叠的参考分析；参考分析不是自动评分，也不替代针对原答的反馈。
+- 区分独立回答、看过中文译文、看过提示后修订与照着讲解复述。一次答对或改对都不记为已掌握。
+- 不知道时写下卡住的位置；只针对当前缺口回读一节，再换情境解释。
+
+本课题目与参考分析可能已在对话或页面中出现。再次作答按实际接触情况记录，不当作全新未见题。
+
+### 可选回顾：5–8分钟短诊断
+
+第1、4、5项，英文可换第6项；不是入课门槛。
+
+- 可跳过诊断直接学习主课；先写直觉和理由。
+- 若已看过主课、译文或参考分析，按接触过的练习记录，不冒充独立未见题。
+- 英文题可中文回答，语言困难与性能概念分开反馈。
+
+## 接到 Day 3：知道硬件能力后，软件还要配合
+
+Day 2 讨论任务和资源。Day 3 会拆开应用、框架、计算库、CUDA、驱动与容器的职责，解释为何同一模型不能无条件在另一台主机运行。
+
+- 带着一项明确任务和一个实际瓶颈问题进入软件栈。
+- 不把计算单元、CUDA 软件和驱动混为同一层。
+- 性能推断保留负载与测量条件。
 
 <!-- NCA_TEACHING_END -->

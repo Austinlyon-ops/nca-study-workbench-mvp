@@ -80,7 +80,7 @@ try {
       const preferences = win.webContents.getLastWebPreferences();
       return { version:app.getVersion(), userData:app.getPath('userData'), bounds:win.getBounds(), contextIsolation:preferences.contextIsolation, sandbox:preferences.sandbox, nodeIntegration:preferences.nodeIntegration };
     });
-    assert.equal(info.version, '0.3.0');
+    assert.equal(info.version, '0.3.1');
     assert.equal(info.userData, userData);
     assert.ok(info.bounds.width >= 1024 && info.bounds.height >= 768);
     assert.equal(info.contextIsolation, true);

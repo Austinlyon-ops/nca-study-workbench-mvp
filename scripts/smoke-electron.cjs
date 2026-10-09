@@ -12,6 +12,8 @@ const { tmpdir } = require('node:os');
   try {
     const page = await electronApp.firstWindow();
     await page.getByText('继续学习', { exact: true }).click();
+    // Day 1/2 的完整主课先展示，知识卡作为折叠的学后速查。
+    await page.locator('[data-card-reference]').evaluate(element => { element.open = true; });
     await page.getByText('已阅读', { exact: true }).first().click();
     await page.waitForTimeout(250);
     await page.locator('#toPractice').click();
