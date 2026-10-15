@@ -1,0 +1,1202 @@
+{
+  "format": "nca-teaching-content-archive",
+  "contentVersion": "0.3.1",
+  "teachingRevision": "2026-10-14-day01-reviewed1",
+  "lesson": {
+    "day": 1,
+    "title": "AI概念、生成能力与用例",
+    "teachingRevision": "2026-10-02-day01-batch1",
+    "status": "可学习（首批内容）",
+    "cardIds": [
+      "card-ai-ml-dl",
+      "card-genai-stage",
+      "card-ai-drivers",
+      "card-ai-use-cases"
+    ],
+    "questionIds": [
+      "Q-ORIGINAL-001",
+      "Q-D01-001",
+      "Q-D01-002",
+      "Q-D01-003",
+      "Q-D01-004",
+      "Q-D01-005",
+      "Q-D01-006",
+      "Q-D01-007",
+      "Q-D01-008",
+      "Q-D01-009"
+    ],
+    "selfCheck": "模型不更新参数却生成说明，为什么既是生成式AI也是推理？",
+    "selfCheckNote": "口述自检不自动计分；答后讲解不能冒充独立首次作答。",
+    "teachingTrial": {
+      "id": "day1-understanding-2026-10-09",
+      "teachingRevision": "2026-10-14-day01-reviewed1",
+      "title": "Day 1 主课与理解练习：从任务判断 AI 概念",
+      "status": "修订试用；原答与历史记录保留；学习效果待验证",
+      "approvedOn": "2026-10-14",
+      "note": "先读五节主课，再用自己的话回答；知识卡供学后速查，原选择题继续独立计分。短答只保存原答与提示接触，不自动判断掌握。",
+      "fullLesson": {
+        "title": "Day 1 主课｜先看任务，再辨 AI、学习方法与生成能力",
+        "intro": "用虚构的维修工单助手贯穿本课：它可能按人工规则转单，也可能从标注样本学习类别，还可能生成一段解释。先看输入、处理方式与输出，再给技术贴名称。以下情境均为教学假设，不是客户记录。",
+        "orientation": [
+          "先分清三个问题：系统要解决什么任务？处理规律由人直接写定还是从数据中学得？模型当前是在更新参数还是使用已有参数？",
+          "AI 是较大的领域，机器学习是其中从数据学习规律的一类方法，深度学习是机器学习中的一类方法；生成式描述输出能力，与训练或推理阶段不是同一个分类轴。",
+          "先读五节正文，遇到术语再回卡片查定义；来源链接用于查证与选读，不要求先通读外部讲义。短诊断可选，也不作为入课门槛。"
+        ],
+        "sections": [
+          {
+            "id": "L-D01-01",
+            "title": "一、先写清任务的输入与输出",
+            "cardIds": [
+              "card-ai-use-cases"
+            ],
+            "sourceIds": [
+              "TRAIN"
+            ],
+            "paragraphs": [
+              "同叫“工单助手”，任务可能完全不同。输入是一段故障描述，输出固定标签是分类；输出一段新的解释文字是生成；输入多条历史事件，输出异常信号则是检测。先把输入和期待的输出写清，才有条件选方法。",
+              "行业名称不能替代任务说明。医疗、制造和客服都可能做分类、预测或生成；一张产品宣传图也不能证明某场景的数据已经足够或效果已经验证。"
+            ],
+            "example": {
+              "title": "三种工单请求",
+              "paragraphs": [
+                "“路由到网络组”是分类结果；“根据记录写故障摘要”是生成内容；“本周告警是否偏离常态”属于异常判断。它们可能共用数据，却要分别定义评价证据。"
+              ]
+            },
+            "contrast": [
+              "反例：看到输出是文字就称为生成式 AI；固定模板也会输出文字，需看系统是否在生成新内容。",
+              "反例：看到制造业就直接指定视觉模型；仍要问输入是图像、文本还是传感器数据。"
+            ],
+            "takeaway": "先写输入和输出，再讨论算法或产品。",
+            "readingGuide": [
+              "讲义的行业示例可用于找任务类型；不要把行业示意当成已验证部署。"
+            ],
+            "priority": "core",
+            "exerciseIds": [
+              "P-D01-01"
+            ]
+          },
+          {
+            "id": "L-D01-02",
+            "title": "二、AI、ML、DL 是范围关系，不是三个互斥按钮",
+            "cardIds": [
+              "card-ai-ml-dl"
+            ],
+            "sourceIds": [
+              "TRAIN",
+              "ML",
+              "DL",
+              "REVIEW-ANN"
+            ],
+            "paragraphs": [
+              "AI 讨论让系统完成通常需要智能判断的任务。机器学习（ML）是在 AI 中从数据中学习规律的一类做法；深度学习（DL）则使用多层神经网络表示，是 ML 的一类。范围关系可以帮助归类，却不能代替查看系统实际怎样得到规则。",
+              "如果工程师写出“包含断网一词就分到网络组”的固定条件，系统可能完成智能化业务，但这条条件本身不是从样本训练出来的。若模型通过带类别的工单学习分类边界，则是 ML；若使用多层网络学习表示，可以进一步属于 DL。"
+            ],
+            "example": {
+              "title": "同一任务的两条路线",
+              "paragraphs": [
+                "同样把工单分到支持组，路线 A 用手写关键词表，路线 B 用标注工单训练模型。输出可能相似，取得规律的方法不同；不能单凭最后一个标签倒推训练方式。"
+              ]
+            },
+            "contrast": [
+              "“用了 AI”不足以推出“用了深度学习”；应寻找数据训练与模型结构的证据。",
+              "“用了 ML”也不足以推出“必须是生成式 AI”；分类模型通常只给类别。"
+            ],
+            "takeaway": "判断层级时先查规律从哪里来，再查模型方法。",
+            "readingGuide": [
+              "原讲义物理第12页给出包含关系；第13页的棋类类比把“从历史棋局学习”放在ML层，把“自我对弈学习”放在DL层。注意：学习材料来自历史记录还是自我对弈，不能单独决定是否为DL；还要有多层神经网络的结构证据。",
+              "例如只知道“系统从自我对弈结果改进策略”，可以说有从经验学习的证据，但还不能断言是DL。若再明确使用多层神经网络学习表示，才有进一步判断DL的依据。此处是对类比边界的补充，不是更改现有正确定义。"
+            ],
+            "priority": "core",
+            "exerciseIds": [
+              "P-D01-02"
+            ]
+          },
+          {
+            "id": "L-D01-03",
+            "title": "三、生成能力与训练、推理是两条轴",
+            "cardIds": [
+              "card-genai-stage"
+            ],
+            "sourceIds": [
+              "TRAIN",
+              "GEN",
+              "REVIEW-ANN"
+            ],
+            "paragraphs": [
+              "生成式 AI 描述模型能产生新的文字、图像等内容。训练是根据数据调整模型参数的过程；推理是使用已有参数处理新输入并产生输出。因此，已经训练好的模型写出一段新摘要，是生成式应用的一次推理，并没有因“生成”二字就自动进入训练。",
+              "参数是模型里影响输出、可通过学习调整的数值，例如某个输入特征在判断中的权重。可以把模型想成带有可调旋钮的计算规则：训练依据样本与反馈调旋钮；本课讨论的常规推理则保持这些已学参数，用它们计算当前输入的输出。这个比喻只解释参数，不表示所有ML模型都是一串权重。",
+              "新输入不等于新参数。员工在提示中补上一条维修记录，模型可以据此写出不同摘要；仅凭答案变了，不能说它已经重新训练。需要看到基于数据更新模型参数或结构的学习过程。",
+              "也不要把所有推理任务都称为内容生成。分类模型接收新工单返回类别，同样可以是在使用已有模型进行推理。分别判断任务要输出什么、模型具有什么能力、这一步是否在学习更新；不要只凭一个输出标签反推模型类型。"
+            ],
+            "example": {
+              "title": "摘要生成与参数更新",
+              "paragraphs": [
+                "团队先用历史资料训练模型，之后员工提交新工单并取得摘要。后一刻通常是推理；若后来基于新标注数据继续调整参数，那才涉及新的训练或微调。"
+              ]
+            },
+            "contrast": [
+              "反例：“回答内容是新写的，所以参数一定变了。”新输出并不证明模型参数变化。",
+              "反例：“没有生成长文，所以不是推理。”返回类别也可以是推理。"
+            ],
+            "takeaway": "内容形态与运行阶段分开判断。",
+            "readingGuide": [
+              "只在混淆训练与推理时看讲义阶段对照；不从宣传示例推断真实模型是否更新。"
+            ],
+            "priority": "core",
+            "exerciseIds": [
+              "P-D01-03",
+              "P-D01-04"
+            ]
+          },
+          {
+            "id": "L-D01-04",
+            "title": "四、数据、方法与计算资源各解决不同约束",
+            "cardIds": [
+              "card-ai-drivers"
+            ],
+            "sourceIds": [
+              "TRAIN",
+              "ML",
+              "REVIEW-EVAL"
+            ],
+            "paragraphs": [
+              "把一个模型投入任务，需要考虑数据、方法、计算资源和评估。数据提供可学习的样本；样本是否相关、标注是否正确，要靠采集、标注和质量检查来判断。方法决定怎样从数据学习，计算资源支持训练和运行。它们会相互影响：改进方法可能减少数据或计算需求，但只升级硬件不会自动纠正业务标签。",
+              "增加 GPU 可能缩短可并行计算的时间，却不能仅凭算力增加就认定错误标签已被纠正或罕见故障样本已补齐。先抽查样本与标签，再用未参与训练的适当样本评估；根据证据决定改数据、方法还是资源。评估数据还应能代表实际使用情境。"
+            ],
+            "example": {
+              "title": "偏斜的工单样本",
+              "paragraphs": [
+                "训练集中大多是网络故障，存储故障标签混乱。即使训练更快，模型仍可能分错存储工单；应先核查样本与标签，再评估方法和资源。"
+              ]
+            },
+            "contrast": [
+              "“算力越大越准确”缺少数据和评估条件。",
+              "“数据越多越好”也缺少相关性、质量与许可条件。"
+            ],
+            "takeaway": "先定位问题证据，再对应数据、方法或计算资源。",
+            "readingGuide": [
+              "培训讲义物理第9页只有“数据增长、算法突破、计算能力增长”三项标题和配图，支持的是发展因素分类，不直接证明标签质量、评估方法或三者完全不可替代。",
+              "NVIDIA Machine Learning 的工作方式段指出效果还受算法、输入数据质量和计算资源影响；Google机器学习课程的 Training, validation, and test sets 段说明分开训练与评估数据。工单误标情境及排查顺序是本课教学推导。"
+            ],
+            "priority": "core",
+            "exerciseIds": [
+              "P-D01-05"
+            ]
+          },
+          {
+            "id": "L-D01-05",
+            "title": "五、把四个判断连成一个可解释的选择",
+            "cardIds": [
+              "card-ai-use-cases",
+              "card-ai-ml-dl",
+              "card-genai-stage",
+              "card-ai-drivers"
+            ],
+            "sourceIds": [
+              "TRAIN",
+              "ML",
+              "GEN"
+            ],
+            "paragraphs": [
+              "面对一个新需求，按顺序说清：输入是什么、要输出什么、规律如何得到、模型当前是否更新参数、还缺什么证据。这个顺序比先猜一个产品名更稳妥。",
+              "虚构工单助手若要“根据故障描述写简短建议”，可以讨论生成能力；但上线前还需确认资料来源、错误处理和人工复核。能演示生成一次文字，不能证明建议准确、合规或适合生产。"
+            ],
+            "example": {
+              "title": "给经理的一分钟解释",
+              "paragraphs": [
+                "“我们先界定输入和输出；如果用历史工单学习规律，它属于 ML。若使用多层网络，可进一步属于 DL。生成一段建议是输出能力；现成模型处理新工单是推理。样本质量和评估仍待核查。”"
+              ]
+            },
+            "contrast": [
+              "只给出“这是 AI”不能回答方法和阶段。",
+              "只列算法名称而不说明输入、输出与未知，也不足以支持选型。"
+            ],
+            "takeaway": "用任务、方法、阶段和证据四步解释，不宣称已验证效果。",
+            "readingGuide": [
+              "需要查具体产品或版本时再打开官方来源；本课不要求选定生产方案。"
+            ],
+            "priority": "core",
+            "exerciseIds": [
+              "P-D01-06"
+            ]
+          }
+        ],
+        "summary": [
+          "先按输入和输出定义任务，再判断规律来自规则还是数据。",
+          "AI 包含 ML，ML 包含 DL；生成能力与训练、推理阶段分属不同问题。",
+          "数据、方法、算力相互影响，应按证据定位约束；只增加硬件不能证明标签已纠正，一次演示不等于效果验证。",
+          "短答保留原答与提示接触；完成练习不表示已掌握。"
+        ],
+        "timeGuide": [
+          "20分钟可读前三节并任选一道短答，之后继续余下内容。",
+          "45分钟读完五节并选中文解释与一道英文题；60分钟再回卡片或选择题核对。",
+          "时间是安排建议，不是用户已完成时长；英文题可用中文回答，先看译文的情况应如实记录。"
+        ]
+      },
+      "goals": [
+        "能按输入和输出区分分类、生成与检测任务。",
+        "能解释 AI、ML、DL 的范围关系和反例。",
+        "能把生成能力与训练、推理阶段分开。",
+        "能说明数据、方法、算力各自限制，并保留尚未验证的效果。"
+      ],
+      "diagnostic": {
+        "minutes": "5–8",
+        "promptIds": [
+          "P-D01-02",
+          "P-D01-03",
+          "P-D01-04"
+        ],
+        "alternativeEnglishId": "P-D01-06",
+        "instructions": [
+          "可跳过诊断直接读主课；不知道时写出卡住的词。",
+          "若要检查独立回忆，先不看主课、译文和参考分析；看过后按辅助作答记录。",
+          "英文题可用中文回答，语言困难与概念困难分别记录。"
+        ]
+      },
+      "caseStudy": {
+        "title": "虚构教学案例：工单助手的三项需求",
+        "setup": "团队提出自动路由、生成摘要、预测下一周工单量三项需求。题目只给出任务描述，没有样本质量、模型效果或生产授权证据。",
+        "steps": [
+          {
+            "title": "先描述输出",
+            "text": "路由输出类别，摘要输出新文字，预测输出未来数值；不要因为同属工单领域就当成一种问题。"
+          },
+          {
+            "title": "再问方法",
+            "text": "路由可用手写规则或学习模型；摘要可能使用生成模型。只有看到训练过程或模型信息，才能进一步判断是否属于 ML 或 DL。"
+          },
+          {
+            "title": "最后保留未知",
+            "text": "数据许可、样本质量、效果、人工复核与资源需求都要分别查证。一次看似合理的摘要不是准确率或生产可用性的证明。"
+          }
+        ],
+        "boundary": "所有需求和回答都是虚构教学情境，不是客户现场记录，也不代表已验证模型效果。"
+      },
+      "exercises": [
+        {
+          "id": "P-D01-01",
+          "title": "先定义任务",
+          "language": "zh",
+          "stem": "虚构工单助手要①把新工单转派到一个支持组，②根据工单写摘要，③判断本周告警是否偏离历史常态。请分别说出输入、输出和任务类型，并说明为什么不能只凭“客服场景”选同一种方法。",
+          "cardIds": [
+            "card-ai-use-cases"
+          ],
+          "objectiveIds": [
+            "1.5"
+          ],
+          "sourceIds": [
+            "TRAIN"
+          ],
+          "relatedQuestionIds": [
+            "Q-D01-008"
+          ],
+          "rubric": [
+            "写清三个任务各自的输入与输出。",
+            "正确区分类别判断、摘要生成与异常检测。",
+            "说明同一行业不等于同一任务或评价目标。"
+          ],
+          "referenceExplanation": [
+            "①输入新工单描述，输出支持组类别，是分类；②输入工单记录，输出由模型组织的摘要文字，是生成；③输入本周告警及历史参照，输出异常标记或偏离程度，是异常检测。",
+            "共同点只是客服业务背景。三项分别要评价分派是否正确、摘要是否忠于记录、异常是否漏报或误报；因此任务与评价目标不同。这里的评价例子是教学推导，不是原讲义给出的考试标准。",
+            "若你只写“它们都是AI”，还缺输入和输出；若只写“有文字就是生成”，要排除固定模板与原文检索。"
+          ]
+        },
+        {
+          "id": "P-D01-02",
+          "title": "范围关系与反例",
+          "language": "zh",
+          "stem": "团队用人工编写的关键词规则分派工单，另一个系统从标注工单学习分类。二者都输出类别。哪个有从数据学习的证据？这能否仅凭输出断言两者都用了深度学习？",
+          "cardIds": [
+            "card-ai-ml-dl"
+          ],
+          "objectiveIds": [
+            "1.3"
+          ],
+          "sourceIds": [
+            "TRAIN",
+            "ML",
+            "DL"
+          ],
+          "relatedQuestionIds": [
+            "Q-ORIGINAL-001",
+            "Q-D01-001"
+          ],
+          "rubric": [
+            "指出从标注数据学习的系统有 ML 证据。",
+            "说明同样输出类别不能证明使用 DL。"
+          ],
+          "referenceExplanation": [
+            "手写条件和从样本学习的方法不同。后者有机器学习证据；是否深度学习还需看模型结构，不能由输出标签推出。"
+          ]
+        },
+        {
+          "id": "P-D01-03",
+          "title": "生成与推理辨析（英文，可中文答）",
+          "language": "en",
+          "stem": "A pretrained model writes a new incident summary without updating its parameters. Is this generation, inference, both, or neither? Explain your two separate reasons. You may answer in Chinese.",
+          "cardIds": [
+            "card-genai-stage"
+          ],
+          "objectiveIds": [
+            "1.2"
+          ],
+          "sourceIds": [
+            "TRAIN",
+            "GEN",
+            "REVIEW-ANN"
+          ],
+          "relatedQuestionIds": [
+            "Q-D01-003",
+            "Q-D01-004"
+          ],
+          "rubric": [
+            "新摘要体现生成能力。",
+            "使用已有参数处理新输入且未更新参数，是推理。"
+          ],
+          "referenceExplanation": [
+            "这是生成式输出，也是使用已有模型的一次推理。输出新文字不等于训练；关键证据是参数没有在这次任务中更新。"
+          ],
+          "translation": "一个预训练模型写出新的事件摘要，过程中没有更新参数。这是生成、推理、两者都是，还是都不是？请分别说明理由。可以用中文回答。"
+        },
+        {
+          "id": "P-D01-04",
+          "title": "分类也会推理",
+          "language": "zh",
+          "stem": "已训练好的模型收到一条新工单，只返回“网络故障”标签，没有写新段落，也没有更新参数。它有没有进行推理？为什么不必把它称为生成式任务？",
+          "cardIds": [
+            "card-genai-stage"
+          ],
+          "objectiveIds": [
+            "1.2"
+          ],
+          "sourceIds": [
+            "TRAIN",
+            "REVIEW-ANN"
+          ],
+          "relatedQuestionIds": [
+            "Q-D01-004"
+          ],
+          "rubric": [
+            "指出使用已有参数处理新输入属于推理。",
+            "输出固定类别不因是推理就自动属于生成。"
+          ],
+          "referenceExplanation": [
+            "是推理：题干明确它是已训练模型，正在使用已有参数处理新工单，没有更新参数。当前业务任务是分类，因为要求返回一个类别，而不是撰写摘要。",
+            "但只见到“网络故障”四个字，还不能断言底层模型没有生成能力。例如同一个生成式语言模型也可以按指令只输出一个类别。任务是分类、模型可能具有生成能力、执行阶段是推理，这三个判断并不冲突。",
+            "若回答“没有长文所以不是推理”，混淆了任务和阶段；若回答“返回标签所以一定不是生成式模型”，则超出了题干提供的证据。"
+          ]
+        },
+        {
+          "id": "P-D01-05",
+          "title": "资源不能修复标签",
+          "language": "zh",
+          "stem": "虚构工单数据里存储故障常被误标成网络故障。团队提议只增加 GPU。请说明这可能改善什么、不能直接修复什么，下一步要查哪类证据。",
+          "cardIds": [
+            "card-ai-drivers"
+          ],
+          "objectiveIds": [
+            "1.4"
+          ],
+          "sourceIds": [
+            "TRAIN",
+            "ML",
+            "REVIEW-EVAL"
+          ],
+          "relatedQuestionIds": [
+            "Q-D01-006"
+          ],
+          "rubric": [
+            "指出计算资源可能改善处理能力或训练时间，不能自动修正误标。",
+            "提出先查标签、样本与评估，再决定方法和资源。"
+          ],
+          "referenceExplanation": [
+            "增加GPU可能改善可并行计算的处理能力或训练时间，但硬件升级本身不改变哪张工单被误标。先抽查存储故障样本与标注规则，并用与训练分开的适当样本评价结果，再判断是否还存在算法或资源瓶颈。",
+            "第9页只列发展因素；这里的误标案例和处理顺序是教学推导，数据质量与独立评估原则另见所列官方资料。"
+          ]
+        },
+        {
+          "id": "P-D01-06",
+          "title": "新需求的判断顺序（英文，可中文答）",
+          "language": "en",
+          "stem": "A manager asks for an AI assistant that “helps with incidents.” What four questions would you ask before claiming it is a deep-learning or generative solution? You may answer in Chinese.",
+          "cardIds": [
+            "card-ai-use-cases",
+            "card-ai-ml-dl",
+            "card-genai-stage",
+            "card-ai-drivers"
+          ],
+          "objectiveIds": [
+            "1.2",
+            "1.3",
+            "1.4",
+            "1.5"
+          ],
+          "sourceIds": [
+            "TRAIN",
+            "ML",
+            "GEN"
+          ],
+          "relatedQuestionIds": [
+            "Q-D01-008",
+            "Q-D01-009"
+          ],
+          "rubric": [
+            "问清输入与期望输出。",
+            "问规律来自人工规则还是数据学习，以及模型方法证据。",
+            "区分生成能力与当前训练/推理阶段，并询问数据质量和效果证据。"
+          ],
+          "referenceExplanation": [
+            "可以问四组问题：①输入是什么，期望输出类别、摘要还是异常信号？②规律由人写定还是从数据学习，若声称DL，有何多层神经网络结构证据？③此刻在学习更新模型，还是用已学模型处理输入？④数据质量怎样，用什么样本和指标验证效果，计算资源是否满足需求？",
+            "例如经理只说“帮助处理事件”，还不足以判断DL或生成式方案。若补充“多层网络从标注工单学习分类，部署后用固定参数返回类别”，可判断方法属于DL/ML，当前是分类推理；不能仅凭类别输出排除模型的其他能力。",
+            "四组问题是表达工具，不要求逐字背诵。漏掉模型结构就不足以判断DL，漏掉期望输出就无法明确业务任务，漏掉评估证据就不能宣称效果已经验证。"
+          ],
+          "translation": "经理要一个“协助处理事件”的 AI 助手。声称它是深度学习或生成式方案之前，你会问哪四类问题？可以用中文回答。"
+        }
+      ],
+      "feedback": {
+        "dimensions": [
+          "结论与题目证据",
+          "能否用自己的话说明理由",
+          "条件和未知项",
+          "英文阅读与概念理解分别记录"
+        ],
+        "instructions": [
+          "先保存实际原答，再对照默认折叠的参考分析；参考分析不是自动评分，也不替代针对原答的反馈。",
+          "区分独立回答、看过中文译文、看过提示后修订与照着讲解复述。一次答对或改对都不记为已掌握。",
+          "不知道时写下卡住的位置；只针对当前缺口回读一节，再换情境解释。"
+        ],
+        "exposureNote": "本课题目与参考分析可能已在对话或页面中出现。再次作答按实际接触情况记录，不当作全新未见题。"
+      },
+      "bridge": {
+        "title": "接到 Day 2：方法之外还要看计算条件",
+        "text": "Day 1 说明任务、方法和数据证据。Day 2 再看 CPU/GPU 分工、计算与内存限制，以及训练和推理的资源差异。",
+        "steps": [
+          "带着一个明确的输入/输出任务进入性能讨论。",
+          "不把“需要 AI”直接推成“GPU 必然更快”。",
+          "保留数据质量与评估未知，不用硬件指标替代应用效果。"
+        ],
+        "nextDay": 2
+      }
+    },
+    "materialGuide": {
+      "title": "本课与原教材：怎样搭配着学",
+      "currentUse": "先读本课五节主课，再选少量理解练习保存自己的原答；四张知识卡用于学后速查，原选择题继续独立计分。外部教材不是读懂基础内容的前提。此前聊天学习来源单独保留，不当作应用成绩。",
+      "originalValue": "原讲义物理9–15页把发展因素、行业与概念放在一起，适合补整体图景。",
+      "whenToRead": "能解释从数据学习与规则处理的区别、方法与生成能力的不同角度时，可先继续下一课；术语模糊先回看对应中文讲解。",
+      "difference": "原讲义概念示意较概括；这里增加了任务/方法/硬件的区别与反例。",
+      "scope": "完成这里的基础目标，只说明可以继续本课学习；不代表考试范围已完整覆盖、已掌握或能直接进行生产操作。",
+      "readings": [
+        {
+          "sourceId": "TRAIN",
+          "locator": "160页培训讲义，物理页12–13；AI/ML/DL关系",
+          "task": "只看概念关系图，再回第一卡判断规则是人写还是从数据学来。",
+          "stop": "能给出一个ML但未必DL的理由即可返回。",
+          "warning": "同事提供的培训讲义，不等于已认证的官方考试教材。产品条件与版本以当前官方说明为准。"
+        },
+        {
+          "sourceId": "TRAIN",
+          "locator": "160页培训讲义，物理页150；训练/推理",
+          "task": "仅在混淆“输出什么”和“是否更新参数”时看阶段对照。",
+          "stop": "能解释生成内容为何也可属于推理即可停止。",
+          "warning": "同事提供的培训讲义，不等于已认证的官方考试教材。产品条件与版本以当前官方说明为准。"
+        },
+        {
+          "sourceId": "TRAIN",
+          "locator": "160页培训讲义，物理页9或10；按疑问二选一",
+          "task": "发展因素看9页，用例看10页，对应第三或第四卡。",
+          "stop": "解释一个因素或一个输入/输出即可停止，不要求两主题都翻完。",
+          "warning": "同事提供的培训讲义，不等于已认证的官方考试教材。产品条件与版本以当前官方说明为准。"
+        }
+      ],
+      "officialUse": "遇到具体型号、版本、指标字段或真实操作时，打开对应知识卡中的官方依据，只查与问题有关的定义/支持条件；不把官方网站全站作为当天作业。",
+      "mediaStatus": "原目录的视频与字幕可作为补讲候选，但当前只完成目录级清点，未逐段核对；本课不指定未经核验的时间码或宣称看完某段即可覆盖考点。"
+    }
+  },
+  "sources": [
+    {
+      "id": "BP",
+      "name": "NVIDIA当前NCA-AIIO认证页",
+      "url": "https://www.nvidia.com/en-us/learn/certification/ai-infrastructure-operations-associate/",
+      "locator": "考试大纲/考试概况",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": "上游本轮核对；只作考试范围入口，不承诺通过。"
+    },
+    {
+      "id": "GUIDE",
+      "name": "NCA-AIIO当前官方考试指南",
+      "url": "https://dam-cdn.nvd.orangelogic.com/AssetLink/x874j05hy3m3r2sor84kpvp70750m468.pdf",
+      "locator": "物理4–6页：22考点，38/40/22%",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": "上游与独立复核已读当前6页链接；©2026、Jan26印记不当作正式生效版本号。范围基线不替技术结论背书。"
+    },
+    {
+      "id": "TRAIN",
+      "name": "同事提供：NVIDIA Training NCA - AIIO.pdf",
+      "url": "https://drive.google.com/file/d/1tdZ1BczaM8FsbGnn0KeVlAZ5t_ikvcva/view",
+      "locator": "每卡另附物理页码；本轮原始文件160页",
+      "kind": "third-party",
+      "checked": "2026-09-24",
+      "note": "培训讲义，不标为官方考试教材。版本/口诀需另核。"
+    },
+    {
+      "id": "NOTE02",
+      "name": "同事提供：02-nvidia-software-stack.pdf",
+      "url": "https://drive.google.com/file/d/1ab3ilujbrSpsYd_4M3pNxNaUHz84qpRH/view",
+      "locator": "第3–8页",
+      "kind": "third-party",
+      "checked": "2026-09-24",
+      "note": "只参考组织和概念；dump/必出/题量预测不采纳，定义另核官方。"
+    },
+    {
+      "id": "ML",
+      "name": "NVIDIA Machine Learning",
+      "url": "https://www.nvidia.com/en-us/glossary/machine-learning/",
+      "locator": "定义/工作方式",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": ""
+    },
+    {
+      "id": "DL",
+      "name": "NVIDIA Deep Learning",
+      "url": "https://developer.nvidia.com/deep-learning",
+      "locator": "开头Deep Learning定义（多层神经网络、AI/ML包含关系）",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": "仅引用定义，不采纳页面ROI宣传。"
+    },
+    {
+      "id": "GEN",
+      "name": "NVIDIA Generative AI",
+      "url": "https://www.nvidia.com/en-us/glossary/generative-ai/",
+      "locator": "生成能力",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "PERF",
+      "name": "NVIDIA GPU Performance Background",
+      "url": "https://docs.nvidia.com/deeplearning/performance/dl-performance-gpu-background/index.html",
+      "locator": "架构/性能限制",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "BATCH",
+      "name": "TensorRT 性能优化",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/performance/optimization.html",
+      "locator": "Batching/吞吐/延迟",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "CUDA",
+      "name": "CUDA Linux Installation Guide",
+      "url": "https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html",
+      "locator": "Introduction/Toolkit/system requirements",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "COMPAT",
+      "name": "CUDA Compatibility",
+      "url": "https://docs.nvidia.com/deploy/cuda-compatibility/why-cuda-compatibility.html",
+      "locator": "驱动与CUDA软件兼容",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "CUDNN",
+      "name": "NVIDIA cuDNN",
+      "url": "https://docs.nvidia.com/deeplearning/cudnn/latest/",
+      "locator": "深度神经网络基础算子",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "CUBLAS",
+      "name": "NVIDIA cuBLAS",
+      "url": "https://developer.nvidia.com/cublas",
+      "locator": "GPU线性代数库",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "NCCL",
+      "name": "NVIDIA NCCL",
+      "url": "https://developer.nvidia.com/nccl",
+      "locator": "多GPU/多节点通信",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "CONTAINER",
+      "name": "NVIDIA Container Toolkit",
+      "url": "https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/index.html",
+      "locator": "Overview",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "CONTAINER-INSTALL",
+      "name": "GPU容器前置要求",
+      "url": "https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html",
+      "locator": "Prerequisites/Configuration",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "TRT",
+      "name": "NVIDIA TensorRT",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/",
+      "locator": "推理优化和运行",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "TRITON",
+      "name": "Dynamo-Triton（原Triton Inference Server）",
+      "url": "https://developer.nvidia.com/dynamo-triton",
+      "locator": "模型部署与服务",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "NIM",
+      "name": "NVIDIA NIM说明",
+      "url": "https://investor.nvidia.com/news/press-release-details/2024/NVIDIA-Launches-Generative-AI-Microservices-for-Developers-to-Create-and-Deploy-Generative-AI-Copilots-Across-NVIDIA-CUDA-GPU-Installed-Base/default.aspx",
+      "locator": "NIM Inference Microservices",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "NGC",
+      "name": "NVIDIA NGC",
+      "url": "https://www.nvidia.cn/gpu-cloud/",
+      "locator": "容器/模型资源目录",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "AIE",
+      "name": "NVIDIA AI Enterprise",
+      "url": "https://www.nvidia.com/en-us/data-center/products/ai-enterprise/",
+      "locator": "Overview/企业支持/NeMo",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "RAPIDS",
+      "name": "NVIDIA 数据科学文档",
+      "url": "https://docs.nvidia.com/datascience/",
+      "locator": "RAPIDS与数据科学",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "MERLIN",
+      "name": "NVIDIA Merlin",
+      "url": "https://developer.nvidia.com/merlin",
+      "locator": "推荐系统",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "RIVA",
+      "name": "NVIDIA Riva",
+      "url": "https://developer.nvidia.com/topics/ai/generative-ai/riva",
+      "locator": "语音AI",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "OPERATOR",
+      "name": "NVIDIA GPU Operator",
+      "url": "https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/overview.html",
+      "locator": "GPU软件组件管理",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "NOTE04",
+      "name": "同事提供：04-ai-hardware-and-scaling.pdf",
+      "url": "https://drive.google.com/file/d/1nruFbzkvcdguADvzntWdbCHMNhqaWnBK/view",
+      "locator": "物理第2、5–8页；全10页文本已读",
+      "kind": "third-party",
+      "checked": "2026-09-24",
+      "note": "社区笔记；dump、题量预测、无条件硬件数字不采纳。"
+    },
+    {
+      "id": "NOTE05",
+      "name": "同事提供：05-datacenter-power-cooling-facility.pdf",
+      "url": "https://drive.google.com/file/d/1nIpHguc2PoUAQyLSRcw5evK99_ZNgmwq/view",
+      "locator": "物理第1–6页；全8页文本已读",
+      "kind": "third-party",
+      "checked": "2026-09-24",
+      "note": "社区笔记；PUE解释错误、固定散热阈值、自动合规等说法不采纳。"
+    },
+    {
+      "id": "NOTE06",
+      "name": "同事提供：06-networking-for-ai.pdf",
+      "url": "https://drive.google.com/file/d/1JCCAuLW7x_JUVUjmwIfbpsDJJnr_dmT6/view",
+      "locator": "物理第1–9页；全11页文本已读",
+      "kind": "third-party",
+      "checked": "2026-09-24",
+      "note": "社区笔记；不采纳dump题数和无条件速率/延迟/网络数量口诀。"
+    },
+    {
+      "id": "B2-BASEPOD",
+      "name": "NVIDIA DGX BasePOD：核心组件",
+      "url": "https://docs.nvidia.com/dgx-basepod/reference-architecture-infrastructure-foundation-enterprise-ai/latest/core-components.html",
+      "locator": "Compute / Network / Storage / Control Plane",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "具体配置是参考架构示例，不是所有AI集群的固定数量。"
+    },
+    {
+      "id": "B2-NETWORK",
+      "name": "NVIDIA DGX BasePOD：网络部署",
+      "url": "https://docs.nvidia.com/dgx-basepod/deployment-guide-dgx-basepod/latest/network-overview.html",
+      "locator": "Network Overview / oobmanagementnet / computenet",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "本参考架构的逻辑网络划分不等于全行业固定网络数。"
+    },
+    {
+      "id": "B2-FACILITY",
+      "name": "NVIDIA DGX SuperPOD：设施空间",
+      "url": "https://docs.nvidia.com/dgx-superpod/design-guides/dgx-superpod-data-center-design-h100/latest/infrastructure.html",
+      "locator": "Space Planning / Air Flow / Static Weight and Point Load",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "取通用规划原则；尺寸/承重/布线值仍按具体型号和设施条件。"
+    },
+    {
+      "id": "B2-POWER",
+      "name": "NVIDIA DGX SuperPOD：供电规划",
+      "url": "https://docs.nvidia.com/dgx-superpod/design-guides/dgx-superpod-data-center-design-h100/latest/electrical.html",
+      "locator": "Power Redundancy / Power Connections / rPDU / Phase Balancing",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "用于理解容量与冗余；不提供现场电气操作指令。"
+    },
+    {
+      "id": "B2-COOLING",
+      "name": "NVIDIA DGX SuperPOD：散热和气流",
+      "url": "https://docs.nvidia.com/dgx-superpod/design-guides/dgx-superpod-data-center-design-h100/latest/cooling.html",
+      "locator": "Full heat load / Aisle Containment / Cooling Oversubscription",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "不用一个固定kW阈值推定所有机房必须采用同一冷却技术。"
+    },
+    {
+      "id": "B2-PUE",
+      "name": "NVIDIA：数据中心能效指标的边界",
+      "url": "https://blogs.nvidia.com/blog/datacenter-efficiency-metrics-isc/",
+      "locator": "PUE compares total energy to computing infrastructure energy",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "PUE不衡量有用计算产出，不等于GPU利用率、总电费或模型效果。"
+    },
+    {
+      "id": "B2-DEPLOY",
+      "name": "NVIDIA AI Enterprise：部署选择（归档版）",
+      "url": "https://archive.docs.nvidia.com/ai-enterprise/release-4/latest/getting-started/deployment-guide.html",
+      "locator": "Deployment options：Public Cloud / On-Premises Bare Metal",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "归档release-4页仅用于历史部署方式线索；2026-10-14独立复核访问返回Internal Error，不代表永久失效，当前来源补证待完成。"
+    },
+    {
+      "id": "B2-CONTROL",
+      "name": "NVIDIA：企业控制环境中的模型部署",
+      "url": "https://docs.nvidia.com/enterprise-reference-architectures/deploying-proprietary-models-confidential-compute-self-hosted-kubernetes/latest/introduction.html",
+      "locator": "Enterprise-controlled environments",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "客户控制的环境可含本地和云账户；所在地本身不是安全/合规保证。"
+    },
+    {
+      "id": "B2-HGX",
+      "name": "NVIDIA HGX Platform",
+      "url": "https://www.nvidia.com/en-us/data-center/hgx/",
+      "locator": "Platform overview / Partner Systems",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "只核对平台及合作伙伴系统关系；不背代际规格。"
+    },
+    {
+      "id": "B2-DGX",
+      "name": "NVIDIA DGX Platform 文档",
+      "url": "https://docs.nvidia.com/dgx/",
+      "locator": "DGX systems / BasePOD / SuperPOD",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "DGX不是单一GPU芯片；型号和参考架构随版本变化。"
+    },
+    {
+      "id": "B2-NVLINK",
+      "name": "NVIDIA NVLink：Scale-Up网络",
+      "url": "https://developer.nvidia.com/blog/nvidia-nvlink-the-scale-up-network-for-ai-factories/",
+      "locator": "正文：scale-up vs scale-out / domain / GPU communication",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "2026-07-20；读取正文，不以页面AI摘要或性能宣传倍数出题。"
+    },
+    {
+      "id": "B2-ROCE",
+      "name": "NVIDIA DOCA：RDMA over Converged Ethernet",
+      "url": "https://docs.nvidia.com/doca/sdk/rdma-over-converged-ethernet.pdf",
+      "locator": "PDF物理第3–4页定义/封装；第8页流控",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "协议定义可用；历史10/40Gb示例不当作当前速率上限。"
+    },
+    {
+      "id": "B2-SM",
+      "name": "NVIDIA：InfiniBand交换机软件管理",
+      "url": "https://docs.nvidia.com/networking/display/QM87XX/software-management.pdf",
+      "locator": "InfiniBand Subnet Manager",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "SM可以运行于交换机或相连主机；OpenSM是实现名称。"
+    },
+    {
+      "id": "B2-DPU",
+      "name": "NVIDIA：What Is a DPU?",
+      "url": "https://blogs.nvidia.com/blog/whats-a-dpu-data-processing-unit/",
+      "locator": "DPU components / infrastructure offload",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "取定义与职责，不将市场宣传视为适用于任意工作负载的性能承诺。"
+    },
+    {
+      "id": "B2-BLUEFIELD",
+      "name": "NVIDIA BlueField Networking Platform",
+      "url": "https://www.nvidia.com/en-us/networking/products/data-processing-unit/",
+      "locator": "Network / Storage / Security services",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "型号参数不进入本批练习；隔离依赖部署、配置和支持能力。"
+    },
+    {
+      "id": "B2-GDR",
+      "name": "NVIDIA GPUDirect RDMA文档",
+      "url": "https://docs.nvidia.com/cuda/gpudirect-rdma/index.html",
+      "locator": "Overview / Synchronization and Memory Ordering",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "优化数据路径并不消除全部CPU控制和同步工作。"
+    },
+    {
+      "id": "B2-GDS",
+      "name": "NVIDIA GPUDirect Storage Overview",
+      "url": "https://docs.nvidia.com/gpudirect-storage/overview-guide/index.html",
+      "locator": "Overview / Direct data path / compatibility",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "直接数据路径依赖受支持硬件、驱动、文件系统和应用；有兼容回退路径。"
+    },
+    {
+      "id": "NOTE07",
+      "name": "社区学习笔记07：数据中心管理与监控",
+      "url": "https://drive.google.com/file/d/1KsminMP_--vyYJrYQRIurt0KEcI_4gES/view",
+      "locator": "9页；全文文本已读",
+      "kind": "third-party",
+      "checked": "2026-09-24",
+      "note": "只采用主题线索；dump/题量预测及绝对化指标结论不采用。"
+    },
+    {
+      "id": "NOTE08",
+      "name": "社区学习笔记08：编排、调度与虚拟化",
+      "url": "https://drive.google.com/file/d/1jDIcg23sQjWXr7fNKxdNx483-FydD-uz/view",
+      "locator": "12页；全文文本已读",
+      "kind": "third-party",
+      "checked": "2026-09-24",
+      "note": "只采用主题线索；原题不直接导入。MIG支持、重置与调度边界另核官方。"
+    },
+    {
+      "id": "SMI",
+      "name": "NVIDIA System Management Interface",
+      "url": "https://docs.nvidia.com/deploy/nvidia-smi/index.html",
+      "locator": "Description / Query / Utilization / Memory / Power / ECC",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "DCGM",
+      "name": "NVIDIA DCGM Feature Overview",
+      "url": "https://docs.nvidia.com/datacenter/dcgm/latest/user-guide/feature-overview.html",
+      "locator": "Health and Diagnostics / Profiling Metrics",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "EXPORTER",
+      "name": "NVIDIA DCGM Exporter",
+      "url": "https://docs.nvidia.com/datacenter/cloud-native/gpu-telemetry/latest/dcgm-exporter.html",
+      "locator": "Introduction / Running / MIG support",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "XID",
+      "name": "NVIDIA Xid Errors",
+      "url": "https://docs.nvidia.com/deploy/xid-errors/introduction.html",
+      "locator": "What is an Xid Message / How to Use",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "BMC",
+      "name": "NVIDIA DGX H100/H200：BMC",
+      "url": "https://docs.nvidia.com/dgx/dgxh100-user-guide/bmc.html",
+      "locator": "硬件管理、远程控制台、传感器和电源",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "BCM",
+      "name": "NVIDIA Base Command Manager",
+      "url": "https://www.nvidia.com/en-us/data-center/base-command-manager/",
+      "locator": "Provision / Monitor / Cluster management",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "SLURM",
+      "name": "SchedMD Slurm Overview",
+      "url": "https://slurm.schedmd.com/overview.html",
+      "locator": "三项职责 / Architecture / User tools",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "SLURM-GPU",
+      "name": "SchedMD Slurm GRES Scheduling",
+      "url": "https://slurm.schedmd.com/gres.html",
+      "locator": "GPU资源请求 / MIG Management",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "K8S",
+      "name": "Kubernetes Overview",
+      "url": "https://kubernetes.io/docs/concepts/overview/",
+      "locator": "编排 / 调度 / 服务 / 批处理",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "K8S-GPU",
+      "name": "Kubernetes Schedule GPUs",
+      "url": "https://kubernetes.io/docs/tasks/manage-gpus/scheduling-gpus/",
+      "locator": "驱动、device plugin及GPU资源请求",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "MIG",
+      "name": "NVIDIA MIG Introduction",
+      "url": "https://docs.nvidia.com/datacenter/tesla/mig-user-guide/introduction.html",
+      "locator": "硬件分区 / 内存路径 / 部署场景",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "MIG-SUPPORT",
+      "name": "NVIDIA MIG Supported GPUs",
+      "url": "https://docs.nvidia.com/datacenter/tesla/mig-user-guide/supported-gpus.html",
+      "locator": "Table 1 支持产品与最大实例数",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "MIG-DEPLOY",
+      "name": "NVIDIA MIG Deployment Considerations",
+      "url": "https://docs.nvidia.com/datacenter/tesla/mig-user-guide/deployment-considerations.html",
+      "locator": "System / Application considerations",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "MIG-START",
+      "name": "NVIDIA Getting Started with MIG",
+      "url": "https://docs.nvidia.com/datacenter/tesla/mig-user-guide/getting-started-with-mig.html",
+      "locator": "MIG mode / GPU reset on Hopper+ / instance management",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "VGPU",
+      "name": "NVIDIA vGPU Introduction",
+      "url": "https://docs.nvidia.com/vgpu/latest/grid-vgpu-user-guide/grid-vgpu-introduction.html",
+      "locator": "GPU Instance Support / 软件与hypervisor支持",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "L40S",
+      "name": "NVIDIA L40S Specifications",
+      "url": "https://www.nvidia.com/en-in/data-center/l40s/",
+      "locator": "MIG support: No；vGPU software support: Yes",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "REVIEW-ANN",
+      "name": "NVIDIA Artificial Neural Network",
+      "url": "https://developer.nvidia.com/discover/artificial-neural-network",
+      "locator": "训练权重；Neural Network Inference；Layer定义",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": "仅采用定义与阶段说明；不把宣传性能作为本应用实测。"
+    },
+    {
+      "id": "REVIEW-EVAL",
+      "name": "Google ML Crash Course — Dividing datasets",
+      "url": "https://developers.google.com/machine-learning/crash-course/overfitting/dividing-datasets",
+      "locator": "Training, validation, and test sets；Additional problems with test sets",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": "原厂机器学习教学资料，用于评估方法补充，不充当NVIDIA考纲。"
+    },
+    {
+      "id": "REVIEW-CUDART",
+      "name": "CUDA Runtime API：Memory Management",
+      "url": "https://docs.nvidia.com/cuda/cuda-runtime-api/cuda_runtime_api/group__CUDART__MEMORY.html",
+      "locator": "cudaMalloc设备内存分配条目",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": "独立复核报告已核对；只支持本节API示例，不作为所有编译/部署条件的证明。"
+    },
+    {
+      "id": "REVIEW-PROM",
+      "name": "Prometheus Overview",
+      "url": "https://prometheus.io/docs/introduction/overview/",
+      "locator": "Architecture：抓取、保存样本、规则与Grafana展示",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": "独立复核新增来源；具体通知与处置流程仍需部署验证。"
+    },
+    {
+      "id": "REVIEW-DEPLOY",
+      "name": "AI Enterprise 4.10部署选择",
+      "url": "https://docs.nvidia.com/ai-enterprise/release-4/4.10/getting-started/deployment-guide.html",
+      "locator": "Choosing Your Deployment；2026-05-07",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": "上游本轮已读取并提供精确支持范围。云弹性/按需付费和本地裸机控制；版本固定资料，不承担全部成本论断。"
+    },
+    {
+      "id": "REVIEW-CLOUD-COST",
+      "name": "AWS定价原则",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
+      "locator": "Key Principles：服务开销、计算/存储/传出流量和计费承诺",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": "上游本轮已读取并提供精确支持范围。以AWS作云服务例证，不泛化为所有供应商或NVIDIA服务的价格保证。"
+    },
+    {
+      "id": "REVIEW-CLOUD-CAPACITY",
+      "name": "EC2启动限制与容量",
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/troubleshooting-launch.html",
+      "locator": "Instance limit exceeded / Insufficient instance capacity / Configuration not supported",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": "上游本轮已读取并提供精确支持范围。以EC2说明配额、实际容量和区域配置限制；不是全部云的统一条款。"
+    },
+    {
+      "id": "REVIEW-CLOUD-RESP",
+      "name": "AWS共同责任模型",
+      "url": "https://aws.amazon.com/compliance/shared-responsibility-model/",
+      "locator": "EC2客户责任；服务类型改变责任边界",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": "上游本轮已读取并提供精确支持范围。EC2客户仍承担OS补丁、应用和安全组等责任；不套用于所有托管服务。"
+    },
+    {
+      "id": "GUIDE-LEGACY-CN",
+      "name": "保留：Feb 2026中文指南来源",
+      "url": "https://images.nvidia.cn/aem-dam/zh_cn/Solutions/training/certification/nvt-certification-exam-study-guide-aiio-a4-web-zhCN-5103850.pdf",
+      "locator": "物理第4–6页：1.1–3.4",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "22考点编号；课程关联和覆盖程度为本项目判断。"
+    },
+    {
+      "id": "D02-TOOLKIT",
+      "name": "NVIDIA CUDA Toolkit",
+      "url": "https://developer.nvidia.com/cuda/toolkit",
+      "locator": "官方介绍首段：工具集合",
+      "kind": "official",
+      "checked": "2026-10-15",
+      "note": "仅为本轮Day2教学核对；示例数字为本课自编，不是官方性能实测。"
+    },
+    {
+      "id": "D02-MATMUL",
+      "name": "NVIDIA Matrix Multiplication Background",
+      "url": "https://docs.nvidia.com/deeplearning/performance/dl-performance-matrix-multiplication/index.html",
+      "locator": "§1 Background；§2 Math And Memory Bounds",
+      "kind": "official",
+      "checked": "2026-10-15",
+      "note": "仅为本轮Day2教学核对；示例数字为本课自编，不是官方性能实测。"
+    },
+    {
+      "id": "D02-CUBLAS",
+      "name": "NVIDIA cuBLAS Documentation",
+      "url": "https://docs.nvidia.com/cuda/cublas/index.html#tensor-core-usage",
+      "locator": "§2.1.11 Tensor Core Usage",
+      "kind": "official",
+      "checked": "2026-10-15",
+      "note": "仅为本轮Day2教学核对；示例数字为本课自编，不是官方性能实测。"
+    },
+    {
+      "id": "D04-PROTOCOL",
+      "name": "NVIDIA Triton HTTP/REST and GRPC Protocol",
+      "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/protocol/README.html",
+      "locator": "HTTP/REST and GRPC Protocol；Restricted Protocols；错误响应说明",
+      "kind": "official",
+      "checked": "2026-10-15",
+      "note": "支持协议与访问条件概念；本课tickets.example/text/category例子为自编包装接口，并非Triton实际API。"
+    }
+  ],
+  "note": "本轮补讲前内容快照，不含学习记录。"
+}

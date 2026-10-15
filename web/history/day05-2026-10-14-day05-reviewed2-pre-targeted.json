@@ -1,0 +1,1261 @@
+{
+  "format": "nca-teaching-content-archive",
+  "contentVersion": "0.3.1",
+  "teachingRevision": "2026-10-14-day05-reviewed2",
+  "lesson": {
+    "day": 5,
+    "title": "AI集群扩展、设施与部署选择",
+    "status": "可学习（第二批内容）",
+    "cardIds": [
+      "card-cluster-components",
+      "card-scale-up-out",
+      "card-power-cooling",
+      "card-pue",
+      "card-facility",
+      "card-onprem-cloud"
+    ],
+    "questionIds": [
+      "Q-D05-001",
+      "Q-D05-002",
+      "Q-D05-003",
+      "Q-D05-004",
+      "Q-D05-005",
+      "Q-D05-006",
+      "Q-D05-007",
+      "Q-D05-008",
+      "Q-D05-009",
+      "Q-D05-010"
+    ],
+    "selfCheck": "GPU增加后训练没更快，怎样依次检查数据供给、通信和设施约束？PUE低能证明什么、不能证明什么？",
+    "selfCheckNote": "口述自检不自动计分；一次答对不是已掌握。20/45/60分钟可分次完成本课。",
+    "teachingTrial": {
+      "id": "day5-understanding-2026-09-25",
+      "teachingRevision": "2026-10-14-day05-reviewed2",
+      "title": "Day 5 主课与理解练习",
+      "status": "修订试用；原答与历史保留；学习效果待验证",
+      "approvedOn": "2026-10-14",
+      "note": "主课先说明原因，再用情境检查。先完成核心节，选读节留到有需要时；不要求一次做完六项短答。英文两项任选一项，可用中文回答。旧知识卡用于速查，原计分练习保持独立。",
+      "goals": [
+        "围绕工作流找等待点，不从最贵部件推断瓶颈。",
+        "扩展收益取决于可并行工作和新增协作开销。",
+        "上架前核对承载条件，运行后还需观测实际表现。",
+        "PUE用于看设施能耗关系，不能替代任务能效。"
+      ],
+      "fullLesson": {
+        "title": "Day 5 主课｜增加 GPU 之前，先看整个系统能否跟上",
+        "intro": "从一台服务器到一组机器，需要把计算、数据供给和设施放在一起看。今天不设计真实机房，只练习解释：为什么算力增加了，工作却不一定同样加快？",
+        "orientation": [
+          "先用中文解释关系，再把英文术语对应上；术语表达不熟与概念错误分别反馈。",
+          "20分钟可只完成一个核心节及一项短答；45–60分钟以核心关系和两三项回答为目标，卡住时停下补讲，可分多次完成。",
+          "选读节和原教材用于特定疑问的补充，不是做题前的额外通读作业。",
+          "前半段学组成与扩展，后半段学设施、PUE和部署选择；产品代际规格留作速查。"
+        ],
+        "sections": [
+          {
+            "id": "L-D05-01",
+            "title": "集群是合作系统，不是 GPU 数量表",
+            "priority": "core",
+            "cardIds": [
+              "card-cluster-components"
+            ],
+            "paragraphs": [
+              "先看实际组成：GPU 是服务器里的计算部件；一台配有 CPU、内存和 GPU 的计算服务器可作为一个节点；多个节点通过网络连接，并配合存储和管理软件协作，形成集群。节点的具体形态会随平台变化。",
+              "例如一次工单训练：从存储读取数据，CPU 参与准备输入，GPU 执行计算；任务分到多个节点时，还可能经网络交换结果，最后保存模型。管理与调度软件安排任务使用哪些资源，供电与散热支持设备持续运行。这是简化过程，实际步骤可重叠执行。",
+              "沿这个过程区分需要核查的限制：工作数据装不进显存，要检查容量与分布方式；输入已准备好而执行仍慢，还需区分计算、设备内数据搬运、同步与实现开销；GPU等待下一批输入，则需核对数据供给。现象提供检查方向，不直接证明唯一瓶颈。增加正在等待的部件数量，未必解决造成等待的原因。",
+              "DGX 提供 NVIDIA 的整套 AI 系统，HGX 是供系统厂商集成的加速计算平台；BasePOD 等参考架构则说明怎样组合计算、网络、存储和管理。第一遍先分清“系统里有什么”与“多个系统怎样配合”，不背某代型号固定的 GPU 数量。"
+            ],
+            "example": {
+              "title": "数据来不及供给",
+              "paragraphs": [
+                "假设 GPU 经常等待读取工单训练数据。增加 GPU 后，存储供给没有变，每张卡分到的数据可能更少。应先对齐任务阶段、数据读入与计算时间，再决定哪里要改。",
+                "相反，如果数据及时送达而计算长期成为主要耗时，增加合适计算资源才可能有帮助；仍需软件能利用。"
+              ]
+            },
+            "contrast": [
+              "空闲计算资源可能是在等待，不必然是硬件损坏。"
+            ],
+            "takeaway": "围绕工作流找等待点，不从最贵部件推断瓶颈。",
+            "sourceIds": [
+              "TRAIN",
+              "NOTE04",
+              "B2-BASEPOD",
+              "B2-HGX",
+              "B2-DGX"
+            ],
+            "readingGuide": [
+              "需要平台图时，先从培训讲义 TRAIN 物理页 64–65 或 79 选一张；这些是已有卡片定位中的平台图入口。",
+              "阅读任务：在图上指出计算、存储、互联和管理各负责什么，沿数据到计算的路径找一种可能等待；能说明即可返回练习 01，不必连读全部型号页。",
+              "涉及型号、版本或真实部署时再查本节官方来源的支持条件；本课概念练习不要求执行安装命令。"
+            ],
+            "exerciseIds": [
+              "P-D05-01"
+            ]
+          },
+          {
+            "id": "L-D05-02",
+            "title": "Scale Up 与 Scale Out：扩展也会增加协作成本",
+            "priority": "core",
+            "cardIds": [
+              "card-scale-up-out"
+            ],
+            "paragraphs": [
+              "先用常见场景区分：选择一个有更多紧密互联 GPU 的系统来增加计算资源，是 Scale Up 的典型思路；再增加一台服务器，让任务跨节点通过网络协作，是 Scale Out 的典型思路。前者扩大紧密互联的计算域，后者把更多系统连起来。实际 Scale Up 域也可能跨到机架规模，因此不能只按是否在同一机箱内判断。",
+              "以数据并行为例，两张 GPU 分别处理一部分训练数据，再交流更新所需的结果；算自己的部分可以同时进行，等待彼此结果却会增加协作时间。假设原来计算需10个时间单位，拆成两份后各需5个，再同步2个，总耗时为7。这些教学数字假设两份计算同时完成、同步与计算不重叠，其他开销暂不计；真实任务要按实际执行过程测量。",
+              "多卡显存也不等于任何程序都能当作一块大显存。软件必须采用合适的分布方式，互联和内存访问条件也要满足。先问任务是否可拆、结果怎样交换，再讨论扩展。"
+            ],
+            "example": {
+              "title": "多加一台之后反而不划算",
+              "paragraphs": [
+                "两台节点承担部分计算，但每一步都要传较多结果。若等待通信占比变大，增加节点可能只带来小幅收益。",
+                "可以对比同任务的计算与通信耗时；没有这些数据，不能只按 GPU 总数计算预计加速倍数。"
+              ]
+            },
+            "contrast": [
+              "Scale Up/Out是理解扩展关系的入口，实际拓扑需看所选平台。"
+            ],
+            "takeaway": "扩展收益取决于可并行工作和新增协作开销。",
+            "sourceIds": [
+              "TRAIN",
+              "NOTE04",
+              "B2-NVLINK",
+              "NCCL",
+              "B2-BASEPOD"
+            ],
+            "readingGuide": [
+              "需要扩展图景时，选读培训讲义 TRAIN 物理页 79–82；90–99 的网络细节留到 Day 6 有相应疑问时。",
+              "阅读任务：沿平台图说明增加资源后哪些工作可分担、哪些结果还需交换；能解释计算收益与协作开销即可返回练习 02。",
+              "涉及型号、版本或真实部署时再查本节官方来源的支持条件；本课概念练习不要求执行安装命令。"
+            ],
+            "exerciseIds": [
+              "P-D05-02"
+            ]
+          },
+          {
+            "id": "L-D05-03",
+            "title": "供电、散热与空间是部署条件",
+            "priority": "core",
+            "cardIds": [
+              "card-power-cooling",
+              "card-facility"
+            ],
+            "paragraphs": [
+              "功率是某一时刻用能的速率，能量是一定时间累计使用的量。理解机柜供电能力与周期能耗时，先分清这两个量；不能只用瞬时功率判断完成任务的总能耗。",
+              "设备有位置放，不等于该位置能承载它运行。机柜、地板承重、可用电力、供电冗余、散热能力和布线维护空间都要核查。它们限制的是可部署与可持续运行的能力。",
+              "电力进入系统后大量转化为热。高密度设备把更多热集中在较小空间，如果热不能有效排出，设备可能受温度限制而降低性能，或触发保护。散热方案需匹配设备规格、环境与设施，不是简单“风扇越多越好”。",
+              "冗余用于降低部分故障导致服务中断的风险，但仍需按方案验证实际路径与容量。能开机的一次短测，不能证明高负载、某一路供电故障或维护期间都能持续运行。"
+            ],
+            "example": {
+              "title": "空机柜并不代表可以立即上架",
+              "paragraphs": [
+                "新机柜有足够空位，但电力容量与冷却条件未核实。合理结论是部署条件尚不完整，而不是设备一定能用或一定不能用。",
+                "课堂只识别需要哪些资料，不以示例数字代替真实电气、承重或散热设计。"
+              ]
+            },
+            "contrast": [
+              "本课不提供现场电气施工、承重或生产设备变更指令。"
+            ],
+            "takeaway": "上架前核对承载条件，运行后还需观测实际表现。",
+            "sourceIds": [
+              "TRAIN",
+              "NOTE05",
+              "B2-POWER",
+              "B2-COOLING",
+              "B2-FACILITY"
+            ],
+            "readingGuide": [
+              "培训讲义 TRAIN 物理页 18–21：对照本节主题的原表格/示意，不必连读整份PDF。",
+              "阅读任务：找出供电、散热和空间承重各一项约束；能解释空位为何不足以决定部署即可返回练习 03。练习 06 综合第一至三节，分开检查性能收益与设施条件。",
+              "涉及型号、版本或真实部署时再查本节官方来源的支持条件；本课概念练习不要求执行安装命令。"
+            ],
+            "exerciseIds": [
+              "P-D05-03"
+            ]
+          },
+          {
+            "id": "L-D05-04",
+            "title": "PUE 的分子分母各说明什么",
+            "priority": "core",
+            "cardIds": [
+              "card-pue"
+            ],
+            "paragraphs": [
+              "PUE 等于设施总能耗除以 IT 设备能耗。分子包含 IT 设备及冷却、供配电等设施开销；分母是 IT 设备能耗。比较时需要统一时间范围与计量边界。",
+              "假设同一周期 IT 设备耗能100，设施总耗能150，PUE为1.5。这说明总能耗是 IT 能耗的1.5倍，并不说明 GPU 有50%的计算效率，也不说明完成了多少有效工作。",
+              "再看两个教学案例：A的IT能耗100、总能耗120，PUE1.2；B的IT能耗50、总能耗70，PUE1.4。A的比值更低，但总能耗更高。要比较同一种任务的能效，还需看完成的工作和条件；比较电费还需价格等信息。"
+            ],
+            "example": {
+              "title": "“PUE更低，所以一定更省钱”缺了什么",
+              "paragraphs": [
+                "这句话把设施开销比例、总用能和费用混在了一起。先确认想比较哪个量，再找相应证据。",
+                "读懂分母之后，就知道不能把PUE当作GPU利用率或任务完成效率。"
+              ]
+            },
+            "contrast": [
+              "比值改善不保证总量下降；总量下降也不直接证明同等工作更高效。"
+            ],
+            "takeaway": "PUE用于看设施能耗关系，不能替代任务能效。",
+            "sourceIds": [
+              "TRAIN",
+              "NOTE05",
+              "B2-PUE"
+            ],
+            "readingGuide": [
+              "培训讲义 TRAIN 物理页 21：对照本节主题的原表格/示意，不必连读整份PDF。",
+              "阅读任务：指出分子包含什么、分母是什么，再用本课 A/B 数字解释比值与总量的差别；能说明即可返回练习 04。",
+              "涉及型号、版本或真实部署时再查本节官方来源的支持条件；本课概念练习不要求执行安装命令。"
+            ],
+            "exerciseIds": [
+              "P-D05-04"
+            ]
+          },
+          {
+            "id": "L-D05-05",
+            "title": "本地与云：把约束写出来再选",
+            "priority": "core",
+            "cardIds": [
+              "card-onprem-cloud"
+            ],
+            "paragraphs": [
+              "本地部署通常需要自己或合作方准备设备与设施，能对环境进行更多直接控制，也承担相应运行责任。云服务可减少前期自购设备，并按所选服务与计费方式取得、调整资源；弹性仍受配额、可用容量和支持配置约束。",
+              "比较时先明确数据能放在哪里、负载是长期稳定还是短期波动、资源能否取得，以及谁负责哪些运维。费用应分别核对计算、存储、适用的数据传输费和剩余运维工作；不能从按量计费直接推出更便宜。本地也不自动安全合规。以EC2为例，客户仍负责操作系统补丁、应用和安全组等；其他托管服务的责任边界可能不同。",
+              "教学推导：混合方式可让不同任务位于不同环境，但需要另外规划数据同步、身份和运维协作。上述云定价与责任页面没有完整论证这类混合方案；这里将其列为待核查条件，不为真实采购给固定答案。"
+            ],
+            "example": {
+              "title": "一个长期任务和一个短期试验",
+              "paragraphs": [
+                "长期稳定任务可比较设备投入与持续运维，短期试验可关注获取资源的速度和试验结束后能否释放。",
+                "若资料不允许离开指定环境，先确认这一约束；不能只按每小时价格选择。"
+              ]
+            },
+            "contrast": [
+              "控制权、责任、资源弹性和成本要一起看。"
+            ],
+            "takeaway": "部署选择是约束问题，不是“云必胜”或“本地必胜”。",
+            "sourceIds": [
+              "TRAIN",
+              "REVIEW-DEPLOY",
+              "B2-CONTROL",
+              "REVIEW-CLOUD-COST",
+              "REVIEW-CLOUD-CAPACITY",
+              "REVIEW-CLOUD-RESP"
+            ],
+            "readingGuide": [
+              "需要云与本地对照时，只看培训讲义 TRAIN 物理页 55–56；本节不要求回读平台规格页。",
+              "阅读任务：给临时试验与全年服务各找一项会改变选择的约束，并解释原因；能说明即可返回练习 05。",
+              "涉及型号、版本或真实部署时再查本节官方来源的支持条件；本课概念练习不要求执行安装命令。",
+              "部署方式看AI Enterprise 4.10的Choosing Your Deployment；费用项目看AWS Key Principles；配额/容量看EC2启动故障分类；责任看AWS共同责任模型。AWS只作一手例证，不代表所有云采用相同条款。旧归档链接的工具读取错误不等于永久失效。"
+            ],
+            "exerciseIds": [
+              "P-D05-05",
+              "P-D05-06"
+            ]
+          }
+        ],
+        "summary": [
+          "围绕工作流找等待点，不从最贵部件推断瓶颈。",
+          "扩展收益取决于可并行工作和新增协作开销。",
+          "上架前核对承载条件，运行后还需观测实际表现。",
+          "PUE用于看设施能耗关系，不能替代任务能效。"
+        ],
+        "timeGuide": [
+          "核心关系：集群是合作系统，不是 GPU 数量表；Scale Up 与 Scale Out：扩展也会增加协作成本；供电、散热与空间是部署条件；PUE 的分子分母各说明什么；本地与云：把约束写出来再选",
+          "第一遍认识职责与原因；产品全表、命令、支持矩阵和具体参数按需要选读，不把选读当永远跳过基础目标。",
+          "20分钟可完成一个核心节与一项原答；45–60分钟按实际进度选两三项回答。内容较多可分段完成，未学内容保持待学。"
+        ]
+      },
+      "exercises": [
+        {
+          "id": "P-D05-01",
+          "title": "找等待点",
+          "stem": "增加 GPU 后训练几乎没加快，同时读数据等待较长。你会先核对哪类证据？为什么 GPU 数量本身不能证明加速？",
+          "language": "zh",
+          "cardIds": [
+            "card-cluster-components"
+          ],
+          "objectiveIds": [
+            "2.1",
+            "2.5",
+            "1.6"
+          ],
+          "sourceIds": [
+            "TRAIN",
+            "NOTE04",
+            "B2-BASEPOD",
+            "B2-HGX",
+            "B2-DGX"
+          ],
+          "relatedQuestionIds": [
+            "Q-D05-001",
+            "Q-D05-010"
+          ],
+          "rubric": [
+            "查看同任务的数据读取与计算阶段耗时。",
+            "资源需协作，数据供给可能限制计算，但仅凭描述不直接确诊。"
+          ],
+          "referenceExplanation": [
+            "先对照同一任务的数据读取、准备和 GPU 计算耗时，确认 GPU 是否主要在等下一批输入。如果输入送不来，多出的 GPU 也只能一起等待。",
+            "因此卡数只说明增加了计算资源，不能说明整个任务更快。题目提示供给可能是限制，但还需阶段耗时来核对，不能仅凭等待现象断定是哪一个部件故障。"
+          ]
+        },
+        {
+          "id": "P-D05-02",
+          "title": "英文：扩展成本",
+          "stem": "Adding more nodes reduces computation time but increases synchronization time. Why may total training time improve only slightly?",
+          "language": "en",
+          "translation": "更多节点减少计算时间但增加同步时间。为什么总训练时间可能只小幅改善？",
+          "cardIds": [
+            "card-scale-up-out"
+          ],
+          "objectiveIds": [
+            "2.1",
+            "2.2",
+            "1.2"
+          ],
+          "sourceIds": [
+            "TRAIN",
+            "NOTE04",
+            "B2-NVLINK",
+            "NCCL",
+            "B2-BASEPOD"
+          ],
+          "relatedQuestionIds": [
+            "Q-D05-002",
+            "Q-D05-003"
+          ],
+          "rubric": [
+            "总耗时包括计算与协作等待。",
+            "新增同步成本可能抵消部分计算收益。"
+          ],
+          "referenceExplanation": [
+            "节点各自算得更快，只减少了计算这一段；如果下一步必须等节点交换或合并结果，新增同步等待也会延长任务。",
+            "例如在计算与同步不重叠的教学条件下，计算从10降到6个时间单位，同步却从1增到4，总耗时只从11降到10。收益要看整个过程。"
+          ]
+        },
+        {
+          "id": "P-D05-03",
+          "title": "列部署条件",
+          "stem": "机柜还有空位，是否足以决定再部署两台高密度 GPU 服务器？说明至少三类需核对的条件。",
+          "language": "zh",
+          "cardIds": [
+            "card-power-cooling",
+            "card-facility"
+          ],
+          "objectiveIds": [
+            "2.3",
+            "2.6",
+            "2.2"
+          ],
+          "sourceIds": [
+            "TRAIN",
+            "NOTE05",
+            "B2-POWER",
+            "B2-COOLING",
+            "B2-FACILITY"
+          ],
+          "relatedQuestionIds": [
+            "Q-D05-004",
+            "Q-D05-007"
+          ],
+          "rubric": [
+            "核对电力、散热、承重、空间布线等。",
+            "空位不能证明高负载条件与冗余已满足。"
+          ],
+          "referenceExplanation": [
+            "空位只说明有一部分空间。还需核对至少三类运行条件：电力能否供给新增负载、冷却能否带走热量、机柜与地板能否承重；设备深度、布线和维护空间也是合理条件。",
+            "这些条件分别约束设备能否放稳、供得上电和持续排热；高负载或某一路供电异常时的承载能力，也不能由一次开机证明。"
+          ]
+        },
+        {
+          "id": "P-D05-04",
+          "title": "英文：读懂能耗指标",
+          "stem": "Facility A has a lower PUE than B. Does this alone prove A uses less total energy? Explain.",
+          "language": "en",
+          "translation": "设施A的PUE低于B。仅凭这一点能证明A总能耗更少吗？",
+          "cardIds": [
+            "card-pue"
+          ],
+          "objectiveIds": [
+            "2.3"
+          ],
+          "sourceIds": [
+            "TRAIN",
+            "NOTE05",
+            "B2-PUE"
+          ],
+          "relatedQuestionIds": [
+            "Q-D05-005",
+            "Q-D05-006"
+          ],
+          "rubric": [
+            "不证明；PUE是比值。",
+            "还要看IT能耗、总量和计量范围。"
+          ],
+          "referenceExplanation": [
+            "不能证明。PUE＝设施总能耗÷IT设备能耗，比值较小并未告诉我们 IT 用能的绝对大小。",
+            "在计量边界和时段一致的教学例子中，A 总能耗120、IT能耗100，PUE为1.2；B总能耗70、IT能耗50，PUE为1.4。A 的 PUE 较低，但总能耗仍更高。"
+          ]
+        },
+        {
+          "id": "P-D05-05",
+          "title": "先比较约束",
+          "stem": "一个月的临时试验和全年运行的服务，为什么不能只按同一张 GPU 小时价表选择云或本地？",
+          "language": "zh",
+          "cardIds": [
+            "card-onprem-cloud"
+          ],
+          "objectiveIds": [
+            "2.4"
+          ],
+          "sourceIds": [
+            "TRAIN",
+            "REVIEW-DEPLOY",
+            "REVIEW-CLOUD-COST",
+            "REVIEW-CLOUD-CAPACITY",
+            "REVIEW-CLOUD-RESP"
+          ],
+          "relatedQuestionIds": [
+            "Q-D05-008",
+            "Q-D05-009"
+          ],
+          "rubric": [
+            "持续时间、数据、运维、可得性及总成本不同。",
+            "不能从单价直接推出整体最优。"
+          ],
+          "referenceExplanation": [
+            "小时价只覆盖部分费用。一个月试验还要考虑能否及时取得资源、结束后能否释放；全年服务则要把长期利用率、设备或租用投入、供电散热和人员运维一起计算。",
+            "两种任务的数据位置与访问要求也可能不同。运行时间、责任和约束改变了完整成本及可行性，因此同一张单价表不足以决定云或本地。",
+            "这里的持续时间、利用率、供电散热和人员投入是用于组织比较的教学维度；所列AWS材料直接支持费用类别、资源可得性和剩余责任，不等于已经替这两个项目完成总成本测算。"
+          ]
+        },
+        {
+          "id": "P-D05-06",
+          "title": "换情境：系统性解释",
+          "stem": "假设多卡任务等待通信，同时拟放入新机柜。请分开说明性能收益与设施可部署性需要哪些不同证据。",
+          "language": "zh",
+          "cardIds": [
+            "card-cluster-components",
+            "card-scale-up-out",
+            "card-power-cooling",
+            "card-facility"
+          ],
+          "objectiveIds": [
+            "2.2",
+            "2.5",
+            "2.3",
+            "2.6"
+          ],
+          "sourceIds": [
+            "TRAIN",
+            "NOTE04",
+            "B2-BASEPOD",
+            "B2-NVLINK",
+            "NCCL",
+            "NOTE05",
+            "B2-POWER",
+            "B2-COOLING",
+            "B2-FACILITY"
+          ],
+          "relatedQuestionIds": [
+            "Q-D05-001",
+            "Q-D05-002",
+            "Q-D05-003",
+            "Q-D05-004",
+            "Q-D05-007"
+          ],
+          "rubric": [
+            "性能看计算/数据/通信及软件条件。",
+            "设施看电力、散热、空间承重。PUE或部署方式只在回答混淆时补讲，不是题目要求的必答项。"
+          ],
+          "referenceExplanation": [
+            "性能问题先对照同任务的计算、数据供给和通信等待，核对软件如何分配任务、互联是否满足需要；增加资源是否值得，要看总耗时能否改善。",
+            "新机柜能否部署则需要供电、散热、承重和空间资料。前一组证据回答任务能否更快，后一组回答设备能否在该位置持续运行；即使通信改善，也不能据此认定机柜条件已满足。"
+          ]
+        }
+      ],
+      "diagnostic": {
+        "minutes": "约5–8",
+        "promptIds": [
+          "P-D05-01",
+          "P-D05-02",
+          "P-D05-06"
+        ],
+        "alternativeEnglishId": "P-D05-04",
+        "instructions": [
+          "短诊断可选，仅在学过后回顾使用；综合解释较慢可另分一次。",
+          "原答先保存，再看统一参考；不清楚可直接说明。"
+        ]
+      },
+      "caseStudy": {
+        "title": "增加 GPU 之前，先看整个系统能否跟上",
+        "setup": "从一台服务器到一组机器，需要把计算、数据供给和设施放在一起看。今天不设计真实机房，只练习解释：为什么算力增加了，工作却不一定同样加快？",
+        "boundary": "情境和数字为教学假设，非用户现场事实。",
+        "steps": [
+          {
+            "title": "数据来不及供给",
+            "text": "假设 GPU 经常等待读取工单训练数据。增加 GPU 后，存储供给没有变，每张卡分到的数据可能更少。应先对齐任务阶段、数据读入与计算时间，再决定哪里要改。 相反，如果数据及时送达而计算长期成为主要耗时，增加合适计算资源才可能有帮助；仍需软件能利用。"
+          },
+          {
+            "title": "多加一台之后反而不划算",
+            "text": "两台节点承担部分计算，但每一步都要传较多结果。若等待通信占比变大，增加节点可能只带来小幅收益。 可以对比同任务的计算与通信耗时；没有这些数据，不能只按 GPU 总数计算预计加速倍数。"
+          },
+          {
+            "title": "空机柜并不代表可以立即上架",
+            "text": "新机柜有足够空位，但电力容量与冷却条件未核实。合理结论是部署条件尚不完整，而不是设备一定能用或一定不能用。 课堂只识别需要哪些资料，不以示例数字代替真实电气、承重或散热设计。"
+          },
+          {
+            "title": "“PUE更低，所以一定更省钱”缺了什么",
+            "text": "这句话把设施开销比例、总用能和费用混在了一起。先确认想比较哪个量，再找相应证据。 读懂分母之后，就知道不能把PUE当作GPU利用率或任务完成效率。"
+          },
+          {
+            "title": "一个长期任务和一个短期试验",
+            "text": "长期稳定任务可比较设备投入与持续运维，短期试验可关注获取资源的速度和试验结束后能否释放。 若资料不允许离开指定环境，先确认这一约束；不能只按每小时价格选择。"
+          }
+        ]
+      },
+      "feedback": {
+        "dimensions": [
+          "结论是否符合题目证据",
+          "能否独立说明理由和职责关系",
+          "是否保留未知与适用条件",
+          "英文阅读与技术理解分别反馈"
+        ],
+        "instructions": [
+          "先保留学习者实际回答，再对照参考要点；只评价本次表现，不把参考答案写成学习记录。",
+          "区分独立回答、看译文后回答、提示后修正和照着讲解复述。",
+          "理由不完整时只补最关键的一处，再换一个小情境检查；不通过一次修正宣布已掌握。",
+          "先输入实际回答，再按要点自查；自查不是自动判分，也不等于已获得逐句教学评阅。需要进一步反馈时，连同是否看过提示一起交给教学对话；延迟回忆与陌生场景迁移仍需后续真实作答证据。"
+        ],
+        "exposureNote": "这些题干与设计曾在讨论中展示；是否看过参考要点也应按实际说明。同题再次作答可用于复习，不能冒充未见题的独立测量。"
+      },
+      "bridge": {
+        "nextDay": 6,
+        "title": "下一课怎样接上",
+        "text": "保留本次说不清的关系，下一课需要时再回看。",
+        "steps": [
+          "保存原答和疑问。",
+          "根据实际点评决定补哪一节，而不是把所有链接再读一遍。"
+        ]
+      }
+    },
+    "materialGuide": {
+      "title": "本课与原教材：怎样搭配着学",
+      "currentUse": "沿计算等待、扩展成本、设施约束和能耗定义讲清关系，用教学数字检验PUE理解。",
+      "originalValue": "原讲义18–21页的设施约束、64–65/79–82页平台图，以及55–56页云/本地对照能提供空间与系统视角。",
+      "whenToRead": "能解释GPU为何等待、扩展为何有开销、PUE不能代表任务效率，可先停在本课基础目标。想看组成与约束的位置关系时回原图。",
+      "difference": "工作台补充PUE低但总能耗更高的反例；原云/本地优势表是概括，不保证云一定便宜或本地一定合规。",
+      "scope": "完成这里的基础目标，只说明可以继续本课学习；不代表考试范围已完整覆盖、已掌握或能直接进行生产操作。",
+      "readings": [
+        {
+          "sourceId": "TRAIN",
+          "locator": "160页培训讲义，物理页 64–65 或 79（组成图）；79–82（扩展图景）",
+          "task": "第一、二节仍有疑问时选一张图，指出计算、存储、互联与管理，并说清增加节点后要交换什么。",
+          "stop": "能解释一个等待点与一种协作开销即可返回练习 01、02，不背 DGX 代际规格。",
+          "warning": "同事提供的培训讲义，不等于已认证的官方考试教材。产品条件与版本以当前官方说明为准。"
+        },
+        {
+          "sourceId": "TRAIN",
+          "locator": "物理页 18–21（设施约束）；21（PUE）",
+          "task": "第三节按需列出供电、散热、空间承重条件；第四节只看第21页核对 PUE 的分子分母。",
+          "stop": "能解释空位不代表部署条件齐全，或能解释 PUE 比值与总量的区别，即可回对应练习；综合练习 06 回看第一至三节。",
+          "warning": "设施数值需按真实设备与场地核验，课堂例子不构成部署设计。"
+        },
+        {
+          "sourceId": "TRAIN",
+          "locator": "物理页 55–56（第五节云与本地对照）",
+          "task": "用临时试验或全年服务检验图中一种优势成立需要哪些条件。",
+          "stop": "能指出一个会改变选择的约束及原因即可返回练习 05，不要求一次读完全部入口。",
+          "warning": "同事提供的培训讲义，不等于已认证的官方考试教材。产品条件与版本以当前官方说明为准。"
+        }
+      ],
+      "officialUse": "遇到具体型号、版本、指标字段或真实操作时，打开对应知识卡中的官方依据，只查与问题有关的定义/支持条件；不把官方网站全站作为当天作业。",
+      "mediaStatus": "原目录的视频与字幕可作为补讲候选，但当前只完成目录级清点，未逐段核对；本课不指定未经核验的时间码或宣称看完某段即可覆盖考点。"
+    }
+  },
+  "sources": [
+    {
+      "id": "BP",
+      "name": "NVIDIA当前NCA-AIIO认证页",
+      "url": "https://www.nvidia.com/en-us/learn/certification/ai-infrastructure-operations-associate/",
+      "locator": "考试大纲/考试概况",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": "上游本轮核对；只作考试范围入口，不承诺通过。"
+    },
+    {
+      "id": "GUIDE",
+      "name": "NCA-AIIO当前官方考试指南",
+      "url": "https://dam-cdn.nvd.orangelogic.com/AssetLink/x874j05hy3m3r2sor84kpvp70750m468.pdf",
+      "locator": "物理4–6页：22考点，38/40/22%",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": "上游与独立复核已读当前6页链接；©2026、Jan26印记不当作正式生效版本号。范围基线不替技术结论背书。"
+    },
+    {
+      "id": "TRAIN",
+      "name": "同事提供：NVIDIA Training NCA - AIIO.pdf",
+      "url": "https://drive.google.com/file/d/1tdZ1BczaM8FsbGnn0KeVlAZ5t_ikvcva/view",
+      "locator": "每卡另附物理页码；本轮原始文件160页",
+      "kind": "third-party",
+      "checked": "2026-09-24",
+      "note": "培训讲义，不标为官方考试教材。版本/口诀需另核。"
+    },
+    {
+      "id": "NOTE02",
+      "name": "同事提供：02-nvidia-software-stack.pdf",
+      "url": "https://drive.google.com/file/d/1ab3ilujbrSpsYd_4M3pNxNaUHz84qpRH/view",
+      "locator": "第3–8页",
+      "kind": "third-party",
+      "checked": "2026-09-24",
+      "note": "只参考组织和概念；dump/必出/题量预测不采纳，定义另核官方。"
+    },
+    {
+      "id": "ML",
+      "name": "NVIDIA Machine Learning",
+      "url": "https://www.nvidia.com/en-us/glossary/machine-learning/",
+      "locator": "定义/工作方式",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": ""
+    },
+    {
+      "id": "DL",
+      "name": "NVIDIA Deep Learning",
+      "url": "https://developer.nvidia.com/deep-learning",
+      "locator": "开头Deep Learning定义（多层神经网络、AI/ML包含关系）",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": "仅引用定义，不采纳页面ROI宣传。"
+    },
+    {
+      "id": "GEN",
+      "name": "NVIDIA Generative AI",
+      "url": "https://www.nvidia.com/en-us/glossary/generative-ai/",
+      "locator": "生成能力",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "PERF",
+      "name": "NVIDIA GPU Performance Background",
+      "url": "https://docs.nvidia.com/deeplearning/performance/dl-performance-gpu-background/index.html",
+      "locator": "架构/性能限制",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "BATCH",
+      "name": "TensorRT 性能优化",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/performance/optimization.html",
+      "locator": "Batching/吞吐/延迟",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "CUDA",
+      "name": "CUDA Linux Installation Guide",
+      "url": "https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html",
+      "locator": "Introduction/Toolkit/system requirements",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "COMPAT",
+      "name": "CUDA Compatibility",
+      "url": "https://docs.nvidia.com/deploy/cuda-compatibility/why-cuda-compatibility.html",
+      "locator": "驱动与CUDA软件兼容",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "CUDNN",
+      "name": "NVIDIA cuDNN",
+      "url": "https://docs.nvidia.com/deeplearning/cudnn/latest/",
+      "locator": "深度神经网络基础算子",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "CUBLAS",
+      "name": "NVIDIA cuBLAS",
+      "url": "https://developer.nvidia.com/cublas",
+      "locator": "GPU线性代数库",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "NCCL",
+      "name": "NVIDIA NCCL",
+      "url": "https://developer.nvidia.com/nccl",
+      "locator": "多GPU/多节点通信",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "CONTAINER",
+      "name": "NVIDIA Container Toolkit",
+      "url": "https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/index.html",
+      "locator": "Overview",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "CONTAINER-INSTALL",
+      "name": "GPU容器前置要求",
+      "url": "https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html",
+      "locator": "Prerequisites/Configuration",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "TRT",
+      "name": "NVIDIA TensorRT",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/",
+      "locator": "推理优化和运行",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "TRITON",
+      "name": "Dynamo-Triton（原Triton Inference Server）",
+      "url": "https://developer.nvidia.com/dynamo-triton",
+      "locator": "模型部署与服务",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "NIM",
+      "name": "NVIDIA NIM说明",
+      "url": "https://investor.nvidia.com/news/press-release-details/2024/NVIDIA-Launches-Generative-AI-Microservices-for-Developers-to-Create-and-Deploy-Generative-AI-Copilots-Across-NVIDIA-CUDA-GPU-Installed-Base/default.aspx",
+      "locator": "NIM Inference Microservices",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "NGC",
+      "name": "NVIDIA NGC",
+      "url": "https://www.nvidia.cn/gpu-cloud/",
+      "locator": "容器/模型资源目录",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "AIE",
+      "name": "NVIDIA AI Enterprise",
+      "url": "https://www.nvidia.com/en-us/data-center/products/ai-enterprise/",
+      "locator": "Overview/企业支持/NeMo",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "RAPIDS",
+      "name": "NVIDIA 数据科学文档",
+      "url": "https://docs.nvidia.com/datascience/",
+      "locator": "RAPIDS与数据科学",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "MERLIN",
+      "name": "NVIDIA Merlin",
+      "url": "https://developer.nvidia.com/merlin",
+      "locator": "推荐系统",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "RIVA",
+      "name": "NVIDIA Riva",
+      "url": "https://developer.nvidia.com/topics/ai/generative-ai/riva",
+      "locator": "语音AI",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "OPERATOR",
+      "name": "NVIDIA GPU Operator",
+      "url": "https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/overview.html",
+      "locator": "GPU软件组件管理",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "NOTE04",
+      "name": "同事提供：04-ai-hardware-and-scaling.pdf",
+      "url": "https://drive.google.com/file/d/1nruFbzkvcdguADvzntWdbCHMNhqaWnBK/view",
+      "locator": "物理第2、5–8页；全10页文本已读",
+      "kind": "third-party",
+      "checked": "2026-09-24",
+      "note": "社区笔记；dump、题量预测、无条件硬件数字不采纳。"
+    },
+    {
+      "id": "NOTE05",
+      "name": "同事提供：05-datacenter-power-cooling-facility.pdf",
+      "url": "https://drive.google.com/file/d/1nIpHguc2PoUAQyLSRcw5evK99_ZNgmwq/view",
+      "locator": "物理第1–6页；全8页文本已读",
+      "kind": "third-party",
+      "checked": "2026-09-24",
+      "note": "社区笔记；PUE解释错误、固定散热阈值、自动合规等说法不采纳。"
+    },
+    {
+      "id": "NOTE06",
+      "name": "同事提供：06-networking-for-ai.pdf",
+      "url": "https://drive.google.com/file/d/1JCCAuLW7x_JUVUjmwIfbpsDJJnr_dmT6/view",
+      "locator": "物理第1–9页；全11页文本已读",
+      "kind": "third-party",
+      "checked": "2026-09-24",
+      "note": "社区笔记；不采纳dump题数和无条件速率/延迟/网络数量口诀。"
+    },
+    {
+      "id": "B2-BASEPOD",
+      "name": "NVIDIA DGX BasePOD：核心组件",
+      "url": "https://docs.nvidia.com/dgx-basepod/reference-architecture-infrastructure-foundation-enterprise-ai/latest/core-components.html",
+      "locator": "Compute / Network / Storage / Control Plane",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "具体配置是参考架构示例，不是所有AI集群的固定数量。"
+    },
+    {
+      "id": "B2-NETWORK",
+      "name": "NVIDIA DGX BasePOD：网络部署",
+      "url": "https://docs.nvidia.com/dgx-basepod/deployment-guide-dgx-basepod/latest/network-overview.html",
+      "locator": "Network Overview / oobmanagementnet / computenet",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "本参考架构的逻辑网络划分不等于全行业固定网络数。"
+    },
+    {
+      "id": "B2-FACILITY",
+      "name": "NVIDIA DGX SuperPOD：设施空间",
+      "url": "https://docs.nvidia.com/dgx-superpod/design-guides/dgx-superpod-data-center-design-h100/latest/infrastructure.html",
+      "locator": "Space Planning / Air Flow / Static Weight and Point Load",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "取通用规划原则；尺寸/承重/布线值仍按具体型号和设施条件。"
+    },
+    {
+      "id": "B2-POWER",
+      "name": "NVIDIA DGX SuperPOD：供电规划",
+      "url": "https://docs.nvidia.com/dgx-superpod/design-guides/dgx-superpod-data-center-design-h100/latest/electrical.html",
+      "locator": "Power Redundancy / Power Connections / rPDU / Phase Balancing",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "用于理解容量与冗余；不提供现场电气操作指令。"
+    },
+    {
+      "id": "B2-COOLING",
+      "name": "NVIDIA DGX SuperPOD：散热和气流",
+      "url": "https://docs.nvidia.com/dgx-superpod/design-guides/dgx-superpod-data-center-design-h100/latest/cooling.html",
+      "locator": "Full heat load / Aisle Containment / Cooling Oversubscription",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "不用一个固定kW阈值推定所有机房必须采用同一冷却技术。"
+    },
+    {
+      "id": "B2-PUE",
+      "name": "NVIDIA：数据中心能效指标的边界",
+      "url": "https://blogs.nvidia.com/blog/datacenter-efficiency-metrics-isc/",
+      "locator": "PUE compares total energy to computing infrastructure energy",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "PUE不衡量有用计算产出，不等于GPU利用率、总电费或模型效果。"
+    },
+    {
+      "id": "B2-DEPLOY",
+      "name": "NVIDIA AI Enterprise：部署选择（归档版）",
+      "url": "https://archive.docs.nvidia.com/ai-enterprise/release-4/latest/getting-started/deployment-guide.html",
+      "locator": "Deployment options：Public Cloud / On-Premises Bare Metal",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "归档release-4页仅用于历史部署方式线索；2026-10-14独立复核访问返回Internal Error，不代表永久失效，当前来源补证待完成。"
+    },
+    {
+      "id": "B2-CONTROL",
+      "name": "NVIDIA：企业控制环境中的模型部署",
+      "url": "https://docs.nvidia.com/enterprise-reference-architectures/deploying-proprietary-models-confidential-compute-self-hosted-kubernetes/latest/introduction.html",
+      "locator": "Enterprise-controlled environments",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "客户控制的环境可含本地和云账户；所在地本身不是安全/合规保证。"
+    },
+    {
+      "id": "B2-HGX",
+      "name": "NVIDIA HGX Platform",
+      "url": "https://www.nvidia.com/en-us/data-center/hgx/",
+      "locator": "Platform overview / Partner Systems",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "只核对平台及合作伙伴系统关系；不背代际规格。"
+    },
+    {
+      "id": "B2-DGX",
+      "name": "NVIDIA DGX Platform 文档",
+      "url": "https://docs.nvidia.com/dgx/",
+      "locator": "DGX systems / BasePOD / SuperPOD",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "DGX不是单一GPU芯片；型号和参考架构随版本变化。"
+    },
+    {
+      "id": "B2-NVLINK",
+      "name": "NVIDIA NVLink：Scale-Up网络",
+      "url": "https://developer.nvidia.com/blog/nvidia-nvlink-the-scale-up-network-for-ai-factories/",
+      "locator": "正文：scale-up vs scale-out / domain / GPU communication",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "2026-07-20；读取正文，不以页面AI摘要或性能宣传倍数出题。"
+    },
+    {
+      "id": "B2-ROCE",
+      "name": "NVIDIA DOCA：RDMA over Converged Ethernet",
+      "url": "https://docs.nvidia.com/doca/sdk/rdma-over-converged-ethernet.pdf",
+      "locator": "PDF物理第3–4页定义/封装；第8页流控",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "协议定义可用；历史10/40Gb示例不当作当前速率上限。"
+    },
+    {
+      "id": "B2-SM",
+      "name": "NVIDIA：InfiniBand交换机软件管理",
+      "url": "https://docs.nvidia.com/networking/display/QM87XX/software-management.pdf",
+      "locator": "InfiniBand Subnet Manager",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "SM可以运行于交换机或相连主机；OpenSM是实现名称。"
+    },
+    {
+      "id": "B2-DPU",
+      "name": "NVIDIA：What Is a DPU?",
+      "url": "https://blogs.nvidia.com/blog/whats-a-dpu-data-processing-unit/",
+      "locator": "DPU components / infrastructure offload",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "取定义与职责，不将市场宣传视为适用于任意工作负载的性能承诺。"
+    },
+    {
+      "id": "B2-BLUEFIELD",
+      "name": "NVIDIA BlueField Networking Platform",
+      "url": "https://www.nvidia.com/en-us/networking/products/data-processing-unit/",
+      "locator": "Network / Storage / Security services",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "型号参数不进入本批练习；隔离依赖部署、配置和支持能力。"
+    },
+    {
+      "id": "B2-GDR",
+      "name": "NVIDIA GPUDirect RDMA文档",
+      "url": "https://docs.nvidia.com/cuda/gpudirect-rdma/index.html",
+      "locator": "Overview / Synchronization and Memory Ordering",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "优化数据路径并不消除全部CPU控制和同步工作。"
+    },
+    {
+      "id": "B2-GDS",
+      "name": "NVIDIA GPUDirect Storage Overview",
+      "url": "https://docs.nvidia.com/gpudirect-storage/overview-guide/index.html",
+      "locator": "Overview / Direct data path / compatibility",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "直接数据路径依赖受支持硬件、驱动、文件系统和应用；有兼容回退路径。"
+    },
+    {
+      "id": "NOTE07",
+      "name": "社区学习笔记07：数据中心管理与监控",
+      "url": "https://drive.google.com/file/d/1KsminMP_--vyYJrYQRIurt0KEcI_4gES/view",
+      "locator": "9页；全文文本已读",
+      "kind": "third-party",
+      "checked": "2026-09-24",
+      "note": "只采用主题线索；dump/题量预测及绝对化指标结论不采用。"
+    },
+    {
+      "id": "NOTE08",
+      "name": "社区学习笔记08：编排、调度与虚拟化",
+      "url": "https://drive.google.com/file/d/1jDIcg23sQjWXr7fNKxdNx483-FydD-uz/view",
+      "locator": "12页；全文文本已读",
+      "kind": "third-party",
+      "checked": "2026-09-24",
+      "note": "只采用主题线索；原题不直接导入。MIG支持、重置与调度边界另核官方。"
+    },
+    {
+      "id": "SMI",
+      "name": "NVIDIA System Management Interface",
+      "url": "https://docs.nvidia.com/deploy/nvidia-smi/index.html",
+      "locator": "Description / Query / Utilization / Memory / Power / ECC",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "DCGM",
+      "name": "NVIDIA DCGM Feature Overview",
+      "url": "https://docs.nvidia.com/datacenter/dcgm/latest/user-guide/feature-overview.html",
+      "locator": "Health and Diagnostics / Profiling Metrics",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "EXPORTER",
+      "name": "NVIDIA DCGM Exporter",
+      "url": "https://docs.nvidia.com/datacenter/cloud-native/gpu-telemetry/latest/dcgm-exporter.html",
+      "locator": "Introduction / Running / MIG support",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "XID",
+      "name": "NVIDIA Xid Errors",
+      "url": "https://docs.nvidia.com/deploy/xid-errors/introduction.html",
+      "locator": "What is an Xid Message / How to Use",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "BMC",
+      "name": "NVIDIA DGX H100/H200：BMC",
+      "url": "https://docs.nvidia.com/dgx/dgxh100-user-guide/bmc.html",
+      "locator": "硬件管理、远程控制台、传感器和电源",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "BCM",
+      "name": "NVIDIA Base Command Manager",
+      "url": "https://www.nvidia.com/en-us/data-center/base-command-manager/",
+      "locator": "Provision / Monitor / Cluster management",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "SLURM",
+      "name": "SchedMD Slurm Overview",
+      "url": "https://slurm.schedmd.com/overview.html",
+      "locator": "三项职责 / Architecture / User tools",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "SLURM-GPU",
+      "name": "SchedMD Slurm GRES Scheduling",
+      "url": "https://slurm.schedmd.com/gres.html",
+      "locator": "GPU资源请求 / MIG Management",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "K8S",
+      "name": "Kubernetes Overview",
+      "url": "https://kubernetes.io/docs/concepts/overview/",
+      "locator": "编排 / 调度 / 服务 / 批处理",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "K8S-GPU",
+      "name": "Kubernetes Schedule GPUs",
+      "url": "https://kubernetes.io/docs/tasks/manage-gpus/scheduling-gpus/",
+      "locator": "驱动、device plugin及GPU资源请求",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "MIG",
+      "name": "NVIDIA MIG Introduction",
+      "url": "https://docs.nvidia.com/datacenter/tesla/mig-user-guide/introduction.html",
+      "locator": "硬件分区 / 内存路径 / 部署场景",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "MIG-SUPPORT",
+      "name": "NVIDIA MIG Supported GPUs",
+      "url": "https://docs.nvidia.com/datacenter/tesla/mig-user-guide/supported-gpus.html",
+      "locator": "Table 1 支持产品与最大实例数",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "MIG-DEPLOY",
+      "name": "NVIDIA MIG Deployment Considerations",
+      "url": "https://docs.nvidia.com/datacenter/tesla/mig-user-guide/deployment-considerations.html",
+      "locator": "System / Application considerations",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "MIG-START",
+      "name": "NVIDIA Getting Started with MIG",
+      "url": "https://docs.nvidia.com/datacenter/tesla/mig-user-guide/getting-started-with-mig.html",
+      "locator": "MIG mode / GPU reset on Hopper+ / instance management",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "VGPU",
+      "name": "NVIDIA vGPU Introduction",
+      "url": "https://docs.nvidia.com/vgpu/latest/grid-vgpu-user-guide/grid-vgpu-introduction.html",
+      "locator": "GPU Instance Support / 软件与hypervisor支持",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "L40S",
+      "name": "NVIDIA L40S Specifications",
+      "url": "https://www.nvidia.com/en-in/data-center/l40s/",
+      "locator": "MIG support: No；vGPU software support: Yes",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "REVIEW-ANN",
+      "name": "NVIDIA Artificial Neural Network",
+      "url": "https://developer.nvidia.com/discover/artificial-neural-network",
+      "locator": "训练权重；Neural Network Inference；Layer定义",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": "仅采用定义与阶段说明；不把宣传性能作为本应用实测。"
+    },
+    {
+      "id": "REVIEW-EVAL",
+      "name": "Google ML Crash Course — Dividing datasets",
+      "url": "https://developers.google.com/machine-learning/crash-course/overfitting/dividing-datasets",
+      "locator": "Training, validation, and test sets；Additional problems with test sets",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": "原厂机器学习教学资料，用于评估方法补充，不充当NVIDIA考纲。"
+    },
+    {
+      "id": "REVIEW-CUDART",
+      "name": "CUDA Runtime API：Memory Management",
+      "url": "https://docs.nvidia.com/cuda/cuda-runtime-api/cuda_runtime_api/group__CUDART__MEMORY.html",
+      "locator": "cudaMalloc设备内存分配条目",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": "独立复核报告已核对；只支持本节API示例，不作为所有编译/部署条件的证明。"
+    },
+    {
+      "id": "REVIEW-PROM",
+      "name": "Prometheus Overview",
+      "url": "https://prometheus.io/docs/introduction/overview/",
+      "locator": "Architecture：抓取、保存样本、规则与Grafana展示",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": "独立复核新增来源；具体通知与处置流程仍需部署验证。"
+    },
+    {
+      "id": "REVIEW-DEPLOY",
+      "name": "AI Enterprise 4.10部署选择",
+      "url": "https://docs.nvidia.com/ai-enterprise/release-4/4.10/getting-started/deployment-guide.html",
+      "locator": "Choosing Your Deployment；2026-05-07",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": "上游本轮已读取并提供精确支持范围。云弹性/按需付费和本地裸机控制；版本固定资料，不承担全部成本论断。"
+    },
+    {
+      "id": "REVIEW-CLOUD-COST",
+      "name": "AWS定价原则",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
+      "locator": "Key Principles：服务开销、计算/存储/传出流量和计费承诺",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": "上游本轮已读取并提供精确支持范围。以AWS作云服务例证，不泛化为所有供应商或NVIDIA服务的价格保证。"
+    },
+    {
+      "id": "REVIEW-CLOUD-CAPACITY",
+      "name": "EC2启动限制与容量",
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/troubleshooting-launch.html",
+      "locator": "Instance limit exceeded / Insufficient instance capacity / Configuration not supported",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": "上游本轮已读取并提供精确支持范围。以EC2说明配额、实际容量和区域配置限制；不是全部云的统一条款。"
+    },
+    {
+      "id": "REVIEW-CLOUD-RESP",
+      "name": "AWS共同责任模型",
+      "url": "https://aws.amazon.com/compliance/shared-responsibility-model/",
+      "locator": "EC2客户责任；服务类型改变责任边界",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": "上游本轮已读取并提供精确支持范围。EC2客户仍承担OS补丁、应用和安全组等责任；不套用于所有托管服务。"
+    },
+    {
+      "id": "GUIDE-LEGACY-CN",
+      "name": "保留：Feb 2026中文指南来源",
+      "url": "https://images.nvidia.cn/aem-dam/zh_cn/Solutions/training/certification/nvt-certification-exam-study-guide-aiio-a4-web-zhCN-5103850.pdf",
+      "locator": "物理第4–6页：1.1–3.4",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "22考点编号；课程关联和覆盖程度为本项目判断。"
+    },
+    {
+      "id": "D02-TOOLKIT",
+      "name": "NVIDIA CUDA Toolkit",
+      "url": "https://developer.nvidia.com/cuda/toolkit",
+      "locator": "官方介绍首段：工具集合",
+      "kind": "official",
+      "checked": "2026-10-15",
+      "note": "仅为本轮Day2教学核对；示例数字为本课自编，不是官方性能实测。"
+    },
+    {
+      "id": "D02-MATMUL",
+      "name": "NVIDIA Matrix Multiplication Background",
+      "url": "https://docs.nvidia.com/deeplearning/performance/dl-performance-matrix-multiplication/index.html",
+      "locator": "§1 Background；§2 Math And Memory Bounds",
+      "kind": "official",
+      "checked": "2026-10-15",
+      "note": "仅为本轮Day2教学核对；示例数字为本课自编，不是官方性能实测。"
+    },
+    {
+      "id": "D02-CUBLAS",
+      "name": "NVIDIA cuBLAS Documentation",
+      "url": "https://docs.nvidia.com/cuda/cublas/index.html#tensor-core-usage",
+      "locator": "§2.1.11 Tensor Core Usage",
+      "kind": "official",
+      "checked": "2026-10-15",
+      "note": "仅为本轮Day2教学核对；示例数字为本课自编，不是官方性能实测。"
+    },
+    {
+      "id": "D04-PROTOCOL",
+      "name": "NVIDIA Triton HTTP/REST and GRPC Protocol",
+      "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/protocol/README.html",
+      "locator": "HTTP/REST and GRPC Protocol；Restricted Protocols；错误响应说明",
+      "kind": "official",
+      "checked": "2026-10-15",
+      "note": "支持协议与访问条件概念；本课tickets.example/text/category例子为自编包装接口，并非Triton实际API。"
+    }
+  ],
+  "note": "本轮补讲前内容快照，不含学习记录。"
+}

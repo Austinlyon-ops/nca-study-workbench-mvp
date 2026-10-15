@@ -1,0 +1,1268 @@
+{
+  "format": "nca-teaching-content-archive",
+  "contentVersion": "0.3.1",
+  "teachingRevision": "2026-10-14-day06-reviewed2",
+  "lesson": {
+    "day": 6,
+    "title": "AI网络、GPU互联与DPU",
+    "status": "可学习（第二批内容）",
+    "cardIds": [
+      "card-network-traffic",
+      "card-ethernet-infiniband",
+      "card-rdma-roce",
+      "card-nvlink-nvswitch",
+      "card-bluefield-dpu",
+      "card-gpudirect-paths"
+    ],
+    "questionIds": [
+      "Q-D06-001",
+      "Q-D06-002",
+      "Q-D06-003",
+      "Q-D06-004",
+      "Q-D06-005",
+      "Q-D06-006",
+      "Q-D06-007",
+      "Q-D06-008",
+      "Q-D06-009",
+      "Q-D06-010"
+    ],
+    "selfCheck": "用一条训练数据路径串起存储、GPU互联和跨节点网络；再说明BMC、DPU和GPU各负责什么。",
+    "selfCheckNote": "口述自检不自动计分；一次答对不是已掌握。20/45/60分钟可分次完成本课。",
+    "teachingTrial": {
+      "id": "day6-understanding-2026-09-25",
+      "teachingRevision": "2026-10-14-day06-reviewed2",
+      "title": "Day 6 主课与理解练习",
+      "status": "修订试用；原答与历史保留；学习效果待验证",
+      "approvedOn": "2026-10-14",
+      "note": "主课先说明原因，再用情境检查。先完成核心节，选读节留到有需要时；不要求一次做完六项短答。英文两项任选一项，可用中文回答。旧知识卡用于速查，原计分练习保持独立。",
+      "goals": [
+        "用端点和用途把问题说具体。",
+        "先区分是什么网络、具有什么能力、实际是否可用。",
+        "用拓扑看范围，用软件证据看收益。"
+      ],
+      "fullLesson": {
+        "title": "Day 6 主课｜数据从哪里来、到哪里去：读懂 AI 互联",
+        "intro": "Day 5 解释了为什么扩展会增加协作成本。今天沿数据路径理解网络名称：先看端点和用途，再分清技术层次。不要求配置交换机或背带宽数字。",
+        "orientation": [
+          "先用中文解释关系，再把英文术语对应上；术语表达不熟与概念错误分别反馈。",
+          "20分钟可只完成一个核心节及一项短答；45–60分钟以核心关系和两三项回答为目标，卡住时停下补讲，可分多次完成。",
+          "选读节和原教材用于特定疑问的补充，不是做题前的额外通读作业。",
+          "分两段：先讲流量、网络与紧密互联；随后讲GPUDirect路径与DPU。后两者属于需要建立的基本关系，配置细节才是选读。"
+        ],
+        "sections": [
+          {
+            "id": "L-D06-01",
+            "title": "同一集群中，数据也有不同旅程",
+            "priority": "core",
+            "cardIds": [
+              "card-network-traffic"
+            ],
+            "paragraphs": [
+              "节点是一台参与任务的计算单元，网卡提供相应网络连接能力；数据路径是数据经过哪些端点与中间环节。带宽关注单位时间可传多少，延迟关注一次传递要等多久；训练检查点是为后续恢复等用途保存的进展信息。",
+              "训练节点读取样本，是存储到计算节点的数据供给；不同节点交换计算结果，是计算协作；管理员查看健康状态，是管理通信。先区分这些旅程，才能讨论需要怎样的网络。",
+              "网络设计可以为不同流量安排不同逻辑或物理路径，但并不意味着每个系统都固定有三套完全独立的交换机。应从实际架构图确认边界、共享资源和访问方式。",
+              "带内管理通常借助主机正常网络与软件路径；带外管理可以使用独立管理入口，例如服务器 BMC。在主机操作系统不可用时，后者可能仍提供状态或控制台，但自身也需要供电和管理网络。"
+            ],
+            "example": {
+              "title": "“网络慢”先指哪段",
+              "paragraphs": [
+                "若读入训练数据慢，先定位存储路径；若计算完却等待其他节点，关注协作路径；若SSH失联，需区分业务数据路径与管理入口。",
+                "这三种现象都含“网络”，却未必是同一个连接或同一个问题。"
+              ]
+            },
+            "contrast": [
+              "管理网络正常不证明计算网络性能正常。"
+            ],
+            "takeaway": "用端点和用途把问题说具体。",
+            "sourceIds": [
+              "TRAIN",
+              "NOTE06",
+              "B2-NETWORK",
+              "B2-BASEPOD"
+            ],
+            "readingGuide": [
+              "培训讲义 TRAIN 物理页 40–43；先看已核对的第43页网络职责图，找出计算、存储与管理各在连接什么。",
+              "阅读任务：选一条箭头说出起点、终点和用途；能区分读取样本与交换计算结果，就返回主课，不必把所有网络名称抄一遍。",
+              "涉及型号、版本或真实部署时再查本节官方来源的支持条件；本课概念练习不要求执行安装命令。"
+            ],
+            "exerciseIds": [
+              "P-D06-01"
+            ]
+          },
+          {
+            "id": "L-D06-02",
+            "title": "Ethernet、InfiniBand 与 RDMA 的层次不同",
+            "priority": "core",
+            "cardIds": [
+              "card-ethernet-infiniband",
+              "card-rdma-roce"
+            ],
+            "paragraphs": [
+              "两台训练服务器要交换结果，先得通过适配器、线缆和交换设备连接起来。Ethernet（以太网）和InfiniBand是两种网络技术体系，规定设备如何传递数据，各自需要相应设备和协议支持；它们都可用于AI集群。",
+              "再看数据怎样进入对方内存。RDMA（远程直接内存访问）是一种传输能力，由支持它的网络适配器执行。以一次写入为例：应用先准备并授权可访问的内存区域，再提交请求；适配器从本机内存取数据，经网络写到另一台机器已准备的目标内存。这样减少CPU逐段复制和部分协议处理；准备资源、发起工作等控制任务仍可由CPU上的软件承担。",
+              "因此，Ethernet/InfiniBand回答“使用哪类网络”，RDMA回答“能否由适配器直接在应用内存之间搬数据”。InfiniBand原生支持RDMA；RoCE是一组让RDMA使用Ethernet的协议。这是能力与承载关系，不是三个同层选项。普通以太网能连通，还不能证明网卡、驱动和应用已能使用RoCE。",
+              "InfiniBand子网还需要SM（子网管理器）这类管理软件发现设备并配置网络；OpenSM是一种实现。RoCEv2则将RDMA传输内容放入UDP/IP报文，可跨IP子网路由。第一遍知道这些对象分别负责管理和传输即可，不必学习报文格式或安装命令。",
+              "最后才比较效果：设备、拓扑、配置和负载共同影响性能。支持RDMA不等于当前路径已启用，更不保证在任意任务上比另一网络快。"
+            ],
+            "example": {
+              "title": "名称不是同一层面的三选一",
+              "paragraphs": [
+                "“Ethernet还是RDMA”这个问题可能把网络体系与访问能力放在同一层比较。先问是否需要RDMA，再看在哪种受支持的网络方案上实现。",
+                "以太网上能ping通，只证明一种连通性，不证明RDMA路径配置正确或达到需要的性能。"
+              ]
+            },
+            "contrast": [
+              "能连通、支持某能力、该负载性能合格，是三项不同证据。"
+            ],
+            "takeaway": "先区分是什么网络、具有什么能力、实际是否可用。",
+            "sourceIds": [
+              "TRAIN",
+              "NOTE06",
+              "B2-NETWORK",
+              "B2-ROCE",
+              "B2-SM",
+              "B2-GDR"
+            ],
+            "readingGuide": [
+              "培训讲义 TRAIN 物理页 47–50：先看Ethernet/InfiniBand对照，特别留意第48页简化表不能把Ethernet等同于TCP；需要看数据搬运时再选97–99页。",
+              "阅读任务：指出网络类型、RDMA能力和RoCE承载关系；能解释“以太网连通仍不足以证明RoCE可用”即可返回。93–94页及具体管理配置按疑问选读，不必连续读完。",
+              "涉及型号、版本或真实部署时再查本节官方来源的支持条件；本课概念练习不要求执行安装命令。"
+            ],
+            "exerciseIds": [
+              "P-D06-02"
+            ]
+          },
+          {
+            "id": "L-D06-03",
+            "title": "NVLink 与 NVSwitch：紧密互联中的连接和交换",
+            "priority": "core",
+            "cardIds": [
+              "card-nvlink-nvswitch"
+            ],
+            "paragraphs": [
+              "先看一台支持NVLink/NVSwitch的多GPU服务器：GPU A完成一部分计算，GPU B的下一步需要这份结果。NVLink是支持的GPU等处理器之间的高速互联技术；NVSwitch是交换芯片，可把从一个NVLink端口收到的数据转发到相应端口，让多个GPU交换数据。在这个简化例子中，它负责转发结果，GPU继续执行模型计算；这不表示交换平台永不承担集合操作卸载，也不表示它能替代GPU执行整个模型。这个过程帮助理解连接与交换，真实拓扑要看平台。",
+              "网络范围不能只看机箱外观。某些平台的紧密互联域可以跨越机架级系统；不能把NVLink死记为只连接一台主机内部的两张卡。它也不是所有GPU、所有连接都自带的功能。",
+              "高速互联提供了更合适的数据交换条件，软件仍须采用受支持的并行方式。任意程序不会只因插上多张卡就自动获得总显存，也不会自动线性加速。"
+            ],
+            "example": {
+              "title": "两块大显存能否直接相加",
+              "paragraphs": [
+                "某模型放不进单卡，增加另一张卡并不能单凭容量之和判断可以运行；需要检查程序如何分布模型、互联与运行条件。",
+                "如果应用始终只使用一张卡，另一张卡和互联能力并没有自动被利用。"
+              ]
+            },
+            "contrast": [
+              "互联能力与软件怎样用它要同时成立。"
+            ],
+            "takeaway": "用拓扑看范围，用软件证据看收益。",
+            "sourceIds": [
+              "TRAIN",
+              "NOTE06",
+              "B2-NVLINK",
+              "B2-HGX"
+            ],
+            "readingGuide": [
+              "培训讲义 TRAIN 物理页 90–95：只选一张GPU互联图，辨认GPU端点、NVLink连接和NVSwitch交换位置。",
+              "阅读任务：沿图描述GPU A的结果怎样到GPU B，再说软件仍需安排什么；能解释多卡显存为何不能对任意程序自动相加即可返回，不背各代数量和带宽。",
+              "涉及型号、版本或真实部署时再查本节官方来源的支持条件；本课概念练习不要求执行安装命令。"
+            ],
+            "exerciseIds": [
+              "P-D06-03"
+            ]
+          },
+          {
+            "id": "L-D06-04",
+            "title": "GPUDirect：少走哪段路，比名字更关键",
+            "priority": "core",
+            "cardIds": [
+              "card-gpudirect-paths"
+            ],
+            "paragraphs": [
+              "先区分两处内存：主机内存是CPU使用的系统内存，GPU内存是GPU保存计算数据的显存。收到一份将交给GPU的数据时，一种常见路径是先放进主机内存，再复制到GPU内存；这一中转会占用时间和内存带宽。GPUDirect是一组缩短这类数据路径的技术，不是一张新GPU或一个统一加速开关。",
+              "GPUDirect RDMA让支持的第三方设备直接访问GPU内存。以跨节点接收数据为例，原来可能走“本机网卡→主机内存→GPU内存”；启用受支持的直接路径后，可走“本机网卡→GPU内存”。网络仍负责把数据从远端送到本机，GPUDirect RDMA优化的是网卡等设备与GPU内存之间这一段。",
+              "GPUDirect Storage（GDS）处理存储与GPU内存之间的读写。比如程序要读训练文件，通常先读到主机内存再复制给GPU；使用GDS的软件接口和受支持路径后，存储设备或网卡的搬运引擎可把数据送到GPU内存，省去这次主机内存中转。它既可涉及本地存储，也可涉及远程存储；远程路径可能借助RDMA，所以GDS和RDMA并非互斥选项。",
+              "这些箭头是用于理解数据流的简化示意，不是所有平台的固定接线图。CPU上的软件仍可负责发起读写、准备资源和同步；拓扑、驱动、文件系统或应用不支持时，也可能走兼容中转路径。要先确认当前实际路径，再讨论收益。"
+            ],
+            "example": {
+              "title": "一次读文件和一次跨节点交换",
+              "paragraphs": [
+                "读训练文件的请求从存储开始，目标是GPU内存，先关注GDS；另一节点算出的结果已在GPU内存中，要经网卡与本机GPU交换，先关注GPUDirect RDMA。",
+                "分别画出存储/网卡、主机内存、GPU内存，圈出期望省去的主机内存中转。若GDS读的是远程存储，路径中也可能用到RDMA；按端点分析，不把名称当作互斥选项。"
+              ]
+            },
+            "contrast": [
+              "技术名含Direct不证明当前程序真的使用了该路径。"
+            ],
+            "takeaway": "识别端点、减少的中转和所需条件。",
+            "sourceIds": [
+              "TRAIN",
+              "NOTE06",
+              "B2-GDR",
+              "B2-GDS"
+            ],
+            "readingGuide": [
+              "培训讲义 TRAIN 物理页 98–100：只看数据路径箭头；第100页远程存储示意只是GDS的一种场景，不代表GDS必须使用远程存储。",
+              "阅读任务：指出哪段数据原本经过主机内存、哪段可以省去，以及CPU仍需做的一项工作；能分别解释读文件和跨节点交换即可返回，不背加速倍数。",
+              "涉及型号、版本或真实部署时再查本节官方来源的支持条件；本课概念练习不要求执行安装命令。"
+            ],
+            "exerciseIds": [
+              "P-D06-04",
+              "P-D06-05"
+            ]
+          },
+          {
+            "id": "L-D06-05",
+            "title": "DPU卸载的是哪些工作",
+            "priority": "core",
+            "cardIds": [
+              "card-bluefield-dpu"
+            ],
+            "paragraphs": [
+              "服务器不只做模型计算，还要接收网络包、转发数据、处理存储访问及安全检查。DPU是一类集成可编程处理器核心、网络接口和加速引擎的芯片，常用于带有处理能力的网卡；BlueField是NVIDIA的相关产品系列。它是实际硬件，DOCA则提供开发相关服务的软件能力。",
+              "以服务器运行中的网络转发为例：一些数据包原由主机CPU上的虚拟交换软件解析、匹配转发规则，再交给目标工作负载。在受支持的部署中，可将部分处理交给DPU的网络与加速能力；数据包到达后由它按已配置规则处理并转发。把这部分工作从主机CPU移走，就是这里的“卸载”；支持的加解密或存储处理也可采用相似分工。",
+              "由此腾出的CPU资源可能用于应用控制或其他工作，GPU继续承担模型的并行计算。DPU与GPU是不同职责，不是“更专业所以可以取代GPU”；BMC则侧重查看硬件状态等设备管理，也不等于DPU。若任务主要受GPU计算限制，卸载网络处理未必明显缩短训练时间。",
+              "在支持的部署中，DPU还可帮助将基础设施服务与租户工作负载分离；隔离效果取决于运行模式、软件和配置。先确认移走的是哪项实际工作，再核对路径与效果，不能只凭装卡就保证加速或安全。"
+            ],
+            "example": {
+              "title": "比较两种瓶颈",
+              "paragraphs": [
+                "任务甲的GPU一直忙于矩阵计算，CPU有空闲；任务乙的主机CPU忙于解析并转发大量网络包，应用因此等待。对乙，可先核查这部分转发是否受支持、能否卸载给DPU；对甲，不能仅靠这项卸载判断模型会算得更快。",
+                "即使乙能够卸载，也要比较实际CPU开销和任务耗时。改由谁处理一项工作，与整个任务能快多少，是两个需要分别说明的问题。"
+              ]
+            },
+            "contrast": [
+              "安全能力需要配置和验证，不由产品名自动保证。"
+            ],
+            "takeaway": "把DPU放回基础设施服务，不与模型计算混淆。",
+            "sourceIds": [
+              "TRAIN",
+              "NOTE06",
+              "B2-DPU",
+              "B2-BLUEFIELD"
+            ],
+            "readingGuide": [
+              "培训讲义 TRAIN 物理页 34–35、67：选一张DPU示意图，先找主机CPU、网络接口和DPU的位置，其余产品信息按需选读。",
+              "阅读任务：举一项原由主机CPU处理、可交给DPU的工作，并说GPU仍负责什么；能用具体动作解释卸载即可返回，不背宣传中的固定CPU节省比例。",
+              "涉及型号、版本或真实部署时再查本节官方来源的支持条件；本课概念练习不要求执行安装命令。"
+            ],
+            "exerciseIds": [
+              "P-D06-06"
+            ]
+          }
+        ],
+        "summary": [
+          "用端点和用途把问题说具体。",
+          "先区分是什么网络、具有什么能力、实际是否可用。",
+          "用拓扑看范围，用软件证据看收益。"
+        ],
+        "timeGuide": [
+          "核心关系：同一集群中，数据也有不同旅程；Ethernet、InfiniBand 与 RDMA 的层次不同；NVLink 与 NVSwitch：紧密互联中的连接和交换；GPUDirect：少走哪段路，比名字更关键；DPU卸载的是哪些工作",
+          "第一遍认识职责与原因；产品全表、命令、支持矩阵和具体参数按需要选读，不把选读当永远跳过基础目标。",
+          "20分钟可完成一个核心节与一项原答；45–60分钟按实际进度选两三项回答。内容较多可分段完成，未学内容保持待学。"
+        ]
+      },
+      "exercises": [
+        {
+          "id": "P-D06-01",
+          "title": "三种流量",
+          "stem": "读取样本、跨节点交换训练结果、查看服务器健康信息，分别主要属于哪类流量？为什么先区分它们？",
+          "language": "zh",
+          "cardIds": [
+            "card-network-traffic"
+          ],
+          "objectiveIds": [
+            "2.7",
+            "2.5",
+            "1.2"
+          ],
+          "sourceIds": [
+            "TRAIN",
+            "NOTE06",
+            "B2-NETWORK",
+            "B2-BASEPOD"
+          ],
+          "relatedQuestionIds": [
+            "Q-D06-001",
+            "Q-D06-002"
+          ],
+          "rubric": [
+            "分别识别存储、计算协作、管理。",
+            "不同端点和用途对应不同核查路径。"
+          ],
+          "referenceExplanation": [
+            "读取样本是把数据从存储送给计算节点，属于存储流量；跨节点交换训练结果是计算节点之间协作，属于计算通信；查看服务器健康信息是在管理设备，属于管理流量。分类依据是数据为谁服务、从哪里到哪里，不是看它们是否都经过网线。",
+            "先分清用途，才能知道该检查哪段路径。例如读取样本慢要看存储供给，结果同步等待要看节点间通信；管理入口可用并不能证明这两段正常。这些用途可以共享部分设备，不能由三种用途推断一定有三套物理网络。"
+          ]
+        },
+        {
+          "id": "P-D06-02",
+          "title": "英文：技术层次",
+          "stem": "An Ethernet network is reachable. Does this prove that a working RoCE path is available? Explain one missing check.",
+          "language": "en",
+          "translation": "以太网可以连通，是否证明RoCE路径可用？说出仍需核查的一项。",
+          "cardIds": [
+            "card-ethernet-infiniband",
+            "card-rdma-roce"
+          ],
+          "objectiveIds": [
+            "2.8",
+            "2.9",
+            "2.7"
+          ],
+          "sourceIds": [
+            "TRAIN",
+            "NOTE06",
+            "B2-NETWORK",
+            "B2-ROCE",
+            "B2-SM",
+            "B2-GDR"
+          ],
+          "relatedQuestionIds": [
+            "Q-D06-003",
+            "Q-D06-004",
+            "Q-D06-005",
+            "Q-D06-006"
+          ],
+          "rubric": [
+            "普通连通性不证明RDMA能力已可用。",
+            "还需硬件、软件和网络配置支持核查。"
+          ],
+          "referenceExplanation": [
+            "不能证明。reachable说明以太网的某种连通性成立；working RoCE path要求RDMA数据能经这条以太网路径传输。以太网是承载网络，RoCE是让RDMA使用它的协议，连通证据还没有检查RDMA能力。",
+            "可以回答一项具体缺口：例如两端网卡是否支持RoCE，或者驱动和应用是否能使用对应路径。随后还需端到端配置与实际传输核验，但本题只要求解释一项缺少的检查，不要求列全配置清单。"
+          ]
+        },
+        {
+          "id": "P-D06-03",
+          "title": "多卡与软件",
+          "stem": "模型装不进一张卡，为什么不能只把两张卡的显存相加就宣布能运行？",
+          "language": "zh",
+          "cardIds": [
+            "card-nvlink-nvswitch"
+          ],
+          "objectiveIds": [
+            "2.2",
+            "2.9"
+          ],
+          "sourceIds": [
+            "TRAIN",
+            "NOTE06",
+            "B2-NVLINK",
+            "B2-HGX"
+          ],
+          "relatedQuestionIds": [
+            "Q-D06-007"
+          ],
+          "rubric": [
+            "需要模型/计算分布的软件支持与通信条件。",
+            "互联和容量并不保证任意程序自动利用。"
+          ],
+          "referenceExplanation": [
+            "两张卡首先是两个各有显存的计算设备。若程序仍把整个模型只放在第一张卡，第二张卡的空闲显存不会自动替它存下溢出的部分；因此只加总容量，尚未说明程序如何使用它们。",
+            "要运行跨卡模型，软件需采用受支持的方式分布模型或计算，并安排必要的数据交换。NVLink/NVSwitch可改善支持平台上的通信条件，不能替软件决定模型怎样分布。即使容量看起来够，也要核查实际运行方式及通信条件。"
+          ]
+        },
+        {
+          "id": "P-D06-04",
+          "title": "英文：CPU职责",
+          "stem": "A data-transfer path reduces CPU involvement. Does the application no longer need a CPU? Explain.",
+          "language": "en",
+          "translation": "数据传输路径减少CPU参与，是否意味着整个应用不再需要CPU？",
+          "cardIds": [
+            "card-ethernet-infiniband",
+            "card-rdma-roce",
+            "card-gpudirect-paths"
+          ],
+          "objectiveIds": [
+            "2.8",
+            "2.9"
+          ],
+          "sourceIds": [
+            "TRAIN",
+            "NOTE06",
+            "B2-NETWORK",
+            "B2-ROCE",
+            "B2-SM",
+            "B2-GDR",
+            "B2-GDS"
+          ],
+          "relatedQuestionIds": [
+            "Q-D06-003",
+            "Q-D06-004",
+            "Q-D06-005",
+            "Q-D06-006",
+            "Q-D06-010"
+          ],
+          "rubric": [
+            "减少搬运参与不等于移除控制及应用其他CPU任务。",
+            "结论应限定到具体传输路径。"
+          ],
+          "referenceExplanation": [
+            "不能。reduces CPU involvement限定的是数据搬运过程：例如让网卡直接把数据送到GPU内存，省去主机内存中转。它没有说整个应用的所有CPU工作都消失。",
+            "CPU上的软件仍可准备资源、提交读写请求或协调后续工作。以GDS读取训练文件为例，CPU上的文件系统驱动参与建立直接路径，实际数据搬运才由支持的设备完成。把“谁发起和控制”与“谁搬数据”分开，就能解释为何减少CPU开销仍需要CPU。"
+          ]
+        },
+        {
+          "id": "P-D06-05",
+          "title": "识别数据端点",
+          "stem": "读取存储中的训练样本，与跨节点GPU交换数据，分别为什么会关注不同的GPUDirect路径？",
+          "language": "zh",
+          "cardIds": [
+            "card-gpudirect-paths"
+          ],
+          "objectiveIds": [
+            "2.7",
+            "2.9",
+            "2.1"
+          ],
+          "sourceIds": [
+            "TRAIN",
+            "NOTE06",
+            "B2-GDR",
+            "B2-GDS"
+          ],
+          "relatedQuestionIds": [
+            "Q-D06-010"
+          ],
+          "rubric": [
+            "以存储→GPU和网络设备/GPU通信端点区分。",
+            "不从名称直接推断当前已经启用或必然加速。"
+          ],
+          "referenceExplanation": [
+            "读取训练样本时，需求是把存储中的文件内容送入GPU内存，因此关注GDS的存储读写路径。跨节点交换GPU计算结果时，数据需经过网络；GPUDirect RDMA让支持的网卡直接访问GPU内存，减少网卡与GPU之间的主机内存中转。",
+            "这是按起点、终点与用途区分，不能变成“有存储就不用RDMA”：远程存储的GDS路径也可能使用RDMA。两种场景都还要核查设备、软件及实际启用路径，名称本身不能证明加速已经发生。"
+          ]
+        },
+        {
+          "id": "P-D06-06",
+          "title": "换情境：解释卸载",
+          "stem": "同事说“DPU更专业，所以能替代GPU训练模型”。你会怎样按职责解释？",
+          "language": "zh",
+          "cardIds": [
+            "card-bluefield-dpu"
+          ],
+          "objectiveIds": [
+            "2.10",
+            "1.6"
+          ],
+          "sourceIds": [
+            "TRAIN",
+            "NOTE06",
+            "B2-DPU",
+            "B2-BLUEFIELD"
+          ],
+          "relatedQuestionIds": [
+            "Q-D06-008",
+            "Q-D06-009"
+          ],
+          "rubric": [
+            "DPU侧重基础设施网络存储安全等服务。",
+            "GPU模型计算是不同任务；系统整体收益依工作负载。"
+          ],
+          "referenceExplanation": [
+            "“更专业”必须指明专业于哪项工作。DPU可接手受支持的网络、存储或安全处理，例如按规则解析并转发网络包；GPU则承担模型训练中的大量并行计算。这两项工作都帮助训练系统运行，却不是同一职责。",
+            "将包处理交给DPU，可能减少主机CPU开销，让应用少等待；它不因此获得替代GPU训练模型的结论。是否缩短整个任务，还取决于原先是不是这项基础设施工作在限制速度。"
+          ]
+        }
+      ],
+      "diagnostic": {
+        "minutes": "约5–8",
+        "promptIds": [
+          "P-D06-01",
+          "P-D06-02",
+          "P-D06-06"
+        ],
+        "alternativeEnglishId": "P-D06-04",
+        "instructions": [
+          "短诊断可选，仅在学过后回顾使用；综合解释较慢可另分一次。",
+          "原答先保存，再看统一参考；不清楚可直接说明。"
+        ]
+      },
+      "caseStudy": {
+        "title": "数据从哪里来、到哪里去：读懂 AI 互联",
+        "setup": "Day 5 解释了为什么扩展会增加协作成本。今天沿数据路径理解网络名称：先看端点和用途，再分清技术层次。不要求配置交换机或背带宽数字。",
+        "boundary": "情境和数字为教学假设，非用户现场事实。",
+        "steps": [
+          {
+            "title": "“网络慢”先指哪段",
+            "text": "若读入训练数据慢，先定位存储路径；若计算完却等待其他节点，关注协作路径；若SSH失联，需区分业务数据路径与管理入口。 这三种现象都含“网络”，却未必是同一个连接或同一个问题。"
+          },
+          {
+            "title": "名称不是同一层面的三选一",
+            "text": "“Ethernet还是RDMA”这个问题可能把网络体系与访问能力放在同一层比较。先问是否需要RDMA，再看在哪种受支持的网络方案上实现。 以太网上能ping通，只证明一种连通性，不证明RDMA路径配置正确或达到需要的性能。"
+          },
+          {
+            "title": "两块大显存能否直接相加",
+            "text": "某模型放不进单卡，增加另一张卡并不能单凭容量之和判断可以运行；需要检查程序如何分布模型、互联与运行条件。 如果应用始终只使用一张卡，另一张卡和互联能力并没有自动被利用。"
+          },
+          {
+            "title": "一次读文件和一次跨节点交换",
+            "text": "读训练文件的请求从存储开始，目标是GPU内存，先关注GDS；另一节点算出的结果已在GPU内存中，要经网卡与本机GPU交换，先关注GPUDirect RDMA。 分别画出存储/网卡、主机内存、GPU内存，圈出期望省去的主机内存中转。若GDS读的是远程存储，路径中也可能用到RDMA；按端点分析，不把名称当作互斥选项。"
+          },
+          {
+            "title": "比较两种瓶颈",
+            "text": "任务甲的GPU一直忙于矩阵计算，CPU有空闲；任务乙的主机CPU忙于解析并转发大量网络包，应用因此等待。对乙，可先核查这部分转发是否受支持、能否卸载给DPU；对甲，不能仅靠这项卸载判断模型会算得更快。 即使乙能够卸载，也要比较实际CPU开销和任务耗时。改由谁处理一项工作，与整个任务能快多少，是两个需要分别说明的问题。"
+          }
+        ]
+      },
+      "feedback": {
+        "dimensions": [
+          "结论是否符合题目证据",
+          "能否独立说明理由和职责关系",
+          "是否保留未知与适用条件",
+          "英文阅读与技术理解分别反馈"
+        ],
+        "instructions": [
+          "先保留学习者实际回答，再对照参考要点；只评价本次表现，不把参考答案写成学习记录。",
+          "区分独立回答、看译文后回答、提示后修正和照着讲解复述。",
+          "理由不完整时只补最关键的一处，再换一个小情境检查；不通过一次修正宣布已掌握。",
+          "先输入实际回答，再按要点自查；自查不是自动判分，也不等于已获得逐句教学评阅。需要进一步反馈时，连同是否看过提示一起交给教学对话；延迟回忆与陌生场景迁移仍需后续真实作答证据。"
+        ],
+        "exposureNote": "这些题干与设计曾在讨论中展示；是否看过参考要点也应按实际说明。同题再次作答可用于复习，不能冒充未见题的独立测量。"
+      },
+      "bridge": {
+        "nextDay": 7,
+        "title": "下一课怎样接上",
+        "text": "保留本次说不清的关系，下一课需要时再回看。",
+        "steps": [
+          "保存原答和疑问。",
+          "根据实际点评决定补哪一节，而不是把所有链接再读一遍。"
+        ]
+      }
+    },
+    "materialGuide": {
+      "title": "本课与原教材：怎样搭配着学",
+      "currentUse": "按数据端点和流量用途认识协议、访问能力、互联与卸载，先建立路径再记名称。",
+      "originalValue": "原讲义40–43页网络分层、90–100页互联与RDMA路径、34–35/67页DPU示意，适合看位置与箭头。",
+      "whenToRead": "先用主课完成一个数据路径的中文解释；脑中画不出位置或箭头时，只选下方对应主题的一组页。能说明端点、搬运动作与CPU仍承担的工作就返回，不把40–100页当连续作业。",
+      "difference": "工作台补足层次区别和支持条件；原材料“绕过CPU”不是完全不需要CPU，“显存池”不等于任意程序自动相加。",
+      "scope": "完成这里的基础目标，只说明可以继续本课学习；不代表考试范围已完整覆盖、已掌握或能直接进行生产操作。",
+      "readings": [
+        {
+          "sourceId": "TRAIN",
+          "locator": "160页培训讲义，物理页 40–43；优先第43页网络职责图",
+          "task": "选一条存储、计算或管理箭头，说出它的端点与用途。",
+          "stop": "能解释为什么查看健康信息与交换训练结果要分别核查即可。",
+          "warning": "同事提供的培训讲义，不等于已认证的官方考试教材。产品条件与版本以当前官方说明为准。"
+        },
+        {
+          "sourceId": "TRAIN",
+          "locator": "160页培训讲义，物理页 47–50；需要看RDMA搬运时再选97–99",
+          "task": "对照Ethernet/InfiniBand和RDMA说明，区分网络类型、访问能力与RoCE的承载关系。",
+          "stop": "能解释以太网连通为什么不足以证明RoCE可用即可，不背速率、CPU百分比或加速倍数。",
+          "warning": "第48页简化对照不表示Ethernet等于TCP；第97页性能数字不作为普遍保证。"
+        },
+        {
+          "sourceId": "TRAIN",
+          "locator": "160页培训讲义，物理页 90–95",
+          "task": "只选一张GPU互联图，找端点、连接与交换位置，描述一次GPU间数据交换。",
+          "stop": "能说明互联负责传数据，而软件仍需安排多GPU计算即可。",
+          "warning": "图示有具体平台边界；不要把机内示意当所有NVLink域的范围，也不要把显存容量相加当程序可运行证明。"
+        },
+        {
+          "sourceId": "TRAIN",
+          "locator": "160页培训讲义，物理页 98–100",
+          "task": "沿GPUDirect示意指出数据端点和期望省去的主机内存中转。",
+          "stop": "能区分存储读文件与网卡/GPU交换，并说出CPU仍承担的一项控制工作即可。",
+          "warning": "第100页远程存储图只是GDS的一种场景；本地存储也可能使用GDS，是否直达仍取决于支持条件。"
+        },
+        {
+          "sourceId": "TRAIN",
+          "locator": "160页培训讲义，物理页 34–35、67",
+          "task": "选一张DPU示意图，指出主机CPU和DPU各处理什么，举一项可卸载的具体工作。",
+          "stop": "能用网络包处理等动作解释卸载，并保留GPU模型计算的职责即可。",
+          "warning": "同事提供的培训讲义，不等于已认证的官方考试教材。产品条件与版本以当前官方说明为准。"
+        }
+      ],
+      "officialUse": "遇到具体型号、版本、指标字段或真实操作时，打开对应知识卡中的官方依据，只查与问题有关的定义/支持条件；不把官方网站全站作为当天作业。",
+      "mediaStatus": "原目录的视频与字幕可作为补讲候选，但当前只完成目录级清点，未逐段核对；本课不指定未经核验的时间码或宣称看完某段即可覆盖考点。"
+    }
+  },
+  "sources": [
+    {
+      "id": "BP",
+      "name": "NVIDIA当前NCA-AIIO认证页",
+      "url": "https://www.nvidia.com/en-us/learn/certification/ai-infrastructure-operations-associate/",
+      "locator": "考试大纲/考试概况",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": "上游本轮核对；只作考试范围入口，不承诺通过。"
+    },
+    {
+      "id": "GUIDE",
+      "name": "NCA-AIIO当前官方考试指南",
+      "url": "https://dam-cdn.nvd.orangelogic.com/AssetLink/x874j05hy3m3r2sor84kpvp70750m468.pdf",
+      "locator": "物理4–6页：22考点，38/40/22%",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": "上游与独立复核已读当前6页链接；©2026、Jan26印记不当作正式生效版本号。范围基线不替技术结论背书。"
+    },
+    {
+      "id": "TRAIN",
+      "name": "同事提供：NVIDIA Training NCA - AIIO.pdf",
+      "url": "https://drive.google.com/file/d/1tdZ1BczaM8FsbGnn0KeVlAZ5t_ikvcva/view",
+      "locator": "每卡另附物理页码；本轮原始文件160页",
+      "kind": "third-party",
+      "checked": "2026-09-24",
+      "note": "培训讲义，不标为官方考试教材。版本/口诀需另核。"
+    },
+    {
+      "id": "NOTE02",
+      "name": "同事提供：02-nvidia-software-stack.pdf",
+      "url": "https://drive.google.com/file/d/1ab3ilujbrSpsYd_4M3pNxNaUHz84qpRH/view",
+      "locator": "第3–8页",
+      "kind": "third-party",
+      "checked": "2026-09-24",
+      "note": "只参考组织和概念；dump/必出/题量预测不采纳，定义另核官方。"
+    },
+    {
+      "id": "ML",
+      "name": "NVIDIA Machine Learning",
+      "url": "https://www.nvidia.com/en-us/glossary/machine-learning/",
+      "locator": "定义/工作方式",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": ""
+    },
+    {
+      "id": "DL",
+      "name": "NVIDIA Deep Learning",
+      "url": "https://developer.nvidia.com/deep-learning",
+      "locator": "开头Deep Learning定义（多层神经网络、AI/ML包含关系）",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": "仅引用定义，不采纳页面ROI宣传。"
+    },
+    {
+      "id": "GEN",
+      "name": "NVIDIA Generative AI",
+      "url": "https://www.nvidia.com/en-us/glossary/generative-ai/",
+      "locator": "生成能力",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "PERF",
+      "name": "NVIDIA GPU Performance Background",
+      "url": "https://docs.nvidia.com/deeplearning/performance/dl-performance-gpu-background/index.html",
+      "locator": "架构/性能限制",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "BATCH",
+      "name": "TensorRT 性能优化",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/performance/optimization.html",
+      "locator": "Batching/吞吐/延迟",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "CUDA",
+      "name": "CUDA Linux Installation Guide",
+      "url": "https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html",
+      "locator": "Introduction/Toolkit/system requirements",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "COMPAT",
+      "name": "CUDA Compatibility",
+      "url": "https://docs.nvidia.com/deploy/cuda-compatibility/why-cuda-compatibility.html",
+      "locator": "驱动与CUDA软件兼容",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "CUDNN",
+      "name": "NVIDIA cuDNN",
+      "url": "https://docs.nvidia.com/deeplearning/cudnn/latest/",
+      "locator": "深度神经网络基础算子",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "CUBLAS",
+      "name": "NVIDIA cuBLAS",
+      "url": "https://developer.nvidia.com/cublas",
+      "locator": "GPU线性代数库",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "NCCL",
+      "name": "NVIDIA NCCL",
+      "url": "https://developer.nvidia.com/nccl",
+      "locator": "多GPU/多节点通信",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "CONTAINER",
+      "name": "NVIDIA Container Toolkit",
+      "url": "https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/index.html",
+      "locator": "Overview",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "CONTAINER-INSTALL",
+      "name": "GPU容器前置要求",
+      "url": "https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html",
+      "locator": "Prerequisites/Configuration",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "TRT",
+      "name": "NVIDIA TensorRT",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/",
+      "locator": "推理优化和运行",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "TRITON",
+      "name": "Dynamo-Triton（原Triton Inference Server）",
+      "url": "https://developer.nvidia.com/dynamo-triton",
+      "locator": "模型部署与服务",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "NIM",
+      "name": "NVIDIA NIM说明",
+      "url": "https://investor.nvidia.com/news/press-release-details/2024/NVIDIA-Launches-Generative-AI-Microservices-for-Developers-to-Create-and-Deploy-Generative-AI-Copilots-Across-NVIDIA-CUDA-GPU-Installed-Base/default.aspx",
+      "locator": "NIM Inference Microservices",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "NGC",
+      "name": "NVIDIA NGC",
+      "url": "https://www.nvidia.cn/gpu-cloud/",
+      "locator": "容器/模型资源目录",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "AIE",
+      "name": "NVIDIA AI Enterprise",
+      "url": "https://www.nvidia.com/en-us/data-center/products/ai-enterprise/",
+      "locator": "Overview/企业支持/NeMo",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "RAPIDS",
+      "name": "NVIDIA 数据科学文档",
+      "url": "https://docs.nvidia.com/datascience/",
+      "locator": "RAPIDS与数据科学",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "MERLIN",
+      "name": "NVIDIA Merlin",
+      "url": "https://developer.nvidia.com/merlin",
+      "locator": "推荐系统",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "RIVA",
+      "name": "NVIDIA Riva",
+      "url": "https://developer.nvidia.com/topics/ai/generative-ai/riva",
+      "locator": "语音AI",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "OPERATOR",
+      "name": "NVIDIA GPU Operator",
+      "url": "https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/overview.html",
+      "locator": "GPU软件组件管理",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "NOTE04",
+      "name": "同事提供：04-ai-hardware-and-scaling.pdf",
+      "url": "https://drive.google.com/file/d/1nruFbzkvcdguADvzntWdbCHMNhqaWnBK/view",
+      "locator": "物理第2、5–8页；全10页文本已读",
+      "kind": "third-party",
+      "checked": "2026-09-24",
+      "note": "社区笔记；dump、题量预测、无条件硬件数字不采纳。"
+    },
+    {
+      "id": "NOTE05",
+      "name": "同事提供：05-datacenter-power-cooling-facility.pdf",
+      "url": "https://drive.google.com/file/d/1nIpHguc2PoUAQyLSRcw5evK99_ZNgmwq/view",
+      "locator": "物理第1–6页；全8页文本已读",
+      "kind": "third-party",
+      "checked": "2026-09-24",
+      "note": "社区笔记；PUE解释错误、固定散热阈值、自动合规等说法不采纳。"
+    },
+    {
+      "id": "NOTE06",
+      "name": "同事提供：06-networking-for-ai.pdf",
+      "url": "https://drive.google.com/file/d/1JCCAuLW7x_JUVUjmwIfbpsDJJnr_dmT6/view",
+      "locator": "物理第1–9页；全11页文本已读",
+      "kind": "third-party",
+      "checked": "2026-09-24",
+      "note": "社区笔记；不采纳dump题数和无条件速率/延迟/网络数量口诀。"
+    },
+    {
+      "id": "B2-BASEPOD",
+      "name": "NVIDIA DGX BasePOD：核心组件",
+      "url": "https://docs.nvidia.com/dgx-basepod/reference-architecture-infrastructure-foundation-enterprise-ai/latest/core-components.html",
+      "locator": "Compute / Network / Storage / Control Plane",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "具体配置是参考架构示例，不是所有AI集群的固定数量。"
+    },
+    {
+      "id": "B2-NETWORK",
+      "name": "NVIDIA DGX BasePOD：网络部署",
+      "url": "https://docs.nvidia.com/dgx-basepod/deployment-guide-dgx-basepod/latest/network-overview.html",
+      "locator": "Network Overview / oobmanagementnet / computenet",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "本参考架构的逻辑网络划分不等于全行业固定网络数。"
+    },
+    {
+      "id": "B2-FACILITY",
+      "name": "NVIDIA DGX SuperPOD：设施空间",
+      "url": "https://docs.nvidia.com/dgx-superpod/design-guides/dgx-superpod-data-center-design-h100/latest/infrastructure.html",
+      "locator": "Space Planning / Air Flow / Static Weight and Point Load",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "取通用规划原则；尺寸/承重/布线值仍按具体型号和设施条件。"
+    },
+    {
+      "id": "B2-POWER",
+      "name": "NVIDIA DGX SuperPOD：供电规划",
+      "url": "https://docs.nvidia.com/dgx-superpod/design-guides/dgx-superpod-data-center-design-h100/latest/electrical.html",
+      "locator": "Power Redundancy / Power Connections / rPDU / Phase Balancing",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "用于理解容量与冗余；不提供现场电气操作指令。"
+    },
+    {
+      "id": "B2-COOLING",
+      "name": "NVIDIA DGX SuperPOD：散热和气流",
+      "url": "https://docs.nvidia.com/dgx-superpod/design-guides/dgx-superpod-data-center-design-h100/latest/cooling.html",
+      "locator": "Full heat load / Aisle Containment / Cooling Oversubscription",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "不用一个固定kW阈值推定所有机房必须采用同一冷却技术。"
+    },
+    {
+      "id": "B2-PUE",
+      "name": "NVIDIA：数据中心能效指标的边界",
+      "url": "https://blogs.nvidia.com/blog/datacenter-efficiency-metrics-isc/",
+      "locator": "PUE compares total energy to computing infrastructure energy",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "PUE不衡量有用计算产出，不等于GPU利用率、总电费或模型效果。"
+    },
+    {
+      "id": "B2-DEPLOY",
+      "name": "NVIDIA AI Enterprise：部署选择（归档版）",
+      "url": "https://archive.docs.nvidia.com/ai-enterprise/release-4/latest/getting-started/deployment-guide.html",
+      "locator": "Deployment options：Public Cloud / On-Premises Bare Metal",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "归档release-4页仅用于历史部署方式线索；2026-10-14独立复核访问返回Internal Error，不代表永久失效，当前来源补证待完成。"
+    },
+    {
+      "id": "B2-CONTROL",
+      "name": "NVIDIA：企业控制环境中的模型部署",
+      "url": "https://docs.nvidia.com/enterprise-reference-architectures/deploying-proprietary-models-confidential-compute-self-hosted-kubernetes/latest/introduction.html",
+      "locator": "Enterprise-controlled environments",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "客户控制的环境可含本地和云账户；所在地本身不是安全/合规保证。"
+    },
+    {
+      "id": "B2-HGX",
+      "name": "NVIDIA HGX Platform",
+      "url": "https://www.nvidia.com/en-us/data-center/hgx/",
+      "locator": "Platform overview / Partner Systems",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "只核对平台及合作伙伴系统关系；不背代际规格。"
+    },
+    {
+      "id": "B2-DGX",
+      "name": "NVIDIA DGX Platform 文档",
+      "url": "https://docs.nvidia.com/dgx/",
+      "locator": "DGX systems / BasePOD / SuperPOD",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "DGX不是单一GPU芯片；型号和参考架构随版本变化。"
+    },
+    {
+      "id": "B2-NVLINK",
+      "name": "NVIDIA NVLink：Scale-Up网络",
+      "url": "https://developer.nvidia.com/blog/nvidia-nvlink-the-scale-up-network-for-ai-factories/",
+      "locator": "正文：scale-up vs scale-out / domain / GPU communication",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "2026-07-20；读取正文，不以页面AI摘要或性能宣传倍数出题。"
+    },
+    {
+      "id": "B2-ROCE",
+      "name": "NVIDIA DOCA：RDMA over Converged Ethernet",
+      "url": "https://docs.nvidia.com/doca/sdk/rdma-over-converged-ethernet.pdf",
+      "locator": "PDF物理第3–4页定义/封装；第8页流控",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "协议定义可用；历史10/40Gb示例不当作当前速率上限。"
+    },
+    {
+      "id": "B2-SM",
+      "name": "NVIDIA：InfiniBand交换机软件管理",
+      "url": "https://docs.nvidia.com/networking/display/QM87XX/software-management.pdf",
+      "locator": "InfiniBand Subnet Manager",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "SM可以运行于交换机或相连主机；OpenSM是实现名称。"
+    },
+    {
+      "id": "B2-DPU",
+      "name": "NVIDIA：What Is a DPU?",
+      "url": "https://blogs.nvidia.com/blog/whats-a-dpu-data-processing-unit/",
+      "locator": "DPU components / infrastructure offload",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "取定义与职责，不将市场宣传视为适用于任意工作负载的性能承诺。"
+    },
+    {
+      "id": "B2-BLUEFIELD",
+      "name": "NVIDIA BlueField Networking Platform",
+      "url": "https://www.nvidia.com/en-us/networking/products/data-processing-unit/",
+      "locator": "Network / Storage / Security services",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "型号参数不进入本批练习；隔离依赖部署、配置和支持能力。"
+    },
+    {
+      "id": "B2-GDR",
+      "name": "NVIDIA GPUDirect RDMA文档",
+      "url": "https://docs.nvidia.com/cuda/gpudirect-rdma/index.html",
+      "locator": "Overview / Synchronization and Memory Ordering",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "优化数据路径并不消除全部CPU控制和同步工作。"
+    },
+    {
+      "id": "B2-GDS",
+      "name": "NVIDIA GPUDirect Storage Overview",
+      "url": "https://docs.nvidia.com/gpudirect-storage/overview-guide/index.html",
+      "locator": "Overview / Direct data path / compatibility",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "直接数据路径依赖受支持硬件、驱动、文件系统和应用；有兼容回退路径。"
+    },
+    {
+      "id": "NOTE07",
+      "name": "社区学习笔记07：数据中心管理与监控",
+      "url": "https://drive.google.com/file/d/1KsminMP_--vyYJrYQRIurt0KEcI_4gES/view",
+      "locator": "9页；全文文本已读",
+      "kind": "third-party",
+      "checked": "2026-09-24",
+      "note": "只采用主题线索；dump/题量预测及绝对化指标结论不采用。"
+    },
+    {
+      "id": "NOTE08",
+      "name": "社区学习笔记08：编排、调度与虚拟化",
+      "url": "https://drive.google.com/file/d/1jDIcg23sQjWXr7fNKxdNx483-FydD-uz/view",
+      "locator": "12页；全文文本已读",
+      "kind": "third-party",
+      "checked": "2026-09-24",
+      "note": "只采用主题线索；原题不直接导入。MIG支持、重置与调度边界另核官方。"
+    },
+    {
+      "id": "SMI",
+      "name": "NVIDIA System Management Interface",
+      "url": "https://docs.nvidia.com/deploy/nvidia-smi/index.html",
+      "locator": "Description / Query / Utilization / Memory / Power / ECC",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "DCGM",
+      "name": "NVIDIA DCGM Feature Overview",
+      "url": "https://docs.nvidia.com/datacenter/dcgm/latest/user-guide/feature-overview.html",
+      "locator": "Health and Diagnostics / Profiling Metrics",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "EXPORTER",
+      "name": "NVIDIA DCGM Exporter",
+      "url": "https://docs.nvidia.com/datacenter/cloud-native/gpu-telemetry/latest/dcgm-exporter.html",
+      "locator": "Introduction / Running / MIG support",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "XID",
+      "name": "NVIDIA Xid Errors",
+      "url": "https://docs.nvidia.com/deploy/xid-errors/introduction.html",
+      "locator": "What is an Xid Message / How to Use",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "BMC",
+      "name": "NVIDIA DGX H100/H200：BMC",
+      "url": "https://docs.nvidia.com/dgx/dgxh100-user-guide/bmc.html",
+      "locator": "硬件管理、远程控制台、传感器和电源",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "BCM",
+      "name": "NVIDIA Base Command Manager",
+      "url": "https://www.nvidia.com/en-us/data-center/base-command-manager/",
+      "locator": "Provision / Monitor / Cluster management",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "SLURM",
+      "name": "SchedMD Slurm Overview",
+      "url": "https://slurm.schedmd.com/overview.html",
+      "locator": "三项职责 / Architecture / User tools",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "SLURM-GPU",
+      "name": "SchedMD Slurm GRES Scheduling",
+      "url": "https://slurm.schedmd.com/gres.html",
+      "locator": "GPU资源请求 / MIG Management",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "K8S",
+      "name": "Kubernetes Overview",
+      "url": "https://kubernetes.io/docs/concepts/overview/",
+      "locator": "编排 / 调度 / 服务 / 批处理",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "K8S-GPU",
+      "name": "Kubernetes Schedule GPUs",
+      "url": "https://kubernetes.io/docs/tasks/manage-gpus/scheduling-gpus/",
+      "locator": "驱动、device plugin及GPU资源请求",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "MIG",
+      "name": "NVIDIA MIG Introduction",
+      "url": "https://docs.nvidia.com/datacenter/tesla/mig-user-guide/introduction.html",
+      "locator": "硬件分区 / 内存路径 / 部署场景",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "MIG-SUPPORT",
+      "name": "NVIDIA MIG Supported GPUs",
+      "url": "https://docs.nvidia.com/datacenter/tesla/mig-user-guide/supported-gpus.html",
+      "locator": "Table 1 支持产品与最大实例数",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "MIG-DEPLOY",
+      "name": "NVIDIA MIG Deployment Considerations",
+      "url": "https://docs.nvidia.com/datacenter/tesla/mig-user-guide/deployment-considerations.html",
+      "locator": "System / Application considerations",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "MIG-START",
+      "name": "NVIDIA Getting Started with MIG",
+      "url": "https://docs.nvidia.com/datacenter/tesla/mig-user-guide/getting-started-with-mig.html",
+      "locator": "MIG mode / GPU reset on Hopper+ / instance management",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "VGPU",
+      "name": "NVIDIA vGPU Introduction",
+      "url": "https://docs.nvidia.com/vgpu/latest/grid-vgpu-user-guide/grid-vgpu-introduction.html",
+      "locator": "GPU Instance Support / 软件与hypervisor支持",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "L40S",
+      "name": "NVIDIA L40S Specifications",
+      "url": "https://www.nvidia.com/en-in/data-center/l40s/",
+      "locator": "MIG support: No；vGPU software support: Yes",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "REVIEW-ANN",
+      "name": "NVIDIA Artificial Neural Network",
+      "url": "https://developer.nvidia.com/discover/artificial-neural-network",
+      "locator": "训练权重；Neural Network Inference；Layer定义",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": "仅采用定义与阶段说明；不把宣传性能作为本应用实测。"
+    },
+    {
+      "id": "REVIEW-EVAL",
+      "name": "Google ML Crash Course — Dividing datasets",
+      "url": "https://developers.google.com/machine-learning/crash-course/overfitting/dividing-datasets",
+      "locator": "Training, validation, and test sets；Additional problems with test sets",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": "原厂机器学习教学资料，用于评估方法补充，不充当NVIDIA考纲。"
+    },
+    {
+      "id": "REVIEW-CUDART",
+      "name": "CUDA Runtime API：Memory Management",
+      "url": "https://docs.nvidia.com/cuda/cuda-runtime-api/cuda_runtime_api/group__CUDART__MEMORY.html",
+      "locator": "cudaMalloc设备内存分配条目",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": "独立复核报告已核对；只支持本节API示例，不作为所有编译/部署条件的证明。"
+    },
+    {
+      "id": "REVIEW-PROM",
+      "name": "Prometheus Overview",
+      "url": "https://prometheus.io/docs/introduction/overview/",
+      "locator": "Architecture：抓取、保存样本、规则与Grafana展示",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": "独立复核新增来源；具体通知与处置流程仍需部署验证。"
+    },
+    {
+      "id": "REVIEW-DEPLOY",
+      "name": "AI Enterprise 4.10部署选择",
+      "url": "https://docs.nvidia.com/ai-enterprise/release-4/4.10/getting-started/deployment-guide.html",
+      "locator": "Choosing Your Deployment；2026-05-07",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": "上游本轮已读取并提供精确支持范围。云弹性/按需付费和本地裸机控制；版本固定资料，不承担全部成本论断。"
+    },
+    {
+      "id": "REVIEW-CLOUD-COST",
+      "name": "AWS定价原则",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
+      "locator": "Key Principles：服务开销、计算/存储/传出流量和计费承诺",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": "上游本轮已读取并提供精确支持范围。以AWS作云服务例证，不泛化为所有供应商或NVIDIA服务的价格保证。"
+    },
+    {
+      "id": "REVIEW-CLOUD-CAPACITY",
+      "name": "EC2启动限制与容量",
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/troubleshooting-launch.html",
+      "locator": "Instance limit exceeded / Insufficient instance capacity / Configuration not supported",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": "上游本轮已读取并提供精确支持范围。以EC2说明配额、实际容量和区域配置限制；不是全部云的统一条款。"
+    },
+    {
+      "id": "REVIEW-CLOUD-RESP",
+      "name": "AWS共同责任模型",
+      "url": "https://aws.amazon.com/compliance/shared-responsibility-model/",
+      "locator": "EC2客户责任；服务类型改变责任边界",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": "上游本轮已读取并提供精确支持范围。EC2客户仍承担OS补丁、应用和安全组等责任；不套用于所有托管服务。"
+    },
+    {
+      "id": "GUIDE-LEGACY-CN",
+      "name": "保留：Feb 2026中文指南来源",
+      "url": "https://images.nvidia.cn/aem-dam/zh_cn/Solutions/training/certification/nvt-certification-exam-study-guide-aiio-a4-web-zhCN-5103850.pdf",
+      "locator": "物理第4–6页：1.1–3.4",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "22考点编号；课程关联和覆盖程度为本项目判断。"
+    },
+    {
+      "id": "D02-TOOLKIT",
+      "name": "NVIDIA CUDA Toolkit",
+      "url": "https://developer.nvidia.com/cuda/toolkit",
+      "locator": "官方介绍首段：工具集合",
+      "kind": "official",
+      "checked": "2026-10-15",
+      "note": "仅为本轮Day2教学核对；示例数字为本课自编，不是官方性能实测。"
+    },
+    {
+      "id": "D02-MATMUL",
+      "name": "NVIDIA Matrix Multiplication Background",
+      "url": "https://docs.nvidia.com/deeplearning/performance/dl-performance-matrix-multiplication/index.html",
+      "locator": "§1 Background；§2 Math And Memory Bounds",
+      "kind": "official",
+      "checked": "2026-10-15",
+      "note": "仅为本轮Day2教学核对；示例数字为本课自编，不是官方性能实测。"
+    },
+    {
+      "id": "D02-CUBLAS",
+      "name": "NVIDIA cuBLAS Documentation",
+      "url": "https://docs.nvidia.com/cuda/cublas/index.html#tensor-core-usage",
+      "locator": "§2.1.11 Tensor Core Usage",
+      "kind": "official",
+      "checked": "2026-10-15",
+      "note": "仅为本轮Day2教学核对；示例数字为本课自编，不是官方性能实测。"
+    },
+    {
+      "id": "D04-PROTOCOL",
+      "name": "NVIDIA Triton HTTP/REST and GRPC Protocol",
+      "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/protocol/README.html",
+      "locator": "HTTP/REST and GRPC Protocol；Restricted Protocols；错误响应说明",
+      "kind": "official",
+      "checked": "2026-10-15",
+      "note": "支持协议与访问条件概念；本课tickets.example/text/category例子为自编包装接口，并非Triton实际API。"
+    }
+  ],
+  "note": "本轮补讲前内容快照，不含学习记录。"
+}
