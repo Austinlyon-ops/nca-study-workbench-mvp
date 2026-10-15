@@ -1,0 +1,1255 @@
+{
+  "format": "nca-teaching-content-archive",
+  "contentVersion": "0.3.1",
+  "teachingRevision": "2026-10-14-day04-reviewed2",
+  "lesson": {
+    "day": 4,
+    "title": "软件用途与AI开发部署生命周期",
+    "status": "可学习（首批内容）",
+    "cardIds": [
+      "card-ai-lifecycle",
+      "card-inference-tools",
+      "card-nim-ngc-enterprise",
+      "card-solutions"
+    ],
+    "questionIds": [
+      "Q-D04-001",
+      "Q-D04-002",
+      "Q-D04-003",
+      "Q-D04-004",
+      "Q-D04-005",
+      "Q-D04-006",
+      "Q-D04-007",
+      "Q-D04-008",
+      "Q-D04-009",
+      "Q-D04-010"
+    ],
+    "selfCheck": "数据、训练、优化、部署怎样串起来？NGC、NIM和AI Enterprise各在哪里？",
+    "selfCheckNote": "口述自检不自动计分；答后讲解不能冒充独立首次作答。",
+    "previousTeachingBridge": {
+      "fromDay": 3,
+      "title": "从能运行的模型到可用的工单分类服务",
+      "setup": "延续 Day 3 的教学案例：已有模型已在目标 GPU 环境完成一次分类，团队想让同事持续提交工单并获得类别。一次运行只说明部分运行条件成立，接下来要把任务放回完整生命周期。",
+      "steps": [
+        {
+          "title": "数据：输入和评价依据是否可靠",
+          "text": "先确认工单格式、类别定义和标注质量，并准备能反映实际任务的评价资料。若新工单与原训练资料差异很大，应评估效果；不能用更多 GPU 自动补救混乱标签。已有模型不代表本轮一定要重新训练。"
+        },
+        {
+          "title": "训练：需要学习或更新参数时再安排",
+          "text": "若现有模型效果不满足任务目标，再考虑训练或定制并验证结果。训练框架组织参数学习；推理是用已有参数处理工单。训练指标达标仍不能替代部署环境和服务表现的验证。"
+        },
+        {
+          "title": "可选优化：让模型执行满足目标",
+          "text": "需要改善推理执行时可评估 TensorRT 等能力，比较优化前后的效果、响应和吞吐。优化不是每个项目必经的独立工具步骤，也不保证任何模型都得到相同收益。它不能代替请求接口与全部服务管理。"
+        },
+        {
+          "title": "服务：让用户能够持续提出请求",
+          "text": "对外提供推理接口时，需要组织请求、模型和执行资源；Triton 可服务不同后端的模型，也可与 TensorRT 配合。NIM 是另一类预构建推理微服务能力；NGC 是取得资源的目录入口，AI Enterprise 涉及企业软件与支持。它们不是必须全部串联的唯一部署路线。"
+        },
+        {
+          "title": "运行反馈：可用一次不等于持续可用",
+          "text": "对照预先约定的目标观察响应、吞吐、失败和模型效果，并记录模型与环境版本。异常可能来自输入变化、服务资源或软件环境，应结合证据调查。运行反馈可以促使数据、训练、优化或部署环节再次调整，生命周期不是只能走一次的直线。"
+        }
+      ],
+      "selfCheck": "模型能在 GPU 上成功分类一条工单，为什么还不能说服务已经完成？请分别举出一个模型执行层问题和一个服务层问题，说明 TensorRT 与 Triton 各能帮助处理哪类职责，以及上线后还要验证什么。",
+      "rubric": [
+        "能区分模型执行与请求服务，解释 TensorRT 和 Triton 可以配合但职责不同。",
+        "能提出模型效果、响应、吞吐或运行稳定性等具体验证目标，而不是只背工具名称。",
+        "能说明数据、训练、可选优化、部署和运行反馈可以迭代；不声称所有工具都必用。",
+        "这是口述自检，未记录真实回答前不形成学习成绩或掌握结论。"
+      ],
+      "sourceIds": [
+        "TRAIN",
+        "TRT",
+        "TRITON",
+        "NIM",
+        "NGC",
+        "AIE",
+        "EXPORTER"
+      ],
+      "objectiveIds": [
+        "1.1",
+        "1.6",
+        "1.7"
+      ]
+    },
+    "teachingTrial": {
+      "id": "day4-understanding-2026-09-25",
+      "teachingRevision": "2026-10-14-day04-reviewed2",
+      "title": "Day 4 主课与理解练习",
+      "status": "修订试用；原答与历史保留；学习效果待验证",
+      "approvedOn": "2026-10-14",
+      "note": "主课先说明原因，再用情境检查。先完成核心节，选读节留到有需要时；不要求一次做完六项短答。英文两项任选一项，可用中文回答。旧知识卡用于速查，原计分练习保持独立。",
+      "goals": [
+        "先区分模型计算、服务交付和业务使用，产品名称随后再记。",
+        "先说目标和证据，再判断需要优化执行还是组织服务。",
+        "把一次交付变成可追溯的持续运行。"
+      ],
+      "fullLesson": {
+        "title": "Day 4 主课｜从一个能算的模型，到同事真正能用的服务",
+        "intro": "Day 3 解决了软件怎样配合 GPU。今天继续处理工单分类：模型能在开发机上给出结果之后，为什么还不能宣布上线完成？先走通数据、评估、服务和运行反馈，再把产品名称放到对应位置。",
+        "orientation": [
+          "先用中文解释关系，再把英文术语对应上；术语表达不熟与概念错误分别反馈。",
+          "20分钟可只完成一个核心节及一项短答；45–60分钟以核心关系和两三项回答为目标，卡住时停下补讲，可分多次完成。",
+          "选读节和原教材用于特定疑问的补充，不是做题前的额外通读作业。"
+        ],
+        "sections": [
+          {
+            "id": "L-D04-01",
+            "title": "先看交付物：模型文件不是完整业务服务",
+            "priority": "core",
+            "cardIds": [
+              "card-ai-lifecycle"
+            ],
+            "paragraphs": [
+              "请求是使用者提交给系统的一次输入；接口规定怎样提交与取得结果；部署是把程序及所需条件准备到运行环境。模型服务围绕请求组织计算与返回，让使用者能调用模型。先理解这些动作，再认识后端、微服务和产品名。",
+              "设想你把训练完成的模型文件交给同事。模型参数保存了学到的规律，但同事还需要知道：输入格式是什么、从哪里提交、多久能拿到结果、失败时怎样处理。把模型放进实际业务流程，才谈得上部署与服务。",
+              "数据准备、训练、评估、部署有不同的输出。数据准备产出可用的数据；训练形成模型参数；评估检查它在合适的检验数据上表现怎样；部署准备让使用者调用的运行环境和接口。推理则是模型针对一次新输入进行计算，是服务过程中的一环。",
+              "如果直接采用已有模型，可以不在本项目重新训练，但仍要验证它是否适合当前工单、输入是否正确和服务是否可用。这条路径解释了为什么“没自己训练”也可以部署 AI 应用。"
+            ],
+            "example": {
+              "title": "工单分类的交接",
+              "paragraphs": [
+                "开发者给了一份模型和一段演示程序。演示能处理一条工单，只证明这次输入走通了；还没有证明多人访问、异常输入和持续运行都已处理。",
+                "上线目标先写成可检查的行为：同事能提交约定格式、获得可解释的类别；不确定结果能交给人工。随后分别验证模型表现与服务条件。"
+              ]
+            },
+            "contrast": [
+              "模型预测正确与接口能被访问是两个检查；不能用其中一项替代另一项。"
+            ],
+            "takeaway": "先区分模型计算、服务交付和业务使用，产品名称随后再记。",
+            "sourceIds": [
+              "TRAIN",
+              "RAPIDS",
+              "TRT",
+              "TRITON"
+            ],
+            "readingGuide": [
+              "需要流程图时，只看培训讲义 TRAIN 物理页 146；MLOps 留到第五节再读。",
+              "阅读任务：指出训练产出的模型怎样进入推理部署，并说出服务还需检查的一项条件；能说明即可返回。练习 01 检查服务条件，练习 04 检查采用已有模型时是否必须重训。",
+              "涉及型号、版本或真实部署时再查本节官方来源的支持条件；本课概念练习不要求执行安装命令。"
+            ],
+            "exerciseIds": [
+              "P-D04-01"
+            ]
+          },
+          {
+            "id": "L-D04-02",
+            "title": "质量与速度分开验证：优化会改变什么",
+            "priority": "core",
+            "cardIds": [
+              "card-ai-lifecycle",
+              "card-inference-tools"
+            ],
+            "paragraphs": [
+              "评估不能只看模型在训练资料上的表现，因为它可能记住旧例子却不善于处理新工单。需要用适当的独立检验数据，明确你关心的是哪些类别、哪些错误最重要。这里先理解检验目的，不展开统计方法。",
+              "推理优化关注模型如何执行，可能改变表示方式或执行策略，以改善时延、吞吐或资源占用。TensorRT 是一套用于推理优化和运行的软件开发工具与库：开发者把受支持的已训练模型交给它，构建适合 GPU 执行的推理引擎，再由运行库使用该引擎计算结果。引擎在这里是软件执行产物，不是另一块硬件。优化后仍要验证任务质量和实际性能。",
+              "Triton Inference Server 是运行在服务器上的模型服务软件；后端是它调用的模型执行组件。例如应用提交整理好的工单输入 → Triton 接收并安排请求 → TensorRT 后端执行模型 → Triton 返回结果。Triton 也可使用其他后端，这只是可选组合。两者分别承担执行与服务职责，优化模型不会自动完成接口访问、异常处理等全部上线条件。"
+            ],
+            "example": {
+              "title": "快了，但是否更好",
+              "paragraphs": [
+                "假设优化后同样一批工单处理更快，但某类关键故障的分类变差。不能只报告速度提升；应一起比较质量、等待时间和资源条件。",
+                "另一种情况是模型本身很快，但请求在队列里等待很久。应查看服务负载与排队，而不是直接推断模型计算太慢。",
+                "教学数字：一次请求总耗时100毫秒，其中模型计算20、其他步骤80。把计算降到10，其他条件不变，总耗时是90，不会自动减半。优化某段与改善端到端响应要分开验证。"
+              ]
+            },
+            "contrast": [
+              "训练、推理优化、服务部署不是必须分别对应三个互斥产品。"
+            ],
+            "takeaway": "先说目标和证据，再判断需要优化执行还是组织服务。",
+            "sourceIds": [
+              "TRAIN",
+              "RAPIDS",
+              "TRT",
+              "TRITON"
+            ],
+            "readingGuide": [
+              "仍分不清执行与服务时，看培训讲义 TRAIN 物理页 146 的 TensorRT 与 Triton 对应位置。",
+              "阅读任务：用一条请求说明谁执行模型、谁组织服务；能说明即可返回练习 02，不必连读生命周期和 MLOps 页。",
+              "涉及型号、版本或真实部署时再查本节官方来源的支持条件；本课概念练习不要求执行安装命令。"
+            ],
+            "exerciseIds": [
+              "P-D04-02",
+              "P-D04-04"
+            ]
+          },
+          {
+            "id": "L-D04-03",
+            "title": "把入口、交付形式和企业支持分开",
+            "priority": "core",
+            "cardIds": [
+              "card-nim-ngc-enterprise"
+            ],
+            "paragraphs": [
+              "本节说的 NGC 主要指 NGC Catalog：一个可浏览和获取模型、容器等资源的在线目录。找到并下载资源，解决的是“拿到什么”；能否在你的环境运行，还取决于模型、硬件、驱动及许可等具体条件。",
+              "NIM 是一组以容器形式交付的推理微服务。容器里封装了服务接口、推理引擎和相关软件；在受支持的环境启动后，应用可通过接口发送输入、取得模型输出。这里的微服务是一项承担明确功能的服务，例如提供某个模型的推理；它并不包办整个工单网页，也不是训练所有模型的框架。",
+              "AI Enterprise 是包含 NIM 等 AI 软件组件及企业支持的商业软件套件，关注受支持的软件组合、更新维护和生命周期。一个项目可以从 NGC 取得资源、运行 NIM 服务，再按所用组件核对 AI Enterprise 的支持范围。教材称其为企业 AI 的“操作系统”是比喻，不是替代主机 Linux 内核。"
+            ],
+            "example": {
+              "title": "一张采购清单为什么不能代替上线检查",
+              "paragraphs": [
+                "团队从 NGC 找到资源、采用一个 NIM 交付模型推理，再根据需要核对企业支持范围。每一步都应问：获得了什么能力，还缺哪些运行或使用条件？",
+                "“下载成功”不等于“服务已可用”，也不自动证明获得了所有支持权益。"
+              ]
+            },
+            "contrast": [
+              "资源目录不是计算硬件，企业套件不是主机内核，推理微服务不是训练所有模型的框架。"
+            ],
+            "takeaway": "用获取、交付、支持三个问题辨认职责。",
+            "sourceIds": [
+              "TRAIN",
+              "NOTE02",
+              "NIM",
+              "NGC",
+              "AIE"
+            ],
+            "readingGuide": [
+              "培训讲义 TRAIN 物理页 140、143：对照本节主题的原表格/示意，不必连读整份PDF。",
+              "阅读任务：把图中的名称分别放回取得资源、运行服务、获得企业支持三个问题；能解释它们为何可共用即可返回练习 03。",
+              "涉及型号、版本或真实部署时再查本节官方来源的支持条件；本课概念练习不要求执行安装命令。"
+            ],
+            "exerciseIds": [
+              "P-D04-03"
+            ]
+          },
+          {
+            "id": "L-D04-04",
+            "title": "按任务认识生态，不把品牌表当主线",
+            "priority": "optional",
+            "cardIds": [
+              "card-solutions"
+            ],
+            "paragraphs": [
+              "看到一串产品名时，先把真实需求翻译成动作：整理表格数据、识别语音、生成推荐、定制模型，还是处理医疗影像。你只有先说清动作，才知道应该比较哪类能力。",
+              "教材以 RAPIDS 对应 GPU 数据科学，以 Riva 对应语音能力，以 Merlin 对应推荐系统，以 NeMo 对应模型开发和定制，以 Clara 介绍医疗生命科学方向。这里用它们认识任务类别；具体产品范围和支持状态应以当前官方文档为准。",
+              "这些名称之间可能有依赖或能力重叠。一个语音应用也要处理数据、运行模型并部署服务；不能因为用了一个语音产品，就推断不再需要软件栈、数据质量和服务管理。第一遍能把需求放回正确阶段即可。"
+            ],
+            "example": {
+              "title": "工单系统增加语音输入",
+              "paragraphs": [
+                "如果同事希望口述工单，新增的是语音输入相关能力，不是简单把分类模型换成更强 GPU。先确认语音怎样变成可处理输入，再检查分类与服务链路。",
+                "只需要分类文本时，不必为了“学全生态”同时研究所有语音、医疗和推荐工具。"
+              ]
+            },
+            "contrast": [
+              "第一遍不背产品全家桶、许可和性能倍数；遇到对应需求再选读。"
+            ],
+            "takeaway": "按业务动作找能力，再查具体产品。",
+            "sourceIds": [
+              "TRAIN",
+              "NOTE02",
+              "RAPIDS",
+              "RIVA",
+              "MERLIN",
+              "AIE"
+            ],
+            "readingGuide": [
+              "培训讲义 TRAIN 物理页 140、146：对照本节主题的原表格/示意，不必连读整份PDF。",
+              "阅读任务：只找与当前疑问相关的一类用途，例如语音输入对应什么能力；能说明即可返回选做练习 05，不需逐个背品牌。",
+              "涉及型号、版本或真实部署时再查本节官方来源的支持条件；本课概念练习不要求执行安装命令。"
+            ],
+            "exerciseIds": [
+              "P-D04-05"
+            ]
+          },
+          {
+            "id": "L-D04-05",
+            "title": "上线后还会变化：为什么需要持续管理",
+            "priority": "core",
+            "cardIds": [
+              "card-ai-lifecycle"
+            ],
+            "paragraphs": [
+              "上线后的输入可能与开发时不同：工单出现新术语、新设备或不同书写习惯。服务仍然有响应，不代表分类质量没有变化；因此需要同时观察运行状态和业务效果。",
+              "MLOps 是管理机器学习开发与运行的一组工程实践，可由不同软件工具支持。例如每次上线记录模型版本、使用的数据、检验结果和部署时间；出现问题时，团队才能找回对应版本比较。它组织评估、部署与更新过程，自动化可以减少重复操作，但不会自动保证准确或安全。",
+              "发现问题后先保留证据，再判断原因。如果输入字段变化，应先核对接口与预处理；如果某类工单长期判断错误，要核对任务与模型评估；如果高峰排队，检查负载与服务资源。新数据出现也不等于必须立即自动训练并上线。"
+            ],
+            "example": {
+              "title": "同事说“新版更差了”",
+              "paragraphs": [
+                "先确认上线版本、对照样本和时间范围，再区分质量下降、接口故障或速度变化。没有这些证据，反复换模型或重装驱动可能不能解释问题。",
+                "能追溯旧版本并比较表现，才有依据决定回退、补数据或调整服务。"
+              ]
+            },
+            "contrast": [
+              "持续监控提供发现问题的机会，不是永不出错的保证。"
+            ],
+            "takeaway": "把一次交付变成可追溯的持续运行。",
+            "sourceIds": [
+              "TRAIN",
+              "RAPIDS",
+              "TRT",
+              "TRITON"
+            ],
+            "readingGuide": [
+              "想看持续管理的全貌时，选读培训讲义 TRAIN 物理页 157–160 的 MLOps 内容。",
+              "阅读任务：找出一项上线后仍要持续做的工作，并说明要留下什么记录；能说明即可返回练习 06，不必回读产品生态页。",
+              "涉及型号、版本或真实部署时再查本节官方来源的支持条件；本课概念练习不要求执行安装命令。"
+            ],
+            "exerciseIds": [
+              "P-D04-06"
+            ]
+          }
+        ],
+        "summary": [
+          "先区分模型计算、服务交付和业务使用，产品名称随后再记。",
+          "先说目标和证据，再判断需要优化执行还是组织服务。",
+          "把一次交付变成可追溯的持续运行。"
+        ],
+        "timeGuide": [
+          "核心关系：先看交付物：模型文件不是完整业务服务；质量与速度分开验证：优化会改变什么；把入口、交付形式和企业支持分开；上线后还会变化：为什么需要持续管理",
+          "第一遍认识职责与原因；产品全表、命令、支持矩阵和具体参数按需要选读，不把选读当永远跳过基础目标。",
+          "20分钟可完成一个核心节与一项原答；45–60分钟按实际进度选两三项回答。内容较多可分段完成，未学内容保持待学。"
+        ]
+      },
+      "exercises": [
+        {
+          "id": "P-D04-01",
+          "title": "解释缺少的环节",
+          "stem": "已有一个能在开发机正确分类工单的模型，为什么还不能说同事已经能通过网页稳定使用？请说明两个需要另查的条件。",
+          "language": "zh",
+          "cardIds": [
+            "card-ai-lifecycle"
+          ],
+          "objectiveIds": [
+            "1.7"
+          ],
+          "sourceIds": [
+            "TRAIN",
+            "RAPIDS",
+            "TRT",
+            "TRITON"
+          ],
+          "relatedQuestionIds": [
+            "Q-D04-001",
+            "Q-D04-010"
+          ],
+          "rubric": [
+            "分开模型计算正确、访问接口及持续运行条件。",
+            "举出输入处理、异常处理、并发或服务环境中至少两类合理条件。"
+          ],
+          "referenceExplanation": [
+            "模型在开发机分对工单，只验证了那次模型计算；网页能持续使用，还需要请求进得来、结果回得去，并能应对实际使用条件。",
+            "例如先查网页提交的字段能否被服务正确读取，再查多人同时提交时服务是否仍能正常响应。输入处理与并发是两类条件；异常处理或服务运行环境也是合理核查方向。"
+          ]
+        },
+        {
+          "id": "P-D04-02",
+          "title": "英文题意：优化与服务",
+          "stem": "A model runs faster after optimization, but users still cannot access it through an API. Which service or access conditions should the team check? You may answer in Chinese.",
+          "language": "en",
+          "translation": "模型优化后运行更快，但用户仍无法通过API访问。团队应核查哪些服务或访问条件？可用中文回答。",
+          "cardIds": [
+            "card-ai-lifecycle",
+            "card-inference-tools"
+          ],
+          "objectiveIds": [
+            "1.7",
+            "1.1",
+            "1.6"
+          ],
+          "sourceIds": [
+            "TRAIN",
+            "RAPIDS",
+            "TRT",
+            "TRITON"
+          ],
+          "relatedQuestionIds": [
+            "Q-D04-001",
+            "Q-D04-002",
+            "Q-D04-003",
+            "Q-D04-004",
+            "Q-D04-010"
+          ],
+          "rubric": [
+            "速度优化不能证明服务或访问条件已满足。",
+            "接受接口、部署、运行环境或访问条件的合理核查；访问失败不证明接口尚未开发，不预设唯一原因。"
+          ],
+          "referenceExplanation": [
+            "优化让模型计算更快，但请求必须先到达服务，模型结果才能交给用户。可以核对服务是否启动、接口地址和请求格式是否正确、运行环境或访问条件是否满足。",
+            "题目只给出访问失败，尚不能判断究竟缺少接口、服务未运行，还是访问受阻；先核查这些条件，再按证据定位。"
+          ]
+        },
+        {
+          "id": "P-D04-03",
+          "title": "区分不同层面",
+          "stem": "同一个方案里同时出现 NGC、NIM 和 AI Enterprise 是否矛盾？用“取得资源、交付服务、企业支持”说明你的理解。",
+          "language": "zh",
+          "cardIds": [
+            "card-nim-ngc-enterprise"
+          ],
+          "objectiveIds": [
+            "1.1",
+            "1.6",
+            "1.7"
+          ],
+          "sourceIds": [
+            "TRAIN",
+            "NOTE02",
+            "NIM",
+            "NGC",
+            "AIE"
+          ],
+          "relatedQuestionIds": [
+            "Q-D04-005",
+            "Q-D04-006",
+            "Q-D04-007"
+          ],
+          "rubric": [
+            "三者职责层面不同，可共同出现。",
+            "若原答混淆取得资源、部署可用与支持权益，可补讲边界；题面未要求权益，不因没提而判缺失。"
+          ],
+          "referenceExplanation": [
+            "不矛盾。NGC Catalog 提供取得模型和容器的入口，NIM 把模型推理以可调用的服务形式交给应用，AI Enterprise 提供软件套件和企业支持。",
+            "例如团队从目录取得一个 NIM 容器，在合适环境启动推理服务，同时使用适用的企业支持。三者回答的是不同问题，所以可以出现在同一个方案中。"
+          ]
+        },
+        {
+          "id": "P-D04-04",
+          "title": "英文题意：已有模型",
+          "stem": "A team uses a pretrained model for a new ticket-classification service. Must it train a new model before deployment? State one check it still needs.",
+          "language": "en",
+          "translation": "团队用预训练模型建立新工单分类服务。部署前一定要训练新模型吗？说出仍需进行的一项检查。",
+          "cardIds": [
+            "card-ai-lifecycle"
+          ],
+          "objectiveIds": [
+            "1.7"
+          ],
+          "sourceIds": [
+            "TRAIN",
+            "RAPIDS",
+            "TRT",
+            "TRITON"
+          ],
+          "relatedQuestionIds": [
+            "Q-D04-001",
+            "Q-D04-010"
+          ],
+          "rubric": [
+            "不必无条件重新训练。",
+            "仍需检验任务适配、质量或部署条件。"
+          ],
+          "referenceExplanation": [
+            "不一定。预训练模型已经有学到的参数，如果它适合当前任务，就可以评估后用于推理，不必为了“建立新服务”一律重新训练。",
+            "仍可检查它对本项目工单的分类质量：已有能力是否适合新任务，需要当前数据验证。检查输入格式或部署环境是否受支持也属于合理的一项检查。"
+          ]
+        },
+        {
+          "id": "P-D04-05",
+          "title": "新增需求先问什么",
+          "stem": "工单系统要增加口述输入。请先说明新增的任务，再说为什么不能只把 GPU 换快一点。",
+          "language": "zh",
+          "cardIds": [
+            "card-solutions"
+          ],
+          "objectiveIds": [
+            "1.5",
+            "1.6"
+          ],
+          "sourceIds": [
+            "TRAIN",
+            "NOTE02",
+            "RAPIDS",
+            "RIVA",
+            "MERLIN",
+            "AIE"
+          ],
+          "relatedQuestionIds": [
+            "Q-D04-008",
+            "Q-D04-009"
+          ],
+          "rubric": [
+            "新增语音输入/识别等能力需要合适软件与流程。",
+            "更快硬件不自动增加应用所缺能力。"
+          ],
+          "referenceExplanation": [
+            "在已有文本分类流程中，口述输入需要先处理声音，例如把语音识别成文本，再交给分类模型和服务。",
+            "更快 GPU 可能加快已有软件的计算，但不会自行添加语音识别程序或把音频接入原来的文本接口，因此先确认缺少哪一步能力。"
+          ],
+          "optional": true
+        },
+        {
+          "id": "P-D04-06",
+          "title": "换情境：上线后的证据",
+          "stem": "服务一直在线，但用户说新设备相关工单常被分错。你先核对什么？为什么不能仅凭在线状态证明模型有效？",
+          "language": "zh",
+          "cardIds": [
+            "card-ai-lifecycle"
+          ],
+          "objectiveIds": [
+            "1.7"
+          ],
+          "sourceIds": [
+            "TRAIN",
+            "RAPIDS",
+            "TRT",
+            "TRITON"
+          ],
+          "relatedQuestionIds": [
+            "Q-D04-001",
+            "Q-D04-010"
+          ],
+          "rubric": [
+            "对照实际输入、类别表现、模型/数据版本。",
+            "运行可用性与任务质量不同；依据证据选择更新，不自动归因硬件。"
+          ],
+          "referenceExplanation": [
+            "先保留新设备工单的输入和分类结果，对照应有类别、当前模型及相关数据版本，确认错误集中在哪里、何时出现。",
+            "在线说明服务还能够响应；即使每次都及时返回错误类别，它也可能一直在线。是否需要补数据、调整输入处理或更新模型，要由这些质量证据决定。"
+          ]
+        }
+      ],
+      "diagnostic": {
+        "minutes": "约5–8",
+        "promptIds": [
+          "P-D04-01",
+          "P-D04-02",
+          "P-D04-06"
+        ],
+        "alternativeEnglishId": "P-D04-04",
+        "instructions": [
+          "短诊断可选，仅在学过后回顾使用；综合解释较慢可另分一次。",
+          "原答先保存，再看统一参考；不清楚可直接说明。"
+        ]
+      },
+      "caseStudy": {
+        "title": "从一个能算的模型，到同事真正能用的服务",
+        "setup": "Day 3 解决了软件怎样配合 GPU。今天继续处理工单分类：模型能在开发机上给出结果之后，为什么还不能宣布上线完成？先走通数据、评估、服务和运行反馈，再把产品名称放到对应位置。",
+        "boundary": "情境和数字为教学假设，非用户现场事实。",
+        "steps": [
+          {
+            "title": "工单分类的交接",
+            "text": "开发者给了一份模型和一段演示程序。演示能处理一条工单，只证明这次输入走通了；还没有证明多人访问、异常输入和持续运行都已处理。 上线目标先写成可检查的行为：同事能提交约定格式、获得可解释的类别；不确定结果能交给人工。随后分别验证模型表现与服务条件。"
+          },
+          {
+            "title": "快了，但是否更好",
+            "text": "假设优化后同样一批工单处理更快，但某类关键故障的分类变差。不能只报告速度提升；应一起比较质量、等待时间和资源条件。 另一种情况是模型本身很快，但请求在队列里等待很久。应查看服务负载与排队，而不是直接推断模型计算太慢。"
+          },
+          {
+            "title": "一张采购清单为什么不能代替上线检查",
+            "text": "团队从 NGC 找到资源、采用一个 NIM 交付模型推理，再根据需要核对企业支持范围。每一步都应问：获得了什么能力，还缺哪些运行或使用条件？ “下载成功”不等于“服务已可用”，也不自动证明获得了所有支持权益。"
+          },
+          {
+            "title": "工单系统增加语音输入",
+            "text": "如果同事希望口述工单，新增的是语音输入相关能力，不是简单把分类模型换成更强 GPU。先确认语音怎样变成可处理输入，再检查分类与服务链路。 只需要分类文本时，不必为了“学全生态”同时研究所有语音、医疗和推荐工具。"
+          },
+          {
+            "title": "同事说“新版更差了”",
+            "text": "先确认上线版本、对照样本和时间范围，再区分质量下降、接口故障或速度变化。没有这些证据，反复换模型或重装驱动可能不能解释问题。 能追溯旧版本并比较表现，才有依据决定回退、补数据或调整服务。"
+          }
+        ]
+      },
+      "feedback": {
+        "dimensions": [
+          "结论是否符合题目证据",
+          "能否独立说明理由和职责关系",
+          "是否保留未知与适用条件",
+          "英文阅读与技术理解分别反馈"
+        ],
+        "instructions": [
+          "先保留学习者实际回答，再对照参考要点；只评价本次表现，不把参考答案写成学习记录。",
+          "区分独立回答、看译文后回答、提示后修正和照着讲解复述。",
+          "理由不完整时只补最关键的一处，再换一个小情境检查；不通过一次修正宣布已掌握。",
+          "先输入实际回答，再按要点自查；自查不是自动判分，也不等于已获得逐句教学评阅。需要进一步反馈时，连同是否看过提示一起交给教学对话；延迟回忆与陌生场景迁移仍需后续真实作答证据。"
+        ],
+        "exposureNote": "这些题干与设计曾在讨论中展示；是否看过参考要点也应按实际说明。同题再次作答可用于复习，不能冒充未见题的独立测量。"
+      },
+      "bridge": {
+        "nextDay": 5,
+        "title": "下一课怎样接上",
+        "text": "保留本次说不清的关系，下一课需要时再回看。",
+        "steps": [
+          "保存原答和疑问。",
+          "根据实际点评决定补哪一节，而不是把所有链接再读一遍。"
+        ]
+      }
+    },
+    "materialGuide": {
+      "title": "本课与原教材：怎样搭配着学",
+      "currentUse": "按数据、模型质量、执行、服务与持续运行组织因果；品牌放到对应任务，而不要求先背产品表。",
+      "originalValue": "原讲义146页是流程图，140/143页是生态用途，157–160页介绍MLOps。适合在理解后补图景。",
+      "whenToRead": "能区分模型计算正确、服务可访问与上线后质量，且能解释优化/服务职责，本课基础练习先用主课即可。产品关系仍混淆时再读对应两三页。",
+      "difference": "原图的典型产品对应不等于每个项目必须全部采用；“操作系统”比喻与自动保证可信结果的表述不能照字面理解。",
+      "scope": "完成这里的基础目标，只说明可以继续本课学习；不代表考试范围已完整覆盖、已掌握或能直接进行生产操作。",
+      "readings": [
+        {
+          "sourceId": "TRAIN",
+          "locator": "160页培训讲义，物理页 146（第一、二节按需补图）",
+          "task": "在流程图指出模型从训练产物到推理服务的去向，并区分 TensorRT 执行与 Triton 服务职责。",
+          "stop": "能说明交付物和服务条件即可；已有模型是否重训对应练习 04，服务访问对应练习 01、02。",
+          "warning": "同事提供的培训讲义，不等于已认证的官方考试教材。产品条件与版本以当前官方说明为准。"
+        },
+        {
+          "sourceId": "TRAIN",
+          "locator": "物理页 140、143（第三节资源与企业软件选读）；140、146（第四节用途选读）",
+          "task": "只在资源入口、推理微服务、企业支持或某一业务用途仍混淆时找对应名称。",
+          "stop": "能用当前需求解释一组职责关系即可，不背整张产品表。",
+          "warning": "产品图是用途概括；不能据此推定所有项目都必须用齐。"
+        },
+        {
+          "sourceId": "TRAIN",
+          "locator": "物理页 157–160（第五节 MLOps 选读）",
+          "task": "找出一项上线后持续工作，并说明为什么需要模型、数据或评估记录。",
+          "stop": "能解释在线状态为何不能代替质量证据即可返回练习 06，不要求一次读完所有选读入口。",
+          "warning": "同事提供的培训讲义，不等于已认证的官方考试教材。产品条件与版本以当前官方说明为准。"
+        }
+      ],
+      "officialUse": "遇到具体型号、版本、指标字段或真实操作时，打开对应知识卡中的官方依据，只查与问题有关的定义/支持条件；不把官方网站全站作为当天作业。",
+      "mediaStatus": "原目录的视频与字幕可作为补讲候选，但当前只完成目录级清点，未逐段核对；本课不指定未经核验的时间码或宣称看完某段即可覆盖考点。"
+    }
+  },
+  "sources": [
+    {
+      "id": "BP",
+      "name": "NVIDIA当前NCA-AIIO认证页",
+      "url": "https://www.nvidia.com/en-us/learn/certification/ai-infrastructure-operations-associate/",
+      "locator": "考试大纲/考试概况",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": "上游本轮核对；只作考试范围入口，不承诺通过。"
+    },
+    {
+      "id": "GUIDE",
+      "name": "NCA-AIIO当前官方考试指南",
+      "url": "https://dam-cdn.nvd.orangelogic.com/AssetLink/x874j05hy3m3r2sor84kpvp70750m468.pdf",
+      "locator": "物理4–6页：22考点，38/40/22%",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": "上游与独立复核已读当前6页链接；©2026、Jan26印记不当作正式生效版本号。范围基线不替技术结论背书。"
+    },
+    {
+      "id": "TRAIN",
+      "name": "同事提供：NVIDIA Training NCA - AIIO.pdf",
+      "url": "https://drive.google.com/file/d/1tdZ1BczaM8FsbGnn0KeVlAZ5t_ikvcva/view",
+      "locator": "每卡另附物理页码；本轮原始文件160页",
+      "kind": "third-party",
+      "checked": "2026-09-24",
+      "note": "培训讲义，不标为官方考试教材。版本/口诀需另核。"
+    },
+    {
+      "id": "NOTE02",
+      "name": "同事提供：02-nvidia-software-stack.pdf",
+      "url": "https://drive.google.com/file/d/1ab3ilujbrSpsYd_4M3pNxNaUHz84qpRH/view",
+      "locator": "第3–8页",
+      "kind": "third-party",
+      "checked": "2026-09-24",
+      "note": "只参考组织和概念；dump/必出/题量预测不采纳，定义另核官方。"
+    },
+    {
+      "id": "ML",
+      "name": "NVIDIA Machine Learning",
+      "url": "https://www.nvidia.com/en-us/glossary/machine-learning/",
+      "locator": "定义/工作方式",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": ""
+    },
+    {
+      "id": "DL",
+      "name": "NVIDIA Deep Learning",
+      "url": "https://developer.nvidia.com/deep-learning",
+      "locator": "开头Deep Learning定义（多层神经网络、AI/ML包含关系）",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": "仅引用定义，不采纳页面ROI宣传。"
+    },
+    {
+      "id": "GEN",
+      "name": "NVIDIA Generative AI",
+      "url": "https://www.nvidia.com/en-us/glossary/generative-ai/",
+      "locator": "生成能力",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "PERF",
+      "name": "NVIDIA GPU Performance Background",
+      "url": "https://docs.nvidia.com/deeplearning/performance/dl-performance-gpu-background/index.html",
+      "locator": "架构/性能限制",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "BATCH",
+      "name": "TensorRT 性能优化",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/performance/optimization.html",
+      "locator": "Batching/吞吐/延迟",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "CUDA",
+      "name": "CUDA Linux Installation Guide",
+      "url": "https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html",
+      "locator": "Introduction/Toolkit/system requirements",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "COMPAT",
+      "name": "CUDA Compatibility",
+      "url": "https://docs.nvidia.com/deploy/cuda-compatibility/why-cuda-compatibility.html",
+      "locator": "驱动与CUDA软件兼容",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "CUDNN",
+      "name": "NVIDIA cuDNN",
+      "url": "https://docs.nvidia.com/deeplearning/cudnn/latest/",
+      "locator": "深度神经网络基础算子",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "CUBLAS",
+      "name": "NVIDIA cuBLAS",
+      "url": "https://developer.nvidia.com/cublas",
+      "locator": "GPU线性代数库",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "NCCL",
+      "name": "NVIDIA NCCL",
+      "url": "https://developer.nvidia.com/nccl",
+      "locator": "多GPU/多节点通信",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "CONTAINER",
+      "name": "NVIDIA Container Toolkit",
+      "url": "https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/index.html",
+      "locator": "Overview",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "CONTAINER-INSTALL",
+      "name": "GPU容器前置要求",
+      "url": "https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html",
+      "locator": "Prerequisites/Configuration",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "TRT",
+      "name": "NVIDIA TensorRT",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/",
+      "locator": "推理优化和运行",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "TRITON",
+      "name": "Dynamo-Triton（原Triton Inference Server）",
+      "url": "https://developer.nvidia.com/dynamo-triton",
+      "locator": "模型部署与服务",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "NIM",
+      "name": "NVIDIA NIM说明",
+      "url": "https://investor.nvidia.com/news/press-release-details/2024/NVIDIA-Launches-Generative-AI-Microservices-for-Developers-to-Create-and-Deploy-Generative-AI-Copilots-Across-NVIDIA-CUDA-GPU-Installed-Base/default.aspx",
+      "locator": "NIM Inference Microservices",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "NGC",
+      "name": "NVIDIA NGC",
+      "url": "https://www.nvidia.cn/gpu-cloud/",
+      "locator": "容器/模型资源目录",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "AIE",
+      "name": "NVIDIA AI Enterprise",
+      "url": "https://www.nvidia.com/en-us/data-center/products/ai-enterprise/",
+      "locator": "Overview/企业支持/NeMo",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "RAPIDS",
+      "name": "NVIDIA 数据科学文档",
+      "url": "https://docs.nvidia.com/datascience/",
+      "locator": "RAPIDS与数据科学",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "MERLIN",
+      "name": "NVIDIA Merlin",
+      "url": "https://developer.nvidia.com/merlin",
+      "locator": "推荐系统",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "RIVA",
+      "name": "NVIDIA Riva",
+      "url": "https://developer.nvidia.com/topics/ai/generative-ai/riva",
+      "locator": "语音AI",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "OPERATOR",
+      "name": "NVIDIA GPU Operator",
+      "url": "https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/overview.html",
+      "locator": "GPU软件组件管理",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": ""
+    },
+    {
+      "id": "NOTE04",
+      "name": "同事提供：04-ai-hardware-and-scaling.pdf",
+      "url": "https://drive.google.com/file/d/1nruFbzkvcdguADvzntWdbCHMNhqaWnBK/view",
+      "locator": "物理第2、5–8页；全10页文本已读",
+      "kind": "third-party",
+      "checked": "2026-09-24",
+      "note": "社区笔记；dump、题量预测、无条件硬件数字不采纳。"
+    },
+    {
+      "id": "NOTE05",
+      "name": "同事提供：05-datacenter-power-cooling-facility.pdf",
+      "url": "https://drive.google.com/file/d/1nIpHguc2PoUAQyLSRcw5evK99_ZNgmwq/view",
+      "locator": "物理第1–6页；全8页文本已读",
+      "kind": "third-party",
+      "checked": "2026-09-24",
+      "note": "社区笔记；PUE解释错误、固定散热阈值、自动合规等说法不采纳。"
+    },
+    {
+      "id": "NOTE06",
+      "name": "同事提供：06-networking-for-ai.pdf",
+      "url": "https://drive.google.com/file/d/1JCCAuLW7x_JUVUjmwIfbpsDJJnr_dmT6/view",
+      "locator": "物理第1–9页；全11页文本已读",
+      "kind": "third-party",
+      "checked": "2026-09-24",
+      "note": "社区笔记；不采纳dump题数和无条件速率/延迟/网络数量口诀。"
+    },
+    {
+      "id": "B2-BASEPOD",
+      "name": "NVIDIA DGX BasePOD：核心组件",
+      "url": "https://docs.nvidia.com/dgx-basepod/reference-architecture-infrastructure-foundation-enterprise-ai/latest/core-components.html",
+      "locator": "Compute / Network / Storage / Control Plane",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "具体配置是参考架构示例，不是所有AI集群的固定数量。"
+    },
+    {
+      "id": "B2-NETWORK",
+      "name": "NVIDIA DGX BasePOD：网络部署",
+      "url": "https://docs.nvidia.com/dgx-basepod/deployment-guide-dgx-basepod/latest/network-overview.html",
+      "locator": "Network Overview / oobmanagementnet / computenet",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "本参考架构的逻辑网络划分不等于全行业固定网络数。"
+    },
+    {
+      "id": "B2-FACILITY",
+      "name": "NVIDIA DGX SuperPOD：设施空间",
+      "url": "https://docs.nvidia.com/dgx-superpod/design-guides/dgx-superpod-data-center-design-h100/latest/infrastructure.html",
+      "locator": "Space Planning / Air Flow / Static Weight and Point Load",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "取通用规划原则；尺寸/承重/布线值仍按具体型号和设施条件。"
+    },
+    {
+      "id": "B2-POWER",
+      "name": "NVIDIA DGX SuperPOD：供电规划",
+      "url": "https://docs.nvidia.com/dgx-superpod/design-guides/dgx-superpod-data-center-design-h100/latest/electrical.html",
+      "locator": "Power Redundancy / Power Connections / rPDU / Phase Balancing",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "用于理解容量与冗余；不提供现场电气操作指令。"
+    },
+    {
+      "id": "B2-COOLING",
+      "name": "NVIDIA DGX SuperPOD：散热和气流",
+      "url": "https://docs.nvidia.com/dgx-superpod/design-guides/dgx-superpod-data-center-design-h100/latest/cooling.html",
+      "locator": "Full heat load / Aisle Containment / Cooling Oversubscription",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "不用一个固定kW阈值推定所有机房必须采用同一冷却技术。"
+    },
+    {
+      "id": "B2-PUE",
+      "name": "NVIDIA：数据中心能效指标的边界",
+      "url": "https://blogs.nvidia.com/blog/datacenter-efficiency-metrics-isc/",
+      "locator": "PUE compares total energy to computing infrastructure energy",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "PUE不衡量有用计算产出，不等于GPU利用率、总电费或模型效果。"
+    },
+    {
+      "id": "B2-DEPLOY",
+      "name": "NVIDIA AI Enterprise：部署选择（归档版）",
+      "url": "https://archive.docs.nvidia.com/ai-enterprise/release-4/latest/getting-started/deployment-guide.html",
+      "locator": "Deployment options：Public Cloud / On-Premises Bare Metal",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "归档release-4页仅用于历史部署方式线索；2026-10-14独立复核访问返回Internal Error，不代表永久失效，当前来源补证待完成。"
+    },
+    {
+      "id": "B2-CONTROL",
+      "name": "NVIDIA：企业控制环境中的模型部署",
+      "url": "https://docs.nvidia.com/enterprise-reference-architectures/deploying-proprietary-models-confidential-compute-self-hosted-kubernetes/latest/introduction.html",
+      "locator": "Enterprise-controlled environments",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "客户控制的环境可含本地和云账户；所在地本身不是安全/合规保证。"
+    },
+    {
+      "id": "B2-HGX",
+      "name": "NVIDIA HGX Platform",
+      "url": "https://www.nvidia.com/en-us/data-center/hgx/",
+      "locator": "Platform overview / Partner Systems",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "只核对平台及合作伙伴系统关系；不背代际规格。"
+    },
+    {
+      "id": "B2-DGX",
+      "name": "NVIDIA DGX Platform 文档",
+      "url": "https://docs.nvidia.com/dgx/",
+      "locator": "DGX systems / BasePOD / SuperPOD",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "DGX不是单一GPU芯片；型号和参考架构随版本变化。"
+    },
+    {
+      "id": "B2-NVLINK",
+      "name": "NVIDIA NVLink：Scale-Up网络",
+      "url": "https://developer.nvidia.com/blog/nvidia-nvlink-the-scale-up-network-for-ai-factories/",
+      "locator": "正文：scale-up vs scale-out / domain / GPU communication",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "2026-07-20；读取正文，不以页面AI摘要或性能宣传倍数出题。"
+    },
+    {
+      "id": "B2-ROCE",
+      "name": "NVIDIA DOCA：RDMA over Converged Ethernet",
+      "url": "https://docs.nvidia.com/doca/sdk/rdma-over-converged-ethernet.pdf",
+      "locator": "PDF物理第3–4页定义/封装；第8页流控",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "协议定义可用；历史10/40Gb示例不当作当前速率上限。"
+    },
+    {
+      "id": "B2-SM",
+      "name": "NVIDIA：InfiniBand交换机软件管理",
+      "url": "https://docs.nvidia.com/networking/display/QM87XX/software-management.pdf",
+      "locator": "InfiniBand Subnet Manager",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "SM可以运行于交换机或相连主机；OpenSM是实现名称。"
+    },
+    {
+      "id": "B2-DPU",
+      "name": "NVIDIA：What Is a DPU?",
+      "url": "https://blogs.nvidia.com/blog/whats-a-dpu-data-processing-unit/",
+      "locator": "DPU components / infrastructure offload",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "取定义与职责，不将市场宣传视为适用于任意工作负载的性能承诺。"
+    },
+    {
+      "id": "B2-BLUEFIELD",
+      "name": "NVIDIA BlueField Networking Platform",
+      "url": "https://www.nvidia.com/en-us/networking/products/data-processing-unit/",
+      "locator": "Network / Storage / Security services",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "型号参数不进入本批练习；隔离依赖部署、配置和支持能力。"
+    },
+    {
+      "id": "B2-GDR",
+      "name": "NVIDIA GPUDirect RDMA文档",
+      "url": "https://docs.nvidia.com/cuda/gpudirect-rdma/index.html",
+      "locator": "Overview / Synchronization and Memory Ordering",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "优化数据路径并不消除全部CPU控制和同步工作。"
+    },
+    {
+      "id": "B2-GDS",
+      "name": "NVIDIA GPUDirect Storage Overview",
+      "url": "https://docs.nvidia.com/gpudirect-storage/overview-guide/index.html",
+      "locator": "Overview / Direct data path / compatibility",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "直接数据路径依赖受支持硬件、驱动、文件系统和应用；有兼容回退路径。"
+    },
+    {
+      "id": "NOTE07",
+      "name": "社区学习笔记07：数据中心管理与监控",
+      "url": "https://drive.google.com/file/d/1KsminMP_--vyYJrYQRIurt0KEcI_4gES/view",
+      "locator": "9页；全文文本已读",
+      "kind": "third-party",
+      "checked": "2026-09-24",
+      "note": "只采用主题线索；dump/题量预测及绝对化指标结论不采用。"
+    },
+    {
+      "id": "NOTE08",
+      "name": "社区学习笔记08：编排、调度与虚拟化",
+      "url": "https://drive.google.com/file/d/1jDIcg23sQjWXr7fNKxdNx483-FydD-uz/view",
+      "locator": "12页；全文文本已读",
+      "kind": "third-party",
+      "checked": "2026-09-24",
+      "note": "只采用主题线索；原题不直接导入。MIG支持、重置与调度边界另核官方。"
+    },
+    {
+      "id": "SMI",
+      "name": "NVIDIA System Management Interface",
+      "url": "https://docs.nvidia.com/deploy/nvidia-smi/index.html",
+      "locator": "Description / Query / Utilization / Memory / Power / ECC",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "DCGM",
+      "name": "NVIDIA DCGM Feature Overview",
+      "url": "https://docs.nvidia.com/datacenter/dcgm/latest/user-guide/feature-overview.html",
+      "locator": "Health and Diagnostics / Profiling Metrics",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "EXPORTER",
+      "name": "NVIDIA DCGM Exporter",
+      "url": "https://docs.nvidia.com/datacenter/cloud-native/gpu-telemetry/latest/dcgm-exporter.html",
+      "locator": "Introduction / Running / MIG support",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "XID",
+      "name": "NVIDIA Xid Errors",
+      "url": "https://docs.nvidia.com/deploy/xid-errors/introduction.html",
+      "locator": "What is an Xid Message / How to Use",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "BMC",
+      "name": "NVIDIA DGX H100/H200：BMC",
+      "url": "https://docs.nvidia.com/dgx/dgxh100-user-guide/bmc.html",
+      "locator": "硬件管理、远程控制台、传感器和电源",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "BCM",
+      "name": "NVIDIA Base Command Manager",
+      "url": "https://www.nvidia.com/en-us/data-center/base-command-manager/",
+      "locator": "Provision / Monitor / Cluster management",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "SLURM",
+      "name": "SchedMD Slurm Overview",
+      "url": "https://slurm.schedmd.com/overview.html",
+      "locator": "三项职责 / Architecture / User tools",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "SLURM-GPU",
+      "name": "SchedMD Slurm GRES Scheduling",
+      "url": "https://slurm.schedmd.com/gres.html",
+      "locator": "GPU资源请求 / MIG Management",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "K8S",
+      "name": "Kubernetes Overview",
+      "url": "https://kubernetes.io/docs/concepts/overview/",
+      "locator": "编排 / 调度 / 服务 / 批处理",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "K8S-GPU",
+      "name": "Kubernetes Schedule GPUs",
+      "url": "https://kubernetes.io/docs/tasks/manage-gpus/scheduling-gpus/",
+      "locator": "驱动、device plugin及GPU资源请求",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "MIG",
+      "name": "NVIDIA MIG Introduction",
+      "url": "https://docs.nvidia.com/datacenter/tesla/mig-user-guide/introduction.html",
+      "locator": "硬件分区 / 内存路径 / 部署场景",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "MIG-SUPPORT",
+      "name": "NVIDIA MIG Supported GPUs",
+      "url": "https://docs.nvidia.com/datacenter/tesla/mig-user-guide/supported-gpus.html",
+      "locator": "Table 1 支持产品与最大实例数",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "MIG-DEPLOY",
+      "name": "NVIDIA MIG Deployment Considerations",
+      "url": "https://docs.nvidia.com/datacenter/tesla/mig-user-guide/deployment-considerations.html",
+      "locator": "System / Application considerations",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "MIG-START",
+      "name": "NVIDIA Getting Started with MIG",
+      "url": "https://docs.nvidia.com/datacenter/tesla/mig-user-guide/getting-started-with-mig.html",
+      "locator": "MIG mode / GPU reset on Hopper+ / instance management",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "VGPU",
+      "name": "NVIDIA vGPU Introduction",
+      "url": "https://docs.nvidia.com/vgpu/latest/grid-vgpu-user-guide/grid-vgpu-introduction.html",
+      "locator": "GPU Instance Support / 软件与hypervisor支持",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "L40S",
+      "name": "NVIDIA L40S Specifications",
+      "url": "https://www.nvidia.com/en-in/data-center/l40s/",
+      "locator": "MIG support: No；vGPU software support: Yes",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "定义与限制已按本轮访问的资料对照；不等于实机配置验收。"
+    },
+    {
+      "id": "REVIEW-ANN",
+      "name": "NVIDIA Artificial Neural Network",
+      "url": "https://developer.nvidia.com/discover/artificial-neural-network",
+      "locator": "训练权重；Neural Network Inference；Layer定义",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": "仅采用定义与阶段说明；不把宣传性能作为本应用实测。"
+    },
+    {
+      "id": "REVIEW-EVAL",
+      "name": "Google ML Crash Course — Dividing datasets",
+      "url": "https://developers.google.com/machine-learning/crash-course/overfitting/dividing-datasets",
+      "locator": "Training, validation, and test sets；Additional problems with test sets",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": "原厂机器学习教学资料，用于评估方法补充，不充当NVIDIA考纲。"
+    },
+    {
+      "id": "REVIEW-CUDART",
+      "name": "CUDA Runtime API：Memory Management",
+      "url": "https://docs.nvidia.com/cuda/cuda-runtime-api/cuda_runtime_api/group__CUDART__MEMORY.html",
+      "locator": "cudaMalloc设备内存分配条目",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": "独立复核报告已核对；只支持本节API示例，不作为所有编译/部署条件的证明。"
+    },
+    {
+      "id": "REVIEW-PROM",
+      "name": "Prometheus Overview",
+      "url": "https://prometheus.io/docs/introduction/overview/",
+      "locator": "Architecture：抓取、保存样本、规则与Grafana展示",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": "独立复核新增来源；具体通知与处置流程仍需部署验证。"
+    },
+    {
+      "id": "REVIEW-DEPLOY",
+      "name": "AI Enterprise 4.10部署选择",
+      "url": "https://docs.nvidia.com/ai-enterprise/release-4/4.10/getting-started/deployment-guide.html",
+      "locator": "Choosing Your Deployment；2026-05-07",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": "上游本轮已读取并提供精确支持范围。云弹性/按需付费和本地裸机控制；版本固定资料，不承担全部成本论断。"
+    },
+    {
+      "id": "REVIEW-CLOUD-COST",
+      "name": "AWS定价原则",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
+      "locator": "Key Principles：服务开销、计算/存储/传出流量和计费承诺",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": "上游本轮已读取并提供精确支持范围。以AWS作云服务例证，不泛化为所有供应商或NVIDIA服务的价格保证。"
+    },
+    {
+      "id": "REVIEW-CLOUD-CAPACITY",
+      "name": "EC2启动限制与容量",
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/troubleshooting-launch.html",
+      "locator": "Instance limit exceeded / Insufficient instance capacity / Configuration not supported",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": "上游本轮已读取并提供精确支持范围。以EC2说明配额、实际容量和区域配置限制；不是全部云的统一条款。"
+    },
+    {
+      "id": "REVIEW-CLOUD-RESP",
+      "name": "AWS共同责任模型",
+      "url": "https://aws.amazon.com/compliance/shared-responsibility-model/",
+      "locator": "EC2客户责任；服务类型改变责任边界",
+      "kind": "official",
+      "checked": "2026-10-14",
+      "note": "上游本轮已读取并提供精确支持范围。EC2客户仍承担OS补丁、应用和安全组等责任；不套用于所有托管服务。"
+    },
+    {
+      "id": "GUIDE-LEGACY-CN",
+      "name": "保留：Feb 2026中文指南来源",
+      "url": "https://images.nvidia.cn/aem-dam/zh_cn/Solutions/training/certification/nvt-certification-exam-study-guide-aiio-a4-web-zhCN-5103850.pdf",
+      "locator": "物理第4–6页：1.1–3.4",
+      "kind": "official",
+      "checked": "2026-09-24",
+      "note": "22考点编号；课程关联和覆盖程度为本项目判断。"
+    }
+  ],
+  "note": "内容版本存档，不含用户数据，不用于补写更早历史。"
+}
